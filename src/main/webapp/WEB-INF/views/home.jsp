@@ -10,6 +10,10 @@
 	<h1>인덱스 페이지 테스트중</h1>
 	<p>develop 브랜치 생성</p>
 	<h1>테스트</h1>
+
+	
+	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
+	
 	<a href="users/signupform.do">회원가입</a>
 </body>
 </html>
