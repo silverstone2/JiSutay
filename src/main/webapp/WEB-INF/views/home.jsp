@@ -22,5 +22,7 @@
 	</c:choose>
 	
 	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
+	<a href="users/signupform.do">회원가입</a>
+
 </body>
 </html>
