@@ -5,6 +5,6 @@ import com.pina.jisutay.room.dto.RoomDto;
 
 public interface RoomDao {
 	public List<RoomDto> getList(RoomDto dto);
-//	public RoomDto getData(int num);
-	public RoomDto getData(RoomDto dto);
+	public RoomDto getData(int num);
+//	public RoomDto getData(RoomDto dto);
 }

@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.room.dao.RoomDao;
 import com.pina.jisutay.room.dto.RoomDto;
@@ -25,12 +26,11 @@ public class RoomServiceImpl implements RoomService {
 	}
 	
 	@Override
-	public void getDetail(HttpServletRequest request) {
-		int num=Integer.parseInt(request.getParameter("num"));
-		RoomDto dto=new RoomDto();
-		dto=roomDao.getData(dto);
-		request.setAttribute("dto", dto);
+	public void getDetail(int num, ModelAndView mav) {
+		RoomDto dto = roomDao.getData(num);
+		System.out.println(dto.getNum());
+		System.out.println(dto.getRoom_introduce());
 		
-		
+		mav.addObject("dto", dto);
 	}
 }
