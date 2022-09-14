@@ -5,8 +5,9 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.pina.jisutay.room.dto.RoomDto" alias="roomDto"/>
+		
 		<!-- 
-		<typeAlias type="com.pina.stay.comments.dto.CommentsDto" alias="commentsDto"/>
+		<typeAlias type="com.pina.jisutay.comments.dto.CommentsDto" alias="commentsDto"/>
 		<typeAlias type="com.pina.stay.users.dto.UsersDto" alias="usersDto"/>
 		<typeAlias type="com.pina.stay.reservation.dto.ReservationDto" alias="reservationDto"/>
 		<typeAlias type="com.pina.stay.notice.dto.NoticeDto" alias="noticeDto"/>

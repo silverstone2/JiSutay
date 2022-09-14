@@ -27,8 +27,12 @@ public class RoomServiceImpl implements RoomService {
 	@Override
 	public void getDetail(HttpServletRequest request) {
 		int num=Integer.parseInt(request.getParameter("num"));
+		
 		RoomDto dto=new RoomDto();
+		dto.setNum(num);
+		
 		dto=roomDao.getData(dto);
+		
 		request.setAttribute("dto", dto);
 		
 		
