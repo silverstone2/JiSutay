@@ -20,5 +20,7 @@
 			<a href="users/logout.do">로그아웃</a>
 		</c:otherwise>
 	</c:choose>
+	
+	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
 </body>
 </html>
