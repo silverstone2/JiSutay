@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.room.service.RoomService;
 
@@ -22,9 +23,10 @@ public class RoomController {
 	}
 	
 	@RequestMapping("/room/detail")
-	public String detail(HttpServletRequest request) {
-		service.getDetail(request);
-		return "room/detail";
+	public ModelAndView detail(int num, ModelAndView mav) {
+		service.getDetail(num, mav);
+		mav.setViewName("room/detail");
+		return mav;
 	}
 	
 }

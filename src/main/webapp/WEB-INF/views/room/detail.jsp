@@ -29,11 +29,11 @@
 			</tr>
 			<tr>
 				<th>인원수</th>
-				<td>${dto.people }</td>
+				<td>${dto.room_people }</td>
 			</tr>
 			<tr>
 				<th>비품</th>
-				<td>${dto.items }</td>
+				<td>${dto.room_items }</td>
 			</tr>
 			<tr>
 				<th>베드타입</th>
