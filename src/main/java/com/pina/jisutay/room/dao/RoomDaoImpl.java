@@ -28,5 +28,4 @@ public class RoomDaoImpl implements RoomDao{
 	public RoomDto getData(RoomDto dto) {
 		return session.selectOne("room.getData", dto);
 	}
-
 }

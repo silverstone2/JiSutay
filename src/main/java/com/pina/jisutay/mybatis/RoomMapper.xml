@@ -7,7 +7,7 @@
 	</select>
 	
 	<select id="getData" parameterType="roomDto" resultType="roomDto">
-		SELECT room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce
+		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce
 		FROM room
 		WHERE num=#{num}
 	</select>

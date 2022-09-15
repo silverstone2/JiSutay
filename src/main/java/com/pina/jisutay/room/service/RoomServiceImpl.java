@@ -4,6 +4,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.room.dao.RoomDao;
 import com.pina.jisutay.room.dto.RoomDto;
@@ -34,7 +35,6 @@ public class RoomServiceImpl implements RoomService {
 		dto=roomDao.getData(dto);
 		
 		request.setAttribute("dto", dto);
-		
-		
+
 	}
 }
