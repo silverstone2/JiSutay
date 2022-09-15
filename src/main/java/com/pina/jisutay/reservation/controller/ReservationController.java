@@ -1,5 +1,7 @@
 package com.pina.jisutay.reservation.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,14 +15,14 @@ public class ReservationController {
 	@Autowired
 	private RoomService service;
 	
-	@Autowired
-	private ReservationService service1;
-	
-	@RequestMapping("/reservation/list")
-	public ModelAndView list(ModelAndView mView) {
-		service.getListMember(mView);
-		mView.setViewName("reservation/list");
-		return mView;
+	@RequestMapping("/reservation/list.do")
+	public String getList(HttpServletRequest request) {
+		
+		service.getList(request);
+		
+		return "reservation/list";
 	}
+	
+
 
 }
