@@ -233,7 +233,14 @@
 		let isLogin=${not empty id };
 		//객실 후기 폼에서 submit 할 시 실행함수
 		docyment.querySelector(".insert-form")
-		.add
+		.addEventListener("submit", function(event){
+			//로그인 없이 sumbit 누를 경우
+			if(!isLogin){
+				event.prventDefault();
+				location.href=
+					"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/room/detail.do?num=${dto.num}";
+			}
+		});
 		
 		/* -------------- 스크립트 작성 중 -------------- */ 
 	</script>
