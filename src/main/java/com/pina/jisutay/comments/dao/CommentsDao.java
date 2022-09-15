@@ -1,7 +1,18 @@
 package com.pina.jisutay.comments.dao;
 
+import java.util.List;
+
 import com.pina.jisutay.comments.dto.CommentsDto;
 
 public interface CommentsDao {
-	//	DML을 수행할 비즈니스 로직 Unit 메소드 선언
+	
+	public void insert(CommentsDto dto);
+	
+	public List<CommentsDto> getList(CommentsDto dto);
+	public int getSequence();
+	public int getCount(int ref_group);
+	
+	public void update(CommentsDto dto);
+	
+	public void delete(int num);
 }

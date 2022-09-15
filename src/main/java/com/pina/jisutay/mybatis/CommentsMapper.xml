@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="comments">
-
+	<select id="getList" parameterType="commentsDto" resultType="commentsDto">
+		SELECT *
+		FROM
+		(SELECT a1.*, ROWNUM AS rnum
+		FROM
+		(SELECT * FROM comments cmt
+		INNER JOIN users us
+		ON cmt.writer=us.id
+		WHERE room_num=#{room_num} ORDER BY comment_num DESC, num ASC) a1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum};
+	</select>
 </mapper>

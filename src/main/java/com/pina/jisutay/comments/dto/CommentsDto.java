@@ -1,7 +1,5 @@
 package com.pina.jisutay.comments.dto;
 
-import java.util.List;
-
 public class CommentsDto {
 	private int num;
 	private String writer;
@@ -13,11 +11,13 @@ public class CommentsDto {
 	private int room_num;
 	private int comment_num;
 	private String deleted;
+	private int startRowNum;
+	private int endRowNum;
 	
 	public CommentsDto() {}
 	
 	public CommentsDto(int num, String writer, String room_img, int score, String regdate, String content,
-			String target_id, int room_num, int comment_num, String deleted) {
+			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -29,6 +29,8 @@ public class CommentsDto {
 		this.room_num = room_num;
 		this.comment_num = comment_num;
 		this.deleted = deleted;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
 	}
 	
 	public int getNum() {
@@ -90,5 +92,21 @@ public class CommentsDto {
 	}
 	public void setDeleted(String deleted) {
 		this.deleted = deleted;
+	}
+	
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
 	}
 }

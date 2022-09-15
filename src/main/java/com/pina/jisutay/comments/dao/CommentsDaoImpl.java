@@ -1,5 +1,7 @@
 package com.pina.jisutay.comments.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -10,5 +12,43 @@ import com.pina.jisutay.comments.dto.CommentsDto;
 public class CommentsDaoImpl implements CommentsDao {
 	@Autowired
 	private SqlSession session;
+
+	
+	@Override
+	public void insert(CommentsDto dto) {
+		session.insert("comments.insert", dto);
+	}
+
+	@Override
+	public List<CommentsDto> getList(CommentsDto dto) {
+		System.out.println(dto.getRoom_num());
+		System.out.println(dto.getStartRowNum());
+		System.out.println(dto.getEndRowNum());
+		
+		List<CommentsDto> commentList = session.selectList("comments.getList", dto);
+		System.out.println(commentList.get(0).getRoom_num());
+		System.out.println(commentList.get(0).getContent());
+		System.out.println(commentList.get(0).getRegdate());
+		
+		return commentList;
+	}
+
+	@Override
+	public int getSequence() {
+		return session.selectOne("comments.getSequence");
+	}
+
+	@Override
+	public int getCount(int ref_group) {
+		return session.selectOne("comments.getSequence");
+	}
+
+	@Override
+	public void update(CommentsDto dto) {		
+	}
+
+	@Override
+	public void delete(int num) {		
+	}
 	
 }
