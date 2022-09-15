@@ -11,8 +11,6 @@ public class RoomDto {
 	private String bedroom_type;
 	private String room_introduce;
 	
-	public RoomDto() {}
-	
 	public RoomDto(int num, String room_name, int room_price, String room_structure, int room_size, String room_people,
 			String room_items, String bedroom_type, String room_introduce) {
 		super();
@@ -26,6 +24,8 @@ public class RoomDto {
 		this.bedroom_type = bedroom_type;
 		this.room_introduce = room_introduce;
 	}
+
+	public RoomDto() {}
 
 	public int getNum() {
 		return num;
@@ -99,3 +99,4 @@ public class RoomDto {
 		this.room_introduce = room_introduce;
 	}
 }
+

@@ -6,5 +6,10 @@
 		FROM ROOM
 		ORDER BY NUM ASC
 	</select>
-
+	
+	<select id="getData" parameterType="int" resultType="roomDto">
+		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce
+		FROM room
+		WHERE num=#{num}
+	</select>
 </mapper>

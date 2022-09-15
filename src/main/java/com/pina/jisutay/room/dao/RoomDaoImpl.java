@@ -9,17 +9,24 @@ import org.springframework.stereotype.Repository;
 import com.pina.jisutay.room.dto.RoomDto;
 
 @Repository
-public class RoomDaoImpl implements RoomDao {
-	
+public class RoomDaoImpl implements RoomDao{
 	@Autowired
 	private SqlSession session;
-	
+
 	@Override
-	public List<RoomDto> getList() {
+	public List<RoomDto> getList(RoomDto dto) {
 		
-		List<RoomDto> list = session.selectList("room.getList");
-		
-		return list;
+		return session.selectList("room.getList", dto);
+	}
+
+//	@Override
+//	public RoomDto getData(int num) {
+//		return session.selectOne("room.getData", num);
+//	}
+
+	@Override
+	public RoomDto getData(int num) {
+		return session.selectOne("room.getData", num);
 	}
 
 }
