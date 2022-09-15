@@ -9,6 +9,95 @@
 <title>views/room/detail.jsp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+<style>
+	.content{
+		border: 1px dotted gray;
+	}
+	
+	/* 후기 프로필 이미지 원형 프레임 */
+	.profile-image{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #cecece;
+		border-radius: 50%;
+	}
+	
+	/* ul default style 제거 */
+	.comments ul{
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	}
+	.comments dt{
+		margin-top: 5px;
+	}
+	.comments dd{
+		margin-left: 50px;
+	}
+	.comment-form textarea, .comment-form button{
+		float: left;
+	}
+	.comments li{
+		clear: left;
+	}
+	.comments ul li{
+		border-top: 1px solid #888;
+	}
+	.comment-form textarea{
+		width: 84%;
+		height: 100px;
+	}
+	.comment-form button{
+		width: 14%;
+		height: 100px;
+		
+	/* 관리자 답글(대댓글) 은 기본값을 보이지 않음으로 */
+	.comments .comment-form{
+	display: none;
+	}
+	/* .reply_icon 을 li 요소를 기준으로 배치 하기 */
+	.comments li{
+		position: relative;
+	}
+	.comments .reply-icon{
+		position: absolute;
+		top: 1em;
+		left: 1em;
+		color: red;
+	}
+	pre {
+		display: block;
+		padding: 9.5px;
+		margin: 0 0 10px;
+		font-size: 13px;
+		line-height: 1.42857143;
+		color: #333333;
+		word-break: break-all;
+		word-wrap: break-word;
+		background-color: #f5f5f5;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+	}
+	.loader{
+		/* 로딩 이미지를 가운데 정렬하기 위해 */
+		text-align: center;
+		/* 일단 숨겨 놓기 */
+		display: none;
+	}
+	.loader svg{
+		animation: rotateAni 1s ease-out infinite;
+	}
+	
+	@keyframes rotateAni{
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(360deg);
+		}
+	}
+</style>
+
 </head>
 <body>
 	<div class="container">
@@ -128,5 +217,25 @@
 		</ul>
 	</div>
 
+	<!-- 후기 작성 폼 -->
+	<form class="comment-form insert-form" action="comment_insert.do" method="post">
+		<!-- 객실번호 == 후기의 ref_group 번호 -->
+		<input type="hidden" name="ref_group" value="${dto.num }"/>
+		<!-- 객실이름 == 후기의 target -->
+		<input type="hidden" name="target_id" value="${dto.room_name }"/>
+		<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
+		<button type="submit">등록</button>
+	</form>
+	</div>
+	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
+	<script>
+		//로그인 여부 확인
+		let isLogin=${not empty id };
+		//객실 후기 폼에서 submit 할 시 실행함수
+		docyment.querySelector(".insert-form")
+		.add
+		
+		/* -------------- 스크립트 작성 중 -------------- */ 
+	</script>
 </body>
 </html>
