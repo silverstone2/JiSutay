@@ -23,5 +23,6 @@
 	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
 	<a href="users/signupform.do">회원가입</a>
 	<a href="${pageContext.request.contextPath }/reservation/list.do">예약하기</a>
+	<a href="notice/list.do">공지사항</a>
 </body>
 </html>
