@@ -6,7 +6,68 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc https://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
-
+	
+	<!-- 
+	  	JNDI 데이터 소스 객체 얻어오는 설정   
+	  	Servers/context.xml 에 설정된 oracle 접속정보 가 있어야 된다. 
+	
+	  	<Resource name="jdbc/myoracle" auth="Container"
+	      	type="javax.sql.DataSource" driverClassName="oracle.jdbc.OracleDriver"
+	      	url="jdbc:oracle:thin:@127.0.0.1:1521:xe"
+	      	username="scott" password="tiger" maxTotal="20" maxIdle="10"
+	      	maxWaitMillis="-1"/>          
+	-->
+	<beans:bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+	   <beans:property name="jndiName" value="java:comp/env/jdbc/myoracle"/>
+	</beans:bean>
+	
+	<!-- 
+	위는 아래의 코드와 같다
+	dataSource = new JndiObjectFactoryBean();
+	dataSource.setJndiName("java:comp/env/jdbc/myoracle");
+	-->
+	
+	
+	  <!-- 
+	    SqlSessionFactory 객체 
+	    Configuration.xml 문서가 어디에 있는지 알려야 한다. 
+	 -->
+	 <beans:bean id="sessionFactory" 
+	    class="org.mybatis.spring.SqlSessionFactoryBean">
+	    <beans:property name="dataSource" ref="dataSource"/>
+	    <beans:property name="configLocation"
+	 value="classpath:com/pina/jisutay/mybatis/Configuration.xml"/>
+	 </beans:bean>
+	 <!-- 
+	    sessionFactory=new SqlSessionFactoryBean();
+	    sessionFactory.setDataSource(dataSource);
+	    sessionFactory.setConfigLocation("classpath:com/gura/xxx");
+	  -->
+	
+	
+	 <!-- 
+	    SqlSession 인터페이스를 구현한 
+	    SqlSessionTemplate(SqlSession) 객체 
+	    Dao 가 의존하는 객체 
+	 -->
+	  <beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
+	     <beans:constructor-arg name="sqlSessionFactory" ref="sessionFactory"/>
+	  </beans:bean>
+	
+	<!-- 
+	위의 bean 설정을 java code 로 환산 하면 아래와 같다 
+	
+	dataSource = new JndiObjectFactoryBean();
+	dataSource.setJndiName("java:comp/env/jdbc/myoracle");
+	
+	sessionFactory=new SqlSessionFactoryBean();
+	sessionFactory.setDataSource(dataSource);
+	sessionFactory.setConfigLocation("classpath:com/gura/xxx");
+	
+	new SqlSessionTemplate(sessionFactory);
+	-->
+	
+	
 	<!-- DispatcherServlet Context: defines this servlet's request-processing infrastructure -->
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
