@@ -16,7 +16,7 @@
 		<c:when test="${empty id }">
 			<p>
 				<a href="${pageContext.request.contextPath }/users/loginform.do">로그인</a>
-				<a href="${pageContext.request.contextPath }/users/private/signupform.do">회원가입</a>
+				<a href="${pageContext.request.contextPath }/users/signupform.do">회원가입</a>
 			</p>
 		</c:when>
 		<c:otherwise>
@@ -36,6 +36,8 @@
 					<p class="card-text">
 					 	객실 최대인원 : <strong>${tmp.room_people }</strong>
 					</p>
+					
+					
 				</div>
 			</div>
 		</c:forEach>
