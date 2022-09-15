@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="room">
-	<select id="getList" parameterType="roomDto" resultType="roomDto">
-		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce
-		FROM room
+	<select id="getList" resultType="roomDto">
+		SELECT NUM, ROOM_NAME, ROOM_PRICE , ROOM_STRUCTURE , ROOM_SIZE, ROOM_PEOPLE , ROOM_ITEMS , BEDROOM_TYPE, ROOM_INTRODUCE
+		FROM ROOM
+		ORDER BY NUM ASC
 	</select>
 	
 	<select id="getData" parameterType="roomDto" resultType="roomDto">
