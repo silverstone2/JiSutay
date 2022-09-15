@@ -5,21 +5,17 @@
 <configuration>
 	<typeAliases>
 		<typeAlias type="com.pina.jisutay.users.dto.UsersDto" alias="usersDto"/>
-    	<typeAlias type="com.pina.jisutay.room.dto.RoomDto" alias="roomDto"/>
-    <!-- 
 		<typeAlias type="com.pina.jisutay.comments.dto.CommentsDto" alias="commentsDto"/>
 		<typeAlias type="com.pina.jisutay.reservation.dto.ReservationDto" alias="reservationDto"/>
+		<typeAlias type="com.pina.jisutay.room.dto.RoomDto" alias="roomDto"/>
 		<typeAlias type="com.pina.jisutay.notice.dto.NoticeDto" alias="noticeDto"/>
-		 -->
 	</typeAliases>
-  
+
 	<mappers>
-		<mapper resource="com/pina/jisutay/mybatis/RoomMapper.xml"/>
 		<mapper resource="com/pina/jisutay/mybatis/UsersMapper.xml"/>
-    <!-- 
 		<mapper resource="com/pina/jisutay/mybatis/CommentsMapper.xml"/>
 		<mapper resource="com/pina/jisutay/mybatis/ReservationMapper.xml"/>
+		<mapper resource="com/pina/jisutay/mybatis/RoomMapper.xml"/>
 		<mapper resource="com/pina/jisutay/mybatis/NoticeMapper.xml"/>
-		 -->
 	</mappers>
 </configuration>
