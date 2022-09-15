@@ -23,10 +23,9 @@ public class RoomController {
 	}
 	
 	@RequestMapping("/room/detail")
-	public ModelAndView detail(int num, ModelAndView mav) {
-		service.getDetail(num, mav);
-		mav.setViewName("room/detail");
-		return mav;
+	public String detail(HttpServletRequest request) {
+		service.getDetail(request);
+		return "room/detail";
 	}
 	
 }

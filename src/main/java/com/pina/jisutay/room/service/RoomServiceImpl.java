@@ -26,11 +26,15 @@ public class RoomServiceImpl implements RoomService {
 	}
 	
 	@Override
-	public void getDetail(int num, ModelAndView mav) {
-		RoomDto dto = roomDao.getData(num);
-		System.out.println(dto.getNum());
-		System.out.println(dto.getRoom_introduce());
+	public void getDetail(HttpServletRequest request) {
+		int num=Integer.parseInt(request.getParameter("num"));
 		
-		mav.addObject("dto", dto);
+		RoomDto dto=new RoomDto();
+		dto.setNum(num);
+		
+		dto=roomDao.getData(dto);
+		
+		request.setAttribute("dto", dto);
+
 	}
 }
