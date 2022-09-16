@@ -177,10 +177,11 @@
 										<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
 										<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
 										<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
-										<!-- 
-										<c:if test="${ tmp.writer eq sessionScope.id }">
-										 -->
-										<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
+										<%-- 
+											<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
+										 --%>
+										 <c:if test="${ tmp.writer eq sessionScope.id }">
+										 
 											<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
 											<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
 										</c:if>
@@ -221,6 +222,14 @@
 		</ul>
 	</div>
 
+	<%-- AJAX LOADING SCROLL --%>		
+	<div class="loader">
+		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+			  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+			  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+		</svg>
+	</div>
+	
 	<!-- 후기 작성 폼 -->
 	<form class="comment-form insert-form" action="comment_insert.do" method="post">
 		<!-- 객실번호 == 후기의 ref_group 번호 -->
@@ -231,6 +240,7 @@
 		<button type="submit">등록</button>
 	</form>
 	</div>
+	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 	<script>
@@ -395,13 +405,7 @@
 					})
 					.then(function(data){
 						if(data.isSuccess){
-							/*
-								document.querySelector() 는 html 문서 전체에서 특정 요소의 
-								참조값을 찾는 기능
-								
-								특정문서의 참조값.querySelector() 는 해당 문서 객체의 자손 요소 중에서
-								특정 요소의 참조값을 찾는 기능
-							*/
+
 							const num=form.querySelector("input[name=num]").value;
 							const content=form.querySelector("textarea[name=content]").value;
 							//수정폼에 입력한 value 값을 pre 요소에도 출력하기 

@@ -33,7 +33,7 @@
 							</c:if>
 							<span>${tmp.regdate }</span>
 							<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
-							<c:if test="${ (id ne null) and (tmp.writer eq id) }">
+							<c:if test="${ tmp.writer eq sessionScope.id }">
 								<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
 								<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
 							</c:if>
@@ -43,7 +43,7 @@
 						</dd>
 					</dl>
 					<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
-						<input type="hidden" name="ref_group" value="${num }"/>
+						<input type="hidden" name="room_num" value="${num }"/>
 						<input type="hidden" name="target_id" value="${tmp.writer }"/>
 						<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
 						<textarea name="content"></textarea>
