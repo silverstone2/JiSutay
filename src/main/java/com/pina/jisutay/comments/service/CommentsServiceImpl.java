@@ -34,7 +34,7 @@ public class CommentsServiceImpl implements CommentsService {
 		//댓글 전체 페이지의 갯수
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		
-		request.setAttribute("commentList", commentList);
+		request.setAttribute("commentsList", commentList);
 		request.setAttribute("totalRow", totalRow);
 		request.setAttribute("totalPageCount", totalPageCount);
 		

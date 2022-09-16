@@ -11,8 +11,8 @@
 				FROM comments
 				INNER JOIN users
 				ON comments.writer=users.id
-				WHERE room_num=#{room_num}
+				WHERE room_num=1
 				ORDER BY comment_num ASC, num ASC) result1)
-		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum};
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
 	</select>
 </mapper>
