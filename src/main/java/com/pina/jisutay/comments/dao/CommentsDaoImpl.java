@@ -21,9 +21,10 @@ public class CommentsDaoImpl implements CommentsDao {
 
 	@Override
 	public List<CommentsDto> getList(CommentsDto dto) {
-		System.out.println(dto.getRoom_num());
+		System.out.println(dto.getNum());
 		System.out.println(dto.getStartRowNum());
 		System.out.println(dto.getEndRowNum());
+		
 		return session.selectList("comments.getList", dto);
 	}
 
@@ -43,6 +44,11 @@ public class CommentsDaoImpl implements CommentsDao {
 
 	@Override
 	public void delete(int num) {		
+	}
+
+	@Override
+	public CommentsDto getData(int num) {
+		return session.selectOne("comments.getData",num);
 	}
 	
 }

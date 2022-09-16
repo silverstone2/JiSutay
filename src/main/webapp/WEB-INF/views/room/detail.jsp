@@ -196,7 +196,7 @@
 									답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
 								--%>
 								<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
-									<input type="hidden" name="ref_group" value="${dto.num }"/>
+									<input type="hidden" name="room_num" value="${dto.num }"/>
 									<input type="hidden" name="target_id" value="${tmp.writer }"/>
 									<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
 									<textarea name="content"></textarea>
@@ -221,7 +221,7 @@
 	<!-- 후기 작성 폼 -->
 	<form class="comment-form insert-form" action="comment_insert.do" method="post">
 		<!-- 객실번호 == 후기의 ref_group 번호 -->
-		<input type="hidden" name="ref_group" value="${dto.num }"/>
+		<input type="hidden" name="room_num" value="${dto.num }"/>
 		<!-- 객실이름 == 후기의 target -->
 		<input type="hidden" name="target_id" value="${dto.room_name }"/>
 		<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
@@ -234,7 +234,7 @@
 		//로그인 여부 확인
 		let isLogin=${not empty id };
 		//객실 후기 폼에서 submit 할 시 실행함수
-		docyment.querySelector(".insert-form")
+		document.querySelector(".insert-form")
 		.addEventListener("submit", function(event){
 			//로그인 없이 sumbit 누를 경우
 			if(!isLogin){
@@ -244,7 +244,174 @@
 			}
 		});
 		
+		addUpdateFormListener(".update-form");
+		addUpdateListener(".update-link");
+		addDeleteListener(".delete-link");
+		addReplyListener(".reply-link");
+		
+		let currentPage=1;
+		let lastPage=${totalPageCount};
+		let isLoading=false; //현재 로딩중인지 여부 
+
+		/*
+		window.scrollY => 위쪽으로 스크롤된 길이
+		window.innerHeight => 웹브라우저의 창의 높이
+		document.body.offsetHeight => body 의 높이 (문서객체가 차지하는 높이)
+		*/
+		window.addEventListener("scroll", function(){
+			//바닥 까지 스크롤 했는지 여부 
+			const isBottom = 
+				window.innerHeight + window.scrollY  >= document.body.offsetHeight;
+			let isLast = currentPage == lastPage;				//현재 페이지가 마지막 페이지인지 여부 알아내기
+			if(isBottom && !isLoading && !isLast){			//현재 바닥까지 스크롤 했고 로딩중이 아니고 현재 페이지가 마지막이 아니라면
+				document.querySelector(".loader").style.display="block";				//로딩바 띄우기
+				isLoading=true; 				//로딩 작업중이라고 표시
+				currentPage++;				//현재 댓글 페이지를 1 증가 시키고 
+				/*
+					해당 페이지의 내용을 ajax 요청을 통해서 받아온다.
+					"pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다.
+					pageNum은 새로 받아올 댓글의 페이지 번호
+					num은 권글의 글번호(ref_group 번로)
+				*/
+				ajaxPromise("ajax_comment_list.do","get",
+						"pageNum="+currentPage+"&num=${dto.num}") 	//댓글의 페이지번호와 원글의 글번호를 들고 간다
+				.then(function(response){
+					return response.text();						//json 이 아닌 html 문자열을 응답 >>  return response.text()
+				})
+				.then(function(data){
+					console.log(data);
+					document.querySelector(".comments ul")
+						.insertAdjacentHTML("beforeend", data); //insertAdjacentHTML : 인접한 html 해석을 해서 출력해라.
+						//새로운 댓글목록 li 를 추가할 수 있는 html 을 추가하고 해석해서 출력해 주는 것
+					isLoading=false;
+					//새로 추가된 댓글 li 요소 안에 있는 a 요소를 찾아서 이벤트 리스너 등록 하기 
+					addUpdateListener(".page-"+currentPage+" .update-link");
+					addDeleteListener(".page-"+currentPage+" .delete-link");
+					addReplyListener(".page-"+currentPage+" .reply-link");
+					//새로 추가된 댓글 li 요소 안에 있는 댓글 수정폼에 이벤트 리스너 등록하기
+					addUpdateFormListener(".page-"+currentPage+" .update-form");
+					document.querySelector(".loader").style.display="none";					//로딩바 숨기기
+				});
+			}
+		});
+		//인자로 전달되는 선택자를 이용해서 이벤트 리스너를 등록하는 함수 
+		function addUpdateListener(sel){
+			//댓글 수정 링크의 참조값을 배열에 담아오기 
+			let updateLinks=document.querySelectorAll(sel);
+			for(let i=0; i<updateLinks.length; i++){
+				updateLinks[i].addEventListener("click", function(){
+					const num=this.getAttribute("data-num"); //data-num 은 폼에서 클릭 이벤트 시 등장 // 댓글의 글번호
+					document.querySelector("#updateForm"+num).style.display="block";
+					
+				});
+			}
+		}
+		function addDeleteListener(sel){
+			//댓글 삭제 링크의 참조값을 배열에 담아오기 
+			let deleteLinks=document.querySelectorAll(sel);
+			for(let i=0; i<deleteLinks.length; i++){
+				deleteLinks[i].addEventListener("click", function(){
+					//click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
+					const num=this.getAttribute("data-num"); //댓글의 글번호
+					const isDelete=confirm("댓글을 삭제 하시겠습니까?");
+					if(isDelete){
+						// gura_util.js 에 있는 함수들 이용해서 ajax 요청
+						ajaxPromise("comment_delete.do", "post", "num="+num)
+						.then(function(response){
+							return response.json();
+						})
+						.then(function(data){
+							//만일 삭제 성공이면 
+							if(data.isSuccess){
+								//댓글이 있는 곳에 삭제된 댓글입니다를 출력해 준다. 
+								document.querySelector("#reli"+num).innerText="삭제된 댓글입니다.";
+							}
+						});
+					}
+				});
+			}
+		}
+		function addReplyListener(sel){
+			//댓글 링크의 참조값을 배열에 담아오기 
+			let replyLinks=document.querySelectorAll(sel);
+			//반복문 돌면서 모든 링크에 이벤트 리스너 함수 등록하기
+			for(let i=0; i<replyLinks.length; i++){
+				replyLinks[i].addEventListener("click", function(){
+					
+					if(!isLogin){
+						const isMove=confirm("로그인이 필요 합니다. 로그인 페이지로 이동 하시겠습니까?");
+						if(isMove){
+							location.href=
+								"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+						}
+						return;
+					}
+					
+					//click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
+					const num=this.getAttribute("data-num"); //댓글의 글번호
+					
+					const form=document.querySelector("#reForm"+num);
+					
+					//현재 문자열을 읽어온다 ( "답글" or "취소" )
+					let current = this.innerText;
+					
+					if(current == "답글"){
+						//번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
+						form.style.display="block";
+						form.classList.add("animate__flash");
+						this.innerText="취소";	
+						form.addEventListener("animationend", function(){
+							form.classList.remove("animate__flash");
+						}, {once:true});
+					}else if(current == "취소"){
+						form.classList.add("animate__fadeOut");
+						this.innerText="답글";
+						form.addEventListener("animationend", function(){
+							form.classList.remove("animate__fadeOut");
+							form.style.display="none";
+						},{once:true});
+					}
+				});
+			}
+		}
+		
+		function addUpdateFormListener(sel){
+			//댓글 수정 폼의 참조값을 배열에 담아오기
+			let updateForms=document.querySelectorAll(sel);
+			for(let i=0; i<updateForms.length; i++){
+				//폼에 submit 이벤트가 일어 났을때 호출되는 함수 등록 
+				updateForms[i].addEventListener("submit", function(e){
+					//submit 이벤트가 일어난 form 의 참조값을 form 이라는 변수에 담기 
+					const form=this;
+					//폼 제출을 막은 다음 
+					e.preventDefault();
+					//이벤트가 일어난 폼을 ajax 전송하도록 한다.
+					ajaxFormPromise(form)
+					.then(function(response){
+						return response.json();
+					})
+					.then(function(data){
+						if(data.isSuccess){
+							/*
+								document.querySelector() 는 html 문서 전체에서 특정 요소의 
+								참조값을 찾는 기능
+								
+								특정문서의 참조값.querySelector() 는 해당 문서 객체의 자손 요소 중에서
+								특정 요소의 참조값을 찾는 기능
+							*/
+							const num=form.querySelector("input[name=num]").value;
+							const content=form.querySelector("textarea[name=content]").value;
+							//수정폼에 입력한 value 값을 pre 요소에도 출력하기 
+							document.querySelector("#pre"+num).innerText=content;
+							form.style.display="none";
+						}
+					});
+				});
+			}
+		}
 		/* -------------- 스크립트 작성 중 -------------- */ 
 	</script>
+	
+	
 </body>
 </html>

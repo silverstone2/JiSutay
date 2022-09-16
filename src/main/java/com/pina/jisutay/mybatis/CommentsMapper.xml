@@ -20,4 +20,16 @@
 	<select id="getCount" parameterType="int" resultType="int">
 		SELECT COUNT(num) AS totalNum FROM comments WHERE room_num=#{room_num}
 	</select>
+	
+	<select id="getSequence" resultType="int">
+		SELECT comments_seq.NEXTVAL
+		FROM DUAL
+	</select>
+	
+	<insert id="insert" parameterType="commentsDto">
+		INSERT INTO comments (num, writer, regdate, content, room_num, comment_num, score, deleted)
+		VALUES 	(#{num}, #{writer}, SYSDATE, #{content}, #{room_num}, #{comment_num}, #{score}, 'no')	
+	</insert>
+	
+
 </mapper>
