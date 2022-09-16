@@ -10,7 +10,7 @@ public interface CommentsDao {
 	
 	public List<CommentsDto> getList(CommentsDto dto);
 	public int getSequence();
-	public int getCount(int ref_group);
+	public int getCount(int room_num);
 	
 	public void update(CommentsDto dto);
 	

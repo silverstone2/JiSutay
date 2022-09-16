@@ -21,16 +21,7 @@ public class CommentsDaoImpl implements CommentsDao {
 
 	@Override
 	public List<CommentsDto> getList(CommentsDto dto) {
-		System.out.println(dto.getRoom_num());
-		System.out.println(dto.getStartRowNum());
-		System.out.println(dto.getEndRowNum());
-		
-		List<CommentsDto> commentList = session.selectList("comments.getList", dto);
-		System.out.println(commentList.get(0).getRoom_num());
-		System.out.println(commentList.get(0).getContent());
-		System.out.println(commentList.get(0).getRegdate());
-		
-		return commentList;
+		return session.selectList("comments.getList", dto);
 	}
 
 	@Override
@@ -39,8 +30,8 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public int getCount(int ref_group) {
-		return session.selectOne("comments.getSequence");
+	public int getCount(int room_num) {
+		return session.selectOne("comments.getCount", room_num);
 	}
 
 	@Override

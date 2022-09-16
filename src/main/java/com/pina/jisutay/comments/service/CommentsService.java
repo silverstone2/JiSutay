@@ -1,6 +1,8 @@
 package com.pina.jisutay.comments.service;
 
-import com.pina.jisutay.comments.dto.CommentsDto;
+import javax.servlet.http.HttpServletRequest;
 
 public interface CommentsService {
+	public void getList(HttpServletRequest request);
+
 }
