@@ -177,7 +177,10 @@
 										<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
 										<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
 										<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
+										<!-- 
 										<c:if test="${ tmp.writer eq sessionScope.id }">
+										 -->
+										<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
 											<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
 											<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
 										</c:if>
