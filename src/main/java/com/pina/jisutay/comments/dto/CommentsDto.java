@@ -13,6 +13,7 @@ public class CommentsDto {
 	private String deleted;
 	private int startRowNum;
 	private int endRowNum;
+	//private String profile;
 	
 	public CommentsDto() {}
 	
