@@ -4,5 +4,5 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface CommentsService {
 	public void getList(HttpServletRequest request);
-	
+
 }

@@ -100,6 +100,7 @@
 
 </head>
 <body>
+	${param.num }
 	<div class="container">
 		<table>
 			<tr>
