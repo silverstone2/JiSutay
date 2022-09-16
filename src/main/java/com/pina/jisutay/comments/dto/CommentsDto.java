@@ -1,6 +1,7 @@
 package com.pina.jisutay.comments.dto;
 
 public class CommentsDto {
+	// comments 테이블 칼럼
 	private int num;
 	private String writer;
 	private String room_img;
@@ -13,12 +14,17 @@ public class CommentsDto {
 	private String deleted;
 	private int startRowNum;
 	private int endRowNum;
-	//private String profile;
+	
+	// users 테이블 칼럼
+	private String name;
+	private String profile;
+	
 	
 	public CommentsDto() {}
 	
 	public CommentsDto(int num, String writer, String room_img, int score, String regdate, String content,
-			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum) {
+			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum,
+			String name, String profile) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -32,8 +38,10 @@ public class CommentsDto {
 		this.deleted = deleted;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+		this.name = name;
+		this.profile = profile;
 	}
-	
+
 	public int getNum() {
 		return num;
 	}
@@ -109,5 +117,21 @@ public class CommentsDto {
 
 	public void setEndRowNum(int endRowNum) {
 		this.endRowNum = endRowNum;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
 	}
 }

@@ -6,9 +6,9 @@
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num, cmt.writer, room_img, score, 
+				(SELECT num, cmt.writer, us.name, room_img, score,
 					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
-					content, target_id, room_num, comment_num, deleted, profile
+					content, target_id, room_num, comment_num, deleted, us.profile
 				FROM comments cmt
 				INNER JOIN users us
 				ON cmt.writer=us.id
