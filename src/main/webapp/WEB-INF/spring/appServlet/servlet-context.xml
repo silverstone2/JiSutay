@@ -16,7 +16,14 @@
       class="org.springframework.jndi.JndiObjectFactoryBean">
       <beans:property name="jndiName" value="java:comp/env/jdbc/myoracle"/>
    </beans:bean>
-  
+   
+   	<beans:bean id="sessionFactory" 
+		class="org.mybatis.spring.SqlSessionFactoryBean">
+		<beans:property name="dataSource" ref="dataSource"/>
+		<beans:property name="configLocation"
+	value="classpath:com/pina/jisutay/mybatis/Configuration.xml"/>
+	</beans:bean>
+	
    <beans:bean id="sqlSessionTemplate" class="org.mybatis.spring.SqlSessionTemplate">
       <beans:constructor-arg name="sqlSessionFactory" 
          ref="sessionFactory"/>
@@ -44,6 +51,15 @@
 		<beans:property name="prefix" value="/WEB-INF/views/" />
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
+	<!-- 
+		com.pina.jisutay패기치를 포함한 하위 패키지를 모두 scan해서 spring이 관리하는 bean 으로 만들것은 만들어서 관리하기
+		@Controller
+		@Service
+		@Repository
+		@Component
+		@Aspect
+		@ControllerAdvice.. 등의 어노테이션이 붙어있으면 된다.
+	 -->
 	
 	<context:component-scan base-package="com.pina.jisutay" />
 	

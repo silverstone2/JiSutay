@@ -11,5 +11,6 @@
 	<p>develop 브랜치 생성</p>
 	<h1>테스트</h1>
 	<a href="users/signupform.do">회원가입</a>
+	<a href="${pageContext.request.contextPath }/travel/list.do">주변여행지</a>
 </body>
 </html>

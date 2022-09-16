@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="travel">
+	<insert id="insert" parameterType="travelDto">
+		INSERT INTO travel
+		(num, title, distance, caption, imgPath)
+		VALUES(travel_seq.NEXTVAL, #{title}, #{distance}, #{caption}, #{imgPath})
+	</insert>
+	<select id="getList" resultType="travelDto">
+		SELECT num, title, distance, caption, imgPath
+		FROM travel
+		ORDER BY num DESC
+	</select>
+	<select id="getData" parameterType="int" resultType="travelDto">
+		SELECT num, title, distance, caption, imgPath
+		FROM travel
+		WHERE num=#{num}
+	</select>
+	<update id="update" parameterType="travelDto">
+		UPDATE travel
+		SET title=#{title}, distance=#{distance}, caption=#{caption}, imgPath=#{imgPath}
+		WHERE num=#{num}
+	</update>
+</mapper>
