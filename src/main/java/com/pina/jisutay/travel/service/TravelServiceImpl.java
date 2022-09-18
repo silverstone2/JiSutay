@@ -49,7 +49,6 @@ public class TravelServiceImpl implements TravelService{
 	@Override
 	public void getList(HttpServletRequest req) {
 		List<TravelDto> list = dao.getList();
-		System.out.println(list.get(0).getImgPath());
 		req.setAttribute("list", list);	
 	}
 
@@ -78,7 +77,12 @@ public class TravelServiceImpl implements TravelService{
 		}
 		//이미지경로 dto에 담기
 		dto.setImgPath("/upload/" + saveFileName);
-		System.out.println(dto.getImgPath());
 		dao.update(dto);
+	}
+
+	@Override
+	public void delete(HttpServletRequest req) {
+		int num = Integer.parseInt(req.getParameter("num"));
+		dao.delete(num);
 	}
 }

@@ -35,4 +35,9 @@ public class TravelDaoImpl implements TravelDao {
 	public void update(TravelDto dto) { 
 		session.update("travel.update", dto);
 	}
+
+	@Override
+	public void delete(int num) {
+		session.delete("travel.delete", num);
+	}
 }

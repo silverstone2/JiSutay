@@ -21,4 +21,8 @@
 		SET title=#{title}, distance=#{distance}, caption=#{caption}, imgPath=#{imgPath}
 		WHERE num=#{num}
 	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM travel
+		WHERE num=#{num}
+	</delete>
 </mapper>

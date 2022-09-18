@@ -13,4 +13,5 @@ public interface TravelService {
 	public void saveImage(TravelDto dto, HttpServletRequest req);
 	public void getData(HttpServletRequest req);
 	public void update(TravelDto dto, HttpServletRequest req);
+	public void delete(HttpServletRequest req);
 }

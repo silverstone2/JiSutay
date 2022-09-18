@@ -10,5 +10,5 @@ public interface TravelDao {
 	public void insert(TravelDto dto);
 	public TravelDto getData(int num);
 	public void update(TravelDto dto);
-	
+	public void delete(int num);
 }
