@@ -14,6 +14,7 @@ public class CommentsDto {
 	private String deleted;
 	private int startRowNum;
 	private int endRowNum;
+	private int commCount;
 	
 	// users 테이블 칼럼
 	private String name;
@@ -21,10 +22,10 @@ public class CommentsDto {
 	
 	
 	public CommentsDto() {}
-	
+
 	public CommentsDto(int num, String writer, String room_img, int score, String regdate, String content,
 			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum,
-			String name, String profile) {
+			int commCount, String name, String profile) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -38,6 +39,7 @@ public class CommentsDto {
 		this.deleted = deleted;
 		this.startRowNum = startRowNum;
 		this.endRowNum = endRowNum;
+		this.commCount = commCount;
 		this.name = name;
 		this.profile = profile;
 	}
@@ -133,5 +135,13 @@ public class CommentsDto {
 
 	public void setProfile(String profile) {
 		this.profile = profile;
+	}
+
+	public int getCommCount() {
+		return commCount;
+	}
+
+	public void setCommCount(int commCount) {
+		this.commCount = commCount;
 	}
 }

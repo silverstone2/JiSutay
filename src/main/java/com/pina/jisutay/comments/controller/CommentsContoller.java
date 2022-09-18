@@ -35,4 +35,16 @@ public class CommentsContoller {
 		map.put("isSuccess", true);
 		return map;
 	}
+	
+	@RequestMapping("/room/ajax_comments.do")
+	public String ajaxCommentsList(HttpServletRequest request) {
+		service.getList(request);
+		return "room/ajax_comment_list";
+	}
+	
+	@RequestMapping("/room/ajax_commComments.do")
+	public String ajaxCommCommList(HttpServletRequest request) {
+		service.getCommCommList(request);
+		return "room/ajax_comment_list";
+	}
 }

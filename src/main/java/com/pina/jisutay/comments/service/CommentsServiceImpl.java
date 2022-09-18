@@ -21,12 +21,19 @@ public class CommentsServiceImpl implements CommentsService {
 		System.out.println("num : "+request.getParameter("num"));
 		
 		final int PAGE_ROW_COUNT=10;
+		final int  PAGE_DISPLAY_COUNT = 5;
+		
 		int pageNum=1;
 		if(request.getParameter("pageNum") != null) {
 			pageNum = Integer.parseInt(request.getParameter("pageNum"));
 		}
+		// 보여줄 페이지의 ROW 번호
 		int startRowNum=1+(pageNum-1)*PAGE_ROW_COUNT;
 		int endRowNum=pageNum*PAGE_ROW_COUNT;
+		
+		// 하단 페이지 번호
+		int startPageNum = 1 + ((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT;
+		int endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1;
 		
 		CommentsDto commentsDto=new CommentsDto();
 		
@@ -47,10 +54,40 @@ public class CommentsServiceImpl implements CommentsService {
 		//댓글 전체 페이지의 갯수
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		
-
+		if(endPageNum > totalPageCount){
+			endPageNum = totalPageCount;
+		}
+		
+		List<Integer> countList = dao.getCommCommCount(commentsDto);
+		for(int i=0; i<countList.toArray().length; i++) {
+			int count = countList.get(i);
+			commentsList.get(i).setCommCount(count);
+		}
+		
+		System.out.println("현재 페이지 : "+pageNum);
+		System.out.println("시작 페이지 : "+startPageNum);
+		System.out.println("마지막 페이지 : "+endPageNum);
+		System.out.println("전체 데이터 개수 : "+totalRow);
+		System.out.println("전체 페이지 개수 : "+totalPageCount);
+		
 		request.setAttribute("commentsList", commentsList);
-		request.setAttribute("totalRow", totalRow);
+		request.setAttribute("pageNum", pageNum);
+		request.setAttribute("startPageNum", startPageNum);
+		request.setAttribute("endPageNum", endPageNum);
 		request.setAttribute("totalPageCount", totalPageCount);
+	}
+	
+	@Override
+	public void getCommCommList(HttpServletRequest request) {
+		int num = Integer.parseInt(request.getParameter("num"));
+		int comment_num = Integer.parseInt(request.getParameter("comment_num"));
+		
+		CommentsDto commentsDto = new CommentsDto();
+		commentsDto.setRoom_num(num);
+		commentsDto.setComment_num(comment_num);
+		
+		List<CommentsDto> commentsList = dao.getCommCommList(commentsDto);
+		request.setAttribute("commentsList", commentsList);
 	}
 
 	@Override
@@ -65,6 +102,7 @@ public class CommentsServiceImpl implements CommentsService {
 		CommentsDto dto=new CommentsDto();
 		dto.setNum(seq);
 		dto.setWriter(writer);
+		dto.setTarget_id(target_id);
 		dto.setContent(content);
 		dto.setRoom_num(room_num);
 		dto.setScore(5); //임시
@@ -91,8 +129,6 @@ public class CommentsServiceImpl implements CommentsService {
 		
 		dao.delete(num);
 		
-	}	
-	
-	
+	}
 }
 

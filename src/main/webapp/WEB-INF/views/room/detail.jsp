@@ -136,110 +136,144 @@
 				<td>${dto.room_introduce }</td>
 			</tr>		
 		</table>
+		
 		<!-- 댓글 목록 -->
-	<div class="comments">
-		<ul>
-			<c:forEach var="tmp" items="${commentsList }">
+		<div class="comments">
+			<ul>
+				<c:forEach var="tmp" items="${commentsList }" varStatus="status">
+					<c:choose>
+						<c:when test="${tmp.deleted eq 'yes' }">
+							<li>삭제된 댓글 입니다.</li>
+						</c:when>
+						<c:otherwise>
+							<%--일반 후기 --%>
+							<c:if test="${tmp.num eq tmp.comment_num }">
+								<li id="reli${tmp.num }">
+							</c:if>
+							<%--관리자 답글(대댓글) --%>
+							<c:if test="${tmp.num ne tmp.comment_num }">
+								<%-- 왼쪽 padding 50px로 들여쓰기 효과 + 화살표 아이콘 추가 --%>
+								<li id="reli${tmp.num }" style="padding-left:50px;">
+									<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+			  							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+									</svg>
+							</c:if>
+									<dl>
+										<dt>
+											<c:if test="${ empty tmp.profile }">
+												<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+												  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+												  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+												</svg>
+											</c:if>
+											<c:if test="${not empty tmp.profile }">
+												<img class="profile-image" src="${pageContext.request.contextPath}${tmp.profile }"/>
+											</c:if>
+											<%-- 관리자 답글(대댓글)이라면 누구를 향한 답글인지 옆에 @~ 텍스트 출력 --%>
+											<span>${tmp.writer }</span>
+											<c:if test="${tmp.num ne tmp.comment_num }">
+												@<i>${tmp.target_id }</i>
+											</c:if>
+											<span>${tmp.regdate }</span>
+											<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
+											<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
+											<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
+											<%-- 
+												<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
+											 --%>
+											 <c:if test="${ tmp.writer eq sessionScope.id }">
+											 
+												<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
+												<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
+											</c:if>
+										</dt>
+										<dd>
+											<%-- 
+												댓글은 textarea 로  입력 > tab, 공백, 개행기호 있음.
+												pre 요소의 innerText 로 댓글을 출력하면 입력한 내용 형식을 그대로 출력 가능.
+												해당 댓글 JAVASCRIPT 로 바로 수정할 수 있도록 댓글 번호 조합해서 아이디 부여.
+											--%>
+											<pre id="pre${tmp.num }">${tmp.content }</pre>
+											
+											<!-- 답글 버튼 -->
+											<c:if test="${tmp.commCount-1 ne 0}">
+												<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 });">🔽 답글 ${tmp.commCount-1 }개</a>	
+											</c:if>
+										</dd>
+									</dl>
+									<%--
+										답글 폼은 미리 만들어서 hidden >> 답글 링크 클릭시 활성화 
+										답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
+									--%>
+									<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post" style="display:none;">
+										<input type="hidden" name="room_num" value="${dto.num }"/>
+										<input type="hidden" name="target_id" value="${tmp.writer }"/>
+										<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
+										<textarea name="content"></textarea>
+										<button type="submit">등록</button>
+									</form>
+								<%-- 
+									댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
+								--%>
+								<c:if test="${tmp.writer eq id }">
+									<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post" style="display:none;">
+										<input type="hidden" name="num" value="${tmp.num }" />
+										<textarea name="content">${tmp.content }</textarea>
+										<button type="submit">수정</button>
+									</form>
+								</c:if>	
+						</c:otherwise>
+					</c:choose>
+					<div id="commComments${tmp.num }">
+					
+					</div>
+				</c:forEach>
+			</ul>
+		</div>
+		
+		<!-- 후기 작성 폼 -->
+		<form class="comment-form insert-form" action="comment_insert.do" method="post">
+			<!-- 객실번호 == 후기의 ref_group 번호 -->
+			<input type="hidden" name="room_num" value="${dto.num }"/>
+			<!-- 객실이름 == 후기의 target -->
+			<input type="hidden" name="target_id" value="${dto.room_name }"/>
+			<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
+			<button type="submit">등록</button>
+		</form>
+	</div>
+	
+	<nav>
+		<ul class="pagination">
+		
+			<c:if test="${startPageNum ne 1 }">
+				<li class="page-item">
+					<a class="page-link" href="javascript:movePage(${startPageNum-1 });">◀</a>
+				</li>
+			</c:if>
+			
+			<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
 				<c:choose>
-					<c:when test="${tmp.deleted eq 'yes' }">
-						<li>삭제된 댓글 입니다.</li>
+					<c:when test="${pageNum eq i }">
+						<li class="page-item active">
+							<a class="page-link" href="javascript:movePage(${i });">${i }</a>
+						</li>
 					</c:when>
 					<c:otherwise>
-						<%--일반 후기 --%>
-						<c:if test="${tmp.num eq tmp.comment_num }">
-							<li id="reli${tmp.num }">
-						</c:if>
-						<%--관리자 답글(대댓글) --%>
-						<c:if test="${tmp.num ne tmp.comment_num }">
-							<%-- 왼쪽 padding 50px로 들여쓰기 효과 + 화살표 아이콘 추가 --%>
-							<li id="reli${tmp.num }" style="padding-left:50px;">
-								<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
-		  							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
-								</svg>
-						</c:if>
-								<dl>
-									<dt>
-										<c:if test="${ empty tmp.profile }">
-											<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-											  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-											  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-											</svg>
-										</c:if>
-										<c:if test="${not empty tmp.profile }">
-											<img class="profile-image" src="${pageContext.request.contextPath}${tmp.profile }"/>
-										</c:if>
-										<%-- 관리자 답글(대댓글)이라면 누구를 향한 답글인지 옆에 @~ 텍스트 출력 --%>
-										<span>${tmp.writer }</span>
-										<c:if test="${tmp.num ne tmp.comment_num }">
-											@<i>${tmp.target_id }</i>
-										</c:if>
-										<span>${tmp.regdate }</span>
-										<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
-										<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
-										<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
-										<%-- 
-											<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
-										 --%>
-										 <c:if test="${ tmp.writer eq sessionScope.id }">
-										 
-											<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
-											<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
-										</c:if>
-									</dt>
-									<dd>
-										<%-- 
-											댓글은 textarea 로  입력 > tab, 공백, 개행기호 있음.
-											pre 요소의 innerText 로 댓글을 출력하면 입력한 내용 형식을 그대로 출력 가능.
-											해당 댓글 JAVASCRIPT 로 바로 수정할 수 있도록 댓글 번호 조합해서 아이디 부여.
-										--%>
-										<pre id="pre${tmp.num }">${tmp.content }</pre>						
-									</dd>
-								</dl>
-								<%--
-									답글 폼은 미리 만들어서 hidden >> 답글 링크 클릭시 활성화 
-									답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
-								--%>
-								<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post">
-									<input type="hidden" name="room_num" value="${dto.num }"/>
-									<input type="hidden" name="target_id" value="${tmp.writer }"/>
-									<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
-									<textarea name="content"></textarea>
-									<button type="submit">등록</button>
-								</form>
-							<%-- 
-								댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
-							--%>
-							<c:if test="${tmp.writer eq id }">
-								<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post">
-									<input type="hidden" name="num" value="${tmp.num }" />
-									<textarea name="content">${tmp.content }</textarea>
-									<button type="submit">수정</button>
-								</form>
-							</c:if>		
+						<li class="page-item">
+							<a class="page-link" href="javascript:movePage(${i });">${i }</a>
+						</li>
 					</c:otherwise>
 				</c:choose>
 			</c:forEach>
+			
+			<c:if test="${endPageNum lt totalPageCount }">
+				<li class="page-item">
+					<a class="page-link" href="javascript:movePage(${endPageNum+1 });">▶</a>
+				</li>
+			</c:if>
+			
 		</ul>
-	</div>
-
-	<%-- AJAX LOADING SCROLL --%>		
-	<div class="loader">
-		<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
-			  <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
-			  <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
-		</svg>
-	</div>
-	
-	<!-- 후기 작성 폼 -->
-	<form class="comment-form insert-form" action="comment_insert.do" method="post">
-		<!-- 객실번호 == 후기의 ref_group 번호 -->
-		<input type="hidden" name="room_num" value="${dto.num }"/>
-		<!-- 객실이름 == 후기의 target -->
-		<input type="hidden" name="target_id" value="${dto.room_name }"/>
-		<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
-		<button type="submit">등록</button>
-	</form>
-	</div>
+	</nav>
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
@@ -264,49 +298,7 @@
 		
 		let currentPage=1;
 		let lastPage=${totalPageCount};
-		let isLoading=false; //현재 로딩중인지 여부 
 
-		/*
-		window.scrollY => 위쪽으로 스크롤된 길이
-		window.innerHeight => 웹브라우저의 창의 높이
-		document.body.offsetHeight => body 의 높이 (문서객체가 차지하는 높이)
-		*/
-		window.addEventListener("scroll", function(){
-			//바닥 까지 스크롤 했는지 여부 
-			const isBottom = 
-				window.innerHeight + window.scrollY  >= document.body.offsetHeight;
-			let isLast = currentPage == lastPage;				//현재 페이지가 마지막 페이지인지 여부 알아내기
-			if(isBottom && !isLoading && !isLast){			//현재 바닥까지 스크롤 했고 로딩중이 아니고 현재 페이지가 마지막이 아니라면
-				document.querySelector(".loader").style.display="block";				//로딩바 띄우기
-				isLoading=true; 				//로딩 작업중이라고 표시
-				currentPage++;				//현재 댓글 페이지를 1 증가 시키고 
-				/*
-					해당 페이지의 내용을 ajax 요청을 통해서 받아온다.
-					"pageNum=xxx&num=xxx" 형식으로 GET 방식 파라미터를 전달한다.
-					pageNum은 새로 받아올 댓글의 페이지 번호
-					num은 권글의 글번호(ref_group 번로)
-				*/
-				ajaxPromise("ajax_comment_list.do","get",
-						"pageNum="+currentPage+"&num=${dto.num}") 	//댓글의 페이지번호와 원글의 글번호를 들고 간다
-				.then(function(response){
-					return response.text();						//json 이 아닌 html 문자열을 응답 >>  return response.text()
-				})
-				.then(function(data){
-					console.log(data);
-					document.querySelector(".comments ul")
-						.insertAdjacentHTML("beforeend", data); //insertAdjacentHTML : 인접한 html 해석을 해서 출력해라.
-						//새로운 댓글목록 li 를 추가할 수 있는 html 을 추가하고 해석해서 출력해 주는 것
-					isLoading=false;
-					//새로 추가된 댓글 li 요소 안에 있는 a 요소를 찾아서 이벤트 리스너 등록 하기 
-					addUpdateListener(".page-"+currentPage+" .update-link");
-					addDeleteListener(".page-"+currentPage+" .delete-link");
-					addReplyListener(".page-"+currentPage+" .reply-link");
-					//새로 추가된 댓글 li 요소 안에 있는 댓글 수정폼에 이벤트 리스너 등록하기
-					addUpdateFormListener(".page-"+currentPage+" .update-form");
-					document.querySelector(".loader").style.display="none";					//로딩바 숨기기
-				});
-			}
-		});
 		//인자로 전달되는 선택자를 이용해서 이벤트 리스너를 등록하는 함수 
 		function addUpdateListener(sel){
 			//댓글 수정 링크의 참조값을 배열에 담아오기 
@@ -314,8 +306,19 @@
 			for(let i=0; i<updateLinks.length; i++){
 				updateLinks[i].addEventListener("click", function(){
 					const num=this.getAttribute("data-num"); //data-num 은 폼에서 클릭 이벤트 시 등장 // 댓글의 글번호
-					document.querySelector("#updateForm"+num).style.display="block";
+					const form = document.querySelector("#updateForm"+num);
 					
+					let replyForm = document.querySelectorAll(".reply-link")[i];
+					let replyCurrent = replyForm.innerText;
+					
+					let current = this.innerText;
+					if(current == "수정") {
+						form.style.display="block";
+						this.innerText="취소";
+					} else if(current == "취소") {
+						form.style.display="none";
+						this.innerText="수정";
+					}
 				});
 			}
 		}
@@ -371,18 +374,10 @@
 					if(current == "답글"){
 						//번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
 						form.style.display="block";
-						form.classList.add("animate__flash");
-						this.innerText="취소";	
-						form.addEventListener("animationend", function(){
-							form.classList.remove("animate__flash");
-						}, {once:true});
+						this.innerText="취소";
 					}else if(current == "취소"){
-						form.classList.add("animate__fadeOut");
+						form.style.display="none";
 						this.innerText="답글";
-						form.addEventListener("animationend", function(){
-							form.classList.remove("animate__fadeOut");
-							form.style.display="none";
-						},{once:true});
 					}
 				});
 			}
@@ -416,6 +411,40 @@
 				});
 			}
 		}
+		
+		// 페이지 이동 시 AJAX 처리
+		function movePage(movePageNum) {
+			fetch("${pageContext.request.contextPath }/room/ajax_comments.do?num=${param.num }&pageNum="+movePageNum)
+			.then(function(res) {
+				return res.text();
+			})
+			.then(function(data) {
+				console.log(data);
+				document.querySelector(".comments").innerHTML = data;
+			});
+		}
+		
+		function watchComm(num, comment_num, comm_count) {
+			let commCommForm = document.querySelector("#commComm"+num);
+			let commCommText = commCommForm.innerText;
+			
+			if(commCommText == "🔽 답글 "+comm_count+"개") {
+				fetch("${pageContext.request.contextPath }/room/ajax_commComments.do?num=${param.num }&comment_num="+comment_num)
+				.then(function(res) {
+					return res.text();
+				})
+				.then(function(data) {
+					console.log(data);
+					document.querySelector("#commComments"+num).innerHTML = data;
+				});
+				commCommForm.innerText = "🔼 답글 "+comm_count+"개";
+			} else if(commCommText == "🔼 답글 "+comm_count+"개") {
+				document.querySelector("#commComments"+num).innerText = "";
+				commCommForm.innerText = "🔽 답글 "+comm_count+"개";
+			}
+		
+		}
+		
 		/* -------------- 스크립트 작성 중 -------------- */ 
 	</script>
 	

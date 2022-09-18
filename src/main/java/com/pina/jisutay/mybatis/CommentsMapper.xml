@@ -12,9 +12,28 @@
 				FROM comments cmt
 				INNER JOIN users us
 				ON cmt.writer=us.id
-				WHERE room_num=#{room_num}
+				WHERE room_num=#{room_num} AND num=comment_num
 				ORDER BY comment_num DESC, num ASC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getCommCommList" parameterType="commentsDto" resultType="commentsDto">
+		SELECT num, cmt.writer, us.name, room_img, score,
+			TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+			content, target_id, room_num, comment_num, deleted, us.profile
+		FROM comments cmt
+		INNER JOIN users us
+		ON cmt.writer=us.id
+		WHERE room_num=#{room_num} AND comment_num=#{comment_num} AND num!=comment_num
+		ORDER BY num ASC
+	</select>
+	
+	<select id="getCommCommCount" parameterType="commentsDto" resultType="int">
+		SELECT COUNT(num)
+		FROM comments
+		WHERE room_num=#{room_num}
+		GROUP BY comment_num
+		ORDER BY comment_num DESC
 	</select>
 	
 	<select id="getCount" parameterType="int" resultType="int">
@@ -27,8 +46,8 @@
 	</select>
 	
 	<insert id="insert" parameterType="commentsDto">
-		INSERT INTO comments (num, writer, regdate, content, room_num, comment_num, score, deleted)
-		VALUES 	(#{num}, #{writer}, SYSDATE, #{content}, #{room_num}, #{comment_num}, #{score}, 'no')	
+		INSERT INTO comments (num, writer, target_id, regdate, content, room_num, comment_num, score, deleted)
+		VALUES 	(#{num}, #{writer}, #{target_id}, SYSDATE, #{content}, #{room_num}, #{comment_num}, #{score}, 'no')	
 	</insert>
 	
 
