@@ -29,17 +29,6 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public List<Integer> getCommCommCount(CommentsDto dto) {
-		return session.selectList("comments.getCommCommCount", dto);
-	}
-	
-	@Override
-	public List<CommentsDto> getCommCommList(CommentsDto dto) {
-		
-		return session.selectList("comments.getCommCommList", dto);
-	}
-
-	@Override
 	public int getSequence() {
 		return session.selectOne("comments.getSequence");
 	}
@@ -50,15 +39,18 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public void update(CommentsDto dto) {		
+	public void update(CommentsDto dto) {
+		session.update("comments.update", dto);
 	}
 
 	@Override
-	public void delete(int num) {		
+	public void delete(int num) {
+		session.update("comments.delete", num);
 	}
 
 	@Override
 	public CommentsDto getData(int num) {
 		return session.selectOne("comments.getData",num);
 	}
+	
 }
