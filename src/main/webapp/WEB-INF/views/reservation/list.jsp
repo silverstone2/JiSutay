@@ -74,7 +74,7 @@
 						<td>${tmp.room_items }</td>
 					</tr>
 					<tr>
-						<th>침실타입</th>
+						<th>침실타입엥</th>
 						<td>${tmp.bedroom_type }</td>
 					</tr>
 					<tr>
