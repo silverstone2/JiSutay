@@ -382,29 +382,11 @@
 					if(current == "답글"){
 						//번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
 						form.style.display="block";
-						form.classList.add("animate__flash");
-						this.innerText="취소";	
-						form.addEventListener("animationend", function(){
-							form.classList.remove("animate__flash");
-						}, {once:true});
-					}else if(current == "취소"){
-						form.classList.add("animate__fadeOut");
-						this.innerText="답글";
-						form.addEventListener("animationend", function(){
-							form.classList.remove("animate__fadeOut");
-							form.style.display="none";
-						},{once:true});
-					}
-					/* 이전 코드 
-					if(current == "답글"){
-						//번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
-						form.style.display="block";
 						this.innerText="취소";
 					}else if(current == "취소"){
 						form.style.display="none";
 						this.innerText="답글";
 					}
-					 이전 코드 */
 				});
 			}
 		}
@@ -466,6 +448,8 @@
 				.then(function(data) {
 					console.log(data);
 					document.querySelector("#commComments"+num).innerHTML = data;
+					
+					// 추후 보수 작업 필요
 					addUpdateFormListener(".update-form");
 					addUpdateListener(".update-link");
 					addDeleteListener(".delete-link");
