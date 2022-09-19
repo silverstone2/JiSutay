@@ -21,10 +21,6 @@ public class CommentsDaoImpl implements CommentsDao {
 
 	@Override
 	public List<CommentsDto> getList(CommentsDto dto) {
-		System.out.println(dto.getNum());
-		System.out.println(dto.getStartRowNum());
-		System.out.println(dto.getEndRowNum());
-		
 		return session.selectList("comments.getList", dto);
 	}
 
@@ -35,7 +31,6 @@ public class CommentsDaoImpl implements CommentsDao {
 	
 	@Override
 	public List<CommentsDto> getCommCommList(CommentsDto dto) {
-		
 		return session.selectList("comments.getCommCommList", dto);
 	}
 
@@ -50,7 +45,8 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public void update(CommentsDto dto) {		
+	public void update(CommentsDto dto) {
+		session.update("comments.update", dto);
 	}
 
 	@Override

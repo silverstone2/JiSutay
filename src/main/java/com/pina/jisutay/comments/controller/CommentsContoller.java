@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.comments.dto.CommentsDto;
 import com.pina.jisutay.comments.service.CommentsService;
 
 @Controller
@@ -46,5 +47,13 @@ public class CommentsContoller {
 	public String ajaxCommCommList(HttpServletRequest request) {
 		service.getCommCommList(request);
 		return "room/ajax_comment_list";
+	}
+	@RequestMapping("/room/comment_update")
+	@ResponseBody
+	public Map<String, Object> authCommentUpdate(CommentsDto dto, HttpServletRequest request){
+		service.updateComment(dto);
+		Map<String, Object> map=new HashMap<String, Object>();
+		map.put("isSuccess", true);
+		return map;
 	}
 }

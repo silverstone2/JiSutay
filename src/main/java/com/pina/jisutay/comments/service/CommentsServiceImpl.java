@@ -44,11 +44,6 @@ public class CommentsServiceImpl implements CommentsService {
 		//1페이지에 해당하는 댓글 목록만 select 되도록 한다. 
 		List<CommentsDto> commentsList=dao.getList(commentsDto);
 		
-//		System.out.println("댓글 번호 : "+commentsList.get(0).getNum());
-//		System.out.println("작성자 : "+commentsList.get(0).getWriter());
-//		System.out.println("작성일 : "+commentsList.get(0).getRegdate());
-//		System.out.println("참조 댓글 번호 : "+commentsList.get(0).getComment_num());
-		
 		//원글의 글번호를 이용해서 댓글 전체의 갯수를 얻어낸다.
 		int totalRow=dao.getCount(num);
 		//댓글 전체 페이지의 갯수
@@ -63,13 +58,7 @@ public class CommentsServiceImpl implements CommentsService {
 			int count = countList.get(i);
 			commentsList.get(i).setCommCount(count);
 		}
-		
-		System.out.println("현재 페이지 : "+pageNum);
-		System.out.println("시작 페이지 : "+startPageNum);
-		System.out.println("마지막 페이지 : "+endPageNum);
-		System.out.println("전체 데이터 개수 : "+totalRow);
-		System.out.println("전체 페이지 개수 : "+totalPageCount);
-		
+
 		request.setAttribute("commentsList", commentsList);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("startPageNum", startPageNum);
@@ -130,5 +119,10 @@ public class CommentsServiceImpl implements CommentsService {
 		dao.delete(num);
 		
 	}
+	
+	@Override
+	public void updateComment(CommentsDto dto) {
+		dao.update(dto);
+	}	
 }
 
