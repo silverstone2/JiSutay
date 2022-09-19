@@ -51,7 +51,7 @@
 					<p class="card-text">
 					 	객실 최대인원 : <strong>${tmp.room_people }</strong>
 					</p>
-					 <button type="button" class="reserveDetail">예약</button>
+					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price });" class="reserveDetail">예약</button>
 				</div>	 
 			</div>
 			<div id="reservationForm${status.index }" class="reservationForm">
@@ -84,22 +84,24 @@
 				</table>
 				
 				<p>숙박기간</p>
-				<div class="date"></div>
+				<div class="date"></div>박
 				<p>이용인원</p>
-				<div></div>
+				<button onclick="javascript:minusNum(${status.index });">-</button>
+				<input id="inputPeople${status.index }" type="text" value="2" disabled/>
+				<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');">+</button>
 				<p>-성인 추가금 2만원입니다</p>
 				<table>
 					<tr>
 						<th>객실요금</th>
-						<td>${tmp.room_price }</td>
+						<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
 					</tr>
 					<tr>
 						<th>인원추가 요금</th>
-						<td>?</td>
+						<td id="addCharge${status.index }">0</td>
 					</tr>
 					<tr>
 						<th>총요금</th>
-						<td>?</td>
+						<td id="totalPrice${status.index }">0</td>
 					</tr>			
 				</table>
 				<form action="">
@@ -116,24 +118,56 @@
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script>
+	function reserve(index, room_price) {
+		$(".card").hide(50);
+		$("#reservationForm"+index).show(500);
+		
+		var check_in = new Date($("#check_in").val());
+		var check_out = new Date($("#check_out").val());
+		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
+		
+		$(".date").text(dateDiff);
+		$("#roomPricePrint"+index).text(dateDiff*room_price);
+		$("#totalPrice"+index).text(dateDiff*room_price);
+	}
 	
-	const reserves = document.querySelectorAll(".reserveDetail");
-	console.log(reserves);
-	reserves.forEach((value, index) => {
-		console.log(index);
-		value.addEventListener("click", function() {
-			$(".card").hide();
-			$("#reservationForm"+index).show();
+	function minusNum(index) {
+		let inputNum = $("#inputPeople"+index);
+		let inputVal = parseInt(inputNum.val());
+		let totalPrice = parseInt($("#totalPrice"+index).text());
+		
+		if(inputVal == 2) {
+			alert("2인 이상 예약 가능합니다!");
+		} else {
+			inputNum.val(inputVal-1);
 			
-			var check_in = new Date($("#check_in").val());
-			var check_out = new Date($("#check_out").val());
-			var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
-			
-			console.log(dateDiff);
-			
-			$(".date").text(dateDiff);
-		});
-	});
+			if(inputNum.val() == 2) {
+				$("#addCharge"+index).text(0);
+				$("#totalPrice"+index).text(totalPrice-20000);
+			} else {
+				$("#addCharge"+index).text((inputVal-1-2)*20000);
+			}
+			$("#totalPrice"+index).text(totalPrice-20000);
+		}
+	}
+	
+	function plusNum(index, room_people) {
+		let inputNum = $("#inputPeople"+index);
+		let inputVal = parseInt(inputNum.val());
+		let totalPrice = parseInt($("#totalPrice"+index).text());
+		
+		room_people = parseInt(room_people.replace("인", ""));
+		console.log(room_people);
+		console.log(inputVal);
+		if(inputVal == room_people) {
+			alert("최대 "+room_people+"인 예약 가능합니다!");
+		} else {
+			inputNum.val(inputVal+1);
+			$("#addCharge"+index).text((inputVal+1-2)*20000);
+			$("#totalPrice"+index).text(totalPrice+20000);
+		}
+	}
+	
 </script>
 	
 	
