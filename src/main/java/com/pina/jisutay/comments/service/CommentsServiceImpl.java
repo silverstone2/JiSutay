@@ -17,9 +17,6 @@ public class CommentsServiceImpl implements CommentsService {
 
 	@Override
 	public void getList(HttpServletRequest request) {
-		
-//		System.out.println("num : "+request.getParameter("num"));
-		
 		final int PAGE_ROW_COUNT=10;
 		final int  PAGE_DISPLAY_COUNT = 5;
 		
@@ -95,12 +92,6 @@ public class CommentsServiceImpl implements CommentsService {
 		dto.setContent(content);
 		dto.setRoom_num(room_num);
 		dto.setScore(5); //임시
-		
-		System.out.println(room_num);
-		System.out.println(target_id);
-		System.out.println(content);
-		System.out.println(comment_num);
-		System.out.println(writer);
 		
 		if(comment_num==null) { // comment_num 은 후기(일반댓글)에서는 전송 X
 			dto.setComment_num(seq);

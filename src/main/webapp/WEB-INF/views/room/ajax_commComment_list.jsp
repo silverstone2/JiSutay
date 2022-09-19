@@ -84,5 +84,5 @@
 	addUpdateFormListener(".update-form");
 	addUpdateListener(".update-link");
 	addDeleteListener(".delete-link");
-	addReplyListener(".reply-link");
+	addReplyListener(".reply-link");	
 </script>

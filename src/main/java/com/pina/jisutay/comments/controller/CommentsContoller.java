@@ -24,7 +24,6 @@ public class CommentsContoller {
 	@RequestMapping(value="/room/comment_insert", method=RequestMethod.POST)
 	public ModelAndView authCommentInsert(HttpServletRequest request, 
 			@RequestParam int room_num) {
-		System.out.println("넘어옴");
 		service.saveComment(request);
 		return new ModelAndView("redirect:/room/detail.do?num="+room_num);
 	}

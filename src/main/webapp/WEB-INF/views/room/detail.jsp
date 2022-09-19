@@ -79,9 +79,9 @@
 		border-radius: 4px;
 	}
 	.loader{
-		/* 로딩 이미지를 가운데 정렬하기 위해 */
+		/* 로딩 이미지 가운데 정렬 */
 		text-align: center;
-		/* 일단 숨겨 놓기 */
+		/* default : none-display */
 		display: none;
 	}
 	.loader svg{
@@ -138,25 +138,35 @@
 		</table>
 		
 		<!-- 댓글 목록 -->
-		<div class="comments">
-			<ul>
-				<c:forEach var="tmp" items="${commentsList }" varStatus="status">
-					<c:choose>
-						<c:when test="${tmp.deleted eq 'yes' }">
-							<li>삭제된 댓글 입니다.</li>
-						</c:when>
-						<c:otherwise>
-							<%--일반 후기 --%>
-							<c:if test="${tmp.num eq tmp.comment_num }">
-								<li id="reli${tmp.num }">
-							</c:if>
-							<%--관리자 답글(대댓글) --%>
-							<c:if test="${tmp.num ne tmp.comment_num }">
-								<%-- 왼쪽 padding 50px로 들여쓰기 효과 + 화살표 아이콘 추가 --%>
-								<li id="reli${tmp.num }" style="padding-left:50px;">
-									<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
-				 							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
-									</svg>
+	<div class="comments">
+		<ul>
+			<c:forEach var="tmp" items="${commentsList }">
+				<c:choose>
+					<c:when test="${tmp.deleted eq 'yes' }">
+						<%--일반 후기 --%>
+						<c:if test="${tmp.num eq tmp.comment_num }">
+							<li>삭제된 후기입니다.</li>
+						</c:if>
+						<%--관리자 답글(대댓글) --%>
+						<c:if test="${tmp.num ne tmp.comment_num }">
+							<li id="reli${tmp.num }" style="padding-left:50px;">삭제된 후기입니다.</li>
+								<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+		  							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+								</svg>							
+						</c:if>					
+					</c:when>
+					<c:otherwise>
+						<%--일반 후기 --%>
+						<c:if test="${tmp.num eq tmp.comment_num }">
+							<li id="reli${tmp.num }">
+						</c:if>
+						<%--관리자 답글(대댓글) --%>
+						<c:if test="${tmp.num ne tmp.comment_num }">
+							<%-- 왼쪽 padding 50px로 들여쓰기 효과 + 화살표 아이콘 추가 --%>
+							<li id="reli${tmp.num }" style="padding-left:50px;">
+								<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
+		  							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+								</svg>
 							</c:if>
 									<dl>
 										<dt>
@@ -329,7 +339,7 @@
 				deleteLinks[i].addEventListener("click", function(){
 					//click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
 					const num=this.getAttribute("data-num"); //댓글의 글번호
-					const isDelete=confirm("댓글을 삭제 하시겠습니까?");
+					const isDelete=confirm("정말로 삭제하시겠습니까?");
 					if(isDelete){
 						// gura_util.js 에 있는 함수들 이용해서 ajax 요청
 						ajaxPromise("comment_delete.do", "post", "num="+num)
@@ -339,8 +349,8 @@
 						.then(function(data){
 							//만일 삭제 성공이면 
 							if(data.isSuccess){
-								//댓글이 있는 곳에 삭제된 댓글입니다를 출력해 준다. 
-								document.querySelector("#reli"+num).innerText="삭제된 댓글입니다.";
+								//댓글이 있는 곳에  출력. 
+								document.querySelector("#reli"+num).innerText="삭제된 후기입니다.";
 							}
 						});
 					}
@@ -355,7 +365,7 @@
 				replyLinks[i].addEventListener("click", function(){
 					
 					if(!isLogin){
-						const isMove=confirm("로그인이 필요 합니다. 로그인 페이지로 이동 하시겠습니까?");
+						const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
 						if(isMove){
 							location.href=
 								"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
@@ -365,12 +375,27 @@
 					
 					//click 이벤트가 일어난 바로 그 요소의 data-num 속성의 value 값을 읽어온다. 
 					const num=this.getAttribute("data-num"); //댓글의 글번호
-					
 					const form=document.querySelector("#reForm"+num);
 					
 					//현재 문자열을 읽어온다 ( "답글" or "취소" )
 					let current = this.innerText;
-					
+					if(current == "답글"){
+						//번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
+						form.style.display="block";
+						form.classList.add("animate__flash");
+						this.innerText="취소";	
+						form.addEventListener("animationend", function(){
+							form.classList.remove("animate__flash");
+						}, {once:true});
+					}else if(current == "취소"){
+						form.classList.add("animate__fadeOut");
+						this.innerText="답글";
+						form.addEventListener("animationend", function(){
+							form.classList.remove("animate__fadeOut");
+							form.style.display="none";
+						},{once:true});
+					}
+					/* 이전 코드 
 					if(current == "답글"){
 						//번호를 이용해서 댓글의 댓글폼을 선택해서 보이게 한다. 
 						form.style.display="block";
@@ -379,6 +404,7 @@
 						form.style.display="none";
 						this.innerText="답글";
 					}
+					 이전 코드 */
 				});
 			}
 		}
@@ -440,6 +466,10 @@
 				.then(function(data) {
 					console.log(data);
 					document.querySelector("#commComments"+num).innerHTML = data;
+					addUpdateFormListener(".update-form");
+					addUpdateListener(".update-link");
+					addDeleteListener(".delete-link");
+					addReplyListener(".reply-link");
 				});
 				commCommForm.innerText = "🔼 답글 "+comm_count+"개";
 			} else if(commCommText == "🔼 답글 "+comm_count+"개") {
@@ -448,7 +478,6 @@
 			}
 		}
 		
-		/* -------------- 스크립트 작성 중 -------------- */ 
 	</script>
 	
 	
