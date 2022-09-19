@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <ul>
-	<c:forEach var="tmp" items="${commentsList }">
+	<c:forEach var="tmp" items="${commentsList }" varStatus="status">
 		<c:choose>
 			<c:when test="${tmp.deleted eq 'yes' }">
 				<li>삭제된 댓글 입니다.</li>
@@ -55,7 +55,12 @@
 									pre 요소의 innerText 로 댓글을 출력하면 입력한 내용 형식을 그대로 출력 가능.
 									해당 댓글 JAVASCRIPT 로 바로 수정할 수 있도록 댓글 번호 조합해서 아이디 부여.
 								--%>
-								<pre id="pre${tmp.num }">${tmp.content }</pre>						
+								<pre id="pre${tmp.num }">${tmp.content }</pre>
+								
+								<!-- 답글 버튼 -->
+								<c:if test="${tmp.commCount-1 ne 0}">
+									<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 });">🔽 답글 ${tmp.commCount-1 }개</a>	
+								</c:if>
 							</dd>
 						</dl>
 						<%--
@@ -78,8 +83,11 @@
 							<textarea name="content">${tmp.content }</textarea>
 							<button type="submit">수정</button>
 						</form>
-					</c:if>		
+					</c:if>	
 			</c:otherwise>
 		</c:choose>
+		<div id="commComments${tmp.num }">
+		
+		</div>
 	</c:forEach>
 </ul>

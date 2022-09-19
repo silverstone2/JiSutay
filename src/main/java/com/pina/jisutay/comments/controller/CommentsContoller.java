@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,11 +21,11 @@ public class CommentsContoller {
 	@Autowired
 	private CommentsService service;
 	
-	@RequestMapping("/room/comment_insert")
+	@RequestMapping(value="/room/comment_insert", method=RequestMethod.POST)
 	public ModelAndView authCommentInsert(HttpServletRequest request, 
 			@RequestParam int room_num) {
+		System.out.println("넘어옴");
 		service.saveComment(request);
-		
 		return new ModelAndView("redirect:/room/detail.do?num="+room_num);
 	}
 
@@ -46,8 +47,9 @@ public class CommentsContoller {
 	@RequestMapping("/room/ajax_commComments.do")
 	public String ajaxCommCommList(HttpServletRequest request) {
 		service.getCommCommList(request);
-		return "room/ajax_comment_list";
+		return "room/ajax_commComment_list";
 	}
+	
 	@RequestMapping("/room/comment_update")
 	@ResponseBody
 	public Map<String, Object> authCommentUpdate(CommentsDto dto, HttpServletRequest request){

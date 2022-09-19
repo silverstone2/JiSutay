@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<c:forEach var="tmp" items="${commentsList }">
+<c:forEach var="tmp" items="${commentsList }" varStatus="status">
 	<c:choose>
 		<c:when test="${tmp.deleted eq 'yes' }">
 			<li>삭제된 댓글 입니다.</li>
@@ -39,7 +39,6 @@
 								<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
 							 --%>
 							 <c:if test="${ tmp.writer eq sessionScope.id }">
-							 
 								<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
 								<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
 							</c:if>
@@ -51,9 +50,19 @@
 								해당 댓글 JAVASCRIPT 로 바로 수정할 수 있도록 댓글 번호 조합해서 아이디 부여.
 							--%>
 							<pre id="pre${tmp.num }">${tmp.content }</pre>
-							<a href="javascript:watchComm(${tmp.comment_num });">🔽 답글</a>					
 						</dd>
 					</dl>
+					<%--
+						답글 폼은 미리 만들어서 hidden >> 답글 링크 클릭시 활성화 
+						답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
+					--%>
+					<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post" style="display:none;">
+						<input type="hidden" name="room_num" value="${param.num }"/>
+						<input type="hidden" name="target_id" value="${tmp.writer }"/>
+						<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
+						<textarea name="content"></textarea>
+						<button type="submit">등록</button>
+					</form>
 				<%-- 
 					댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 				--%>
@@ -63,7 +72,17 @@
 						<textarea name="content">${tmp.content }</textarea>
 						<button type="submit">수정</button>
 					</form>
-				</c:if>		
+				</c:if>	
 		</c:otherwise>
 	</c:choose>
+	<div id="commComments${tmp.num }">
+	
+	</div>
 </c:forEach>
+
+<script>
+	addUpdateFormListener(".update-form");
+	addUpdateListener(".update-link");
+	addDeleteListener(".delete-link");
+	addReplyListener(".reply-link");
+</script>
