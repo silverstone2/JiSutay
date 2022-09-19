@@ -50,7 +50,8 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public void delete(int num) {		
+	public void delete(int num) {
+		session.update("comments.delete", num);
 	}
 
 	@Override

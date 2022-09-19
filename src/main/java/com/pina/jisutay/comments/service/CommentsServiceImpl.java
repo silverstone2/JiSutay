@@ -107,10 +107,9 @@ public class CommentsServiceImpl implements CommentsService {
 	@Override
 	public void deleteComment(HttpServletRequest request) {
 		int num=Integer.parseInt(request.getParameter("num"));
-		//삭제할 댓글 정보를 읽어와서 
-		CommentsDto dto=dao.getData(num);
-		String id=(String)request.getSession().getAttribute("id");
-		//글 작성자와 로그인된 아이디와 일치하지 않으면
+//		삭제할 댓글 정보를 읽어와서 글 작성자와 로그인된 아이디와 일치하지 않으면
+//		CommentsDto dto=dao.getData(num);
+//		String id=(String)request.getSession().getAttribute("id");
 //		if(!dto.getWriter().equals(id)) {
 //			throw new NotDeleteException("남의 댓글 지우면 혼난당!");
 //		}
