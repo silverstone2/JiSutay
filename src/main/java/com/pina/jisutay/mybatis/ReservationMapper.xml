@@ -2,4 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="reservation">
 
+	<insert id="insert" parameterType="reservationDto">
+		INSERT INTO reservation
+		(num, res_id , check_in , check_out , res_people , room_num , regdate)
+		values(reservation_seq.NEXTVAL , #{res_id}, #{check_in}, #{check_out}, #{res_people}, #{room_num}, #{regdate})
+	</insert>
+	
+	<update id="update" parameterType="reservationDto">
+		UPDATE reservation
+		SET res_id=#{res_id}, check_in=#{check_in}, check_out=#{check_out}, res_people=#{res_people}, room_num=#{room_num}, regdate=#{regdate}
+		WHERE num=#{num}
+	</update>
+	
+	<delete id="delete" parameterType="reservationDto">
+		DELETE FROM reservation
+		WHERE num=#{num}
+	</delete>
+	
+	<select id="getData" parameterType="int" resultType="reservationDto">
+		SELECT num, res_id , check_in , check_out , res_people , room_num , regdate
+		FROM reservation
+		WHERE num=#{num}
+	</select>
+	
+	<select id="getList" resultType="reservationDto">
+		SELECT num, res_id , check_in , check_out , res_people , room_num , regdate
+		FROM reservation
+		OREDER BY num ASC
+	</select>
+	
+
 </mapper>
