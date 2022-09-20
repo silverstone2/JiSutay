@@ -74,7 +74,7 @@
 						<td>${tmp.room_items }</td>
 					</tr>
 					<tr>
-						<th>침실타입엥</th>
+						<th>침실타입</th>
 						<td>${tmp.bedroom_type }</td>
 					</tr>
 					<tr>
@@ -104,7 +104,7 @@
 						<td id="totalPrice${status.index }">0</td>
 					</tr>			
 				</table>
-				<form action="">
+				<form action="${pageContext.request.contextPath }/reservation/reservationform.do" method="post">
 					<button type="submit">선택완료</button>
 				</form>	
 				<form action="">
@@ -118,18 +118,24 @@
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script>
+
+	
 	function reserve(index, room_price) {
-		$(".card").hide(50);
-		$("#reservationForm"+index).show(500);
-		
+
 		var check_in = new Date($("#check_in").val());
 		var check_out = new Date($("#check_out").val());
 		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
-		
+		if(dateDiff > 0 ){
+		$(".card").hide(50);
+		$("#reservationForm"+index).show(500);
+		}else{
+			alert("날짜를 기입해주세요")
+		}	
 		$(".date").text(dateDiff);
 		$("#roomPricePrint"+index).text(dateDiff*room_price);
 		$("#totalPrice"+index).text(dateDiff*room_price);
-	}
+		}
+	
 	
 	function minusNum(index) {
 		let inputNum = $("#inputPeople"+index);
