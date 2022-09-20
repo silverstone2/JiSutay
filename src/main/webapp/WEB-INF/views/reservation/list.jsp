@@ -51,7 +51,7 @@
 					<p class="card-text">
 					 	객실 최대인원 : <strong>${tmp.room_people }</strong>
 					</p>
-					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price });" class="reserveDetail">예약</button>
+					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail">예약</button>
 				</div>	 
 			</div>
 			<div id="reservationForm${status.index }" class="reservationForm">
@@ -104,15 +104,17 @@
 						<td id="totalPrice${status.index }">0</td>
 					</tr>			
 				</table>
-				<form action="${pageContext.request.contextPath }/reservation/reservationform.do" method="post">
-					<button type="submit">선택완료</button>
-				</form>	
-				<form action="">
-					<button type="submit">선택취소</button>
-				</form>
-			
-			</div>						
+				<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit">선택완료</button>
+				<button data-value="${status.index }" id="testCancle${status.index }">선택취소</button>
+			</div>
 		</c:forEach>
+		
+		<form id="submitForm" action="reservationform.do", method="post">
+			<input id="num" type="hidden" name="num"/>
+			<input id="inputIn" type="hidden" name="check_in"/>
+			<input id="inputOut" type="hidden" name="check_out"/>
+			<input id="peopleNum" type="hidden" name="peopleNum"/>
+		</form>
 	</div>
 </div>
 
@@ -120,10 +122,17 @@
 <script>
 
 	
-	function reserve(index, room_price) {
-
+	function reserve(index, room_price, num) {
+		// input에서 체크인, 체크아웃 가져오기
 		var check_in = new Date($("#check_in").val());
 		var check_out = new Date($("#check_out").val());
+		
+		// 체크인, 체크아웃 form value로 보내기
+		$('#num').val(num);
+		$('#inputIn').val($("#check_in").val());
+		$('#inputOut').val($("#check_out").val());
+		
+		// 몇 박 계산
 		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
 		if(dateDiff > 0 ){
 		$(".card").hide(50);
@@ -134,7 +143,8 @@
 		$(".date").text(dateDiff);
 		$("#roomPricePrint"+index).text(dateDiff*room_price);
 		$("#totalPrice"+index).text(dateDiff*room_price);
-		}
+		$("#peopleNum").val(parseInt($("#inputPeople"+index).val()));
+	}
 	
 	
 	function minusNum(index) {
@@ -154,6 +164,7 @@
 				$("#addCharge"+index).text((inputVal-1-2)*20000);
 			}
 			$("#totalPrice"+index).text(totalPrice-20000);
+			$("#peopleNum").val(inputNum.val());
 		}
 	}
 	
@@ -171,9 +182,14 @@
 			inputNum.val(inputVal+1);
 			$("#addCharge"+index).text((inputVal+1-2)*20000);
 			$("#totalPrice"+index).text(totalPrice+20000);
+			$("#peopleNum").val(inputNum.val());
 		}
 	}
 	
+	
+	$(".testSubmit").on('click', function() {
+		$("#submitForm").submit();
+	});
 </script>
 	
 	

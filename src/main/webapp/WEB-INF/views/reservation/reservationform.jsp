@@ -17,6 +17,7 @@
   th, td {
     border: 1px solid #444444;
   }
+  
 </style>
 </style>
 </head>
@@ -37,24 +38,24 @@
 			<tr>
 				<td>객실명</td>
 				<td>숙박기간</td>
-				<td>인원</td>
+				<td>인원선택</td>
 			</tr>
 			<tr>
 				<td rowspan="2">
-					<div class="thumb">여기사진</div>
-					<div><p>여기 방이름</p></div>
+					<div class="thumb"><img src="${pageContext.request.contextPath }/resources/images/${dto.num}.png" /></div>
+					<div><p>${dto.room_name }</p></div>
 				</td>
-				<td>여기 숙박기간 ex)몇일~몇일</td>
-				<td>여기 예약인원 </td>
+				<td>${check_in }~${check_out }</td>
+				<td>${peopleNum }</td>
 			</tr>
 			<tr>
-				<td>여기 숙박 기본금액</td>
-				<td>여기 인원 추가 금액</td>
+				<td>₩${dto.room_price }</td>
+				<td>₩${20000*(peopleNum -2)}</td>
 			</tr>
 			<tr>
 				<td colspan="3">
 					"총 결제액"
-					<span >여기 총금액</span>
+					<span >${20000*(peopleNum -2) + dto.room_price}</span>
 					<span >(VAT 포함)</span>
 				</td>
 			</tr>
@@ -91,7 +92,7 @@
 			</tr>
 		</tbody>
 	</table>
-	<button type="submit">객실예약</button>
+	<a href="reservation/reservation">객실예약</a>
 	
 </body>
 </html>
