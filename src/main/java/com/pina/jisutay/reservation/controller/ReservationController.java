@@ -42,6 +42,12 @@ public class ReservationController {
 		mav.setViewName("reservation/list");
 		return mav;
 	}
+	
+	@RequestMapping("/reservation/reservationform")
+	public ModelAndView reservationform(ModelAndView mView) {
+		mView.setViewName("/reservation/reservationform");
+		return mView;
+	}
 
 	
 
