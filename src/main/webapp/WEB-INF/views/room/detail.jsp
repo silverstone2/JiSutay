@@ -9,6 +9,7 @@
 <title>views/room/detail.jsp</title>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
+<jsp:include page="/include/starRating_style.jsp"></jsp:include>
 <style>
 	.content{
 		border: 1px dotted gray;
@@ -247,6 +248,14 @@
 			<input type="hidden" name="room_num" value="${dto.num }"/>
 			<!-- 객실이름 == 후기의 target -->
 			<input type="hidden" name="target_id" value="${dto.room_name }"/>
+			<!-- Score -->
+			<input type="hidden" name="score" value="0.0" step="0.1" min="0" max="5" />
+			<div class="rating-wrap">
+				<div class="rating">
+					<div class="overlay" style="width: 158px"></div>
+				</div>
+			</div>
+			<!-- Content -->
 			<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
 			<button type="submit">등록</button>
 		</form>
@@ -287,6 +296,7 @@
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
+	<script src="${pageContext.request.contextPath }/resources/js/starScore_util.js"></script>
 	<script>
 		//로그인 여부 확인
 		let isLogin=${not empty id };
