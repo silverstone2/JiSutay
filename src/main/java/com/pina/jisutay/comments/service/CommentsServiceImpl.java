@@ -91,7 +91,7 @@ public class CommentsServiceImpl implements CommentsService {
 		dto.setTarget_id(target_id);
 		dto.setContent(content);
 		dto.setRoom_num(room_num);
-		dto.setScore(5); //임시
+		dto.setScore(4.5); //임시
 		
 		if(comment_num==null) { // comment_num 은 후기(일반댓글)에서는 전송 X
 			dto.setComment_num(seq);

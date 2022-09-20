@@ -5,7 +5,7 @@ public class CommentsDto {
 	private int num;
 	private String writer;
 	private String room_img;
-	private int score;
+	private double score;
 	private String regdate;
 	private String content;
 	private String target_id;
@@ -23,7 +23,7 @@ public class CommentsDto {
 	
 	public CommentsDto() {}
 
-	public CommentsDto(int num, String writer, String room_img, int score, String regdate, String content,
+	public CommentsDto(int num, String writer, String room_img, double score, String regdate, String content,
 			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum,
 			int commCount, String name, String profile) {
 		super();
@@ -62,10 +62,10 @@ public class CommentsDto {
 	public void setRoom_img(String room_img) {
 		this.room_img = room_img;
 	}
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 	public String getRegdate() {
