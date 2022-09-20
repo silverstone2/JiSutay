@@ -1,6 +1,7 @@
 package com.pina.jisutay.room_SH.service;
 
 import java.io.File;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,7 +55,12 @@ public class Room_SHServiceImpl implements Room_SHService {
 	public void getData(HttpServletRequest req) {
 		int num = Integer.parseInt(req.getParameter("num"));
 		Room_SHDto dto=dao.getData(num);
+		List<String> imgList = Arrays.asList(dto.getImg_path().split(","));
+		
+		System.out.println(imgList.get(0));
+		System.out.println(imgList.get(1));
 		req.setAttribute("dto", dto);
+		req.setAttribute("imgList", imgList);
 		
 	}
 

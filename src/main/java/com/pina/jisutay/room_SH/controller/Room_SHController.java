@@ -18,7 +18,7 @@ public class Room_SHController {
 	
 	@RequestMapping("/room_SH/list")
 	public String list(HttpServletRequest req) {
-		service.getList(req);
+		service.getData(req);
 		return "room_SH/list";
 	}
 	

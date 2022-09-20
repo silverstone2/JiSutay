@@ -13,7 +13,7 @@
 	</select>
 	<select id="getData" parameterType="int" resultType="room_SHDto">
 		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce, img_path
-		FROM travel
+		FROM room
 		WHERE num=#{num}
 	</select>
 	<update id="update" parameterType="room_SHDto">

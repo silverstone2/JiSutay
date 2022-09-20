@@ -12,6 +12,7 @@
 	<h1>테스트</h1>
 	<a href="users/signupform.do">회원가입</a>
 	<a href="${pageContext.request.contextPath }/travel/list.do">주변여행지</a>
-	<a href="${pageContext.request.contextPath }/room_SH/list.do">객실</a>
+	<a href="${pageContext.request.contextPath }/room_SH/list.do?num=1">객실</a>
+
 </body>
 </html>
