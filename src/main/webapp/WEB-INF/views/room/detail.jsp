@@ -181,6 +181,11 @@
 												<img class="profile-image" src="${pageContext.request.contextPath}${tmp.profile }"/>
 											</c:if>
 											<%-- 관리자 답글(대댓글)이라면 누구를 향한 답글인지 옆에 @~ 텍스트 출력 --%>
+											<span class="rating-wrap">
+												<span class="rating">
+													<span class="overlay" style="width: 10px"></span>
+												</span>
+											</span>
 											<span>${tmp.writer }</span>
 											<c:if test="${tmp.num ne tmp.comment_num }">
 												@<i>${tmp.target_id }</i>

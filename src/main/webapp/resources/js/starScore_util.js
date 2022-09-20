@@ -17,12 +17,6 @@ window.addEventListener('DOMContentLoaded',()=>{
 
     maskMax = parseInt(starSize * maxStar + gutter * (maxStar-1));//최대 마스크 너비 계산
     document.querySelector('input[name=score]').max = maxStar;//입력 필드 최대값 재설정
-    
-    //별점 숫자 입력 값 변경 이벤트 리스너
-    document.querySelector('input[name=score]').addEventListener('change',(e)=>{
-    	const val = e.target.value;
-    	setRating(val);
-    });
 	
     //마우스 클릭 별점 변경 이벤트 리스너
     document.querySelector('.rating').addEventListener('click',(e)=>{
@@ -90,8 +84,3 @@ window.addEventListener('DOMContentLoaded',()=>{
 		console.log(document.querySelector('input[name=score]').value);
 	});        
 });
-
-//별점 마킹 함수
-function setRating(val = 0){
-    document.querySelector('.overlay').style.width = parseInt(maskMax - val * starSize - Math.floor(val) * gutter) + 'px';//마스크 크기 변경해서 별점 마킹
-}
