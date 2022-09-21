@@ -19,13 +19,16 @@ public class CommentsDto {
 	// users 테이블 칼럼
 	private String name;
 	private String profile;
+
+	// 정렬 키워드 변수
+	private String sort;
 	
 	
 	public CommentsDto() {}
 
 	public CommentsDto(int num, String writer, String room_img, double score, String regdate, String content,
 			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum,
-			int commCount, String name, String profile) {
+			int commCount, String name, String profile, String sort) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -42,8 +45,9 @@ public class CommentsDto {
 		this.commCount = commCount;
 		this.name = name;
 		this.profile = profile;
+		this.sort = sort;
 	}
-
+	
 	public int getNum() {
 		return num;
 	}
@@ -143,5 +147,13 @@ public class CommentsDto {
 
 	public void setCommCount(int commCount) {
 		this.commCount = commCount;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 }

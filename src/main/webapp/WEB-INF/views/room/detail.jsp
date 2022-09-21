@@ -140,7 +140,36 @@
 				<td>${dto.room_introduce }</td>
 			</tr>		
 		</table>
-
+	
+	<p></p>
+	<p></p>
+	
+	<!-- 총 별점 출력 및 정렬 버튼 추가 -->
+	<div class="commentsHeader">
+		<!-- 후기 텍스트 및 후기 개수 -->
+		<div>
+			<strong>후기</strong>
+			(${allCount })
+		</div>
+		<p></p>
+		
+		<!-- 총 별점 출력 -->
+		<svg xmlns="http://www.w3.org/2000/svg" width="40" height="auto" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+		  <path id="headerStar" d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+		</svg>
+		<h1 style="display: inline-block; font-size: 46px; margin: 0px;"><strong>${sumScore }</strong></h1>
+		<span style="color: #a5b0af; font-size: 24px;">/5</span>
+		
+		<!-- 정렬 -->
+		<fieldset>
+			<select name="sort">
+				<option value="regdate">최근 작성순</option>
+				<option value="highScore">별점 높은순</option>
+				<option value="lowScore">별점 낮은순</option>
+			</select>
+		</fieldset>
+	</div>
+	
 	<!-- 댓글 목록 -->
 	<div class="comments">
 		<ul>
@@ -263,6 +292,8 @@
 					<div class="overlay" style="width: 158px"></div>
 				</div>
 			</div>
+			<!-- 정렬 방식 -->
+			<input type="hidden" name="sort" value="" />
 			<!-- Content -->
 			<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
 			<button type="submit">등록</button>
@@ -462,11 +493,12 @@
 		
 /* ---------------- 페이지 이동 시, 댓글 데이터 가져오기 (Ajax) ---------------- */
 		let pageNum = 1;
+		let sort = "regdate";
 		
 		function movePage(movePageNum) {
 			pageNum = movePageNum;
 			
-			fetch("${pageContext.request.contextPath }/room/ajax_comments.do?num=${param.num }&pageNum="+movePageNum)
+			fetch("${pageContext.request.contextPath }/room/ajax_comments.do?num=${param.num }&pageNum="+movePageNum+"&sort="+sort)
 			.then(function(res) {
 				return res.text();
 			})
@@ -555,6 +587,12 @@
 				});
 			});
 		}
+		
+/* ---------------- 정렬 방식 선택 ---------------- */
+	document.querySelector("select[name=sort]").addEventListener('change', function() {
+		sort = this.value;
+		movePage(pageNum);
+	});
 	</script>
 	
 	

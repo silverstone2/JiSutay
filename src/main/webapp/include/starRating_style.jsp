@@ -68,4 +68,9 @@
 	        opacity: unset;
 	    }
 	}
+	
+	/* 후기 헤더의 별점 이모지 스타일 */
+	#headerStar {
+		color: #ffd047;
+	}
 </style>

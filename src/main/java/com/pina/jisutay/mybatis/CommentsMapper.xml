@@ -11,7 +11,7 @@
 		WHERE room_num=#{room_num} AND num=#{num}
 	</select>
 	
-	<select id="getList" parameterType="commentsDto" resultType="commentsDto">
+	<select id="getListRegdate" parameterType="commentsDto" resultType="commentsDto">
 		SELECT *
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
@@ -25,6 +25,50 @@
 				WHERE room_num=#{room_num} AND num=comment_num
 				ORDER BY comment_num DESC, num ASC) result1)
 		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getListHighScore" parameterType="commentsDto" resultType="commentsDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, cmt.writer, us.name, room_img, score,
+					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+					content, target_id, room_num, comment_num, deleted, us.profile
+				FROM comments cmt
+				INNER JOIN users us
+				ON cmt.writer=us.id
+				WHERE room_num=#{room_num} AND num=comment_num
+				ORDER BY score DESC, num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getListLowScore" parameterType="commentsDto" resultType="commentsDto">
+		SELECT *
+		FROM
+			(SELECT result1.*, ROWNUM AS rnum
+			FROM
+				(SELECT num, cmt.writer, us.name, room_img, score,
+					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+					content, target_id, room_num, comment_num, deleted, us.profile
+				FROM comments cmt
+				INNER JOIN users us
+				ON cmt.writer=us.id
+				WHERE room_num=#{room_num} AND num=comment_num
+				ORDER BY score ASC, num DESC) result1)
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+	</select>
+	
+	<select id="getScoreSum" parameterType="int" resultType="double">
+		SELECT ROUND(SUM(score)/COUNT(score), 1) AS score
+		FROM comments
+		WHERE room_num=#{room_num} AND num=comment_num
+	</select>
+	
+	<select id="getAllCount" parameterType="int" resultType="int">
+		SELECT COUNT(num) AS allCount
+		FROM comments
+		WHERE room_num=#{room_num}
 	</select>
 	
 	<select id="getCommCommList" parameterType="commentsDto" resultType="commentsDto">

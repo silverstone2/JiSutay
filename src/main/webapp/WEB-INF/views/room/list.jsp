@@ -36,7 +36,7 @@
 				<td>${tmp.room_people }</td>
 				<td>${tmp.bedroom_type }</td>
 				<td>${tmp.room_introduce }</td>
-				<td><a href="detail.do?num=${tmp.num }">바로가기</a></td>
+				<td><a href="detail.do?num=${tmp.num }&sort=regdate">바로가기</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>

@@ -1,7 +1,9 @@
 package com.pina.jisutay.comments.service;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -35,15 +37,18 @@ public class CommentsServiceImpl implements CommentsService {
 		
 		CommentsDto commentsDto=new CommentsDto();
 		
-		int num = Integer.parseInt(request.getParameter("num"));
-		commentsDto.setRoom_num(num); 
+		int room_num = Integer.parseInt(request.getParameter("num"));
+		String sort = request.getParameter("sort");
+		commentsDto.setRoom_num(room_num); 
 		commentsDto.setStartRowNum(startRowNum);
 		commentsDto.setEndRowNum(endRowNum);
-		//1페이지에 해당하는 댓글 목록만 select 되도록 한다. 
+		commentsDto.setSort(sort);
+		
+		// 한 페이지에 해당하는 댓글 목록만 select 되도록 한다.
 		List<CommentsDto> commentsList=dao.getList(commentsDto);
 		
 		//원글의 글번호를 이용해서 댓글 전체의 갯수를 얻어낸다.
-		int totalRow=dao.getCount(num);
+		int totalRow=dao.getCount(room_num);
 		//댓글 전체 페이지의 갯수
 		int totalPageCount=(int)Math.ceil(totalRow/(double)PAGE_ROW_COUNT);
 		
@@ -56,12 +61,21 @@ public class CommentsServiceImpl implements CommentsService {
 			int count = countList.get(i);
 			commentsList.get(i).setCommCount(count);
 		}
+		
+		// 전체 후기 데이터의 score 가져오기
+		Map<String, Object> map = dao.getAllScore(room_num);
+		
+		// 숫자에 콤마 붙이는 format
+		DecimalFormat decFormat = new DecimalFormat("###,###");
+		String allCount = decFormat.format(map.get("allCount"));
 
 		request.setAttribute("commentsList", commentsList);
 		request.setAttribute("pageNum", pageNum);
 		request.setAttribute("startPageNum", startPageNum);
 		request.setAttribute("endPageNum", endPageNum);
 		request.setAttribute("totalPageCount", totalPageCount);
+		request.setAttribute("sumScore", map.get("sumScore"));
+		request.setAttribute("allCount", allCount);
 	}
 	
 	@Override

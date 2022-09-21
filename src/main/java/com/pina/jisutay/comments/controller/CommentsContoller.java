@@ -25,18 +25,12 @@ public class CommentsContoller {
 	public ModelAndView authCommentInsert(HttpServletRequest request, 
 			@RequestParam int room_num) {
 		service.saveComment(request);
-		return new ModelAndView("redirect:/room/detail.do?num="+room_num);
+		return new ModelAndView("redirect:/room/detail.do?num="+room_num+"&sort=regdate");
 	}
 	
 	@RequestMapping("/room/re_comment_insert")
 	public String ajaxReCommentInsert(HttpServletRequest request) {
-		System.out.println(request.getParameter("room_num"));
-		System.out.println(request.getParameter("target_id"));
-		System.out.println(request.getParameter("comment_num"));
-		System.out.println(request.getParameter("content"));
-		
 		service.saveReComment(request);
-		System.out.println("ajax 요청함");
 		return "room/ajax_commComment_list";
 	}
 
