@@ -33,14 +33,14 @@
 							</c:if>
 							<span>${tmp.regdate }</span>
 							<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
-							<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
+							<a data-num="${tmp.num }" href="javascript:" class="re-reply-link">답글</a>
 							<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
 							<%-- 
 								<c:if test="${ (id ne null) and (tmp.writer eq sessionScope.id) }">
 							 --%>
 							 <c:if test="${ tmp.writer eq sessionScope.id }">
-								<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
-								<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
+								<a data-num="${tmp.num }" class="re-update-link" href="javascript:">수정</a>
+								<a data-num="${tmp.num }" class="re-delete-link" href="javascript:">삭제</a>
 							</c:if>
 						</dt>
 						<dd>
@@ -56,7 +56,7 @@
 						답글 폼은 미리 만들어서 hidden >> 답글 링크 클릭시 활성화 
 						답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
 					--%>
-					<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="comment_insert.do" method="post" style="display:none;">
+					<form id="reForm${tmp.num }" class="animate__animated comment-form re-re-insert-form" action="re_comment_insert.do" method="post" style="display:none;">
 						<input type="hidden" name="room_num" value="${param.num }"/>
 						<input type="hidden" name="target_id" value="${tmp.writer }"/>
 						<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
@@ -67,22 +67,16 @@
 					댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 				--%>
 				<c:if test="${tmp.writer eq id }">
-					<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post" style="display:none;">
+					<form id="updateForm${tmp.num }" class="comment-form re-update-form" action="comment_update.do" method="post" style="display:none;">
 						<input type="hidden" name="num" value="${tmp.num }" />
 						<textarea name="content">${tmp.content }</textarea>
 						<button type="submit">수정</button>
 					</form>
-				</c:if>	
+				</c:if>
 		</c:otherwise>
 	</c:choose>
 	<div id="commComments${tmp.num }">
 	
 	</div>
+	</li>
 </c:forEach>
-
-<script>
-	addUpdateFormListener(".update-form");
-	addUpdateListener(".update-link");
-	addDeleteListener(".delete-link");
-	addReplyListener(".reply-link");	
-</script>

@@ -18,8 +18,17 @@
 	    padding: 10px;
 	    display: flex;
 	}
+	.ratingWrap{
+	    padding: 10px;
+	    display: flex;
+	}
 	.rating {
 	    display: flex;
+	    align-items: center;
+	    position: relative;
+	}
+	.selfRating {
+		display: flex;
 	    align-items: center;
 	    position: relative;
 	}
@@ -39,8 +48,22 @@
 	    z-index: 1;
 	    transition: all 0.3s ease-in-out;
 	}
+	.selfOverlay {
+	    background-color: #000;
+	    opacity: 0.5;
+	    position: absolute;
+	    top: 0;
+	    right: 0;
+	    bottom: 0;
+	    z-index: 1;
+	    transition: all 0.3s ease-in-out;
+	}
 	@supports (mix-blend-mode: color) {
 	    .overlay{
+	        mix-blend-mode: color;
+	        opacity: unset;
+	    }
+	    .selfOverlay{
 	        mix-blend-mode: color;
 	        opacity: unset;
 	    }

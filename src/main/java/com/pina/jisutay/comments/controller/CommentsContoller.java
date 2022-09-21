@@ -27,6 +27,18 @@ public class CommentsContoller {
 		service.saveComment(request);
 		return new ModelAndView("redirect:/room/detail.do?num="+room_num);
 	}
+	
+	@RequestMapping("/room/re_comment_insert")
+	public String ajaxReCommentInsert(HttpServletRequest request) {
+		System.out.println(request.getParameter("room_num"));
+		System.out.println(request.getParameter("target_id"));
+		System.out.println(request.getParameter("comment_num"));
+		System.out.println(request.getParameter("content"));
+		
+		service.saveReComment(request);
+		System.out.println("ajax 요청함");
+		return "room/ajax_commComment_list";
+	}
 
 	@RequestMapping("/room/comment_delete")
 	@ResponseBody

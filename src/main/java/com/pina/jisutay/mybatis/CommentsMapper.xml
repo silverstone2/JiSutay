@@ -1,6 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="comments">
+	<select id="getData" parameterType="commentsDto" resultType="commentsDto">
+		SELECT num, cmt.writer, us.name, room_img, score,
+			TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+			content, target_id, room_num, comment_num, deleted, us.profile
+		FROM comments cmt
+		INNER JOIN users us
+		ON cmt.writer=us.id
+		WHERE room_num=#{room_num} AND num=#{num}
+	</select>
+	
 	<select id="getList" parameterType="commentsDto" resultType="commentsDto">
 		SELECT *
 		FROM

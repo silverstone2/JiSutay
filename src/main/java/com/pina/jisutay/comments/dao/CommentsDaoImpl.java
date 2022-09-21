@@ -55,7 +55,7 @@ public class CommentsDaoImpl implements CommentsDao {
 	}
 
 	@Override
-	public CommentsDto getData(int num) {
-		return session.selectOne("comments.getData",num);
+	public CommentsDto getData(CommentsDto dto) {
+		return session.selectOne("comments.getData", dto);
 	}
 }

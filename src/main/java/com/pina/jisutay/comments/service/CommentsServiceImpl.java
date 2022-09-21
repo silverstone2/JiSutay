@@ -1,5 +1,6 @@
 package com.pina.jisutay.comments.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -78,12 +79,13 @@ public class CommentsServiceImpl implements CommentsService {
 
 	@Override
 	public void saveComment(HttpServletRequest request) {
-		int room_num=Integer.parseInt(request.getParameter("room_num"));
-		String target_id=request.getParameter("target_id");
-		String content=request.getParameter("content");
+		int room_num=Integer.parseInt(request.getParameter("room_num"));	// 객실 번호
+		String target_id=request.getParameter("target_id");	// 답글의 대상
+		String content=request.getParameter("content");	// 후기 내용
 		// comment_num 은 후기에서는 전송 X 답글에서만 전송 >> null 여부 조사
-		String comment_num=request.getParameter("comment_num");
+		String comment_num=request.getParameter("comment_num");	// 댓글 번호
 		String writer=(String)request.getSession().getAttribute("id"); //후기 작성자 확인
+		Double score = null;
 		int seq=dao.getSequence();
 		CommentsDto dto=new CommentsDto();
 		dto.setNum(seq);
@@ -91,7 +93,10 @@ public class CommentsServiceImpl implements CommentsService {
 		dto.setTarget_id(target_id);
 		dto.setContent(content);
 		dto.setRoom_num(room_num);
-		dto.setScore(4.5); //임시
+		if(request.getParameter("score") != null) {
+			score = Double.parseDouble(request.getParameter("score"));
+			dto.setScore(score);
+		} // 별점
 		
 		if(comment_num==null) { // comment_num 은 후기(일반댓글)에서는 전송 X
 			dto.setComment_num(seq);
@@ -99,6 +104,40 @@ public class CommentsServiceImpl implements CommentsService {
 			dto.setComment_num(Integer.parseInt(comment_num));
 		}
 		dao.insert(dto);
+	}
+	
+	@Override
+	public void saveReComment(HttpServletRequest request) {
+		int room_num=Integer.parseInt(request.getParameter("room_num"));	// 객실 번호
+		String target_id=request.getParameter("target_id");	// 답글의 대상
+		String content=request.getParameter("content");	// 후기 내용
+		// comment_num 은 후기에서는 전송 X 답글에서만 전송 >> null 여부 조사
+		String comment_num=request.getParameter("comment_num");	// 댓글 번호
+		String writer=(String)request.getSession().getAttribute("id"); //후기 작성자 확인
+		Double score = null;
+		int seq=dao.getSequence();
+		CommentsDto dto=new CommentsDto();
+		dto.setNum(seq);
+		dto.setWriter(writer);
+		dto.setTarget_id(target_id);
+		dto.setContent(content);
+		dto.setRoom_num(room_num);
+		if(request.getParameter("score") != null) {
+			score = Double.parseDouble(request.getParameter("score"));
+			dto.setScore(score);
+		} // 별점
+		
+		if(comment_num==null) { // comment_num 은 후기(일반댓글)에서는 전송 X
+			dto.setComment_num(seq);
+		} else {
+			dto.setComment_num(Integer.parseInt(comment_num));
+		}
+		dao.insert(dto);
+		
+		// ajax로 뿌려줄 DTO 하나만 들어있는 List
+		List<CommentsDto> commentsList = new ArrayList<CommentsDto>();
+		commentsList.add(dao.getData(dto));
+		request.setAttribute("commentsList", commentsList);
 	}
 
 	@Override
