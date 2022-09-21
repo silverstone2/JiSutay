@@ -39,7 +39,7 @@
 	<input type="date" id="check_in" name="check_in"  />
 
 	<input type="date" id="check_out" name="check_out" />
-	
+
 	
 	<div class="row">
 	<h1>방 목록</h1>
@@ -49,7 +49,7 @@
 				<div class="card-body">
 					<h4 class="card-title">${tmp.room_name }</h4>
 					<p class="card-text">
-					 	객실 최대인원 : <strong>${tmp.room_people }</strong>
+					 	기준:2인 ~ 최대:${tmp.room_people }
 					</p>
 					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail">예약</button>
 				</div>	 
@@ -137,8 +137,12 @@
 		if(dateDiff > 0 ){
 		$(".card").hide(50);
 		$("#reservationForm"+index).show(500);
+		}else if(dateDiff==0){
+			alert("1박 이상만 가능합니다")
+		}else if(dateDiff<0){
+			alert("체크아웃 일자가 체크인 일자를 앞설수 없습니다.")
 		}else{
-			alert("날짜를 기입해주세요")
+			alert("날짜를 기입하세요")
 		}	
 		$(".date").text(dateDiff);
 		$("#roomPricePrint"+index).text(dateDiff*room_price);
@@ -191,14 +195,5 @@
 		$("#submitForm").submit();
 	});
 </script>
-	
-	
-
-
-
-	
-
-
-
 </body>
 </html>

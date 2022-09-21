@@ -31,11 +31,6 @@ public class ReservationController {
 	@RequestMapping("/reservation/list")
 	public ModelAndView detail(HttpServletRequest request, ModelAndView mav, ReservationDto dto) {
 		
-		//String check_in = "엥";
-		//request.setAttribute("check_in", check_in);
-		
-		//String check_in = (String)dto.getCheck_in();
-		
 		service.getDetail(request, mav);
 		mav.setViewName("reservation/list");
 		return mav;
@@ -48,7 +43,6 @@ public class ReservationController {
 		mav.setViewName("reservation/reservationform");
 		return mav;
 	}
-	
 
 
 

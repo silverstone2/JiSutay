@@ -49,13 +49,17 @@
 				<td>${peopleNum }</td>
 			</tr>
 			<tr>
-				<td>₩${dto.room_price }</td>
-				<td>₩${20000*(peopleNum -2)}</td>
+				<td>
+					<span>₩</span>
+					<span id="room_price"></span>
+				</td>
+				<td>₩ ${20000*(peopleNum -2)}</td>
 			</tr>
 			<tr>
 				<td colspan="3">
 					"총 결제액"
-					<span >${20000*(peopleNum -2) + dto.room_price}</span>
+					<span>₩</span>
+					<span id="total_price"></span>
 					<span >(VAT 포함)</span>
 				</td>
 			</tr>
@@ -68,7 +72,7 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th>환불규정 확인(나중에 여기 NOTICE테이블 Title 끌어와보기)</th>
+				<th>환불규정 확인</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -92,7 +96,22 @@
 			</tr>
 		</tbody>
 	</table>
+	
 	<a href="reservation/reservation">객실예약</a>
+	
+	
+	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
+	<script>
+	var check_in = new Date("${check_in}");
+	var check_out = new Date("${check_out}");
+	var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
+	var room_price = dateDiff * ${dto.room_price};
+	
+	$(function() {
+		$("#room_price").text(room_price.toLocaleString());
+		$("#total_price").text((room_price + ${20000*(peopleNum -2)}).toLocaleString());
+	});
+	</script>
 	
 </body>
 </html>
