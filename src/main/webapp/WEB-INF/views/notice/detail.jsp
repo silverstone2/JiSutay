@@ -6,8 +6,26 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/notice/detail.jsp</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<style>
+		.container{
+		margin-left: 35%;
+		margin-right: 35%;
+	}
+	.detailTable{
+		width:575px;
+		border-right:none;
+		border-left:none;
+		border-top:none;
+		border-bottom:none;
+	}
+	.detailTable {
+		border: 1px;
+	} 
+</style>
 </head>
 <body>
+<div class="container">
 	<h1>공지사항</h1>
 	<p>공지사항과 다양한 소식을 확인해보세요.</p>
 	<c:if test="${dto.prevNum ne 0 }">
@@ -23,30 +41,36 @@
 		</p>
 	</c:if>	
 	
-	<%-- <button type="button" onclick="location.href='${pageContext.request.contextPath}/home.do' ">이전 글</button>
-	<button type="button" onclick="location.href='${pageContext.request.contextPath}/home.do' ">다음 글</button>--%>
-	<table>
+	<table class="detailTable">
 		<tr>
-			<th>${dto.title }  </th>
+			<th colspan="3">${dto.title }  </th>
+		</tr>
+		
+		<tr style="border:1px">
+			<%-- <td>번호 : ${dto.num } 번 입니다</td> --%>
+			<td class="col-3"><span>작성자 : ${dto.writer }</span></td>
+			<td class="col-4"><span>날짜 : ${dto.regdate }</span></td>
+			<td class="col-5"><span>조회수 : ${dto.views } 회</span></td>
 		</tr>
 		<tr>
-			<td>작성자</td>
-			<td>번호 : ${dto.num } 번 입니다</td>
-			<td>작성자 : ${dto.writer }</td><br><br>
-			<td>날짜 : ${dto.regdate }</td><br><br>
-			<td>조회수 : ${dto.views } 회</td><br><br>
-		</tr>
-		<tr>
-			<td>${dto.content }</td>
+			<td colspan="3">${dto.content }</td>
 		</tr>
 	</table>
-	<button type="button" onclick="location.href='list.do'">목록</button>
+	
 	<c:choose>
 		<c:when test="${id eq 'admin'}">
-			<button type="button" onclick="location.href='updateForm.do?num=${param.num }'">수정</button>
-			<button type="button" onclick="location.href='delete.do?num=${param.num }'">삭제</button>
+			<div style="text-align:center; width:575px;">
+				<button type="button" onclick="location.href='list.do'" class="buttonEffect">목록</button>
+				<button type="button" onclick="location.href='updateForm.do?num=${param.num }'" class="buttonEffect">수정</button>
+				<button type="button" onclick="location.href='delete.do?num=${param.num }'" class="buttonEffect">삭제</button>
+			</div>
 		</c:when>
+		<c:otherwise>
+			<div style="text-align:center; width:575px;">
+				<button type="button" onclick="location.href='list.do'" class="buttonEffect">목록</button>
+			</div>
+		</c:otherwise>
 	</c:choose>
-
+</div>
 </body>
 </html>

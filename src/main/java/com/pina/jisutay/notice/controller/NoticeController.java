@@ -36,7 +36,7 @@ public class NoticeController {
 	// 새글
 	@RequestMapping("notice/insert")
 	public String insert(NoticeDto ndto, HttpServletRequest req) {
-		
+		System.out.println(ndto.getContent());
 		service.insert(ndto, req);
 		return "redirect:/notice/list.do";
 	}

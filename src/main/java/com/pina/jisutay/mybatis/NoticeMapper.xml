@@ -8,6 +8,7 @@
 		ORDER BY num DESC
 		WHERE num=#${num}
 	</select> -->
+	<!-- 검색 sql문 -->
 	<sql id="searchCondition">
 		<choose>
 			<when test="title != null and content != null">
@@ -22,16 +23,16 @@
 			</when>
 		</choose>
 	</sql>
-	
+	<!--  -->
 	<select id="getList" parameterType="noticeDto" resultType="noticeDto">
 		SELECT *
 		FROM
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
-				(SELECT num,writer,title,content,views,regdate
+				(SELECT num,writer,title,content,views,TO_CHAR(regdate,'YY.MM.DD HH24:MI') AS regdate
 				FROM notice
-				<include refid="searchCondition"/>
-				ORDER BY num DESC) result1)
+					<include refid="searchCondition"/>
+					ORDER BY num DESC) result1)
 		<![CDATA[ 
 		WHERE rnum >= #{startRowNum} AND rnum <= #{endRowNum}
 		]]>
