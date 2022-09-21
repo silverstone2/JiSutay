@@ -8,7 +8,6 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style>
-<style>
   table {
     width: 100%;
     border: 1px solid #444444;
@@ -17,7 +16,6 @@
   th, td {
     border: 1px solid #444444;
   }
-</style>
 </style>
 </head>
 <body>

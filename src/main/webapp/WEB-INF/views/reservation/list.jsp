@@ -6,13 +6,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
 <style>
 	.reservationForm{
 		border : 1px solid red;
 		display : none;
+	}
+	.col{
+		width : 18.5%;
+		float : left;
+		margin-left : 5px;
+	}
+	.datepick{
+		float : left;
+		margin-left : 35%;
+		margin-right : 10px;
 	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
@@ -24,6 +33,7 @@
 			<p>
 				<a href="${pageContext.request.contextPath }/users/loginform.do">로그인</a>
 				<a href="${pageContext.request.contextPath }/users/signupform.do">회원가입</a>
+				<a href="${pageContext.request.contextPath }/">홈</a>
 			</p>
 		</c:when>
 		<c:otherwise>
@@ -32,28 +42,26 @@
 			</p>
 		</c:otherwise>
 	</c:choose>
-	
-	
 
-	
-	<input type="date" id="check_in" name="check_in"  />
-
+	<div class="datepick"><input type="date" id="check_in" name="check_in" /></div>
 	<input type="date" id="check_out" name="check_out" />
-	
-	
+	<br>
 	<div class="row">
 	<h1>방 목록</h1>
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-			<div class="card">
-				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
-				<div class="card-body">
-					<h4 class="card-title">${tmp.room_name }</h4>
-					<p class="card-text">
-					 	객실 최대인원 : <strong>${tmp.room_people }</strong>
-					</p>
-					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price });" class="reserveDetail">예약</button>
-				</div>	 
+			<div class="col">
+				<div class="card">
+					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
+					<div class="card-body">
+						<h4 class="card-title">${tmp.room_name }</h4>
+						<p class="card-text">
+							객실 최대인원 : <strong>${tmp.room_people }</strong>
+						</p>
+						<button onclick="javascript:reserve(${status.index }, ${tmp.room_price });" class="reserveDetail">예약</button>
+					</div>	 
+				</div>
 			</div>
+				
 			<div id="reservationForm${status.index }" class="reservationForm">
 				<img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
 				<table>
@@ -74,7 +82,7 @@
 						<td>${tmp.room_items }</td>
 					</tr>
 					<tr>
-						<th>침실타입</th>
+						<th>침실타입엥</th>
 						<td>${tmp.bedroom_type }</td>
 					</tr>
 					<tr>
@@ -110,7 +118,6 @@
 				<form action="">
 					<button type="submit">선택취소</button>
 				</form>
-			
 			</div>						
 		</c:forEach>
 	</div>
@@ -118,7 +125,19 @@
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script>
-
+	
+	function reserve(index, room_price) {
+		$(".card").hide(50);
+		$("#reservationForm"+index).show(500);
+		
+		var check_in = new Date($("#check_in").val());
+		var check_out = new Date($("#check_out").val());
+		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
+		
+		$(".date").text(dateDiff);
+		$("#roomPricePrint"+index).text(dateDiff*room_price);
+		$("#totalPrice"+index).text(dateDiff*room_price);
+	}
 	
 	function reserve(index, room_price) {
 
@@ -126,8 +145,8 @@
 		var check_out = new Date($("#check_out").val());
 		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
 		if(dateDiff > 0 ){
-		$(".card").hide(50);
-		$("#reservationForm"+index).show(500);
+			$(".card").hide(50);
+			$("#reservationForm"+index).show(500);
 		}else{
 			alert("날짜를 기입해주세요")
 		}	
@@ -135,7 +154,6 @@
 		$("#roomPricePrint"+index).text(dateDiff*room_price);
 		$("#totalPrice"+index).text(dateDiff*room_price);
 		}
-	
 	
 	function minusNum(index) {
 		let inputNum = $("#inputPeople"+index);
@@ -175,14 +193,5 @@
 	}
 	
 </script>
-	
-	
-
-
-
-	
-
-
-
 </body>
 </html>
