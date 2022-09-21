@@ -25,7 +25,7 @@ public class RoomDaoImpl implements RoomDao{
 //	}
 
 	@Override
-	public RoomDto getData(RoomDto dto) {
-		return session.selectOne("room.getData", dto);
+	public RoomDto getData(int num) {
+		return session.selectOne("room.getData", num);
 	}
 }
