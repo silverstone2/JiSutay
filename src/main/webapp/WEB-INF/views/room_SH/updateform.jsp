@@ -6,10 +6,13 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
 	<div class="container">
-		<h1>주변관광지 수정하기.</h1>
+		<h1>객실 수정하기.</h1>
 		<form action="${pageContext.request.contextPath }/room_SH/update.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="num" value="${dto.num }" />
 		      	<div class="mb-3">
@@ -73,98 +76,19 @@
 	  							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 							</svg>
 	      				</span>
-	     				<textarea  class="form-control" name="caption" id="caption" value="${dto.room_introduce }" required></textarea>
+	     				<textarea  class="form-control" name="caption" id="caption" required>${dto.room_introduce }</textarea>
 	      				<div id="room_introduceValid" class="invalid-feedback"></div>
 	    			</div>
 	  			</div>
 				<div class="mb-3">
 					<label for="file" class="form-label">객실 이미지 업로드</label>
-					<input type="file" class="form-control" aria-label="file example" name="file" id="file" accept=".jpg, .jpeg, .png, .JPG, .JPEG" required>
-					<div id="fileValid" class="invalid-feedback">관광지 이미지를 선택해주세요.</div>
+					<input multiple="multiple" type="file" name="file" class="form-control" aria-label="file example" accept=".jpg, .jpeg, .png, .JPG, .JPEG" required/>
 				</div>
-				<button class=addfile>사진 추가</button>
 			<button type="submit" onclick="submitContents(this);">수정확인</button>
 			<button type="reset">취소</button>
 		</form>
 	</div>
 <script>
-	let isRoomStructureValid = false;
-	let isRoomSizeValid = false;
-	let isRoomPeopleValid = false;
-	let isRoomItemsValid = false;
-	let isRoomIntroduceValid = false;
-	let isfileValid
-	
-	document.querySelector("#room_structure").addEventListener('input', function() {
-		
-		const roomStructureValue = this.value;
-		const roomStructureValidText = document.querySelector("#room_structureValid");
-		const reg = /\S/;
-		
-		if(!reg.test(roomStructureValue)) {
-			isRoomStructureValid = false;
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			RoomStructureValidText.innerText = "공백은 입력할 수 없습니다.";
-		} else {
-			isTitleValid = true;
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-		}
-	});
-	
-	document.querySelector("#distance").addEventListener('input', function() {
-		
-		const distanceValue = this.value;
-		const distanceValidText = document.querySelector("#distanceValid");
-		const reg = /^[0-9]*분$/;
-		
-		if(!reg.test(distanceValue)) {
-			isDistanceValid = false;
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			distanceValidText.innerText = "예시에 맞게 입력해주세요. 예시)5분";
-		} else {
-			isDistanceValid = true;
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-		}
-	});
-	
-	document.querySelector("#caption").addEventListener('input', function() {
-		
-		const captionValue = this.value;
-		const captionValidText = document.querySelector("#captionValid");
-		const reg = /\S/;
-		
-		if(!reg.test(captionValue)) {
-			isCaptionValid = false;
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			captionValidText.innerText = "공백은 입력할 수 없습니다.";
-		} else {
-			isCaptionValid = true;
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-		}
-	});
-	document.querySelector("#image").addEventListener('input', function() {
-		
-		const imageValue = this.value;
-		const imgValidText = document.querySelector("#imgValid");
-		const reg = /\S/;
-		
-		if(!reg.test(imageValue)) {
-			isImgValid = false;
-			this.classList.remove("is-valid");
-			this.classList.add("is-invalid");
-			imgValidText.innerText = "사진을 선택해 주세요.";
-		} else {
-			isImgValid = true;
-			this.classList.remove("is-invalid");
-			this.classList.add("is-valid");
-		}
-	});
 
 </script>
 </body>

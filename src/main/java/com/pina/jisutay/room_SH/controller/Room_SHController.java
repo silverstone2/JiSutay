@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.pina.jisutay.room_SH.dto.Room_SHDto;
 import com.pina.jisutay.room_SH.service.Room_SHService;
@@ -47,8 +49,8 @@ public class Room_SHController {
 	}
 	
 	@RequestMapping(value = "/room_SH/update", method = RequestMethod.POST)
-	public String update(Room_SHDto dto, HttpServletRequest req) {
-		service.update(dto, req);
+	public String update(Room_SHDto dto, MultipartHttpServletRequest mtfReq) {
+		service.update(dto, mtfReq);
 		return "room_SH/update";
 	}
 	

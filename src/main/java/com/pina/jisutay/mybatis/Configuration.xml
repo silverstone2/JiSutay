@@ -10,7 +10,6 @@
 	</typeAliases>
 	<!-- 필요한 Mapper xml 등록하기  -->
 	<mappers>
-
 		<mapper resource="com/pina/jisutay/mybatis/TravelMapper.xml"/>
 		<mapper resource="com/pina/jisutay/mybatis/Room_SHMapper.xml"/>
 	</mappers>

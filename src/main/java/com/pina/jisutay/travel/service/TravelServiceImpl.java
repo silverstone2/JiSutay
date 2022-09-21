@@ -79,7 +79,6 @@ public class TravelServiceImpl implements TravelService{
 		dto.setImgPath("/upload/" + saveFileName);
 		dao.update(dto);
 	}
-
 	@Override
 	public void delete(HttpServletRequest req) {
 		int num = Integer.parseInt(req.getParameter("num"));
