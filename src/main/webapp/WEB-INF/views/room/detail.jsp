@@ -11,7 +11,6 @@
 <jsp:include page="/include/starRating_style.jsp"></jsp:include>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
- 
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
 
