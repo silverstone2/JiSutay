@@ -35,7 +35,4 @@ public class RoomController {
 		commService.getList(request);
 		return "room/detail";
 	}
-	
-
-	
 }

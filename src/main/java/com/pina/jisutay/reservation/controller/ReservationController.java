@@ -1,10 +1,15 @@
 package com.pina.jisutay.reservation.controller;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.reservation.dto.ReservationDto;
 import com.pina.jisutay.reservation.service.ReservationService;
 import com.pina.jisutay.room.service.RoomService;
 
@@ -14,13 +19,31 @@ public class ReservationController {
 	private RoomService service;
 	
 	@Autowired
-	private ReservationService service1;
+	private ReservationService res_service;
 	
-	@RequestMapping("/reservation/list")
-	public ModelAndView list(ModelAndView mView) {
-		service.getListMember(mView);
-		mView.setViewName("reservation/list");
-		return mView;
+	@RequestMapping("/reservation/list.do")
+	public String getList(HttpServletRequest request, ReservationDto dto) {
+		
+		service.getList(request);
+		return "reservation/list";
 	}
+		
+	@RequestMapping("/reservation/list")
+	public ModelAndView detail(HttpServletRequest request, ModelAndView mav, ReservationDto dto) {
+		
+		service.getDetail(request, mav);
+		mav.setViewName("reservation/list");
+		return mav;
+	}
+	
+	@RequestMapping(value="/reservation/reservationform.do", method=RequestMethod.POST)
+	public ModelAndView detail(ModelAndView mav, HttpServletRequest request) {
+		
+		service.getDetail(request, mav);
+		mav.setViewName("reservation/reservationform");
+		return mav;
+	}
+
+
 
 }
