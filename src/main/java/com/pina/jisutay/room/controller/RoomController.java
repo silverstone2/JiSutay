@@ -5,28 +5,35 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.comments.service.CommentsService;
 import com.pina.jisutay.room.service.RoomService;
 
 @Controller
 public class RoomController {
 	@Autowired
-	private RoomService service;
+	private RoomService roomService;
+	
+	@Autowired
+	private CommentsService commService;
+	
 	
 	@RequestMapping("/room/list.do")
 	public String getList(HttpServletRequest request) {
 		
-		service.getList(request);
+		roomService.getList(request);
 		
 		return "room/list";
 	}
 	
 	@RequestMapping("/room/detail")
-	public ModelAndView detail(HttpServletRequest request, ModelAndView mav) {
-		service.getDetail(request, mav);
-		mav.setViewName("room/detail");
-		return mav;
+	public String detail(HttpServletRequest request) {
+		roomService.getDetail(request);
+		
+		commService.getList(request);
+		return "room/detail";
 	}
 	
 	@RequestMapping("/room/room1.do")
@@ -52,5 +59,4 @@ public class RoomController {
 		
 		return "room/room4";
 	}
-
 }
