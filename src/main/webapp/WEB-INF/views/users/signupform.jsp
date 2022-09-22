@@ -9,7 +9,6 @@
 <jsp:include page="/resources/include/style.jsp"></jsp:include>
 </head>
 <body class="text-center">
-	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 	<div class="container-fluid mb-4">
 		<div class="row justify-content-md-center">
 			<!-- nav 바 -->

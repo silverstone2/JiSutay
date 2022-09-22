@@ -37,7 +37,6 @@ public class UsersController {
 		return "users/signup";
 	}
 	
-	
 	// 로그인 기능
 	@RequestMapping("/users/loginform.do")
 	public String loginform() {

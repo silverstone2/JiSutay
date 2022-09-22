@@ -24,6 +24,7 @@
 </head>
 <body>
 <div class="container">
+   <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
    <c:choose>
       <c:when test="${empty id }">
          <p>
