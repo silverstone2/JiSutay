@@ -14,6 +14,11 @@
 		border : 1px solid red;
 		display : none;
 	}
+	
+	.col{
+		float:left;
+		
+	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
@@ -44,6 +49,7 @@
 	<div class="row">
 	<h1>방 목록</h1>
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
+		<div class="col">
 			<div class="card">
 				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
 				<div class="card-body">
@@ -54,6 +60,7 @@
 					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail">예약</button>
 				</div>	 
 			</div>
+		</div>
 			<div id="reservationForm${status.index }" class="reservationForm">
 				<img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
 				<table>

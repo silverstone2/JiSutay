@@ -36,7 +36,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>객실명</td>
+				<td>객실명 </td>
 				<td>숙박기간</td>
 				<td>인원선택</td>
 			</tr>
@@ -97,7 +97,14 @@
 		</tbody>
 	</table>
 	
-	<a href="reservation/reservation">객실예약</a>
+		<form action="reservation.do", method="post">
+			<input id="res_id" type="hidden" name="res_id"/>
+			<input id="check_in" type="hidden" name="check_in"/>
+			<input id="check_out" type="hidden" name="check_out"/>
+			<input id="res_people" type="hidden" name="res_people"/>
+			<input id="room_num" type="hidden" name="room_num"/>
+			<button id="reservationBtn" type="submit" disabled>객실예약</button>
+		</form>
 	
 	
 	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
@@ -108,9 +115,30 @@
 	var room_price = dateDiff * ${dto.room_price};
 	
 	$(function() {
+		//페이지 로딩시점에 방가격 , 인원추가가격 위에 표에 담기
 		$("#room_price").text(room_price.toLocaleString());
 		$("#total_price").text((room_price + ${20000*(peopleNum -2)}).toLocaleString());
+		
+		//페이지 로딩시점에 resevation.jsp로 보내는 form에 담기
+		$("#res_id").val("${id}");
+		$("#check_in").val("${check_in}");
+		$("#check_out").val("${check_out}");
+		$("#res_people").val(${peopleNum});
+		$("#room_num").val(${dto.num});
 	});
+	
+	//약관동의
+	$(function(){
+		$('#agree').click(function(){
+			if($('#agree:checked').length>0){
+				$('#reservationBtn').removeAttr('disabled');
+			}else{
+				$('#reservationBtn').attr('disabled','disabled');
+			}
+		});
+	});
+	
+	
 	</script>
 	
 </body>

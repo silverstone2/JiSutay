@@ -5,7 +5,7 @@
 	<insert id="insert" parameterType="reservationDto">
 		INSERT INTO reservation
 		(num, res_id , check_in , check_out , res_people , room_num , regdate)
-		values(reservation_seq.NEXTVAL , #{res_id}, #{check_in}, #{check_out}, #{res_people}, #{room_num}, #{regdate})
+		values(reservation_seq.NEXTVAL , #{res_id}, #{check_in}, #{check_out}, #{res_people}, #{room_num}, SYSDATE )
 	</insert>
 	
 	<update id="update" parameterType="reservationDto">
@@ -28,7 +28,6 @@
 	<select id="getList" resultType="reservationDto">
 		SELECT num, res_id , check_in , check_out , res_people , room_num , regdate
 		FROM reservation
-		OREDER BY num ASC
 	</select>
 	
 

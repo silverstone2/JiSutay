@@ -43,7 +43,24 @@ public class ReservationController {
 		mav.setViewName("reservation/reservationform");
 		return mav;
 	}
-
+	
+//	@RequestMapping("/reservation/reservation")
+//	public String insert() {
+//		return "reservation/reservation";
+//	}
+	
+	@RequestMapping("/reservation/reservation")
+	public ModelAndView insert(ReservationDto dto) {
+		res_service.addReservation(dto);
+		return new ModelAndView("reservation/reservation");
+	}
+	
+	@RequestMapping("/reservation/clientlist")
+	public ModelAndView list() {
+		ModelAndView mView = new ModelAndView();
+		res_service.getListReservation(mView);
+		return mView;
+	}
 
 
 }
