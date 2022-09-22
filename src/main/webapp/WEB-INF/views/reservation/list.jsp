@@ -10,13 +10,15 @@
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
 <style>
-   .reservationForm{
-      border : 1px solid red;
-      display : none;
-   }
-   .col {
-   	float : left;
-   }
+	.reservationForm{
+		border : 1px solid red;
+		display : none;
+	}
+	
+	.col{
+		float:left;
+		
+	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
@@ -35,87 +37,90 @@
          </p>
       </c:otherwise>
    </c:choose>
-   
-  <input type="date" id="check_in" name="check_in"  />
-  <input type="date" id="check_out" name="check_out" />
+	
+	<input type="date" id="check_in" name="check_in"  />
 
-   <div class="row">
-   <h1>방 목록</h1>
-      <c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-         <div class="col">
-	         <div class="card">
-	            <img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
-	            <div class="card-body">
-	               <h4 class="card-title">${tmp.room_name }</h4>
-	               <p class="card-text">
-	                   기준:2인 ~ 최대:${tmp.room_people }
-	               </p>
-	                <button onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail">예약</button>
-	            </div>    
-	         </div>
-	     </div>
-         <div id="reservationForm${status.index }" class="reservationForm">
-            <img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
-            <table>
-               <tr>
-                  <th>객실구조</th>
-                  <td>${tmp.room_structure }</td>
-               </tr>
-               <tr>
-                  <th>객실평수</th>
-                  <td>${tmp.room_size }평</td>
-               </tr>
-               <tr>
-                  <th>숙박인원</th>
-                  <td>최대${tmp.room_people }</td>
-               </tr>
-               <tr>
-                  <th>비품</th>
-                  <td>${tmp.room_items }</td>
-               </tr>
-               <tr>
-                  <th>침실타입</th>
-                  <td>${tmp.bedroom_type }</td>
-               </tr>
-               <tr>
-                  <th>소개</th>
-                  <td>${tmp.room_introduce }</td>
-               </tr>                  
-            </table>
-            
-            <p>숙박기간</p>
-            <div class="date"></div>박
-            <p>이용인원</p>
-            <button onclick="javascript:minusNum(${status.index });">-</button>
-            <input id="inputPeople${status.index }" type="text" value="2" disabled/>
-            <button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');">+</button>
-            <p>-성인 추가금 2만원입니다</p>
-            <table>
-               <tr>
-                  <th>객실요금</th>
-                  <td id="roomPricePrint${status.index }">${tmp.room_price }</td>
-               </tr>
-               <tr>
-                  <th>인원추가 요금</th>
-                  <td id="addCharge${status.index }">0</td>
-               </tr>
-               <tr>
-                  <th>총요금</th>
-                  <td id="totalPrice${status.index }">0</td>
-               </tr>         
-            </table>
-            <button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit">선택완료</button>
-            <button data-value="${status.index }" id="testCancle${status.index }">선택취소</button>
-         </div>
-      </c:forEach>
-      
-      <form id="submitForm" action="reservationform.do", method="post">
-         <input id="num" type="hidden" name="num"/>
-         <input id="inputIn" type="hidden" name="check_in"/>
-         <input id="inputOut" type="hidden" name="check_out"/>
-         <input id="peopleNum" type="hidden" name="peopleNum"/>
-      </form>
-   </div>
+	<input type="date" id="check_out" name="check_out" />
+
+	
+	<div class="row">
+	<h1>방 목록</h1>
+		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
+		<div class="col">
+			<div class="card">
+				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
+				<div class="card-body">
+					<h4 class="card-title">${tmp.room_name }</h4>
+					<p class="card-text">
+					 	기준:2인 ~ 최대:${tmp.room_people }
+					</p>
+					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail">예약</button>
+				</div>	 
+			</div>
+		</div>
+			<div id="reservationForm${status.index }" class="reservationForm">
+				<img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
+				<table>
+					<tr>
+						<th>객실구조</th>
+						<td>${tmp.room_structure }</td>
+					</tr>
+					<tr>
+						<th>객실평수</th>
+						<td>${tmp.room_size }평</td>
+					</tr>
+					<tr>
+						<th>숙박인원</th>
+						<td>최대${tmp.room_people }</td>
+					</tr>
+					<tr>
+						<th>비품</th>
+						<td>${tmp.room_items }</td>
+					</tr>
+					<tr>
+						<th>침실타입</th>
+						<td>${tmp.bedroom_type }</td>
+					</tr>
+					<tr>
+						<th>소개</th>
+						<td>${tmp.room_introduce }</td>
+					</tr>						
+				</table>
+				
+				<p>숙박기간</p>
+				<div class="date"></div>박
+				<p>이용인원</p>
+				<button onclick="javascript:minusNum(${status.index });">-</button>
+				<input id="inputPeople${status.index }" type="text" value="2" disabled/>
+				<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');">+</button>
+				<p>-성인 추가금 2만원입니다</p>
+				<table>
+					<tr>
+						<th>객실요금</th>
+						<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
+					</tr>
+					<tr>
+						<th>인원추가 요금</th>
+						<td id="addCharge${status.index }">0</td>
+					</tr>
+					<tr>
+						<th>총요금</th>
+						<td id="totalPrice${status.index }">0</td>
+					</tr>			
+				</table>
+				<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit">선택완료</button>
+				<button data-value="${status.index }" id="testCancle${status.index }">선택취소</button>
+			</div>
+		</c:forEach>
+		
+		<form id="submitForm" action="reservationform.do", method="post">
+			<input id="num" type="hidden" name="num"/>
+			<input id="inputIn" type="hidden" name="check_in"/>
+			<input id="inputOut" type="hidden" name="check_out"/>
+			<input id="peopleNum" type="hidden" name="peopleNum"/>
+		</form>
+	</div>
+
 </div>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
