@@ -8,6 +8,7 @@
 <title>/views/notice/list.jsp</title>
 </head>
 <body>
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 	<h1>공지사항 페이지</h1>
 	<p>공지사항과 다양한 소식을 확인해보세요.</p>
 	지수테이 - 공지사항

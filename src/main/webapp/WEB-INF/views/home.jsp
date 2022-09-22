@@ -8,14 +8,12 @@
 <title>Welcome to JiSutay</title>
 
 <link rel="stylesheet" type="text/css" href="css/common.css">
-<script type="text/javascript" src="js/modify.js" defer=""></script>
-<script type="text/javascript" src="js/common.js" defer=""></script>
-
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
-
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/modify.js" ></script>
+<script type="text/javascript" src="js/common.js" ></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 </head>
@@ -24,11 +22,6 @@
 	
 	<!-- navbar include -->
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	
 	<section>
 		<!-- 메인 비디오 -->
