@@ -9,11 +9,11 @@
 <title>지수테이 - 소랑제</title>
 
 <jsp:include page="/include/starRating_style.jsp"></jsp:include>
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<script type="text/javascript" src="js/modify.js" defer=""></script>
-<script type="text/javascript" src="js/common.js" defer=""></script>
 
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+ 
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+
 
 <style>
 	.content{
@@ -28,7 +28,6 @@
 		border-radius: 50%;
 	}
 	
-	/* ul default style 제거 */
 	.comments ul{
 	padding: 0;
 	margin: 0;
@@ -94,15 +93,8 @@
 		animation: rotateAni 1s ease-out infinite;
 	}
 	
-	@keyframes rotateAni{
-		0%{
-			transform: rotate(0deg);
-		}
-		100%{
-			transform: rotate(360deg);
-		}
-	}
 </style>
+
 
 </head>
 <body id="rooms" class="detail">
