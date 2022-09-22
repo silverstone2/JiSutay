@@ -29,4 +29,28 @@ public class RoomController {
 		return mav;
 	}
 	
+	@RequestMapping("/room/room1.do")
+	public String room1(HttpServletRequest request) {
+		
+		return "room/room2";
+	}
+	
+	@RequestMapping("/room/room2.do")
+	public String room2(HttpServletRequest request) {
+		
+		return "room/room2";
+	}
+	
+	@RequestMapping("/room/room3.do")
+	public String room3(HttpServletRequest request) {
+		
+		return "room/room3";
+	}
+	
+	@RequestMapping("/room/room4.do")
+	public String room4(HttpServletRequest request) {
+		
+		return "room/room4";
+	}
+
 }

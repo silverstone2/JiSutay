@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>signup</title>
-<jsp:include page="/include/style.jsp"></jsp:include>
+<jsp:include page="/resources/include/style.jsp"></jsp:include>
 </head>
 <body>
 	<div class="container-fluid mb-4">
