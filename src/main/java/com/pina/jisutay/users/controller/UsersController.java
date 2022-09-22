@@ -51,7 +51,6 @@ public class UsersController {
 		return mav;
 	}
 	
-	
 	// 로그아웃 기능
 	@RequestMapping("/users/logout.do")
 	public String logout(HttpServletRequest req) {
