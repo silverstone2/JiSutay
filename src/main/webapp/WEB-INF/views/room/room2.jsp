@@ -17,8 +17,6 @@
 
 <body id="rooms" class="detail">
 
-	<!-- navbar include -->
-
 
 	<section>	
 		<!-- 메인 이미지 -->
@@ -111,3 +109,6 @@
 		<a href="#Visuals"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/topbtn2.png" title="위로 가기"></a>
 	</div>
 </body>
+
+
+<!-- 임시 -->
