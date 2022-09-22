@@ -8,7 +8,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<script>
 	alert("방정보를 수정하였습니다.");
-	location.href="${pageContext.request.contextPath}/room_SH/list.do";
+	location.href="${pageContext.request.contextPath}/room_SH/list.do?num=${param.num }";
+	</script>
 </body>
 </html>

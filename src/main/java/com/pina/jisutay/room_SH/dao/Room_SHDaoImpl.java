@@ -33,8 +33,9 @@ public class Room_SHDaoImpl implements Room_SHDao {
 
 	@Override
 	public void update(Room_SHDto dto) {
-
-		session.update("room_SH.upate", dto);
+		System.out.println("dao : "+dto.getNum());
+		session.update("room_SH.update", dto);
+		System.out.println("sql 실행 완료");
 	}
 
 	@Override

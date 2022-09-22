@@ -18,7 +18,7 @@
 	</select>
 	<update id="update" parameterType="room_SHDto">
 		UPDATE room
-		SET num=#{num}, room_name=#{room_name}, room_price=#{room_price}, room_structure=#{room_structure}, room_size=#{room_size}, room_people=#{room_people}, room_items=#{room_items}, bedroom_type=#{bedroom_type}, room_introduce=#{room_introduce}, img_path=#{img_path}
+		SET room_structure=#{room_structure}, room_size=#{room_size}, room_people=#{room_people}, room_items=#{room_items}, room_introduce=#{room_introduce}, img_path=#{img_path}
 		WHERE num=#{num}
 	</update>
 	<delete id="delete" parameterType="int">

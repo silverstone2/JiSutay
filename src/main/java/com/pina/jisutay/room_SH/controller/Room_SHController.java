@@ -19,7 +19,8 @@ public class Room_SHController {
 	Room_SHService service;
 	
 	@RequestMapping("/room_SH/list")
-	public String list(HttpServletRequest req) {
+	public String list(HttpServletRequest req, int num) {
+		req.setAttribute("num", num);
 		service.getData(req);
 		return "room_SH/list";
 	}
@@ -51,6 +52,7 @@ public class Room_SHController {
 	@RequestMapping(value = "/room_SH/update", method = RequestMethod.POST)
 	public String update(Room_SHDto dto, MultipartHttpServletRequest mtfReq) {
 		service.update(dto, mtfReq);
+		System.out.println("완료됨");
 		return "room_SH/update";
 	}
 	

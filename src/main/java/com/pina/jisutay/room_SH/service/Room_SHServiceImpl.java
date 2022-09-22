@@ -59,8 +59,7 @@ public class Room_SHServiceImpl implements Room_SHService {
 		int num = Integer.parseInt(req.getParameter("num"));
 		Room_SHDto dto=dao.getData(num);
 		List<String> imgList = Arrays.asList(dto.getImg_path().split(","));
-		int imgNum = imgList.size();
-		req.setAttribute("imgNum", imgNum);
+		// System.out.println("imgList:"+imgList);
 		req.setAttribute("dto", dto);
 		req.setAttribute("imgList", imgList);
 		
@@ -80,9 +79,13 @@ public class Room_SHServiceImpl implements Room_SHService {
         for (MultipartFile mf : fileList) {
         	String originFileName = mf.getOriginalFilename();
             String saveFileName =System.currentTimeMillis() + originFileName;
+    		try {
+    			mf.transferTo(new File(filePath + saveFileName));
+    		}catch(Exception e) {
+    			e.printStackTrace();
+    		}
             imgPathList.add("/upload/" + saveFileName);
-        }
-        
+        }       
         String img_path = String.join(",", imgPathList);
         System.out.println(img_path);
         dto.setImg_path(img_path);

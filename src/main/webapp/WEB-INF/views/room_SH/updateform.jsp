@@ -13,8 +13,9 @@
 <body>
 	<div class="container">
 		<h1>객실 수정하기.</h1>
-		<form action="${pageContext.request.contextPath }/room_SH/update.do" method="post" enctype="multipart/form-data">
-			<input type="hidden" name="num" value="${dto.num }" />
+		${param.num }
+		<form action="${pageContext.request.contextPath }/room_SH/update.do?" method="post" enctype="multipart/form-data">
+			<input type="hidden" name="num" value="${param.num }" />
 		      	<div class="mb-3">
 		         	<label for="room_structure" class="form-label"></label>
 		         	    <div class="input-group has-validation">
@@ -76,7 +77,7 @@
 	  							<path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
 							</svg>
 	      				</span>
-	     				<textarea  class="form-control" name="caption" id="caption" required>${dto.room_introduce }</textarea>
+	     				<textarea  class="form-control" name="room_introduce" id="room_introduce" required>${dto.room_introduce }</textarea>
 	      				<div id="room_introduceValid" class="invalid-feedback"></div>
 	    			</div>
 	  			</div>
