@@ -1,23 +1,34 @@
 package com.pina.jisutay.comments.dto;
 
-import java.util.List;
-
 public class CommentsDto {
+	// comments 테이블 칼럼
 	private int num;
 	private String writer;
 	private String room_img;
-	private int score;
+	private double score;
 	private String regdate;
 	private String content;
 	private String target_id;
 	private int room_num;
 	private int comment_num;
 	private String deleted;
+	private int startRowNum;
+	private int endRowNum;
+	private int commCount;
+	
+	// users 테이블 칼럼
+	private String name;
+	private String profile;
+
+	// 정렬 키워드 변수
+	private String sort;
+	
 	
 	public CommentsDto() {}
-	
-	public CommentsDto(int num, String writer, String room_img, int score, String regdate, String content,
-			String target_id, int room_num, int comment_num, String deleted) {
+
+	public CommentsDto(int num, String writer, String room_img, double score, String regdate, String content,
+			String target_id, int room_num, int comment_num, String deleted, int startRowNum, int endRowNum,
+			int commCount, String name, String profile, String sort) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -29,6 +40,12 @@ public class CommentsDto {
 		this.room_num = room_num;
 		this.comment_num = comment_num;
 		this.deleted = deleted;
+		this.startRowNum = startRowNum;
+		this.endRowNum = endRowNum;
+		this.commCount = commCount;
+		this.name = name;
+		this.profile = profile;
+		this.sort = sort;
 	}
 	
 	public int getNum() {
@@ -49,10 +66,10 @@ public class CommentsDto {
 	public void setRoom_img(String room_img) {
 		this.room_img = room_img;
 	}
-	public int getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(int score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 	public String getRegdate() {
@@ -90,5 +107,53 @@ public class CommentsDto {
 	}
 	public void setDeleted(String deleted) {
 		this.deleted = deleted;
+	}
+	
+	public int getStartRowNum() {
+		return startRowNum;
+	}
+
+	public void setStartRowNum(int startRowNum) {
+		this.startRowNum = startRowNum;
+	}
+
+	public int getEndRowNum() {
+		return endRowNum;
+	}
+
+	public void setEndRowNum(int endRowNum) {
+		this.endRowNum = endRowNum;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getProfile() {
+		return profile;
+	}
+
+	public void setProfile(String profile) {
+		this.profile = profile;
+	}
+
+	public int getCommCount() {
+		return commCount;
+	}
+
+	public void setCommCount(int commCount) {
+		this.commCount = commCount;
+	}
+
+	public String getSort() {
+		return sort;
+	}
+
+	public void setSort(String sort) {
+		this.sort = sort;
 	}
 }
