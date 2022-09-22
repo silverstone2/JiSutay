@@ -25,7 +25,7 @@ public class NoticeServiceImpl implements NoticeService{
 	@Override
 	public void getList(HttpServletRequest req) {
 		
-		final int PAGE_ROW_COUNT = 10;
+		final int PAGE_ROW_COUNT = 15;
 		final int PAGE_DISPLAY_COUNT = 5;
 		
 		int pageNum=1;

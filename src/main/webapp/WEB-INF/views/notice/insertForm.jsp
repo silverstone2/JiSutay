@@ -9,12 +9,12 @@
 <style>
 	
 	.container{
-	margin-left: 33%;
-	margin-right: 33%;
+	margin-left: 28%;
+	margin-right: 28%;
 	}
 	
 	.insertTable {
-		width:575px;
+		width:767px;
 		border-right:none;
 		border-left:none;
 		border-top:none;
@@ -22,16 +22,30 @@
 		
 	}
 	#insertForm{
-		margin-top:10%;
+		margin-top:5%;
 	}
-	.buttonEffect{
-   		/* border-width: 1px 1px 1px 1px; */
-		border-style: thin;
-		border-color: pink; 
+
+	.buttonEffect {
+		width:767px;
+		height: 50px;
+		text-align:center;
+		vertical-align: baseline;
+		background-color:#E0E0E0;
+		margin-top: 10px;
+		padding: 10px 0 10px;
+		font-size: 15px;
 	}
-	.form-control {
-		font-size: 30px;
-		border:0px;
+	.buttonEffect > a{
+		text-decoration: none;
+		color: #808080;
+	}
+	.buttonA{
+		background-color:rgba(0,0,0,0);
+		border:0;
+		outline:0;
+	}
+	.form-control{
+		font-size:30px;
 	}
 }
 </style>
@@ -42,15 +56,17 @@
 		<div class="insertTable input-group mb-3" >
 			<!-- <label for="title" style="width:40px; margin-top:5px ">제   목</label> -->
 			<input type="text" name="title" id="title" class="form-control" placeholder="제목을 적으세요." 
-			aria-label="Username" aria-describedby="basic-addon2" style="width:500px; border-radius: 10px 10px 10px 10px;">
+			aria-label="Username" aria-describedby="basic-addon2" border-radius: 10px 10px 10px 10px;">
 		</div>
 		<div class="insertTable">
 			<label for="content" style="display:none">내용</label>
-			<textarea name="<content></content>" id="content" cols="30" rows="10"></textarea>
+			<textarea name="content" id="content" cols="99" rows="25"></textarea>
 		</div>
-		<div style="text-align:center; width:575px;">
-			<button type="button" onclick="location.href='list.do'" >취소</button>
-			<button type="submit" >저장</button>
+		<div class="buttonEffect">
+			<button type="button" onclick="location.href='list.do'" class="buttonA">취소</button>
+		</div>
+		<div class="buttonEffect">
+			<button type="submit" class="buttonA">저장</button>
 		</div>
 	</form>
 </div>

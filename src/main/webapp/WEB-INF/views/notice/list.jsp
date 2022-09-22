@@ -8,10 +8,89 @@
 <title>/views/notice/list.jsp</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
-	.container{
-		margin-left: 25%;
-		margin-right: 25%;
+	/*@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+	@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
+	
+	button {
+	  margin-bottom: 0.5em;
 	}
+	
+	a,
+	a:visited {
+	  text-decoration: none;
+	  color: #00AE68;
+	}
+	
+	.clear {
+	  clear: both;
+	}
+	
+	.pageTitle {
+	  font-size: 2em;
+	  font-weight: 700;
+	  text-transform: uppercase;
+	  line-height: 1em;
+	  color: #00AE68;
+	}
+	
+	.pageSubTitle {
+	  margin-bottom: 0.5em;
+	  font-size: 1.3em;
+	  font-weight: 700;
+	  line-height: 1em;
+	  color: #222;
+	}
+	
+	.articleTitle {
+	  font-size: 1.15em;
+	  font-weight: 700;
+	  line-height: 1em;
+	  color: #222;
+	}
+	
+	.wrapper {
+	  width: 600px;
+	  margin: 20px auto;
+	}
+	
+	.container {
+	  padding-top: 1em;
+	  margin-top: 1em;
+	  
+	}
+	
+	a.button {
+	  display: block;
+	  position: relative;
+	  float: left;
+	  width: 80px;
+	  padding: 0;
+	  margin: 10px 20px 10px 0;
+	  font-weight: 600;
+	  text-align: center;
+	  line-height: 40px;
+	  color: #FFF;
+	  border-radius: 5px;
+	  transition: all 0.2s ;
+	}
+	
+	.btnLightBlue {
+	  background: #CCCCFF;
+	}
+	
+	.btnLightBlue.btnPush {
+	  box-shadow: 0px 5px 0px 0px #6666FF;
+	}
+	
+	.btnPush:hover {
+	  margin-top: 15px;
+	  margin-bottom: 5px;
+	}
+	
+	.btnLightBlue.btnPush:hover {
+	  box-shadow: 0px 0px 0px 0px #1E8185;
+	}
+	/*@@@@@@@@@@@@*/
 	/* 제목a 부분  */
 	tr td a{
 		color: black;
@@ -27,17 +106,19 @@
 	}
 	/* 제목a 부분  끝*/
 	tr th {
-		background-color : #d9efed;
+		background-color : #E0E0E0;
 		text-align: center;
 		border-collapse : collapse;
-		border : 0px solid #d9efed;
+		border : 0px solid #E0E0E0;
+		height: 35px;
 	}
 	
 	tr td {
 		text-align: center;
+		height: 35px;
 	}
 	.listTable{
-		width: 850px;
+		width: 100%;
 		border-right:none;
 		border-left:none;
 		border-top:none;
@@ -50,6 +131,9 @@
 		text-decoration: none;
 	}
 	
+	.page-ui {
+		font-size: 24px;
+	}
 	.page-ui a:hover{
 		text-decoration: none;
 	}
@@ -62,6 +146,7 @@
 	.page-ui ul{
 		list-style-type: none;
 		padding: 0;
+		display: inline-block; 
 	}
 	
 	.page-ui ul > li{
@@ -69,35 +154,46 @@
 		padding: 5px;
 	}
 	.clearfix {
-		width: 850px;
+		width: 100%;
 		border-right:none;
 		border-left:none;
 		border-top:none;
 		border-bottom:none;
-		
-		margin-left: 30%;
-		margin-right: 30%;
 		border-width: 2px;
+		margin-bottom: 0px;
+		padding-bottom: 0px;
+		text-align: center;
+		margin-top: 20px;
 	}
-	.buttonEffect{
-   		/* border-width: 1px 1px 1px 1px; */
-		border-style: thin;
-		border-color: pink; 
+	
+	table {
+	    border-top: 1px solid #C6C6C6;
+	    border-collapse: collapse;
+	 }
+	th, td {
+	    border-bottom: 1px solid #C6C6C6;
+	 }
+	h1, p {
+		width:fit-content;
+        margin:auto;
 	}
+	select{
+		width: 100px;
+		height: 30px;
+	}
+	div .aa{
+		float:right;
+	}
+	
 </style>
 </head>
 <body>
 <div class="container">
-	<h1>공지사항 페이지</h1>
+	<h1>공지사항</h1>
 	<p>공지사항과 다양한 소식을 확인해보세요.</p>
-	<c:choose>
-		<c:when test="${id eq 'admin'}">
-			<!-- <a href="insertForm.do">새 공지 작성 </a> -->
-			<button type="button" class="buttonEffect" onclick="location.href='insertForm.do'">새 글 작성</button>		
-		</c:when>
-	</c:choose>
 	<br />
-	<table class="listTable table-primary">
+	<p></p>
+	<table class="listTable table-primary mt-5">
 		<thead>
 			<tr>
 				<th>번호</th>
@@ -107,6 +203,7 @@
 				<!-- <th>내용</th> -->
 				<th>조회</th>
 			</tr>
+
 		</thead>
 		
 		<tbody>
@@ -124,8 +221,9 @@
 		</c:forEach>
 		</tbody>
 	</table>
+<div>
 	<!-- 페이지 부분 -->
-	<div class="page-ui clearfix">
+	<div class="page-ui clearfix aa" style="float:right;">
 		<ul>
 			<c:if test="${startPageNum ne 1 }">
 				<li>
@@ -152,20 +250,30 @@
 		</ul>
 	</div>
 	<!-- 페이지 부분 끝 -->
+	<!-- 새글 작성 -->
+	<c:choose>
+		<c:when test="${id eq 'admin'}">
+			<div class="aa">
+				<a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue" style="margin: 0px;">새글작성</a>		
+			</div>
+		</c:when>
+	</c:choose>
+	<!-- 새글 작성 끝 -->
+</div>
 	<div style="clear:both;"></div>
 
 	
 	<!-- 검색 부분 -->
-	<div style="text-align:center; width:850px;">
+	<div style="text-align:center; width:100%;">
 		<form action="list.do" method="get"> 
-			<label for="condition">검색조건</label>
+			<label for="condition"><strong>검색</strong></label>
 			<select name="condition" id="condition">
 				<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
 				<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
 				<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
 			</select>
 			<input type="text" id="keyword" name="keyword" placeholder="검색어..." value="${keyword }"/>
-			<button type="submit" class="buttonEffect">검색</button>
+			<button class="btn btn-primary btn-sm" type="submit" >찾기</button>
 		</form>	
 		<c:if test="${ not empty condition }">
 			<p>
@@ -174,10 +282,6 @@
 		</c:if>
 	</div>
 	<!-- 검색 부분 끝 -->
-	<!-- 처음으로 -->
-	<button type="button" class="buttonEffect" onclick="location.href='${pageContext.request.contextPath}/home.do' ">첫 화면</button>
-	<!-- 처음으로 끝 -->
-		
 </div>
 </body>
 </html>

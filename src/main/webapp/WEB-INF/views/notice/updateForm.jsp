@@ -8,27 +8,48 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
 	.container{
-		margin-left:33%;
-		margin-right:33%;
+		margin-left:28%;
+		margin-right:28%;
 	}
 	
 	.updateTable {
-		width:575px;
+		width:768px;
 		border-right:none;
 		border-left:none;
 		border-top:none;
 		border-bottom:none;
 	}
-	.buttonEffect{
-   		/* border-width: 1px 1px 1px 1px; */
-		border-style: thin;
-		border-color: pink; 
+		#updateForm{
+		margin-top:5%;
+	}
+
+	.buttonEffect {
+		width:768px;
+		height: 50px;
+		text-align:center;
+		vertical-align: baseline;
+		background-color:#E0E0E0;
+		margin-top: 10px;
+		padding: 10px 0 10px;
+		font-size: 15px;
+	}
+	.buttonEffect > a{
+		text-decoration: none;
+		color: #808080;
+	}
+	.buttonA{
+		background-color:rgba(0,0,0,0);
+		border:0;
+		outline:0;
+	}
+	.form-control{
+		font-size:30px;
 	}
 </style>
 </head>
 <body>
 <div class="container">
-	<h1>수정 폼</h1>
+	<h1>수정</h1>
 	<form action="update.do" method="post" id="updateForm">
 	<input type="hidden" name="num" value="${dto.num }" />
 		<%-- <div>
@@ -40,17 +61,19 @@
 			<input type="text" id="writer" value="${dto.writer }" disabled/>
 		</div> --%>
 		<div class="updateTable input-group mb-3">
-			<label for="title" style="width:40px; margin-top:5px ">제   목</label>
+			<!-- <label for="title" style="width:40px; margin-top:5px ">제   목</label> -->
 			<input type="text" name="title" id="title" class="form-control" value="${dto.title }" 
-			aria-label="Username" aria-describedby="basic-addon2" style="width:500px; border-radius: 10px 10px 10px 10px;">
+			aria-label="Username" aria-describedby="basic-addon2" border-radius: 10px 10px 10px 10px;">
 		</div>
 		<div>
 			<label for="content" style="display:none">내용</label>
-			<textarea name="content" id="content" cols="30" rows="10">${dto.content }</textarea>
+			<textarea name="content" id="content" cols="100" rows="25">${dto.content }</textarea>
 		</div>
-		<div style="text-align:center; width:575px;">
-			<button type="button" onclick="location.href='list.do'" class="buttonEffect">취소</button>
-			<button type="submit" class="buttonEffect">수정</button>
+		<div class="buttonEffect">
+			<button type="button" onclick="location.href='list.do'" class="buttonA">취소</button>
+		</div>
+		<div class="buttonEffect">
+			<button type="submit" class="buttonA">수정</button>
 		</div>
 	</form>
 </div>
