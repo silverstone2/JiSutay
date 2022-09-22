@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'FuturaStd-Book';
+	font-style: normal;
+	src: url('../font/FuturaStd-Book.ttf');
+	src: url('../font/FuturaStd-Book.woff');
+}
+@font-face {
+	font-family: 'nanumbarungothicregular';
+	font-style: normal;
+	src: url('../font/nanumbarungothicregular.eot');
+	src: url('../font/nanumbarungothicregular.ttf');
+	src: url('../font/nanumbarungothicregular.woff');
+}
+
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+/*table, caption, tbody, tfoot, thead, tr, th, td,*/
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video
+{
+	margin:0;border:0;outline:0;padding:0;background:transparent;
+	font-family:'FuturaStd-Book','nanumbarungothicregular', 돋움, Dotum, sans-serif;
+	font-style:normal; font-weight:normal;vertical-align:baseline;
+}
+
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+body					{line-height:1}
+ol,ul					{list-style:none}
+blockquote,q 			{quotes:none}
+blockquote:before,
+blockquote:after,
+q:before,q:after		{content:'';content:none}
+table					{border-collapse:collapse;border-spacing:0}
+hr						{display:none}
+a:link					{color:#000;text-decoration:none}
+a:visited				{color:#000;text-decoration:none}
+a:hover					{color:#000;text-decoration:none}
+a:active				{color:#000;text-decoration:none}
+.both					{clear:both}
+.clear					{width:auto}
+.clear:after			{content:"";display:block;clear:both;height:0;overflow:hidden}
+#skipnavi,.alt			{position:absolute;top:0;left:0;width:0;height:0;font-size:0;line-height:0;visibility:hidden;overflow:hidden}
+label					{vertical-align:middle;cursor:pointer}
+input					{vertical-align:middle}
