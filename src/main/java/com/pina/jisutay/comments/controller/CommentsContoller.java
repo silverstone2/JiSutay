@@ -61,6 +61,7 @@ public class CommentsContoller {
 		service.updateComment(dto);
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("isSuccess", true);
+		System.out.println("업데이트 수행");
 		return map;
 	}
 }

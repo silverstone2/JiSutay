@@ -45,15 +45,19 @@
 					<div class="thumb"><img src="${pageContext.request.contextPath }/resources/images/${dto.num}.png" /></div>
 					<div><p>${dto.room_name }</p></div>
 				</td>
-				<td>${check_in }~${check_out }</td>
-				<td>${peopleNum }</td>
+				<td>
+					<span>${param.check_in }</span>
+					~
+					<div>${param.check_out }</div>
+				</td>
+				<td>${param.peopleNum }</td>
 			</tr>
 			<tr>
 				<td>
 					<span>₩</span>
 					<span id="room_price"></span>
 				</td>
-				<td>₩ ${20000*(peopleNum -2)}</td>
+				<td>₩ ${20000*(param.peopleNum -2)}</td>
 			</tr>
 			<tr>
 				<td colspan="3">
@@ -109,21 +113,21 @@
 	
 	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 	<script>
-	var check_in = new Date("${check_in}");
-	var check_out = new Date("${check_out}");
+	var check_in = new Date("${param.check_in}");
+	var check_out = new Date("${param.check_out}");
 	var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
 	var room_price = dateDiff * ${dto.room_price};
 	
 	$(function() {
 		//페이지 로딩시점에 방가격 , 인원추가가격 위에 표에 담기
 		$("#room_price").text(room_price.toLocaleString());
-		$("#total_price").text((room_price + ${20000*(peopleNum -2)}).toLocaleString());
+		$("#total_price").text((room_price + ${20000*(param.peopleNum -2)}).toLocaleString());
 		
 		//페이지 로딩시점에 resevation.jsp로 보내는 form에 담기
 		$("#res_id").val("${id}");
-		$("#check_in").val("${check_in}");
-		$("#check_out").val("${check_out}");
-		$("#res_people").val(${peopleNum});
+		$("#check_in").val("${param.check_in}");
+		$("#check_out").val("${param.check_out}");
+		$("#res_people").val(${param.peopleNum});
 		$("#room_num").val(${dto.num});
 	});
 	
