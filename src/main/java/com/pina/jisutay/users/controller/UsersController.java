@@ -47,6 +47,7 @@ public class UsersController {
 	@RequestMapping("/users/login.do")
 	public ModelAndView login(UsersDto dto, ModelAndView mav, HttpServletRequest req) {
 		service.checkUser(dto, mav, req);
+		mav.setViewName("redirect:/home.do");
 		return mav;
 	}
 	

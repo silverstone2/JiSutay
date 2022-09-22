@@ -31,7 +31,7 @@ public class ReservationController {
 	@RequestMapping("/reservation/list")
 	public ModelAndView detail(HttpServletRequest request, ModelAndView mav, ReservationDto dto) {
 		
-		service.getDetail(request, mav);
+		service.getList(request);
 		mav.setViewName("reservation/list");
 		return mav;
 	}
@@ -39,7 +39,7 @@ public class ReservationController {
 	@RequestMapping(value="/reservation/reservationform.do", method=RequestMethod.POST)
 	public ModelAndView detail(ModelAndView mav, HttpServletRequest request) {
 		
-		service.getDetail(request, mav);
+		service.getList(request);
 		mav.setViewName("reservation/reservationform");
 		return mav;
 	}
