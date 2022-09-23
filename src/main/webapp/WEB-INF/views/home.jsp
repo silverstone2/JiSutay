@@ -7,22 +7,20 @@
 <meta charset="UTF-8">
 <title>Welcome to JiSutay</title>
 
-<link rel="stylesheet" type="text/css" href="css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="js/modify.js" ></script>
-<script type="text/javascript" src="js/common.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 </head>
 
 <body id="rooms_pv" class="preview">
-	
 	<!-- navbar include -->
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
-	
 	<section>
 		<!-- 메인 비디오 -->
 		<div class="section video" id="Videos">
@@ -85,8 +83,8 @@
 								<br />
 							</h3>
 							<div>
-							<div></div>
-							<span>Detail</span>
+								<div></div>
+								<span>Detail</span>
 							</div>
 						</a>
 					</div>
@@ -103,8 +101,8 @@
 								<br />
 							</h3>
 							<div>
-							<div></div>
-							<span>Detail</span>
+								<div></div>
+								<span>Detail</span>
 							</div>
 						</a>
 					</div>
@@ -114,19 +112,8 @@
 	</section>
 	
 	
-	<h1>인덱스 페이지 테스트중</h1>
-	<a href="${pageContext.request.contextPath }/travel/list.do">주변여행지</a>
 	<a href="${pageContext.request.contextPath }/room_SH/list.do?num=1">객실</a>
 
-	<c:choose>
-		<c:when test="${empty id }">
-			<a href="users/signupform.do">회원가입</a>
-			<a href="users/loginform.do">로그인</a>
-		</c:when>
-		<c:otherwise>
-			<a href="users/logout.do">로그아웃</a>
-		</c:otherwise>
-	</c:choose>
 	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
 	<!-- footer include -->
 	<jsp:include page="/resources/include/footer.jsp"></jsp:include>

@@ -6,9 +6,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
+
 <style>
 	.reservationForm{
 		border : 1px solid red;
@@ -20,11 +29,15 @@
 		
 	}
 </style>
+
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
+	
+<!-- navbar include -->
+<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+
 <div class="container">
-   <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
    <c:choose>
       <c:when test="${empty id }">
          <p>
@@ -40,9 +53,7 @@
    </c:choose>
 	
 	<input type="date" id="check_in" name="check_in"  />
-
 	<input type="date" id="check_out" name="check_out" />
-
 	
 	<div class="row">
 	<h1>방 목록</h1>
@@ -59,7 +70,7 @@
 				</div>	 
 			</div>
 		</div>
-			<div id="reservationForm${status.index }" class="reservationForm">
+		<div id="reservationForm${status.index }" class="reservationForm">
 				<img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
 				<table>
 					<tr>

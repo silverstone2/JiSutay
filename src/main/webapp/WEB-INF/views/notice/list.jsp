@@ -6,6 +6,14 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/notice/list.jsp</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 </head>
 <body>
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>

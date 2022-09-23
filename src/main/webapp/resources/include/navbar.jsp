@@ -4,12 +4,12 @@
 
 <header>
 	<hgroup>
-		<h1><a href="#"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo.png" width="190" height="80"></a></h1>
+		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo.png" width="190" height="80"></a></h1>
 		<div><p>제주도 힐링 감성을 가득 담은 <span>"지수테이"</span></p></div>
 	</hgroup>
 	<nav>
 		<ul>
-			<li class="gb"><a href="#"><span class="en">ABOUT</span><span class="ko">지수테이</span></a>
+			<li class="gb"><a href="${pageContext.request.contextPath }/"><span class="en">ABOUT</span><span class="ko">지수테이</span></a>
 				<ul class="sub">
 					<li><a href="#">인사말</a></li>
 					<li><a href="#">외부전경</a></li>
@@ -47,13 +47,14 @@
         				<ul class="sub">
 							<li><a href="${pageContext.request.contextPath }/users/signupform.do">회원가입</a></li>
             				<li><a href="${pageContext.request.contextPath }/users/loginform.do">로그인</a></li>
-						</ul>			
+						</ul>
+					</li>			
 				</c:when>
 				
 				<c:otherwise>
 					<div class="container-fluid">
-						<a class="nav-bar-brand" href="${pageContext.request.contextPath }/">${id }</a> 님 로그인중...
-						<a class="nav-bar-brand" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a>		       
+							<a class="nav-bar-brand" href="${pageContext.request.contextPath }/">${id }</a> 님 로그인중...
+							<a class="nav-bar-brand" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a>	       
  					</div>
 				</c:otherwise>
 			</c:choose>
