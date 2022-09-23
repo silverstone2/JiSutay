@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="room">
 	<select id="getList" resultType="roomDto">
-		SELECT NUM, ROOM_NAME, ROOM_PRICE , ROOM_STRUCTURE , ROOM_SIZE, ROOM_PEOPLE , ROOM_ITEMS , BEDROOM_TYPE, ROOM_INTRODUCE
+		SELECT NUM, ROOM_NAME, ROOM_PRICE , ROOM_STRUCTURE , ROOM_SIZE, ROOM_PEOPLE , ROOM_ITEMS , BEDROOM_TYPE, ROOM_INTRODUCE, IMG_PATH
 		FROM ROOM
 		ORDER BY NUM ASC
 	</select>

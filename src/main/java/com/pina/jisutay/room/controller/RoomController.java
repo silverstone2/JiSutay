@@ -31,7 +31,6 @@ public class RoomController {
 	@RequestMapping("/room/detail")
 	public String detail(HttpServletRequest request) {
 		roomService.getDetail(request);
-		
 		commService.getList(request);
 		return "room/detail";
 	}
