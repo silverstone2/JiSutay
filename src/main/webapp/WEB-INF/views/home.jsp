@@ -35,51 +35,16 @@
 		<!-- 객실 바로가기 -->
 		<div class="section lists">
 			<div class="InBox">
+			<c:forEach var="tmp" items="${requestScope.list }">
 				<div>
 					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/oreum/1.jpg)"></div>
+						<div style="background-image:url(${pageContext.request.contextPath }${tmp.img_path })"></div>
 					</div>
 					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room1.do">
+						<a href="room/detail.do?num=${tmp.num }&sort=regdate">
 							<h3>
 								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>오  름</strong>
-								<br />
-							</h3>
-							<div>
-								<div></div>
-								<span>Detail</span>
-							</div>
-						</a>
-					</div>
-				</div>	
-				<div>
-					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/jami/1.jpg;"></div>
-					</div>
-					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room2.do">
-							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>자  미</strong>
-								<br />
-							</h3>
-							<div>
-								<div></div>
-								<span>Detail</span>
-							</div>
-						</a>
-					</div>
-				</div>		
-				<div>
-					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/bambyeol/1.jpg);"></div>
-					</div>
-					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room3.do">
-							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>밤  별</strong>
+								<strong>${tmp.room_name }</strong>
 								<br />
 							</h3>
 							<div>
@@ -89,31 +54,12 @@
 						</a>
 					</div>
 				</div>
-				<div>
-					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/dalbit/1.jpg);"></div>
-					</div>
-					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room4.do">
-							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>달  빛</strong>
-								<br />
-							</h3>
-							<div>
-								<div></div>
-								<span>Detail</span>
-							</div>
-						</a>
-					</div>
-				</div>
+			</c:forEach>		
 			</div>
 		</div>
 	</section>
 	
-	
 	<a href="${pageContext.request.contextPath }/room_SH/list.do?num=1">객실</a>
-
 	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
 	<!-- footer include -->
 	<jsp:include page="/resources/include/footer.jsp"></jsp:include>

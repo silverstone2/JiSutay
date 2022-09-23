@@ -328,6 +328,7 @@ html {scroll-behavior: smooth;}
 
 /*------------------------------------------------------------------------------------------------*/
 /* Tables */
+
 .tables .contents .InnerBox {max-width:1400px;min-width:1000px;padding:3% 0 7%;margin:0 auto;}
 .tables .contents .frame {position:relative;max-width:1300px;min-width:800px;margin:0 auto;}
 .tables .contents .frame h3 {width:98%;margin:0 auto;font-size:35px;}

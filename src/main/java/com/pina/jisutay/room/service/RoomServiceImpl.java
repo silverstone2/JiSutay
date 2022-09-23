@@ -19,9 +19,7 @@ public class RoomServiceImpl implements RoomService {
 	
 	@Override
 	public void getList(HttpServletRequest request) {
-		
-		RoomDto dto=new RoomDto();
-		List<RoomDto> list=roomDao.getList(dto);
+		List<RoomDto> list=roomDao.getList();
 		
 		//view page 에서 필요한 값을 request 에 담아준다. 
 		request.setAttribute("list", list);
@@ -36,6 +34,5 @@ public class RoomServiceImpl implements RoomService {
 		dto=roomDao.getData(dto);
 		
 		request.setAttribute("dto", dto);
-		
 	}
 }

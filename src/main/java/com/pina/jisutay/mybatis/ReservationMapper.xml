@@ -30,5 +30,9 @@
 		FROM reservation
 	</select>
 	
+	<select id="getCheckDate" resultType="Map">
+		SELECT room_num, TO_CHAR(check_in, 'YYYY-MM-DD') AS check_in, TO_CHAR(check_out, 'YYYY-MM-DD') AS check_out
+		FROM reservation
+	</select>
 
 </mapper>
