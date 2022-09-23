@@ -45,11 +45,11 @@
 				<iframe id="MyVideo" width="100%" height="100%" frameborder="0" allowfullscreen="" src="https://player.vimeo.com/video/657699230?h=8f0298d0a4?autoplay=1&amp;loop=1&amp;background=1" style="width: 1310px; height: 547px;" data-ready="true"></iframe>
 			</div>
 			<div class="title">
-				<h2 style="transform: translateY(0px); opacity: 1;">
+				<h2>
 					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt="">
 				</h2>
 			</div>
-			<div class="line" style="transform: translateY(0px); opacity: 1;"></div>
+			<div class="line"></div>
 		</div>
 		
 		<!-- 소개 문구 -->
@@ -66,75 +66,26 @@
 					지수테이에 오시는 당신에게 따뜻하고 편안한 여행을 약속드립니다.
 				</p>
 			</div>
-			<div class="section fotomara" id="exterior">
-				<div class="InBox">
-					<div class="fotorama" data-nav="thumbs" data-width="100%" data-ratio="800/600"  data-minwidth="400" data-maxwidth="1000" data-minheight="300" data-maxheight="100%">
-						<img src="${pageContext.request.contextPath }/Jisutayimage/about/1.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/2.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/3.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/4.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/5.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/6.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/7.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/8.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/9.jpg" width="150" height="100">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/10.jpg" width="150" height="100">
+			<!-- 소개 사진 -->
+			<div class="section fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
+				<div class="InBox" style="width:1200px;height:600px;">
+					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 600px;">
+						<img src="${pageContext.request.contextPath }/Jisutayimage/about/1.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/2.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/3.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/4.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/5.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/6.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/7.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/8.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/9.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/10.jpg">
 					</div>
 				</div>
 			</div>
 		</div>
 			
 			
-			<!-- 이미지 swiper
-			<div class="section Swipers" id="exterior">
-				<div class="InBox">
-					<div class="swiper-container swiper swiper-container-horizontal">
-						<div class="swiper-wrapper swiper-image">
-							<div class="swiper-slide swiper-slide-active" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/1.jpg)"></div>
-							</div>
-							<div class="swiper-slide swiper-slide-next" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/2.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/3.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/4.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/5.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/6.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/7.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/8.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/9.jpg)"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/10.jpg"></div>
-							</div>
-							<div class="swiper-slide" style="width: 1000px;">
-								<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/about/11.jpg)"></div>
-							</div>
-						</div>
-						<div class="swiper-button">
-							<div class="swiper-button-prev sbtn swiper-button-disabled"></div>
-							<div class="swiper-button-next sbtn"></div>
-							<div class="swiper-numb"><b>1</b>/<b>11</b></div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-		 -->
-
 		<!-- 지도 -->
 		<div class="section" id="location">
 			<div class="InBox">
