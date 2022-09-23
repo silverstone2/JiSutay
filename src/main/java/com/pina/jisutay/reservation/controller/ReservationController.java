@@ -1,5 +1,8 @@
 package com.pina.jisutay.reservation.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -7,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.reservation.dto.ReservationDto;
@@ -39,7 +43,7 @@ public class ReservationController {
 	@RequestMapping(value="/reservation/reservationform.do", method=RequestMethod.POST)
 	public ModelAndView detail(ModelAndView mav, HttpServletRequest request) {
 		
-		service.getList(request);
+		service.getDetail(request);
 		mav.setViewName("reservation/reservationform");
 		return mav;
 	}
@@ -61,6 +65,11 @@ public class ReservationController {
 		res_service.getListReservation(mView);
 		return mView;
 	}
-
-
+	
+	@RequestMapping("/reservation/ajaxCheckDate.do")
+	@ResponseBody
+	public List<Map<String, Object>> checkDate(HttpServletRequest req) {
+		List<Map<String, Object>> list = res_service.getCheckDate(req);
+		return list;
+	}
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="room_SH">
+	<insert id="insert" parameterType="room_SHDto">
+		INSERT INTO room
+		(num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce, img_path)
+		VALUES(#{num}, #{room_name}, #{room_price}, #{room_structure}, #{room_size}, #{room_people}, #{room_items}, #{bedroom_type}, #{room_introduce}, #{img_path})
+	</insert>
+	<select id="getList" resultType="room_SHDto">
+		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce, img_path
+		FROM room
+		ORDER BY num DESC
+	</select>
+	<select id="getData" parameterType="int" resultType="room_SHDto">
+		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce, img_path
+		FROM room
+		WHERE num=#{num}
+	</select>
+	<update id="update" parameterType="room_SHDto">
+		UPDATE room
+		SET room_structure=#{room_structure}, room_size=#{room_size}, room_people=#{room_people}, room_items=#{room_items}, room_introduce=#{room_introduce}, img_path=#{img_path}
+		WHERE num=#{num}
+	</update>
+	<delete id="delete" parameterType="int">
+		DELETE FROM room
+		WHERE num=#{num}
+	</delete>
+</mapper>

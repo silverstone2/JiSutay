@@ -19,11 +19,25 @@
 		float:left;
 		
 	}
+	
+	.smoke {
+		display: flex;
+		position: absolute;
+		background-color: #ffffff;
+        background-color: rgba( 255, 255, 255, 0.9 );
+		color: red;
+		width: 100%;
+		height: 100%;
+		font-size: 1.4rem;
+		align-items: center;
+		justify-content: center;
+	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
 <div class="container">
+   <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
    <c:choose>
       <c:when test="${empty id }">
          <p>
@@ -38,24 +52,28 @@
       </c:otherwise>
    </c:choose>
 	
-	<input type="date" id="check_in" name="check_in"  />
-
-	<input type="date" id="check_out" name="check_out" />
+	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
+		<input type="date" id="check_in" name="check_in" oninput="checkDate();"/>
+		<input type="date" id="check_out" name="check_out" oninput="checkDate();"/>
+		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
+	</form>
 
 	
 	<div class="row">
 	<h1>방 목록</h1>
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 		<div class="col">
-			<div class="card">
+			<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
 				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
 				<div class="card-body">
 					<h4 class="card-title">${tmp.room_name }</h4>
 					<p class="card-text">
 					 	기준:2인 ~ 최대:${tmp.room_people }
 					</p>
-					 <button onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail">예약</button>
+					 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button">예약</button>
 				</div>	 
+				
+				<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
 			</div>
 		</div>
 			<div id="reservationForm${status.index }" class="reservationForm">
@@ -124,6 +142,7 @@
 </div>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
 
    
@@ -199,6 +218,39 @@
    $(".testSubmit").on('click', function() {
       $("#submitForm").submit();
    });
+   
+/* ---------------- 날짜 선택 시, DB와 검증 후 Ajax 통신 처리 ---------------- */
+	function checkDate() {
+		let check_in = $("#check_in").val();
+		let check_out = $("#check_out").val();
+		
+		if(check_in!="" && check_out!="") {
+			$(".reserveDetail").removeClass("visually-hidden");
+			$('.smoke').removeClass("visually-hidden");
+			$('.smoke').addClass("visually-hidden");
+			document.querySelector("#checkDateBtn").click();
+		}
+	}
+	
+	document.querySelector("#checkDateForm").addEventListener('submit', function(e) {
+		const form = this;
+		e.preventDefault();
+		
+		ajaxFormPromise(form)
+		.then(function(res) {
+			return res.json();
+		})
+		.then(function(data) {
+			data.forEach((map) => {
+				if(map.isNull) {
+					return;
+				}
+				let room_num = map.room_num;
+				$('#cardBtn'+room_num).addClass("visually-hidden");
+				$('#smoke'+room_num).removeClass("visually-hidden");
+			});
+		});
+	});
 </script>
 </body>
 </html>
