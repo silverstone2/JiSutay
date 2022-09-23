@@ -18,6 +18,10 @@
 	.col{
 		float:left;
 		
+		
+	}
+	.card-body{
+		background-color : #FAF9F9;
 	}
 	
 	.smoke {
@@ -31,6 +35,20 @@
 		font-size: 1.4rem;
 		align-items: center;
 		justify-content: center;
+	}
+	
+	.form{
+		width: 1000px;
+		height:600px;
+		border-top:1px solid #323332
+		
+
+	}
+	
+	.dateform{
+		margin-top : 10px;
+		margin-bottom : 20px;
+		margin-left : 350px;
 	}
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
@@ -51,12 +69,14 @@
          </p>
       </c:otherwise>
    </c:choose>
-	
+  <div class="form">
+  	<div class="dateform">
 	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
-		<input type="date" id="check_in" name="check_in" oninput="checkDate();"/>
-		<input type="date" id="check_out" name="check_out" oninput="checkDate();"/>
+		<input type="date" id="check_in" name="check_in" oninput="checkDate();" value= "체크인" />
+		<input type="date" id="check_out" name="check_out" oninput="checkDate();" value= "체크아웃"/>
 		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
 	</form>
+	</div>
 
 	
 	<div class="row">
@@ -64,7 +84,7 @@
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 		<div class="col">
 			<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
-				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
+				<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.img_path }"  />
 				<div class="card-body">
 					<h4 class="card-title">${tmp.room_name }</h4>
 					<p class="card-text">
@@ -77,7 +97,7 @@
 			</div>
 		</div>
 			<div id="reservationForm${status.index }" class="reservationForm">
-				<img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
+				<img src="${pageContext.request.contextPath }${tmp.img_path }" width="500px" height="300px"/>
 				<table>
 					<tr>
 						<th>객실구조</th>
@@ -138,7 +158,7 @@
 			<input id="peopleNum" type="hidden" name="peopleNum"/>
 		</form>
 	</div>
-
+	</div>
 </div>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>

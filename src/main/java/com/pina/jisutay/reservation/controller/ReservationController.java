@@ -41,7 +41,7 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value="/reservation/reservationform.do", method=RequestMethod.POST)
-	public ModelAndView detail(ModelAndView mav, HttpServletRequest request) {
+	public ModelAndView authdetail(ModelAndView mav, HttpServletRequest request) {
 		
 		service.getDetail(request);
 		mav.setViewName("reservation/reservationform");
