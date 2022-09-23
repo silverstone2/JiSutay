@@ -8,14 +8,12 @@
 <title>Welcome to JiSutay</title>
 
 <link rel="stylesheet" type="text/css" href="css/common.css">
-<script type="text/javascript" src="js/modify.js" defer=""></script>
-<script type="text/javascript" src="js/common.js" defer=""></script>
-
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
-
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="js/modify.js" ></script>
+<script type="text/javascript" src="js/common.js" ></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
 </head>
@@ -24,11 +22,6 @@
 	
 	<!-- navbar include -->
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
 	
 	<section>
 		<!-- 메인 비디오 -->
@@ -44,15 +37,16 @@
 		<!-- 객실 바로가기 -->
 		<div class="section lists">
 			<div class="InBox">
+			<c:forEach var="tmp" items="${requestScope.list }">
 				<div>
 					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/oreum/1.jpg)"></div>
+						<div style="background-image:url(${pageContext.request.contextPath }${tmp.img_path })"></div>
 					</div>
 					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room1.do">
+						<a href="room/detail.do?num=${tmp.num }&sort=regdate">
 							<h3>
 								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>오  름</strong>
+								<strong>${tmp.room_name }</strong>
 								<br />
 							</h3>
 							<div>
@@ -61,70 +55,14 @@
 							</div>
 						</a>
 					</div>
-				</div>	
-				<div>
-					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/jami/1.jpg;"></div>
-					</div>
-					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room2.do">
-							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>자  미</strong>
-								<br />
-							</h3>
-							<div>
-								<div></div>
-								<span>Detail</span>
-							</div>
-						</a>
-					</div>
-				</div>		
-				<div>
-					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/bambyeol/1.jpg);"></div>
-					</div>
-					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room3.do">
-							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>밤  별</strong>
-								<br />
-							</h3>
-							<div>
-							<div></div>
-							<span>Detail</span>
-							</div>
-						</a>
-					</div>
 				</div>
-				<div>
-					<div class="img">
-						<div style="background-image:url(${pageContext.request.contextPath }/Jisutayimage/room/dalbit/1.jpg);"></div>
-					</div>
-					<div class="btn">
-						<a href="${pageContext.request.contextPath }/room/room4.do">
-							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
-								<strong>달  빛</strong>
-								<br />
-							</h3>
-							<div>
-							<div></div>
-							<span>Detail</span>
-							</div>
-						</a>
-					</div>
-				</div>
+			</c:forEach>		
 			</div>
 		</div>
 	</section>
-	
-	
 	<h1>인덱스 페이지 테스트중</h1>
 	<a href="${pageContext.request.contextPath }/travel/list.do">주변여행지</a>
 	<a href="${pageContext.request.contextPath }/room_SH/list.do?num=1">객실</a>
-
 	<c:choose>
 		<c:when test="${empty id }">
 			<a href="users/signupform.do">회원가입</a>

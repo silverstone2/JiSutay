@@ -37,7 +37,6 @@ public class UsersController {
 		return "users/signup";
 	}
 	
-	
 	// 로그인 기능
 	@RequestMapping("/users/loginform.do")
 	public String loginform() {
@@ -47,10 +46,8 @@ public class UsersController {
 	@RequestMapping("/users/login.do")
 	public ModelAndView login(UsersDto dto, ModelAndView mav, HttpServletRequest req) {
 		service.checkUser(dto, mav, req);
-		mav.setViewName("redirect:/home.do");
 		return mav;
 	}
-	
 	
 	// 로그아웃 기능
 	@RequestMapping("/users/logout.do")

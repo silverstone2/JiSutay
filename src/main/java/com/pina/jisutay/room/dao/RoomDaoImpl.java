@@ -14,9 +14,9 @@ public class RoomDaoImpl implements RoomDao{
 	private SqlSession session;
 
 	@Override
-	public List<RoomDto> getList(RoomDto dto) {
+	public List<RoomDto> getList() {
 		
-		return session.selectList("room.getList", dto);
+		return session.selectList("room.getList");
 	}
 
 //	@Override

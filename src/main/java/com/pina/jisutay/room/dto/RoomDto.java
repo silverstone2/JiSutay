@@ -10,9 +10,11 @@ public class RoomDto {
 	private String room_items;
 	private String bedroom_type;
 	private String room_introduce;
+	private String img_path;
+
 	
 	public RoomDto(int num, String room_name, int room_price, String room_structure, int room_size, String room_people,
-			String room_items, String bedroom_type, String room_introduce) {
+			String room_items, String bedroom_type, String room_introduce, String img_path) {
 		super();
 		this.num = num;
 		this.room_name = room_name;
@@ -23,6 +25,7 @@ public class RoomDto {
 		this.room_items = room_items;
 		this.bedroom_type = bedroom_type;
 		this.room_introduce = room_introduce;
+		this.img_path = img_path;
 	}
 
 	public RoomDto() {}
@@ -97,6 +100,14 @@ public class RoomDto {
 
 	public void setRoom_introduce(String room_introduce) {
 		this.room_introduce = room_introduce;
+	}
+	
+	public String getImg_path() {
+		return img_path;
+	}
+
+	public void setImg_path(String img_path) {
+		this.img_path = img_path;
 	}
 }
 

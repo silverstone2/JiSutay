@@ -356,9 +356,7 @@ $(function(){
 			}); vidParallax("#Banner .bg","",""); exJumpy()
 		break;
 
-		//None Page
-		default : location.href = "index.html";
-		break;
+		
 	}
 
 	/*---------------------------------------------------------------*/
