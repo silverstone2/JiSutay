@@ -9,19 +9,20 @@
 	</hgroup>
 	<nav>
 		<ul>
-			<li class="gb"><a href="${pageContext.request.contextPath }/"><span class="en">ABOUT</span><span class="ko">지수테이</span></a>
+			<li class="gb"><a href="${pageContext.request.contextPath }/about.do"><span class="en">ABOUT</span><span class="ko">지수테이</span></a>
 				<ul class="sub">
-					<li><a href="#">인사말</a></li>
-					<li><a href="#">외부전경</a></li>
-					<li><a href="#">오시는길</a></li>
+					<li><a href="${pageContext.request.contextPath }/about.do#title">인사말</a></li>
+					<li><a href="${pageContext.request.contextPath }/about.do#exterior">외부전경</a></li>
+					<li><a href="${pageContext.request.contextPath }/about.do#location">오시는길</a></li>
 				</ul>
 			</li>
-			<li class="gb"><a href="#"><span class="en">POOLVILLA</span><span class="ko">풀빌라</span></a>
+			<li class="gb"><a href="${pageContext.request.contextPath }/"><span class="en">POOLVILLA</span><span class="ko">풀빌라</span></a>
 				<ul class="sub">
-					<li><a href="#">오름</a></li>
-					<li><a href="#">자미</a></li>
-					<li><a href="#">밤별</a></li>
-					<li><a href="#">달빛</a></li>
+					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=5&sort=regdate">단체실</a></li>
+					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=1&sort=regdate">일반실</a></li>
+					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=2&sort=regdate">자미</a></li>
+					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=3&sort=regdate">밤별</a></li>
+					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=4&sort=regdate">달빛</a></li>
 				</ul>
 			<li class="gb"><a href="${pageContext.request.contextPath }/travel/list.do"><span class="en">TRAVEL</span><span class="ko">주변여행지</span></a></li>
 			<li class="gb">

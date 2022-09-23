@@ -7,17 +7,15 @@
 <meta charset="UTF-8">
 <title>About JiSutay</title>
 
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<script type="text/javascript" src="js/swiper.js" defer=""></script>
-<script type="text/javascript" src="js/modify.js" defer=""></script>
-<script type="text/javascript" src="js/common.js" defer=""></script>
-
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
+
+<!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
 <script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
 <script type="text/javascript">
@@ -26,8 +24,11 @@
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-210701482-1">
 </script>
 
-<!-- jQuery 1.8 or later, 33 KB -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" defer=""></script>
+
 <!-- Fotorama from CDNJS, 19 KB -->
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
@@ -37,7 +38,8 @@
 <body id="about">
 
 	<!-- navbar include -->
-
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+	
 	<section>
 		<!-- 메인 비디오 -->
 		<div class="section video" id="Videos">
@@ -56,7 +58,7 @@
 		<div class="section exterior">
 			<div class="bg bg01"></div>
 			<div class="bg bg02"></div>
-			<div class="title">
+			<div class="title" id="title">
 				<h3>JiSutay</h3>
 				<p>
 					제주도 서귀포시에 위치한 풀빌라 지수테이는 <strong>地 </strong>와 <strong>水 </strong>안에 머문다는 뜻을 가진<br>
@@ -66,6 +68,7 @@
 					지수테이에 오시는 당신에게 따뜻하고 편안한 여행을 약속드립니다.
 				</p>
 			</div>
+			
 			<!-- 소개 사진 -->
 			<div class="section fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
 				<div class="InBox" style="width:1200px;height:600px;">
@@ -111,8 +114,7 @@
 			</div>
 		</div>
 	</section>
-	
 	<!-- footer include -->
-		
+	<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

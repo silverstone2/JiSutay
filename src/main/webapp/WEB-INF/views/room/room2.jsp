@@ -7,14 +7,12 @@
 <meta charset="UTF-8">
 <title>JiSutay - JAMI</title>
 
-<link rel="stylesheet" type="text/css" href="css/common.css">
-<script type="text/javascript" src="js/modify.js" defer=""></script>
-<script type="text/javascript" src="js/common.js" defer=""></script>
-
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" defer=""></script>
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
 </head>
-
 <body id="rooms" class="detail">
 
 
