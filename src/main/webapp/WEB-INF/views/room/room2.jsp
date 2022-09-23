@@ -15,6 +15,7 @@
 </head>
 <body id="rooms" class="detail">
 
+	<!-- navbar include -->
 
 	<section>	
 		<!-- 메인 이미지 -->
