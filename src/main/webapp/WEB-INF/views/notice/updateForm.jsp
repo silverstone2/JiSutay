@@ -8,23 +8,32 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
 	.container{
-		margin-left:28%;
-		margin-right:28%;
+		margin-left:20%;
+		margin-right:20%;
+	}
+	
+	#updateForm{
+		width:995px;
+		border-right:none;
+		border-left:none;
+		border-top:none;
+		border-bottom:none;
+		
+		margin-top:5%;
 	}
 	
 	.updateTable {
-		width:768px;
+		width:990px;
 		border-right:none;
 		border-left:none;
 		border-top:none;
 		border-bottom:none;
 	}
-		#updateForm{
-		margin-top:5%;
-	}
 
 	.buttonEffect {
-		width:768px;
+		margin-left: 36%;
+		margin-right: 36%;
+		width:250px;
 		height: 50px;
 		text-align:center;
 		vertical-align: baseline;
@@ -38,43 +47,39 @@
 		color: #808080;
 	}
 	.buttonA{
-		background-color:rgba(0,0,0,0);
+		/* background-color:rgba(0,0,0,0); */
 		border:0;
 		outline:0;
 	}
 	.form-control{
-		font-size:30px;
+		font-size:20px;
+		margin-bottom:5px;
+		
 	}
+	h1 {
+		width:1000px;
+        text-align:center;
+        margin-top:3%;
+	} 
 </style>
 </head>
 <body>
 <div class="container">
-	<h1>수정</h1>
+	<h1>공지사항 수정</h1>
 	<form action="update.do" method="post" id="updateForm">
 	<input type="hidden" name="num" value="${dto.num }" />
-		<%-- <div>
-			<label for="num">번호</label>
-			<input type="text" id="num" value="${dto.num }" disabled/>
-		</div>
-		<div>
-			<label for="writer">작성자</label>
-			<input type="text" id="writer" value="${dto.writer }" disabled/>
-		</div> --%>
 		<div class="updateTable input-group mb-3">
-			<!-- <label for="title" style="width:40px; margin-top:5px ">제   목</label> -->
+			<label for="title" style="width:50px; margin-top:10px; font-size:20px;">제   목</label>&nbsp;&nbsp;
 			<input type="text" name="title" id="title" class="form-control" value="${dto.title }" 
 			aria-label="Username" aria-describedby="basic-addon2" border-radius: 10px 10px 10px 10px;">
 		</div>
 		<div>
 			<label for="content" style="display:none">내용</label>
-			<textarea name="content" id="content" cols="100" rows="25">${dto.content }</textarea>
+			<textarea name="content" id="content" cols="130" rows="25">${dto.content }</textarea>
 		</div>
-		<div class="buttonEffect">
-			<button type="button" onclick="location.href='list.do'" class="buttonA">취소</button>
-		</div>
-		<div class="buttonEffect">
-			<button type="submit" class="buttonA">수정</button>
-		</div>
+			<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취소</button> 
+			<button type="submit" class="buttonA buttonEffect">수정</button>
+		
 	</form>
 </div>
 <!-- SmartEditor 에서 필요한 javascript 로딩  -->

@@ -9,24 +9,32 @@
 <style>
 	
 	.container{
-	margin-left: 28%;
-	margin-right: 28%;
+	margin-left: 20%;
+	margin-right: 20%;
 	}
 	
-	.insertTable {
-		width:767px;
+/* 	.insertTable {
+		width:768px;
 		border-right:none;
 		border-left:none;
 		border-top:none;
 		border-bottom:none;
 		
-	}
+	} */
 	#insertForm{
+		width:995px;
+		border-right:none;
+		border-left:none;
+		border-top:none;
+		border-bottom:none;
+		
 		margin-top:5%;
 	}
 
 	.buttonEffect {
-		width:767px;
+		margin-left: 36%;
+		margin-right: 36%;
+		width:250px;
 		height: 50px;
 		text-align:center;
 		vertical-align: baseline;
@@ -40,38 +48,37 @@
 		color: #808080;
 	}
 	.buttonA{
-		background-color:rgba(0,0,0,0);
+		/* background-color:rgba(0,0,0,0); */
 		border:0;
 		outline:0;
 	}
 	.form-control{
-		font-size:30px;
+		font-size:20px;
+	}
+ 	h1 {
+		width:1000px;
+        text-align:center;
+        margin-top:3%;
 	}
 }
 </style>
 </head>
 <body>
 <div class="container">
+	<h1>새 글</h1>
 	<form action="insert.do" method="post" id="insertForm">
-		<div class="insertTable input-group mb-3" >
-			<!-- <label for="title" style="width:40px; margin-top:5px ">제   목</label> -->
-			<input type="text" name="title" id="title" class="form-control" placeholder="제목을 적으세요." 
-			aria-label="Username" aria-describedby="basic-addon2" border-radius: 10px 10px 10px 10px;">
+		<div class="insertTable " >
+			<!-- <p style="width:50px; margin-top:10px; font-size:20px;">제   목</p>  -->
+			<input type="text" name="title" id="title" class="form-control" placeholder="제목..." style="margin-bottom:3%">
 		</div>
 		<div class="insertTable">
 			<label for="content" style="display:none">내용</label>
-			<textarea name="content" id="content" cols="99" rows="25"></textarea>
+			<textarea name="content" id="content" cols="130" rows="25"></textarea>
 		</div>
-		<div class="buttonEffect">
-			<button type="button" onclick="location.href='list.do'" class="buttonA">취소</button>
-		</div>
-		<div class="buttonEffect">
-			<button type="submit" class="buttonA">저장</button>
-		</div>
+		<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취소</button>		
+		<button type="submit" class="buttonA buttonEffect">저장</button>
 	</form>
 </div>
-
-
 
 <!-- SmartEditor 에서 필요한 javascript 로딩 시작 -->
 <script src="${pageContext.request.contextPath }/SmartEditor/js/HuskyEZCreator.js"></script>

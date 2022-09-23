@@ -125,7 +125,7 @@
 		border-bottom:none;
 	}
 	
-	<!--페이징 css -->
+	/* 페이징 css */ 
 	.page-ui a{
 		color: black;
 		text-decoration: none;
@@ -153,6 +153,7 @@
 		float: left;
 		padding: 5px;
 	}
+	/* 페이징 css 끝 */
 	.clearfix {
 		width: 100%;
 		border-right:none;
@@ -183,8 +184,9 @@
 	}
 	div .aa{
 		float:right;
+		
 	}
-	
+
 </style>
 </head>
 <body>
@@ -192,7 +194,15 @@
 	<h1>공지사항</h1>
 	<p>공지사항과 다양한 소식을 확인해보세요.</p>
 	<br />
-	<p></p>
+		<!-- 새글 작성 -->
+	<c:choose>
+		<c:when test="${id eq 'admin'}">
+			<div class="aa">
+				<a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue" style="margin: 0px;">새글작성</a>		
+			</div>
+		</c:when>
+	</c:choose>
+	<!-- 새글 작성 끝 -->
 	<table class="listTable table-primary mt-5">
 		<thead>
 			<tr>
@@ -221,7 +231,6 @@
 		</c:forEach>
 		</tbody>
 	</table>
-<div>
 	<!-- 페이지 부분 -->
 	<div class="page-ui clearfix aa" style="float:right;">
 		<ul>
@@ -250,16 +259,7 @@
 		</ul>
 	</div>
 	<!-- 페이지 부분 끝 -->
-	<!-- 새글 작성 -->
-	<c:choose>
-		<c:when test="${id eq 'admin'}">
-			<div class="aa">
-				<a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue" style="margin: 0px;">새글작성</a>		
-			</div>
-		</c:when>
-	</c:choose>
-	<!-- 새글 작성 끝 -->
-</div>
+
 	<div style="clear:both;"></div>
 
 	
