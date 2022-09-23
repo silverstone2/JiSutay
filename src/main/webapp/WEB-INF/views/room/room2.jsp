@@ -19,7 +19,6 @@
 
 	<!-- navbar include -->
 
-
 	<section>	
 		<!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
