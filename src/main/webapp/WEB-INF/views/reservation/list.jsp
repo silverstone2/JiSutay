@@ -47,6 +47,7 @@
 	}
 	
 	.form{
+		margin-top: 100px;
 		width: 1000px;
 		height:600px;
 		border-top:1px solid #323332
