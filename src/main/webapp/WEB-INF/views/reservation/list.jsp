@@ -9,10 +9,19 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 <style>
 	.reservationForm{
-		border : 1px solid red;
+		background-color : #FAF9F9;
 		display : none;
+		
 	}
 	
 	.col{
@@ -48,8 +57,22 @@
 	.dateform{
 		margin-top : 10px;
 		margin-bottom : 20px;
-		margin-left : 350px;
+		margin-left : 370px;
 	}
+	
+	.info{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+	}
+	.detail{
+		margin:10px;
+		display:flex;
+		justify-content:center;
+		align-items:center;		
+		font-size:0.8em;
+	}
+	
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
@@ -69,64 +92,71 @@
          </p>
       </c:otherwise>
    </c:choose>
+   
   <div class="form">
   	<div class="dateform">
+  	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
 	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
-		<input type="date" id="check_in" name="check_in" oninput="checkDate();" value= "체크인" />
-		<input type="date" id="check_out" name="check_out" oninput="checkDate();" value= "체크아웃"/>
+		<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
+		<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
 		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
 	</form>
 	</div>
 
 	
 	<div class="row">
-	<h1>방 목록</h1>
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-		<div class="col">
+		<div class="col-3">
 			<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
 				<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.img_path }"  />
 				<div class="card-body">
-					<h4 class="card-title">${tmp.room_name }</h4>
-					<p class="card-text">
+					<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
+					<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
 					 	기준:2인 ~ 최대:${tmp.room_people }
 					</p>
-					 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button">예약</button>
+					 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
 				</div>	 
 				
 				<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
 			</div>
 		</div>
 			<div id="reservationForm${status.index }" class="reservationForm">
-				<img src="${pageContext.request.contextPath }${tmp.img_path }" width="500px" height="300px"/>
+			  <div class="info">
+			  	<div class="detail">
+				<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
+				</div>
+				<div class="detail">
 				<table>
+					<th><h3>${tmp.room_name}</h3></th>
 					<tr>
-						<th>객실구조</th>
+						<th>객실구조:</th>
 						<td>${tmp.room_structure }</td>
 					</tr>
 					<tr>
-						<th>객실평수</th>
+						<th>객실평수:</th>
 						<td>${tmp.room_size }평</td>
 					</tr>
 					<tr>
-						<th>숙박인원</th>
+						<th>숙박인원:</th>
 						<td>최대${tmp.room_people }</td>
 					</tr>
 					<tr>
-						<th>비품</th>
+						<th>비품:</th>
 						<td>${tmp.room_items }</td>
 					</tr>
 					<tr>
-						<th>침실타입</th>
+						<th>침실타입:</th>
 						<td>${tmp.bedroom_type }</td>
 					</tr>
 					<tr>
-						<th>소개</th>
+						<th>소개:</th>
 						<td>${tmp.room_introduce }</td>
 					</tr>						
 				</table>
-				
+				</div>
+			 </div>
 				<p>숙박기간</p>
-				<div class="date"></div>박
+				<div class="date"></div>
 				<p>이용인원</p>
 				<button onclick="javascript:minusNum(${status.index });">-</button>
 				<input id="inputPeople${status.index }" type="text" value="2" disabled/>
@@ -153,7 +183,7 @@
 		
 		<form id="submitForm" action="reservationform.do", method="post">
 			<input id="num" type="hidden" name="num"/>
-			<input id="inputIn" type="hidden" name="check_in"/>
+			<input id="inputIn" type="hidden" name="check_in" />
 			<input id="inputOut" type="hidden" name="check_out"/>
 			<input id="peopleNum" type="hidden" name="peopleNum"/>
 		</form>
@@ -164,7 +194,6 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
-
    
    function reserve(index, room_price, num) {
       // input에서 체크인, 체크아웃 가져오기
@@ -179,7 +208,7 @@
       // 몇 박 계산
       var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
       if(dateDiff > 0 ){
-      $(".col").hide(50);
+      $(".col-3").hide(50);
       $("#reservationForm"+index).show(500);
       }else if(dateDiff==0){
          alert("1박 이상만 가능합니다")
