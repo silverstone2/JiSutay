@@ -56,8 +56,8 @@ public class UsersServiceImpl implements UsersService {
 		
 		UsersDto savedDto = dao.checkId(id);
 		HttpSession session = req.getSession();
-		
-		if(savedDto != null) {
+		System.out.println(password);
+		if(savedDto != null && password != "") {
 			String encodedPwd = savedDto.getPassword();
 			
 			isValid=BCrypt.checkpw(password, encodedPwd);

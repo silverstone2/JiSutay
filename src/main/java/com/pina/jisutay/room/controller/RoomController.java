@@ -38,7 +38,7 @@ public class RoomController {
 	@RequestMapping("/room/room1.do")
 	public String room1(HttpServletRequest request) {
 		
-		return "room/room2";
+		return "room/room1";
 	}
 	
 	@RequestMapping("/room/room2.do")
