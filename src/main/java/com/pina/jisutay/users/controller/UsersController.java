@@ -37,7 +37,6 @@ public class UsersController {
 		return "users/signup";
 	}
 	
-	
 	// 로그인 기능
 	@RequestMapping("/users/loginform.do")
 	public String loginform() {
@@ -49,7 +48,6 @@ public class UsersController {
 		service.checkUser(dto, mav, req);
 		return mav;
 	}
-	
 	
 	// 로그아웃 기능
 	@RequestMapping("/users/logout.do")

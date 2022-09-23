@@ -6,14 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>loginform</title>
-<jsp:include page="/include/style.jsp"></jsp:include>
 </head>
 <body class="text-center">
 	<div class="container-fluid mb-5">
 		<div class="row justify-content-md-center">
 			<!-- nav 바 -->
-			
-			
+			<jsp:include page="/resources/include/style.jsp"></jsp:include>
 			<c:if test="${isFail eq true}">
 				<div class="w-50 alert alert-warning alert-dismissible fade show text-center mt-3" role="alert" style="text-align:center;">
 					<strong>
