@@ -73,6 +73,7 @@
 		</c:otherwise>
 	</c:choose>
 	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
+	<a href="${pageContext.request.contextPath}/travel/list.do">(임시)travel/list</a>
 	<!-- footer include -->
 	<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
