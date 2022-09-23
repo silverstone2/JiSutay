@@ -23,6 +23,11 @@ public class HomeController {
 		return "home";
 	}
 
+	@RequestMapping("/about.do")
+	public String about(HttpServletRequest request) {
+		return "about";
+	}
+	
 	@RequestMapping("/detail")
 	public String detail(HttpServletRequest request) {
 		roomService.getDetail(request);
