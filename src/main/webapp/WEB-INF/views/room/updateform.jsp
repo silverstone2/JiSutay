@@ -13,8 +13,11 @@
 <body>
 	<div class="container">
 		<h1>객실 수정하기.</h1>
-		${param.num }
-		<form action="${pageContext.request.contextPath }/room_SH/update.do?" method="post" enctype="multipart/form-data">
+		<a href="../detail.do?num=${param.num }&sort=regdate">
+			이전 이동 버튼 넣기
+		</a>
+		
+		<form action="update.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="num" value="${param.num }" />
 		      	<div class="mb-3">
 		         	<label for="room_structure" class="form-label"></label>
@@ -84,13 +87,51 @@
 				<div class="mb-3">
 					<label for="file" class="form-label">객실 이미지 업로드</label>
 					<input multiple="multiple" type="file" name="file" class="form-control" aria-label="file example" accept=".jpg, .jpeg, .png, .JPG, .JPEG" required/>
+					
+					<!-- 이미지 선택 preview -->
+					<div class="previewMother">
+						<c:forEach begin="0" end="9" step="1" varStatus="status">
+							<c:if test="${status.index == 5 }">
+								<br>
+							</c:if>
+							<img class="imgUpload" id="imgUpload${status.index }" src="${pageContext.request.contextPath }/resources/images/imgUpload.PNG" style="width: 140px; height: 140px; margin: 10px;"/>
+						</c:forEach>
+					</div>
+					
 				</div>
 			<button type="submit" onclick="submitContents(this);">수정확인</button>
 			<button type="reset">취소</button>
 		</form>
 	</div>
+	
+<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script>
-
+	$('input[name=file]').on('change', function() {
+		$(".imgUpload").attr("src", "${pageContext.request.contextPath }/resources/images/imgUpload.PNG");
+		
+		// 파일을 10개 초과로 선택할 경우, 선택 불가 로직
+		if(this.files.length > 10) {
+			this.value = "";
+			alert("객실 이미지는 10개 이하 업로드 가능합니다!");
+			return;
+		}
+		
+		// 선택한 파일이 존재할 경우, FileReader 객체를 통해 preview 기능으로 화면에 출력
+		if (this.files) {
+			let reader = new FileReader();
+			
+			for(let i=0; i<this.files.length; i++) {
+				let reader = new FileReader();
+				
+				reader.onload = function(e) {
+					$("#imgUpload"+i).attr("src", e.target.result);
+				};
+				reader.readAsDataURL(this.files[i]);
+			}
+		} else {
+			$(".imgUpload").attr("src", "${pageContext.request.contextPath }/resources/images/imgUpload.PNG");
+		}
+	});
 </script>
 </body>
 </html>

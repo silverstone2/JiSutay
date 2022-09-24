@@ -10,7 +10,7 @@
 <body>
 	<script>
 	alert("방정보를 수정하였습니다.");
-	location.href="${pageContext.request.contextPath}/room_SH/list.do?num=${param.num }";
+	location.href="${pageContext.request.contextPath}/room/detail.do?num=${param.num }&sort=regdate";
 	</script>
 </body>
 </html>
