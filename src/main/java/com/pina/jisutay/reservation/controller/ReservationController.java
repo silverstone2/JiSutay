@@ -54,9 +54,9 @@ public class ReservationController {
 //	}
 	
 	@RequestMapping("/reservation/reservation")
-	public ModelAndView insert(ReservationDto dto) {
+	public String insert(ReservationDto dto) {
 		res_service.addReservation(dto);
-		return new ModelAndView("reservation/reservation");
+		return "redirect:/reservation/list.do";
 	}
 	
 	@RequestMapping("/reservation/clientlist")

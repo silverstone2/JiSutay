@@ -158,6 +158,11 @@
 		});
 	});
 	
+	//객실예약 누르면 알림뜨며 예약되고 list로 redirect
+	$("#reservationBtn").on('click', function() {
+		 alert("예약이 완료되었습니다.")
+	});
+	
 	
 	</script>
 </body>
