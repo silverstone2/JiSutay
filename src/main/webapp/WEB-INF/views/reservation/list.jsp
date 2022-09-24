@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
@@ -66,12 +66,18 @@
 		justify-content:center;
 		align-items:center;
 	}
+	.info2{
+		margin-left : 240px;
+	}
 	.detail{
 		margin:10px;
 		display:flex;
 		justify-content:center;
 		align-items:center;		
 		font-size:0.8em;
+	}
+	.money{
+		currency:ko-KR;
 	}
 	
 </style>
@@ -107,79 +113,82 @@
 	
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-		<div class="col-3">
-			<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
-				<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.img_path }"  />
-				<div class="card-body">
-					<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
-					<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
-					 	기준:2인 ~ 최대:${tmp.room_people }
-					</p>
-					 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
-				</div>	 
-				
-				<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
-			</div>
-		</div>
-			<div id="reservationForm${status.index }" class="reservationForm">
-			  <div class="info">
-			  	<div class="detail">
-				<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
+			<div class="col-3">
+				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
+					<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.img_path }"  />
+					<div class="card-body">
+						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
+						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
+						 	기준:2인 ~ 최대:${tmp.room_people }
+						</p>
+						 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
+					</div>	 
+					
+					<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
 				</div>
-				<div class="detail">
-				<table>
-					<th><h3>${tmp.room_name}</h3></th>
-					<tr>
-						<th>객실구조:</th>
-						<td>${tmp.room_structure }</td>
-					</tr>
-					<tr>
-						<th>객실평수:</th>
-						<td>${tmp.room_size }평</td>
-					</tr>
-					<tr>
-						<th>숙박인원:</th>
-						<td>최대${tmp.room_people }</td>
-					</tr>
-					<tr>
-						<th>비품:</th>
-						<td>${tmp.room_items }</td>
-					</tr>
-					<tr>
-						<th>침실타입:</th>
-						<td>${tmp.bedroom_type }</td>
-					</tr>
-					<tr>
-						<th>소개:</th>
-						<td>${tmp.room_introduce }</td>
-					</tr>						
-				</table>
+			</div>
+				<div id="reservationForm${status.index }" class="reservationForm">
+				  <div class="info">
+				  	<div class="detail">
+					<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
+					</div>
+					<div class="detail">
+					<table>
+						<th><h3>${tmp.room_name}</h3></th>
+						<tr>
+							<th>객실구조 :</th>
+							<td>${tmp.room_structure }</td>
+						</tr>
+						<tr>
+							<th>객실평수 :</th>
+							<td>${tmp.room_size }평</td>
+						</tr>
+						<tr>
+							<th>숙박인원 :</th>
+							<td>최대${tmp.room_people }</td>
+						</tr>
+						<tr>
+							<th>비품 :</th>
+							<td>${tmp.room_items }</td>
+						</tr>
+						<tr>
+							<th>침실타입 :</th>
+							<td>${tmp.bedroom_type }</td>
+						</tr>
+						<tr>
+							<th>소개 :</th>
+							<td>${tmp.room_introduce }</td>
+						</tr>						
+					</table>
+					</div>
+				 </div>
+				 <div class="info2">
+					<p><strong>숙박기간 : </strong><span class="date"></span>박 </p> 
+					<p style="margin-bottom:7px;"><strong>이용인원</strong></p>
+						<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
+						<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
+						<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
+						<p>-성인 추가금 2만원입니다</p>
+					
+					<table>
+						<tr>
+							<th>객실요금 : </th>
+							<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
+						</tr>
+						<tr>
+							<th>인원추가 요금 : </th>
+							<td id="addCharge${status.index }">0</td>
+						</tr>
+						<tr>
+							<th>총요금 : </th>
+							<td id="totalPrice${status.index }">0</td>
+						</tr>			
+					</table>
+					<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
+					<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
+					
 				</div>
 			 </div>
-				<p>숙박기간</p>
-				<div class="date"></div>
-				<p>이용인원</p>
-				<button onclick="javascript:minusNum(${status.index });">-</button>
-				<input id="inputPeople${status.index }" type="text" value="2" disabled/>
-				<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');">+</button>
-				<p>-성인 추가금 2만원입니다</p>
-				<table>
-					<tr>
-						<th>객실요금</th>
-						<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
-					</tr>
-					<tr>
-						<th>인원추가 요금</th>
-						<td id="addCharge${status.index }">0</td>
-					</tr>
-					<tr>
-						<th>총요금</th>
-						<td id="totalPrice${status.index }">0</td>
-					</tr>			
-				</table>
-				<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit">선택완료</button>
-				<button data-value="${status.index }" id="testCancle${status.index }">선택취소</button>
-			</div>
 		</c:forEach>
 		
 		<form id="submitForm" action="reservationform.do", method="post">
@@ -189,8 +198,9 @@
 			<input id="peopleNum" type="hidden" name="peopleNum"/>
 		</form>
 	</div>
-	</div>
+  </div>
 </div>
+<span class="money">200000000</span>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
@@ -268,6 +278,11 @@
    $(".testSubmit").on('click', function() {
       $("#submitForm").submit();
    });
+
+   $(".testCancel").on('click', function() {
+	      $(".col-3").show();
+	      $(".reservationForm").hide();
+	   });
    
 /* ---------------- 날짜 선택 시, DB와 검증 후 Ajax 통신 처리 ---------------- */
 	function checkDate() {
