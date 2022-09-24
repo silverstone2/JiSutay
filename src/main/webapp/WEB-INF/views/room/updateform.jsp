@@ -99,8 +99,8 @@
 					</div>
 					
 				</div>
-			<button type="submit" onclick="submitContents(this);">수정확인</button>
-			<button type="reset">취소</button>
+			<button type="submit">수정확인</button>
+			<button type="reset">되돌리기</button>
 		</form>
 	</div>
 	
@@ -131,6 +131,10 @@
 		} else {
 			$(".imgUpload").attr("src", "${pageContext.request.contextPath }/resources/images/imgUpload.PNG");
 		}
+	});
+	
+	$('button[type=reset]').on('click', function() {
+		$(".imgUpload").attr("src", "${pageContext.request.contextPath }/resources/images/imgUpload.PNG");
 	});
 </script>
 </body>
