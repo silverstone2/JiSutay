@@ -15,17 +15,16 @@ public class RoomDaoImpl implements RoomDao{
 
 	@Override
 	public List<RoomDto> getList() {
-		
 		return session.selectList("room.getList");
 	}
-
-//	@Override
-//	public RoomDto getData(int num) {
-//		return session.selectOne("room.getData", num);
-//	}
 
 	@Override
 	public RoomDto getData(RoomDto dto) {
 		return session.selectOne("room.getData", dto);
+	}
+	
+	@Override
+	public void update(RoomDto dto) {
+		session.update("room.update", dto);
 	}
 }

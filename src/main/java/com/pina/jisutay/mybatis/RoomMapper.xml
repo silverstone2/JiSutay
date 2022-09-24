@@ -8,8 +8,14 @@
 	</select>
 	
 	<select id="getData" parameterType="roomDto" resultType="roomDto">
-		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce
+		SELECT num, room_name, room_price, room_structure, room_size, room_people, room_items, bedroom_type, room_introduce, img_path
 		FROM room
 		WHERE num=#{num}
 	</select>
+	
+	<update id="update" parameterType="roomDto">
+		UPDATE room
+		SET room_structure=#{room_structure}, room_size=#{room_size}, room_people=#{room_people}, room_items=#{room_items}, room_introduce=#{room_introduce}, img_path=#{img_path}
+		WHERE num=#{num}
+	</update>
 </mapper>
