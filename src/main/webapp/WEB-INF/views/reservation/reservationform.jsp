@@ -134,7 +134,7 @@
 		$("#room_num").val(${dto.num});
 	});
 	
-	//약관동의
+	//약관동의.
 	$(function(){
 		$('#agree').click(function(){
 			if($('#agree:checked').length>0){
