@@ -121,7 +121,7 @@
 	var room_price = dateDiff * ${dto.room_price};
 	
 	$(function() {
-		//페이지 로딩시점에 방가격 , 인원추가가격 위에 표에 담기
+		//페이지 로딩시점에 방가격 , 인원추가가격 위에 표에 담기.
 		$("#room_price").text(room_price.toLocaleString());
 		$("#total_price").text((room_price + ${20000*(param.peopleNum -2)}).toLocaleString());
 		$("#people_price").text((${20000*(param.peopleNum -2)}).toLocaleString());
