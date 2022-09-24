@@ -76,9 +76,6 @@
 		align-items:center;		
 		font-size:0.8em;
 	}
-	.money{
-		currency:ko-KR;
-	}
 	
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
@@ -200,7 +197,6 @@
 	</div>
   </div>
 </div>
-<span class="money">200000000</span>
 
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
