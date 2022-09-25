@@ -9,6 +9,14 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
+<script src="https://player.vimeo.com/api/player.js"></script>
 <style>
 	.reservationForm{
 		border : 1px solid red;
@@ -51,6 +59,8 @@
          </p>
       </c:otherwise>
    </c:choose>
+	<br>
+	<br>
 	
 	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
 		<input type="date" id="check_in" name="check_in" oninput="checkDate();"/>
@@ -62,7 +72,7 @@
 	<div class="row">
 	<h1>방 목록</h1>
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-		<div class="col">
+		<div class="col-3">
 			<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
 				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
 				<div class="card-body">
@@ -144,7 +154,6 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
-
    
    function reserve(index, room_price, num) {
       // input에서 체크인, 체크아웃 가져오기

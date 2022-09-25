@@ -63,6 +63,7 @@ public class ReservationServiceImpl implements ReservationService {
 			String startDate = (String)map.get("CHECK_IN");
 			String endDate = (String)map.get("CHECK_OUT");
 			
+			// 1차 확인
 			LocalDate inDate = LocalDate.parse(check_in);
 			LocalDate outDate = LocalDate.parse(check_out);
 		    LocalDate startLocalDate = LocalDate.parse(startDate);
@@ -73,8 +74,14 @@ public class ReservationServiceImpl implements ReservationService {
 		    boolean isInExist = !inDate.isBefore(startLocalDate) && inDate.isBefore(endLocalDate);
 		    boolean isOutExist = !outDate.isBefore(startLocalDate) && outDate.isBefore(endLocalDate);
 		    
+		    // 2차 확인
+		    endLocalDate = endLocalDate.minusDays(1);
+		    outDate = outDate.plusDays(1);
+		    boolean isStartExist = !startLocalDate.isBefore(inDate) && startLocalDate.isBefore(outDate);
+		    boolean isEndExist = !endLocalDate.isBefore(inDate) && endLocalDate.isBefore(outDate);
+		    
 		    // 하나라도 true면 예약 불가
-		    if(isInExist || isOutExist) {
+		    if(isInExist || isOutExist || isStartExist || isEndExist) {
 		    	Map<String, Object> resultMap = new HashMap<String, Object>();
 		    	resultMap.put("room_num", room_num);
 		    	boolean isExist = resultList.contains(resultMap);
