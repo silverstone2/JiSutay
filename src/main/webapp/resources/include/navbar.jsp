@@ -16,7 +16,7 @@
 					<li><a href="${pageContext.request.contextPath }/about.do#location">오시는길</a></li>
 				</ul>
 			</li>
-			<li class="gb"><a href="${pageContext.request.contextPath }/"><span class="en">POOLVILLA</span><span class="ko">풀빌라</span></a>
+			<li class="gb"><a href="${pageContext.request.contextPath }/home.do#poolvila"><span class="en">POOLVILLA</span><span class="ko">풀빌라</span></a>
 				<ul class="sub">
 					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=5&sort=regdate">단체실</a></li>
 					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=1&sort=regdate">일반실</a></li>

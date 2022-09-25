@@ -37,7 +37,7 @@
 			<div class="InBox">
 			<c:forEach var="tmp" items="${requestScope.list }">
 				<div>
-					<div class="img">
+					<div class="img" id="poolvila">
 						<div style="background-image:url(${pageContext.request.contextPath }${tmp.img_path })"></div>
 					</div>
 					<div class="btn">
@@ -58,9 +58,7 @@
 			</div>
 		</div>
 	</section>
-	
-	<a href="${pageContext.request.contextPath }/room_SH/list.do?num=1">객실</a>
-	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
+
 	<!-- footer include -->
 	<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
