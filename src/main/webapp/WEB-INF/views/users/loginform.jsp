@@ -52,6 +52,20 @@
 						</span>
 						<input class="form-control" id="password" type="password" name="password" placeholder="비밀번호" required/>
 					</div>
+					
+					<!-- 자동 로그인 -->
+					<div align="left">
+						<label for="autoLogin">
+							<c:if test="${isAutoLogin eq 'on' }">
+								<input id="autoLogin" type="checkbox" name="autoLogin" checked />
+							</c:if>
+							<c:if test="${isAutoLogin ne 'on' }">
+								<input id="autoLogin" type="checkbox" name="autoLogin" />
+							</c:if>
+							자동 로그인
+						</label>
+					</div>
+					
 					<br>
 					<br>
 					<!-- button 요소 -->

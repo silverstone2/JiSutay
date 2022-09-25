@@ -3,6 +3,7 @@ package com.pina.jisutay.users.controller;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -39,20 +40,21 @@ public class UsersController {
 	
 	// 로그인 기능
 	@RequestMapping("/users/loginform.do")
-	public String loginform() {
+	public String loginform(HttpServletRequest req) {
+		service.autoLoginFlag(req);
 		return "users/loginform";
 	}
 	
 	@RequestMapping("/users/login.do")
-	public ModelAndView login(UsersDto dto, ModelAndView mav, HttpServletRequest req) {
-		service.checkUser(dto, mav, req);
+	public ModelAndView login(UsersDto dto, ModelAndView mav, HttpServletRequest req, HttpServletResponse res) {
+		service.checkUser(dto, mav, req, res);
 		return mav;
 	}
 	
 	// 로그아웃 기능
 	@RequestMapping("/users/logout.do")
-	public String logout(HttpServletRequest req) {
-		service.logout(req);
+	public String logout(HttpServletRequest req, HttpServletResponse res) {
+		service.logout(req, res);
 		return "redirect:/home.do";
 	}
 }
