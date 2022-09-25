@@ -22,4 +22,20 @@ public class UsersDaoImpl implements UsersDao {
 		return dto;
 	}
 
+	@Override
+	public void insertSessionId(UsersDto dto) {
+		session.update("users.insertSessionId", dto);
+	}
+
+	@Override
+	public void deleteSessionId(String id) {
+		session.update("users.deleteSessionId", id);
+	}
+
+	@Override
+	public UsersDto selectSessionIdExist(String decodedSessionId) {
+		UsersDto dto = session.selectOne("users.selectSessionIdExist", decodedSessionId);
+		return dto;
+	}
+
 }
