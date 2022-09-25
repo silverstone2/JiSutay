@@ -9,8 +9,6 @@ import com.pina.jisutay.notice.dto.NoticeDto;
 public interface NoticeDao {
 	// 글 정보 얻어오기
 	public NoticeDto getData(int num);
-	// 검색에 의한 글정보 보기
-	public NoticeDto getData(NoticeDto num);
 	// 글 목록
 	public List<NoticeDto> getList(NoticeDto ndto);
 	// 조회수 증가 시키기
