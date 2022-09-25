@@ -4,7 +4,7 @@
 
 <header>
 	<hgroup>
-		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo.png" width="190" height="80"></a></h1>
+		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/logo.png" width="220px" height="80px" ></a></h1>
 		<div><p>제주도 힐링 감성을 가득 담은 <span>"지수테이"</span></p></div>
 	</hgroup>
 	<nav>
@@ -53,10 +53,12 @@
 				</c:when>
 				
 				<c:otherwise>
-					<div class="container-fluid">
-							<a class="nav-bar-brand" href="${pageContext.request.contextPath }/">${id }</a> 님 로그인중...
-							<a class="nav-bar-brand" href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a>	       
- 					</div>
+					<li class="gb">
+						<a href="${pageContext.request.contextPath }/">${id }</a>	  					
+						<ul class="sub">
+							<li><a href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a></li>     
+ 						</ul>
+ 					<li>
 				</c:otherwise>
 			</c:choose>
 		</ul>
