@@ -13,4 +13,22 @@
 		SELECT id, password FROM users
 		WHERE id=#{id}
 	</select>
+	
+	<insert id="insertSessionId" parameterType="usersDto">
+		UPDATE users
+		SET sessionId=#{sessionId}
+		WHERE id=#{id}
+	</insert>
+	
+	<update id="deleteSessionId" parameterType="String">
+		UPDATE users
+		SET sessionId=''
+		WHERE id=#{id}
+	</update>
+	
+	<select id="selectSessionIdExist" parameterType="String" resultType="usersDto">
+		SELECT id
+		FROM users
+		WHERE sessionId=#{decodedSessionId}
+	</select>
 </mapper>
