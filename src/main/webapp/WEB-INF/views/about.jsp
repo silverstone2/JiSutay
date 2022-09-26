@@ -26,8 +26,8 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" defer=""></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
 <!-- Fotorama from CDNJS, 19 KB -->
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
@@ -70,7 +70,7 @@
 			</div>
 			
 			<!-- 소개 사진 -->
-			<div class="section fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
+			<div class="fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
 				<div class="InBox" style="width:1200px;height:600px;">
 					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 600px;">
 						<img src="${pageContext.request.contextPath }/Jisutayimage/about/1.jpg">

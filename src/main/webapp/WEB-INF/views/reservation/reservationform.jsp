@@ -31,9 +31,12 @@
 </style>
 </head>
 <body>
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+	</div>
    <div class="container">
    	  <div class="item" style="margin-top:30px; margin-bottom:20px;">	
-		<table class="reservationtable" style="text-align:center";>
+		<table class="reservationtable" style="text-align:center; width:797px;">
 			<colgroup>
 				<col style="width:300px">
 				<col style="width:200px">
@@ -41,10 +44,10 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th colspan="3" class="total" style="background-color:#F2F1F1;">예약정보 확인 및 결제금액</th>
+					<th colspan="3" class="total" style="background-color:#F2F1F1; font-size:0.9em;">예약정보 확인 및 결제금액</th>
 				</tr>
 			</thead>
-			<tbody style="font-size:0.8em;">
+			<tbody style="font-size:0.9em;">
 				<tr>
 					<td><strong>객실명</strong></td>
 					<td><strong>숙박기간</strong></td>
@@ -52,17 +55,18 @@
 				</tr>
 				<tr>
 					<td rowspan="2">
+						<div><img src="${pageContext.request.contextPath }/resources/images/${dto.num }.png" /></div>
 						<div><p>${dto.room_name }</p></div>
 					</td>
-					<td>
+					<td style="height:55px;">
 						<span>${param.check_in }</span>
-						~
+						<br />~<br />
 						<span>${param.check_out }</span>
 					</td>
 					<td>${param.peopleNum }인</td>
 				</tr>
 				<tr>
-					<td>
+					<td style="height:55px;">
 						<span>₩</span>
 						<span id="room_price"></span>
 					</td>
@@ -90,7 +94,7 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th style="background-color:#F2F1F1;">환불규정 확인</th>
+				<th style="background-color:#F2F1F1; font-size:0.9em;">환불규정 확인</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -122,7 +126,7 @@
 			<input id="check_out" type="hidden" name="check_out"/>
 			<input id="res_people" type="hidden" name="res_people"/>
 			<input id="room_num" type="hidden" name="room_num"/>
-			<button id="reservationBtn" type="submit" disabled style="margin-left:280px";>객실예약</button>
+			<button id="reservationBtn" type="submit" disabled style="margin-left:223px";>객실예약</button>
 		</form>
 	
 	
@@ -147,7 +151,7 @@
 		$("#room_num").val(${dto.num});
 	});
 	
-	//약관동의.
+	//약관동의
 	$(function(){
 		$('#agree').click(function(){
 			if($('#agree:checked').length>0){
@@ -162,6 +166,11 @@
 	$("#reservationBtn").on('click', function() {
 		 alert("예약이 완료되었습니다.")
 	});
+	
+	//페이지 로딩시 화면 포커스
+	$(function(){
+		$(".container").get(0).scrollIntoView(true);
+	})
 	
 	
 	</script>

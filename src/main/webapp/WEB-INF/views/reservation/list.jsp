@@ -14,15 +14,12 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 <style>
 	.reservationForm{
 		background-color : #FAF9F9;
 		display : none;
 	}
-	
 	.col{
 		float:left;
 	}
@@ -30,7 +27,6 @@
 	.card-body{
 		background-color : #FAF9F9;
 	}
-	
 	.smoke {
 		display: flex;
 		position: absolute;
@@ -43,27 +39,27 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
 	.form{
 		margin-top: 100px;
+		margin-left : 130px;
 		width: 1000px;
 		height:600px;
 		border-top:1px solid #323332
 	}
-	
 	.dateform{
 		margin-top : 10px;
 		margin-bottom : 20px;
 		margin-left : 370px;
 	}
-	
 	.info{
 		display:flex;
 		justify-content:center;
 		align-items:center;
 	}
 	.info2{
-		margin-left : 240px;
+		display:flex;
+		justify-content:center;
+		align-items:center;
 	}
 	
 	.detail{
@@ -74,19 +70,27 @@
 		font-size:0.8em;
 	}
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
+   <!-- 상단 배너  -->
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+	</div>
+	<!-- 네비바 클릭시 화면 포커스 -->
+   <div id="focus"></div>
+   
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
   <div class="form">
   	<div class="dateform">
-	  	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
-		<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
-			<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
-			<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
-			<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
-		</form>
+  	<br>
+  	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
+	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
+		<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
+		<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
+		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
+	</form>
+	<br><br><br>
 	</div>
 	
 	<div class="row">
@@ -99,9 +103,9 @@
 						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
 						 	기준:2인 ~ 최대:${tmp.room_people }
 						</p>
+						 <div><br></div>
 						 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
-					</div>	 
-					
+					</div>
 					<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
 				</div>
 			</div>
@@ -141,14 +145,20 @@
 					</div>
 				 </div>
 				 <div class="info2">
-					<p><strong>숙박기간 : </strong><span class="date"></span>박 </p> 
-					<p style="margin-bottom:7px;"><strong>이용인원</strong></p>
-						<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
-						<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
-						<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
-						<p>-성인 추가금 2만원입니다</p>
-					
-					<table>
+					<table style="  border-collapse: separate; border-spacing: 0 15px;">
+						<tr>
+							<th>숙박기간 : </th>
+							<td><span class="date"></span>박</td>
+						</tr>
+						<tr>
+							<th>이용인원 : </th>
+							<td>
+								<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
+								<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
+								<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
+								<p>-성인 추가금 2만원입니다</p>
+							</td>
+						</tr>	
 						<tr>
 							<th>객실요금 : </th>
 							<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
@@ -161,14 +171,16 @@
 							<th>총요금 : </th>
 							<td id="totalPrice${status.index }">0</td>
 						</tr>			
+						<tr>
+							<th>
+								<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
+								<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
+							</th>
+						</tr>
 					</table>
-					<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
-					<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
-					
 				</div>
 			 </div>
 		</c:forEach>
-		
 		<form id="submitForm" action="reservationform.do", method="post">
 			<input id="num" type="hidden" name="num"/>
 			<input id="inputIn" type="hidden" name="check_in" />
@@ -178,7 +190,6 @@
 	</div>
   </div>
 </div>
-
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
@@ -294,6 +305,9 @@
 			});
 		});
 	});
+	
 </script>
+<div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -4,8 +4,8 @@
 
 <header>
 	<hgroup>
-		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/logo.png" width="220px" height="80px" ></a></h1>
-		<div><p>제주도 힐링 감성을 가득 담은 <span>"지수테이"</span></p></div>
+		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/Logo_Image.png" width="220px" height="80px" ></a></h1>
+		<div><p>제주도 힐링 감성을 가득 담은 <span>"JiSutay"</span></p></div>
 	</hgroup>
 	<nav>
 		<ul>
@@ -16,7 +16,7 @@
 					<li><a href="${pageContext.request.contextPath }/about.do#location">오시는길</a></li>
 				</ul>
 			</li>
-			<li class="gb"><a href="${pageContext.request.contextPath }/"><span class="en">POOLVILLA</span><span class="ko">풀빌라</span></a>
+			<li class="gb"><a href="${pageContext.request.contextPath }/home.do#poolvila"><span class="en">POOLVILLA</span><span class="ko">풀빌라</span></a>
 				<ul class="sub">
 					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=5&sort=regdate">단체실</a></li>
 					<li><a href="${pageContext.request.contextPath }/room/detail.do?num=1&sort=regdate">일반실</a></li>
@@ -26,15 +26,15 @@
 				</ul>
 			<li class="gb"><a href="${pageContext.request.contextPath }/travel/list.do"><span class="en">TRAVEL</span><span class="ko">주변여행지</span></a></li>
 			<li class="gb">
-				<a href="${pageContext.request.contextPath }/reservation/list.do">
+				<a href="${pageContext.request.contextPath }/reservation/list.do#focus">
 					<span class="en">RESERVATION</span>
 					<span class="ko">실시간예약</span>
 				</a>
 			</li>
 			<li class="gb">
 				<a href="${pageContext.request.contextPath }/notice/list.do">
-					<span class="en">COMMUNITY</span>
-					<span class="ko">커뮤니티</span>
+					<span class="en">NOTICE</span>
+					<span class="ko">공지 게시판</span>
 				</a>
 			</li>
 							
