@@ -8,13 +8,14 @@
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
-	.container{
+	/* .container{
 		margin-left:20%;
 		margin-right:20%;
-	}
+	} */
 	
 	#updateForm{
-		width:995px;
+		width:80%;
+		margin-left:9%;
 		border-right:none;
 		border-left:none;
 		border-top:none;
@@ -22,15 +23,19 @@
 		
 		margin-top:5%;
 	}
-	
-	.updateTable {
-		width:990px;
+	#content{
+		width:99%;
+		height:50%;
+		text-align:center;
+	}
+/* 	.updateTable {
+		width:100%;
 		border-right:none;
 		border-left:none;
 		border-top:none;
 		border-bottom:none;
-	}
-
+	} */
+	/* 버튼 시작 */
 	.buttonEffect {
 		margin-left: 36%;
 		margin-right: 36%;
@@ -52,31 +57,37 @@
 		border:0;
 		outline:0;
 	}
+	/* 버튼 끝 */
 	.form-control{
+		width:90%;
+		float:right;
 		font-size:20px;
 		margin-bottom:5px;
+		margin-right:5px;
+		border-radius: 10px 10px 10px 10px;
 		
 	}
 	h1 {
-		width:1000px;
+		/* width:1000px;
         text-align:center;
-        margin-top:3%;
+        margin-top:3%; */
+        width:fit-content;
+        margin:auto;
 	} 
 </style>
 </head>
-<body>
+<body class="m-5">
 <div class="container">
 	<h1>공지사항 수정</h1>
 	<form action="update.do" method="post" id="updateForm">
 	<input type="hidden" name="num" value="${dto.num }" />
-		<div class="updateTable input-group mb-3">
-			<label for="title" style="width:50px; margin-top:10px; font-size:20px;">제   목</label>&nbsp;&nbsp;
-			<input type="text" name="title" id="title" class="form-control" value="${dto.title }" 
-			aria-label="Username" aria-describedby="basic-addon2" border-radius: 10px 10px 10px 10px;">
+		<div class="updateTable">
+			<label for="title" style="width:50px; margin-top:8px; margin-left:25px; font-size:20px;">제   목</label>
+			<input type="text" name="title" id="title" class="form-control" value="${dto.title }">
 		</div>
 		<div>
 			<label for="content" style="display:none">내용</label>
-			<textarea name="content" id="content" cols="130" rows="25">${dto.content }</textarea>
+			<textarea name="content" id="content">${dto.content }</textarea>
 		</div>
 			<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취소</button> 
 			<button type="submit" class="buttonA buttonEffect">수정</button>

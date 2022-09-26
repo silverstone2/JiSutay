@@ -9,10 +9,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
 	
-	.container{
+	/* .container{
 	margin-left: 20%;
 	margin-right: 20%;
-	}
+	} */
 	
 /* 	.insertTable {
 		width:768px;
@@ -23,7 +23,9 @@
 		
 	} */
 	#insertForm{
-		width:995px;
+		width:80%;
+		margin-left:9%;
+		/* text-align:center; */
 		border-right:none;
 		border-left:none;
 		border-top:none;
@@ -31,7 +33,12 @@
 		
 		margin-top:5%;
 	}
-
+	#content{
+		width:99%;
+		height:50%;
+		text-align:center;
+	}
+	/* 버튼 시작*/
 	.buttonEffect {
 		margin-left: 36%;
 		margin-right: 36%;
@@ -53,29 +60,29 @@
 		border:0;
 		outline:0;
 	}
+	/* 버튼 끝 */
 	.form-control{
 		font-size:20px;
 	}
- 	h1 {
-		width:1000px;
-        text-align:center;
-        margin-top:3%;
+ 	h1, p {
+		width:fit-content;
+        margin:auto;
 	}
 }
 </style>
 </head>
-<body>
+<body class="m-5">
 <div class="container">
 	<h1>새 글</h1>
 	<form action="insert.do" method="post" id="insertForm">
-		<div class="insertTable " >
+		<div class="insertTable">
 			<!-- <p style="width:50px; margin-top:10px; font-size:20px;">제   목</p>  -->
 			<input type="text" name="title" id="title" class="form-control" placeholder="제목..." style="margin-bottom:3%">
 		</div>
 		<div class="insertTable">
 			<label for="content" style="display:none">내용</label>
-			<textarea name="content" id="content" cols="130" rows="25"></textarea>
-		</div>
+			<textarea name="content" id="content"></textarea>
+		</div>								<!--  cols="130" rows="25" -->
 		<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취소</button>		
 		<button type="submit" class="buttonA buttonEffect">저장</button>
 	</form>
