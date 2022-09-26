@@ -146,12 +146,14 @@
 				</td>
 			</tr>
 			<tr class="aaa" style="margin-bottom:5%;">
-				<td class=""><span class="dTable"><img src="${pageContext.request.contextPath}/Jisutayimage/notice/clock.png" style="margin-bottom:2px;">&nbsp;${dto.regdate}&nbsp;</span></td>
+				<td class=""><span class="dTable"><img src="${pageContext.request.contextPath}/Jisutayimage/notice/clock.png" style="margin-bottom:2px;">&nbsp;${dto.regdate}&nbsp;&nbsp;</span></td>
 				<td class="dTable"><span><img src="${pageContext.request.contextPath }/Jisutayimage/notice/eye1.png" style="margin-bottom:5px;">&nbsp;${dto.views } 회</span></td>
 								<!--  style="text-align:right; -->
 			</tr>
 			<tr class="aaa" >
-				<td colspan="3" style="margin-top:5%; margin-bottom:5%;">${dto.content }</td>
+				<td colspan="3" style="margin-top:5%; margin-bottom:5%;">
+					<pre>${dto.content }</pre>
+				</td>
 			</tr>
 			<!-- 다음글, 이전글 버튼 -->
 			<tr style="border-top:1px solid #DAD8D7">
@@ -164,7 +166,7 @@
 			<tr style="border-top:1px solid #DAD8D7; border-bottom:1px solid #DAD8D7;">
 				<c:if test="${dto.nextNum ne 0 }">
 					<td class="col-2"><img src="${pageContext.request.contextPath}/Jisutayimage/notice/arrowDown.png">&nbsp;다음 글</td>
-					<td class="col-7" ><a href="detail.do?num=${dto.nextNum }#post" class="prevNextTitle">${dto.nextTitle}</a></td>
+					<td class="col-7" ><a href="detail.do?num=${dto.nextNum }#post" class="prevNextTitle" >${dto.nextTitle}</a></td>
 					<td class="col-3" style="text-align:right;">${dto.nextDate}</td>
 				</c:if>
 			</tr>

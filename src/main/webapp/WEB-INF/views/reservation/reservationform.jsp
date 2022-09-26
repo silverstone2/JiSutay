@@ -58,24 +58,28 @@
 				</tr>
 				<tr>
 					<td rowspan="2">
-						<div><img src="${pageContext.request.contextPath }/resources/images/${dto.num }.png" /></div>
-						<div><p>${dto.room_name }</p></div>
+						<div>
+							<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${dto.num }.jpg" width="300px" height="180px" />
+						</div>
+						<div><h3>${dto.room_name }</h3></div>
 					</td>
 					<td style="height:55px;">
-						<span>${param.check_in }</span>
-						<br />~<br />
-						<span>${param.check_out }</span>
+						<span style="font-size: 20px;">${param.check_in }</span>
+						<br />
+						<span style="font-size: 20px;">~</span>
+						<br />
+						<span style="font-size: 20px;">${param.check_out }</span>
 					</td>
-					<td>${param.peopleNum }인</td>
+					<td><span style="font-size: 20px;">${param.peopleNum }인</span></td>
 				</tr>
 				<tr>
 					<td style="height:55px;">
 						<span>₩</span>
-						<span id="room_price"></span>
+						<span id="room_price" style="font-size: 20px;"></span>
 					</td>
 					<td>
 						<span>₩</span>
-						<span id="people_price"></span>
+						<span id="people_price" style="font-size: 20px;"></span>
 					</td>
 				</tr>
 				<tr>
