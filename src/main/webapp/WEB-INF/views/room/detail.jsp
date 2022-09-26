@@ -14,6 +14,7 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" ></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
@@ -373,7 +374,7 @@
 													<div style="height:22px; width:100%;"></div>
 													<!-- 답글 버튼 -->
 													<c:if test="${tmp.commCount-1 ne 0}">
-														<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">🔽 답글 ${tmp.commCount-1 }개</a>	
+														<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">ᗐ 답글 ${tmp.commCount-1 }개</a>	
 													</c:if>
 												</dd>
 											</dl>
@@ -724,7 +725,7 @@
 			let commCommForm = document.querySelector("#commComm"+num);
 			let commCommText = commCommForm.innerText;
 			console.log(commCommText);
-			if(commCommText == "🔽 답글 "+comm_count+"개") {
+			if(commCommText == "ᗐ 답글 "+comm_count+"개") {
 				fetch("${pageContext.request.contextPath }/room/ajax_commComments.do?num=${param.num }&comment_num="+comment_num)
 				.then(function(res) {
 					return res.text();
@@ -739,10 +740,10 @@
 					addReplyListener(".re-reply-link");
 					formControll('.re-re-insert-form');
 				});
-				commCommForm.innerText = "🔼 답글 "+comm_count+"개";
-			} else if(commCommText == "🔼 답글 "+comm_count+"개") {
+				commCommForm.innerText = "ᗑ 답글 "+comm_count+"개";
+			} else if(commCommText == "ᗑ 답글 "+comm_count+"개") {
 				document.querySelector("#commComments"+num).innerText = "";
-				commCommForm.innerText = "🔽 답글 "+comm_count+"개";
+				commCommForm.innerText = "ᗐ 답글 "+comm_count+"개";
 			}
 		}
 		
