@@ -26,7 +26,7 @@
 				</ul>
 			<li class="gb"><a href="${pageContext.request.contextPath }/travel/list.do"><span class="en">TRAVEL</span><span class="ko">주변여행지</span></a></li>
 			<li class="gb">
-				<a href="${pageContext.request.contextPath }/reservation/list.do">
+				<a href="${pageContext.request.contextPath }/reservation/list.do#focus">
 					<span class="en">RESERVATION</span>
 					<span class="ko">실시간예약</span>
 				</a>

@@ -10,7 +10,6 @@
 
 <jsp:include page="/resources/include/starRating_style.jsp"></jsp:include>
 
-
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -18,7 +17,7 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" ></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 
 <!-- jQuery 1.8 or later, 33 KB -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -175,7 +174,7 @@
 <!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
-				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/jami/1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
+				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${dto.num }.jpg" style="width: 100%; height: 700px; opacity: 0.7">
 				<h2>
 					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/logo_bl.png" width="240" height="40" alt="">
 					<span>${dto.room_name }</span>
@@ -203,7 +202,7 @@
 					<ul>
 						<li>
 							<strong>객실구조</strong>
-							<span>${dto.room_structure }</span>
+							<pre><span>${dto.room_structure }</span></pre>
 						</li>
 						<li>
 							<strong>객실크기</strong>
@@ -215,7 +214,7 @@
 						</li>
 						<li>
 							<strong>객실비품</strong>
-							<span>${dto.room_items }</span>
+							<pre><span>${dto.room_items }</span></pre>
 						</li>
 					</ul>
 				</div>
@@ -223,22 +222,19 @@
 					<h3>객실 소개</h3>
 					<ul class="write">
 						<li>
-							${dto.room_introduce }<br> 
-							1. 젊은 커플들이 선호하는 객실입니다.<br> 
-							2. 앞뒤에 마당이 있어 아이들이 안전하게 뛰어 놀 수 있습니다.<br> 
-							3. 객실내 반려동물 동반 입실은 불가합니다.<br> 
-							4. 모든 객실에서는 금연이며 화재위험이 있는 물품은 반입이 안됩니다.<br> 
-							5. 우천시 야외 바베큐장은 사용이 불가합니다.(밤별은 가능)
+							<pre>${dto.room_introduce }</pre>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
+		
 <!-- 객실 이미지 -->
-		<div class="section images">
+		<div class="section images" style="margin-top: 200px;">
 			<div class="InBox">
 				<div class="fotorama" data-nav="thumbs">
+				<!--
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/2.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/3.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/4.jpg" width="150" height="100">
@@ -252,6 +248,7 @@
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/12.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/13.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/14.jpg" width="150" height="100">
+				-->
 					<c:forEach var="imgPath" items="${imgList }" varStatus="status">
 						<img src="${pageContext.request.contextPath }${imgPath }" width="100" height="150"/>
 					</c:forEach>
@@ -528,9 +525,12 @@
 		.addEventListener("submit", function(event){
 			//로그인 없이 sumbit 누를 경우
 			if(!isLogin){
-				event.prventDefault();
-				location.href=
-					"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/room/detail.do?num=${dto.num}";
+				const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
+				if(isMove){
+					location.href=
+						"${pageContext.request.contextPath}/users/loginform.do?url=/room/detail.do,${dto.num},regdate";
+				}
+				event.preventDefault();
 			}
 		});
 		
@@ -602,7 +602,7 @@
 						const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
 						if(isMove){
 							location.href=
-								"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+								"${pageContext.request.contextPath}/users/loginform.do?url=/room/detail.do,${dto.num},regdate";
 						}
 						return;
 					}

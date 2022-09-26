@@ -7,9 +7,8 @@
 <meta charset="UTF-8">
 <title>loginform</title>
 
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -24,14 +23,6 @@
 		<div class="row justify-content-md-center">
 			<!-- nav 바 -->
 			<jsp:include page="/resources/include/style.jsp"></jsp:include>
-			<c:if test="${isFail eq true}">
-				<div class="w-50 alert alert-warning alert-dismissible fade show text-center mt-3" role="alert" style="text-align:center;">
-					<strong>
-						아이디 비밀번호를 다시 확인해주세요!
-					</strong>
-					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-				</div>
-			</c:if>
 			<div>
 				<br>
 				<br>
@@ -43,6 +34,15 @@
 			<div class="col-md-7 col-lg-4">
 				<form action="login.do" method="post" class="validation" novalidate>
 				<!-- input 요소 -->
+					<!-- 리다이렉트 링크 추가 -->
+		            <c:choose>
+			            <c:when test="${ empty param.url }">
+			               <input type="hidden" name="url" value="/home.do"/>
+			            </c:when>
+			            <c:otherwise>
+			               <input type="hidden" name="url" value="${param.url }"/>
+			            </c:otherwise>
+		            </c:choose>
 					<!-- 아이디 -->
 					<div class="input-group mt-3 mb-3">
 						<label class="form-label" for="id">
@@ -72,15 +72,24 @@
 					<!-- 자동 로그인 -->
 					<div align="left">
 						<label for="autoLogin">
-							<c:if test="${isAutoLogin eq 'on' }">
-								<input id="autoLogin" type="checkbox" name="autoLogin" checked />
-							</c:if>
-							<c:if test="${isAutoLogin ne 'on' }">
-								<input id="autoLogin" type="checkbox" name="autoLogin" />
-							</c:if>
+							<c:choose>
+								<c:when test="${isAutoLogin eq 'on'}">
+									<input id="autoLogin" type="checkbox" name="autoLogin" checked />
+								</c:when>
+								<c:otherwise>
+									<input id="autoLogin" type="checkbox" name="autoLogin" />
+								</c:otherwise>
+							</c:choose>
 							자동 로그인
 						</label>
 					</div>
+					
+					<!-- 로그인 실패 -->
+					<c:if test="${isFail eq true }">
+						<br>
+						<span style="color: red;">아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.</span><br>
+						<span style="color: red;">입력하신 내용을 다시 확인해주세요.</span>
+					</c:if>
 					
 					<br>
 					<br>

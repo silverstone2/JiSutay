@@ -69,16 +69,31 @@ public class UsersServiceImpl implements UsersService {
 		String id = dto.getId();
 		String password = dto.getPassword();
 		Boolean isValid = false;
+		// 이동 url 파라미터
+		String param = req.getParameter("url");
+		System.out.println(param);
+		// url 파라미터에 다른 파라미터가 붙어 있을 경우
+		String url = param;
+		String num = null;
+		String sort = null;
+		if(param.split(",").length > 1) {
+			url = param.split(",")[0];
+			num = param.split(",")[1];
+			sort = param.split(",")[2];
+		}
 		
 		UsersDto savedDto = dao.checkId(id);
 		HttpSession session = req.getSession();
+		
 		if(savedDto != null && password != "") {
+			// id와 password가 존재할 경우
 			String encodedPwd = savedDto.getPassword();
 			
 			isValid=BCrypt.checkpw(password, encodedPwd);
 		} else {
+			// id 또는 password 둘 중 하나가 없는 경우
 			session.setAttribute("isFail", true);
-			mav.setViewName("redirect:/users/loginform.do");
+			mav.setViewName("redirect:/users/loginform.do?url="+param);
 			return;
 		}
 		
@@ -90,7 +105,6 @@ public class UsersServiceImpl implements UsersService {
 			if(req.getParameter("autoLogin") == null) {
 				autoLogin = "off";
 			}
-			System.out.println(autoLogin);
 			
 			// isAutoLogin : 자동 로그인 여부를 저장하는 쿠키(로그인 페이지에 '자동 로그인' 체크박스 선택을 위한 용도)
 			// sessionId : 세션 id로써 쿠키에는 암호화된 상태로 저장된다.
@@ -132,17 +146,30 @@ public class UsersServiceImpl implements UsersService {
 				updateDto.setId(id);
 				updateDto.setSessionId(sessionGetId);
 				dao.insertSessionId(updateDto);
-			} else if(autoLogin.equals("off")) {
+			} else {
 				// isAutoLogin 삭제
 				Cookie cookie_autoLogin = new Cookie("isAutoLogin", null);
 				cookie_autoLogin.setMaxAge(0);
+				cookie_autoLogin.setPath("/");
 				res.addCookie(cookie_autoLogin);
 			}
 			
-			mav.setViewName("redirect:/home.do");
+			String returnUrl = null;
+			if(num!=null && sort!=null) {
+				// 세부 객실 redirect
+				returnUrl = "redirect:"+url+"?num="+num+"&sort="+sort+"#review";
+			} else if(url.contains("reservation")) {
+				// 예약 페이지 redirect
+				returnUrl = "redirect:"+url+"#focus";
+			} else {
+				// index 페이지 redirect
+				returnUrl = "redirect:"+url;
+			}
+			
+			mav.setViewName(returnUrl);
 		} else {
 			session.setAttribute("isFail", true);
-			mav.setViewName("redirect:/users/loginform.do");
+			mav.setViewName("redirect:/users/loginform.do?url="+param);
 		}
 	}
 
@@ -158,6 +185,7 @@ public class UsersServiceImpl implements UsersService {
 					// sessionId 쿠키 강제 삭제
 					Cookie cookie_sessionId = new Cookie("sessionId", null);
 					cookie_sessionId.setMaxAge(0);
+					cookie_sessionId.setPath("/");
 					res.addCookie(cookie_sessionId);
 				}
 			}

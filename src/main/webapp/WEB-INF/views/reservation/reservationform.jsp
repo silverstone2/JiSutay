@@ -38,8 +38,8 @@
 		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
    <div class="container">
-   	  <div class="item" style="margin-bottom:10px;">	
-		<table class="reservationtable" style="text-align:center";>
+   	  <div class="item" style="margin-top:30px; margin-bottom:20px;">	
+		<table class="reservationtable" style="text-align:center; width:797px;">
 			<colgroup>
 				<col style="width:300px">
 				<col style="width:200px">
@@ -47,34 +47,39 @@
 			</colgroup>
 			<thead>
 				<tr>
-					<th colspan="3" class="total" style="background-color:#F2F1F1;">예약정보 확인 및 결제금액</th>
+					<th colspan="3" class="total" style="background-color:#F2F1F1; font-size:0.9em;">예약정보 확인 및 결제금액</th>
 				</tr>
 			</thead>
-			<tbody>
+			<tbody style="font-size:0.9em;">
 				<tr>
-					<td>객실명 </td>
-					<td>숙박기간</td>
-					<td>인원선택</td>
+					<td><strong>객실명</strong></td>
+					<td><strong>숙박기간</strong></td>
+					<td><strong>인원선택</strong></td>
 				</tr>
 				<tr>
 					<td rowspan="2">
-						<div><p>${dto.room_name }</p></div>
+						<div>
+							<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${dto.num }.jpg" width="300px" height="180px" />
+						</div>
+						<div><h3>${dto.room_name }</h3></div>
 					</td>
-					<td>
-						<span>${param.check_in }</span>
-						~
-						<span>${param.check_out }</span>
+					<td style="height:55px;">
+						<span style="font-size: 20px;">${param.check_in }</span>
+						<br />
+						<span style="font-size: 20px;">~</span>
+						<br />
+						<span style="font-size: 20px;">${param.check_out }</span>
 					</td>
-					<td>${param.peopleNum }</td>
+					<td><span style="font-size: 20px;">${param.peopleNum }인</span></td>
 				</tr>
 				<tr>
-					<td>
+					<td style="height:55px;">
 						<span>₩</span>
-						<span id="room_price"></span>
+						<span id="room_price" style="font-size: 20px;"></span>
 					</td>
 					<td>
 						<span>₩</span>
-						<span id="people_price"></span>
+						<span id="people_price" style="font-size: 20px;"></span>
 					</td>
 				</tr>
 				<tr>
@@ -96,12 +101,12 @@
 		</colgroup>
 		<thead>
 			<tr>
-				<th style="background-color:#F2F1F1;">환불규정 확인</th>
+				<th style="background-color:#F2F1F1; font-size:0.9em;">환불규정 확인</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td style="font-size:0.5em;">
+				<td style="font-size:0.8em;">
 					<p style="color:#ff3535;">아래 환불규정은 고객님과 저희 제주 풀스테이의 계약이므로 동의하신다면 예약을 진행하시기 바랍니다.</p>
 					<p>천재지변으로 결항되어 예약을 취소하실 경우, 증빙서류를 제출하시면 100% 환불이 가능합니다.</p>
 					<p style="color:#ff3535;">온수수영장 사용은 무료이기때문에 수영장 사용에 대한 클레임은 받아들여지지 않습니다. 양해해주시기 바랍니다.</p>
@@ -128,7 +133,7 @@
 			<input id="check_out" type="hidden" name="check_out"/>
 			<input id="res_people" type="hidden" name="res_people"/>
 			<input id="room_num" type="hidden" name="room_num"/>
-			<button id="reservationBtn" type="submit" disabled style="margin-left:320px";>객실예약</button>
+			<button id="reservationBtn" type="submit" disabled style="margin-left:223px";>객실예약</button>
 		</form>
 	
 	
@@ -153,7 +158,7 @@
 		$("#room_num").val(${dto.num});
 	});
 	
-	//약관동의.
+	//약관동의
 	$(function(){
 		$('#agree').click(function(){
 			if($('#agree:checked').length>0){
@@ -168,6 +173,11 @@
 	$("#reservationBtn").on('click', function() {
 		 alert("예약이 완료되었습니다.")
 	});
+	
+	//페이지 로딩시 화면 포커스
+	$(function(){
+		$(".container").get(0).scrollIntoView(true);
+	})
 	
 	
 	</script>

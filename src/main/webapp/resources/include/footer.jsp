@@ -9,7 +9,7 @@
 		
 			<a href="#">
 				<div class="imgs">
-					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/oreum/9.jpg" width="380px" height="250px" />
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room2.jpg" width="380px" height="250px" />
 				</div>
 				<div class="bg"></div>
 				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/more_btn.png" >

@@ -11,7 +11,7 @@
 <title>/views/reservation/list.jsp</title>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -25,6 +25,7 @@
 	.col{
 		float:left;
 	}
+	
 	.card-body{
 		background-color : #FAF9F9;
 	}
@@ -58,8 +59,11 @@
 		align-items:center;
 	}
 	.info2{
-		margin-left : 240px;
+		display:flex;
+		justify-content:center;
+		align-items:center;
 	}
+	
 	.detail{
 		margin:10px;
 		display:flex;
@@ -67,7 +71,6 @@
 		align-items:center;		
 		font-size:0.8em;
 	}
-	
 </style>
 </head>
 <body>
@@ -75,6 +78,9 @@
    <div class="banner">
 		<img src="${pageContext.request.contextPath}/resources/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
+	<!-- 네비바 클릭시 화면 포커스 -->
+   <div id="focus"></div>
+   
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
   <div class="form">
@@ -92,8 +98,8 @@
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 			<div class="col-3">
-				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
-					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index }.jpg"  />
+				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto; margin-bottom: 30px;">
+					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg"  />
 					<div class="card-body">
 						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
 						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
@@ -108,11 +114,16 @@
 				<div id="reservationForm${status.index }" class="reservationForm">
 				  <div class="info">
 				  	<div class="detail">
+				  	<!--
 					<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
+					 -->
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
 					</div>
 					<div class="detail">
 					<table>
-						<th><h3>${tmp.room_name}</h3></th>
+						<tr>
+							<th style="width: 20%;"><h3>${tmp.room_name}</h3></th>
+						</tr>
 						<tr>
 							<th>객실구조 :</th>
 							<td>${tmp.room_structure }</td>
@@ -123,10 +134,10 @@
 						</tr>
 						<tr>
 							<th>숙박인원 :</th>
-							<td>최대${tmp.room_people }</td>
+							<td>최대 ${tmp.room_people }</td>
 						</tr>
 						<tr>
-							<th>비품 :</th>
+							<th>비&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp품 :</th>
 							<td>${tmp.room_items }</td>
 						</tr>
 						<tr>
@@ -134,21 +145,27 @@
 							<td>${tmp.bedroom_type }</td>
 						</tr>
 						<tr>
-							<th>소개 :</th>
+							<th>소&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp개 :</th>
 							<td>${tmp.room_introduce }</td>
 						</tr>						
 					</table>
 					</div>
 				 </div>
 				 <div class="info2">
-					<p><strong>숙박기간 : </strong><span class="date"></span>박 </p> 
-					<p style="margin-bottom:7px;"><strong>이용인원</strong></p>
-						<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
-						<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
-						<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
-						<p>-성인 추가금 2만원입니다</p>
-					
-					<table>
+					<table style="  border-collapse: separate; border-spacing: 0 15px;">
+						<tr>
+							<th>숙박기간 : </th>
+							<td><span class="date"></span>박</td>
+						</tr>
+						<tr>
+							<th>이용인원 : </th>
+							<td>
+								<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
+								<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
+								<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
+								<p>-성인 추가금 2만원입니다</p>
+							</td>
+						</tr>	
 						<tr>
 							<th>객실요금 : </th>
 							<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
@@ -161,10 +178,13 @@
 							<th>총요금 : </th>
 							<td id="totalPrice${status.index }">0</td>
 						</tr>			
+						<tr>
+							<th>
+								<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
+								<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
+							</th>
+						</tr>
 					</table>
-					<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
-					<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
-					
 				</div>
 			 </div>
 		</c:forEach>
@@ -180,34 +200,47 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
+   let isLogin = ${not empty sessionScope.id};
    
    function reserve(index, room_price, num) {
-      // input에서 체크인, 체크아웃 가져오기
-      var check_in = new Date($("#check_in").val());
-      var check_out = new Date($("#check_out").val());
-      
-      // 체크인, 체크아웃 form value로 보내기
-      $('#num').val(num);
-      $('#inputIn').val($("#check_in").val());
-      $('#inputOut').val($("#check_out").val());
-      
-      // 몇 박 계산
-      var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
-      if(dateDiff > 0 ){
-      $(".col-3").hide(50);
-      $("#reservationForm"+index).show(500);
-      }else if(dateDiff==0){
-         alert("1박 이상만 가능합니다")
-      }else if(dateDiff<0){
-         alert("체크아웃 일자가 체크인 일자를 앞설수 없습니다.")
-      }else{
-         alert("날짜를 기입하세요")
-      }   
-      $(".date").text(dateDiff);
-      $("#roomPricePrint"+index).text(dateDiff*room_price);
-      $("#totalPrice"+index).text(dateDiff*room_price);
-      $("#peopleNum").val(parseInt($("#inputPeople"+index).val()));
-   }
+		// 로그인 검증 처리
+		if(!isLogin){
+			const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
+			if(isMove){
+				location.href=
+					"${pageContext.request.contextPath}/users/loginform.do?url=/reservation/list.do";
+			}
+			event.prventDefault();
+			return;
+		}
+		
+		// input에서 체크인, 체크아웃 가져오기
+		var check_in = new Date($("#check_in").val());
+		var check_out = new Date($("#check_out").val());
+		
+		// 체크인, 체크아웃 form value로 보내기
+		$('#num').val(num);
+		$('#inputIn').val($("#check_in").val());
+		$('#inputOut').val($("#check_out").val());
+		
+		// 몇 박 계산
+		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
+		if(dateDiff > 0 ){
+			$(".col-3").hide(50);
+			$("#reservationForm"+index).show(500);
+		}else if(dateDiff==0){
+		   alert("1박 이상만 가능합니다")
+		}else if(dateDiff<0){
+		   alert("체크아웃 일자가 체크인 일자를 앞설수 없습니다.")
+		}else{
+		   alert("날짜를 기입하세요")
+		}   
+		
+		$(".date").text(dateDiff);
+		$("#roomPricePrint"+index).text(dateDiff*room_price);
+		$("#totalPrice"+index).text(dateDiff*room_price);
+		$("#peopleNum").val(parseInt($("#inputPeople"+index).val()));
+	}
    
    
    function minusNum(index) {
@@ -291,6 +324,7 @@
 			});
 		});
 	});
+	
 </script>
 <div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
 <jsp:include page="/resources/include/footer.jsp"></jsp:include>

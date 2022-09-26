@@ -39,12 +39,17 @@
 	</select>
 
 	<select id="getData" parameterType="int" resultType="noticeDto">
-		SELECT result1.*
-		FROM (SELECT num,writer,title,content,views,
-				TO_CHAR(regdate,'YY.MM.DD HH24:MI') AS regdate,
-				LAG(num,1,0) OVER (ORDER BY num DESC) AS prevNum,
-				LEAD(num,1,0) OVER (ORDER BY num DESC) AS nextNum
-			  FROM notice) result1
+		SELECT result2.*
+		FROM (SELECT result1.*,
+		      LAG(regdate,1,0) OVER (ORDER BY num DESC) AS prevDate,
+		      LEAD(regdate,1,0) OVER (ORDER BY num DESC) AS nextDate,
+		      LAG(title,1,0) OVER (ORDER BY num DESC) AS prevTitle,
+		      LEAD(title,1,0) OVER (ORDER BY num DESC) AS nextTitle
+		      FROM (SELECT num,writer,title,content,views,
+		            TO_CHAR(regdate,'YY.MM.DD HH24:MI') AS regdate,
+		            LAG(num,1,0) OVER (ORDER BY num DESC) AS prevNum,
+		            LEAD(num,1,0) OVER (ORDER BY num DESC) AS nextNum
+		           FROM notice) result1) result2
 		WHERE num=#{num}
 	</select>
 	

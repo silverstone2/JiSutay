@@ -3,7 +3,7 @@
 <mapper namespace="comments">
 	<select id="getData" parameterType="commentsDto" resultType="commentsDto">
 		SELECT num, cmt.writer, us.name, room_img, score,
-			TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+			TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MI') AS regdate,
 			content, target_id, room_num, comment_num, deleted, us.profile
 		FROM comments cmt
 		INNER JOIN users us
@@ -17,7 +17,7 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, cmt.writer, us.name, room_img, score,
-					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MI') AS regdate,
 					content, target_id, room_num, comment_num, deleted, us.profile
 				FROM comments cmt
 				INNER JOIN users us
@@ -33,7 +33,7 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, cmt.writer, us.name, room_img, score,
-					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MI') AS regdate,
 					content, target_id, room_num, comment_num, deleted, us.profile
 				FROM comments cmt
 				INNER JOIN users us
@@ -49,7 +49,7 @@
 			(SELECT result1.*, ROWNUM AS rnum
 			FROM
 				(SELECT num, cmt.writer, us.name, room_img, score,
-					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+					TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MI') AS regdate,
 					content, target_id, room_num, comment_num, deleted, us.profile
 				FROM comments cmt
 				INNER JOIN users us
@@ -73,7 +73,7 @@
 	
 	<select id="getCommCommList" parameterType="commentsDto" resultType="commentsDto">
 		SELECT num, cmt.writer, us.name, room_img, score,
-			TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MM') AS regdate,
+			TO_CHAR(cmt.regdate, 'YYYY.MM.DD HH24:MI') AS regdate,
 			content, target_id, room_num, comment_num, deleted, us.profile
 		FROM comments cmt
 		INNER JOIN users us

@@ -6,9 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome to JiSutay</title>
-
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -46,12 +44,12 @@
 		</div>
 		
 		<!-- 객실 바로가기 -->
-		<div class="section lists">
+		<div class="section lists" id="poolvila">
 			<div class="InBox">
 			<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 				<div>
-					<div class="img" id="poolvila">
-						<div style="background-image:url(${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index }.jpg)"></div>
+					<div class="img">
+						<div style="background-image:url(${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg)"></div>
 					</div>
 					<div class="btn">
 						<a href="room/detail.do?num=${tmp.num }&sort=regdate">

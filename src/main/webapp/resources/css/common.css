@@ -292,7 +292,7 @@ header a,footer a                               {display:block;}
 /*------------------------------------------------------------------------------------------------*/
 /* detail */
 .detail .infos {width:100%;background:#fff;}
-.detail .infos .InBox {max-width:1400px;min-width:1000px;margin:0 auto;padding:7.5% 0;overflow:hidden;}
+.detail .infos .InBox {max-width:1400px;min-width:1000px;margin:0 auto;padding:7.5% 0;}
 .detail .infos .InBox > div {float:left;width:48%;margin:0 1%;overflow:hidden;}   
 .detail .infos .InBox > div   h3 {font-size:28px;margin-bottom:30px;color:#008993;}
 .detail .infos .InBox > div   > ul {width:100%;overflow:hidden;}
@@ -310,7 +310,7 @@ html {scroll-behavior: smooth;}
 
 #rooms .images {width:100%;background:#fff;}   
 #rooms .images .InBox {max-width:1400px;min-width:1000px;margin:0 auto 5%;overflow:hidden;}   
-#rooms .images .InBox img {display:block;margin-bottom:5%;transform:translateY(10%);transform:scale(0.95);opacity:0.5;transition:1s;}
+#rooms .images .InBox img {display:block;margin-bottom:5%;transform:translateY(10%);transform:scale(0.95);opacity:1.0;transition:1s;}
 #rooms .InfoBtn {position:fixed;bottom:70px;right:2%;z-index:10;display:none;}
 #rooms .InfoBtn a {display:block;padding:15px 15.5px;font-size:14px;background:#bc9e5d;color:#fff;}
 #rooms .FarmBtn {position:fixed;bottom:120px;right:calc(2% - 11px);background:url(../images/farm.png) no-repeat left top;z-index:10;}
