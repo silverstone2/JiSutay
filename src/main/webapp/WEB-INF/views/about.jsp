@@ -66,28 +66,27 @@
 			<div class="title" id="title">
 				<h3>JiSutay</h3>
 				<p>
-					제주도 서귀포시에 위치한 풀빌라 지수테이는 <strong>地 </strong>와 <strong>水 </strong>안에 머문다는 뜻을 가진<br>
-					자연 속의 편안한 분위기와 제주도의 돌담이 매력적인 독채형 펜션입니다.<br>
-
-					제주도의 사랑스러운 분위기와 나의 집같은 편안함을 전해드립니다.<br>
+					제주도 서귀포시에 위치한 자연 속 풀빌라 지수테이는 <br>
+					<strong>地 </strong>와 <strong>水 </strong>안에 머문다는 뜻을 가진 매력적인 독채형 펜션입니다.<br>
+					제주의 사랑스러운 분위기와 편안함을 전해드립니다.<br>
 					지수테이에 오시는 당신에게 따뜻하고 편안한 여행을 약속드립니다.
 				</p>
 			</div>
 			
 			<!-- 소개 사진 -->
-			<div class="fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
-				<div class="InBox" style="width:1200px;height:600px;">
-					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 600px;">
-						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/1.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/2.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/3.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/4.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/5.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/6.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/7.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/8.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/9.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/10.jpg">
+			<div class="section fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
+				<div class="InBox" style="width:1050px;height:800px;">
+					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 900px;">
+						<img src="${pageContext.request.contextPath }/Jisutayimage/about/1.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/2.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/3.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/4.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/5.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/6.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/7.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/8.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/9.jpg">
+		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/10.jpg">
 					</div>
 				</div>
 			</div>
