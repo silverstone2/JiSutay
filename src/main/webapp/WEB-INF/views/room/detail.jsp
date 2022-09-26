@@ -8,11 +8,22 @@
 <meta charset="UTF-8">
 <title>지수테이 - 소랑제</title>
 
-<jsp:include page="/include/starRating_style.jsp"></jsp:include>
+<jsp:include page="/resources/include/starRating_style.jsp"></jsp:include>
 
+
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
+<!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Fotorama from CDNJS, 19 KB -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 
 <style>
 	.content{
@@ -97,6 +108,7 @@
 
 </head>
 <body id="rooms" class="detail">
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 	<div onload="javascript:test();">
 	</div>
 	<section>	
@@ -241,7 +253,7 @@
 									<%-- 왼쪽 padding 50px로 들여쓰기 효과 + 화살표 아이콘 추가 --%>
 									<li id="reli${tmp.num }" style="padding-left:50px;">
 										<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
-				  							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+				  							<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
 										</svg>
 								</c:if>
 										<dl>
@@ -387,7 +399,7 @@
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
-	<jsp:include page="/include/starRating_js.jsp"></jsp:include>
+	<jsp:include page="/resources/include/starRating_js.jsp"></jsp:include>
 	<script>
 		//로그인 여부 확인
 		let isLogin=${not empty id };
@@ -646,7 +658,5 @@
 		movePage(pageNum);
 	});
 	</script>
-	
-	
 </body>
 </html>

@@ -4,7 +4,7 @@
 
 <header>
 	<hgroup>
-		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/logo.png" width="220px" height="80px" ></a></h1>
+		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/Logo_Image.png" width="220px" height="80px" ></a></h1>
 		<div><p>제주도 힐링 감성을 가득 담은 <span>"지수테이"</span></p></div>
 	</hgroup>
 	<nav>
@@ -33,8 +33,8 @@
 			</li>
 			<li class="gb">
 				<a href="${pageContext.request.contextPath }/notice/list.do">
-					<span class="en">COMMUNITY</span>
-					<span class="ko">커뮤니티</span>
+					<span class="en">NOTICE</span>
+					<span class="ko">공지 게시판</span>
 				</a>
 			</li>
 							

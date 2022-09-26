@@ -7,6 +7,15 @@
 <meta charset="UTF-8">
 <title>/views/notice/list.jsp</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+	
 <style>
 	/*@@@@@@@@@@@@@@@@@@@@@@@@@@*/
 	@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
@@ -191,6 +200,13 @@
 </head>
 <body>
 <div class="container">
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
+	<br>
 	<h1>공지사항</h1>
   
 	<p>공지사항과 다양한 소식을 확인해보세요.</p>
@@ -282,7 +298,11 @@
 			</p>
 		</c:if>
 	</div>
+	<br>
+	<br>
 	<!-- 검색 부분 끝 -->
 </div>
+<!-- footer include -->
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

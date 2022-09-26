@@ -11,9 +11,6 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
 <style>
 	*{
 		margin: 0px;
@@ -102,5 +99,7 @@
 		<%-- </c:if> --%>
 	</div>
 </div>
+<!-- footer include -->
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -14,9 +14,6 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
 <style>
 	.reservationForm{
 		background-color : #FAF9F9;
@@ -48,6 +45,7 @@
 	
 	.form{
 		margin-top: 100px;
+		margin-left : 130px;
 		width: 1000px;
 		height:600px;
 		border-top:1px solid #323332
@@ -96,7 +94,9 @@
          </p>
       </c:otherwise>
    </c:choose>
-   
+  <div>
+  <br>
+  </div>
   <div class="form">
   	<div class="dateform">
   	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
@@ -313,5 +313,11 @@
 		});
 	});
 </script>
+<div>
+	<br>
+	<br>
+	<br>
+</div>
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>
