@@ -94,6 +94,7 @@
 								<textarea name="content"></textarea>
 								<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">등록</button>
 							</form>
+
 						<%-- 
 							댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 						--%>
@@ -104,10 +105,42 @@
 								<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">수정</button>
 							</form>
 						</c:if>	
+			</c:otherwise>
+		</c:choose>
+		<div id="commComments${tmp.num }">
+		
+		</div>
+	</c:forEach>
+</ul>
+
+<!-- 하단 페이징 버튼 -->
+<nav>
+	<ul class="pagination">
+	
+		<c:if test="${startPageNum ne 1 }">
+			<li class="page-item">
+				<a class="page-link" href="javascript:movePage(${startPageNum-1 });">◀</a>
+			</li>
+		</c:if>
+		
+		<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+			<c:choose>
+				<c:when test="${pageNum eq i }">
+					<li class="page-item active">
+						<a class="page-link" href="javascript:movePage(${i });">${i }</a>
+					</li>
+				</c:when>
+				<c:otherwise>
+					<li class="page-item">
+						<a class="page-link" href="javascript:movePage(${i });">${i }</a>
+					</li>
 				</c:otherwise>
 			</c:choose>
-			<div id="commComments${tmp.num }">
-			
-			</div>
 		</c:forEach>
+		
+		<c:if test="${endPageNum lt totalPageCount }">
+			<li class="page-item">
+				<a class="page-link" href="javascript:movePage(${endPageNum+1 });">▶</a>
+			</li>
+		</c:if>
 	</ul>

@@ -45,12 +45,6 @@ public class NoticeDaoImpl implements NoticeDao{
 		
 		return session.selectOne("notice.getData", num);
 	}
-	//검색 키워드 O
-	@Override
-	public NoticeDto getData(NoticeDto ndto) {
-		
-		return session.selectOne("notice.getData2", ndto);
-	}
 	//삭제
 	@Override
 	public void delete(int num) {

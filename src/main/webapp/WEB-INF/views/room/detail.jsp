@@ -157,7 +157,8 @@
 	<div onload="javascript:test();">
 	</div>
 	<section>	
-		<!-- 메인 이미지 -->
+
+<!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
 				<img src="${pageContext.request.contextPath }/Jisutayimage/room/jami/1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
@@ -168,7 +169,15 @@
 			</div>
 		</div>
 		
-		<!-- 객실 정보, 객실 소개 -->
+		<c:if test="${id eq 'admin' }">
+			<a href="${pageContext.request.contextPath }/room/updateform.do?num=${dto.num }">
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
+						<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+				</svg>
+			</a>
+		</c:if>
+		
+<!-- 객실 정보, 객실 소개 -->
 		<div class="section infos">
 			<!-- 후기 이동 버튼 -->
 			<div id="reviewbtn" style="position:absolute;top:14px;left:75px;">
@@ -212,7 +221,7 @@
 			</div>
 		</div>
 		
-		<!-- 객실 이미지 -->
+<!-- 객실 이미지 -->
 		<div class="section images">
 			<div class="InBox">
 				<div class="fotorama" data-nav="thumbs">
@@ -229,14 +238,14 @@
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/12.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/13.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/14.jpg" width="150" height="100">
+					<c:forEach var="imgPath" items="${imgList }" varStatus="status">
+						<img src="${pageContext.request.contextPath }${imgPath }" width="100" height="150"/>
+					</c:forEach>
 				</div>
 			</div>
 		</div>
 		
-		
-
-
-		<!-- 후기란 전체 -->
+<!-- 전체 후기 영역 -->
 		<div id="review">
 		
 			<!-- 총 별점 출력 및 정렬 버튼  -->
@@ -268,8 +277,7 @@
 				</div>
 			</div>
 		
-		
-			<!-- 댓글 목록 -->
+<!-- 댓글 목록 -->
 			<div class="comments">
 				<ul>
 					<c:forEach var="tmp" items="${commentsList }" varStatus="status">
@@ -368,6 +376,7 @@
 												<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">등록</button>
 											</form>
 											
+
 										<%-- 
 											댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 										--%>
@@ -378,14 +387,47 @@
 												<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">수정</button>
 											</form>
 										</c:if>	
+							</c:otherwise>
+						</c:choose>
+						<div id="commComments${tmp.num }">
+						
+						</div>
+					</c:forEach>
+				</ul>
+				
+				<!-- 하단 페이징 버튼 -->
+				<nav>
+					<ul class="pagination">
+					
+						<c:if test="${startPageNum ne 1 }">
+							<li class="page-item">
+								<a class="page-link" href="javascript:movePage(${startPageNum-1 });">◀</a>
+							</li>
+						</c:if>
+						
+						<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+							<c:choose>
+								<c:when test="${pageNum eq i }">
+									<li class="page-item active">
+										<a class="page-link" href="javascript:movePage(${i });">${i }</a>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="page-item">
+										<a class="page-link" href="javascript:movePage(${i });">${i }</a>
+									</li>
 								</c:otherwise>
 							</c:choose>
-							<div id="commComments${tmp.num }">
-							
-							</div>
 						</c:forEach>
+						
+						<c:if test="${endPageNum lt totalPageCount }">
+							<li class="page-item">
+								<a class="page-link" href="javascript:movePage(${endPageNum+1 });">▶</a>
+							</li>
+						</c:if>
 					</ul>
-				</div>
+				</nav>
+			</div>
 			
 			
 			
@@ -447,20 +489,19 @@
 				
 			</ul>
 		</nav>
-	
-
 	</section>
 	
 	<!-- footer include-->
 	
 	<!-- 상단 이동 버튼 -->
+	<!--
 	<div id="top" style="position:fixed;bottom:14px;right:14px;">
 		<a href="#Visuals"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/topbtn2.png" title="위로 가기"></a>
 	</div>
 	
 	<p></p>
 	<p></p>
-	
+	-->
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
