@@ -58,6 +58,44 @@
 	a {
 	text-decoration-line: none;
 	}
+	/* 상단 동영상 CSS 설정 */
+	.lb-wrap {
+		width: 100%;
+		margin: 10px auto;
+		position: relative;
+	}
+	.lb-wrap img {
+		width: 100%;
+		vertical-align: middle;
+	}
+	.lb-text {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);	
+		font-size:80px;
+		color:#FBFCFC;
+		background-color:transparent;
+	}
+	.lb-text2 {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size:30px;
+		color:#FBFCFC;
+		margin-bottom:7%;
+		background-color:transparent;
+	}
+	video {
+		max-width: 100%; display: block; margin: 0px auto;
+	}
 	/*
 	li img{
 	width: 600px;
@@ -69,9 +107,21 @@
 <body>
 <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 <div class="container">
-	<div class="banner">
-		<img src="${pageContext.request.contextPath}/resources/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+<div class="lb-wrap">
+	<div class="lb-text">
+		<p>TRAVEL</p><br/>
 	</div>
+	<div class="lb-text2">
+		<br>
+		<br>
+		<p>주변 여행지</p>
+	</div>
+	<div class="lb-image">
+		<video muted autoplay loop>
+      		<source src="${pageContext.request.contextPath}/resources/video/travel.mp4" type="video/mp4">
+    	</video>
+	</div>
+</div>
 	<div class="section contents">
 		<ul>
 			<div class="grid">

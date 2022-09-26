@@ -27,13 +27,81 @@
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
+<style>
+		/* 상단 동영상 CSS 설정 */
+	.lb-wrap {
+		width: 100%;
+		margin: 10px auto;
+		position: relative;
+	}
+	.lb-wrap img {
+		width: 100%;
+		vertical-align: middle;
+	}
+	.lb-text {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);	
+		font-size:80px;
+		color:#FBFCFC;
+		background-color:transparent;
+	}
+	.lb-text2 {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size:30px;
+		color:#FBFCFC;
+		margin-bottom:7%;
+		background-color:transparent;
+	}
+	video {
+		width: 100%; display: block; margin: 0px auto;
+	}
+</style>
 
 </head>
 <body id="rooms_pv" class="preview">
-	<!-- navbar include -->
-	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+<!-- navbar include -->
+<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+<div class="lb-wrap">
+	<div class="lb-text">
+		<p>Welcome To JiSutay</p><br/>
+	</div>
+	<div class="lb-text2">
+		<br><br><br>
+		<p>제주 힐링 감성이 가득한 펜션</p>
+	</div>
+	<div class="lb-image">
+		<video id="videoPlay" autoplay muted>
+	      	<source src="${pageContext.request.contextPath}/resources/video/main1.mp4" type="video/mp4">
+	    </video>
+	</div>
+</div>
+<script>
+$("#videoPlay").on("ended", function() {
+	$("#videoPlay").attr("src", "${pageContext.request.contextPath}/resources/video/main2.mp4");
+	$("#videoPlay").on("ended", function() {
+		$("#videoPlay").attr("src", "${pageContext.request.contextPath}/resources/video/main3.mp4");
+		$("#videoPlay").on("ended", function() {
+			$("#videoPlay").attr("src", "${pageContext.request.contextPath}/resources/video/main4.mp4");
+			$("#videoPlay").on("ended", function() {
+				$("#videoPlay").attr("src", "${pageContext.request.contextPath}/resources/video/main1.mp4");
+			}); 
+		}); 
+	}); 
+});
+</script>
 	<section>
-		<!-- 메인 비디오 -->
+		<!--메인 비디오
 		<div class="section video" id="Videos">
 			<div class="MyFrame">
 				<iframe id="MyVideo" width="100%" height="100%" frameborder="0" allowfullscreen="" src="https://player.vimeo.com/video/657699201?h=cdf409edf9?autoplay=1&amp;loop=1&amp;background=1" style="width: 1340px; height: 449px;" data-ready="true"></iframe>
@@ -42,7 +110,7 @@
 				<h2 style="transform: translateY(0px); opacity: 1;"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt=""></h2>
 			</div><div class="line" style="transform: translateY(0px); opacity: 1;"></div>
 		</div>
-		
+		-->
 		<!-- 객실 바로가기 -->
 		<div class="section lists" id="poolvila">
 			<div class="InBox">

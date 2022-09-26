@@ -250,7 +250,7 @@
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/14.jpg" width="150" height="100">
 				-->
 					<c:forEach var="imgPath" items="${imgList }" varStatus="status">
-						<img src="${pageContext.request.contextPath }${imgPath }" width="100" height="150"/>
+						<img src="${pageContext.request.contextPath }${imgPath }" width="150" height="100"/>
 					</c:forEach>
 				</div>
 			</div>
