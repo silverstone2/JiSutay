@@ -7,12 +7,25 @@
 <meta charset="UTF-8">
 <title>Welcome to JiSutay</title>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
+
+<!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+<script type="text/javascript">
+      kakaoPixel('5444030924845697113').pageView();
+</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-210701482-1">
+</script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
+
 
 </head>
 <body id="rooms_pv" class="preview">

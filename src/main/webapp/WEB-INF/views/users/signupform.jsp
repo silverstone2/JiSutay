@@ -12,6 +12,7 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 </head>
 <body class="text-center">
 	<div class="container-fluid mb-4">

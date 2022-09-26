@@ -11,6 +11,7 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js"></script>
 <style>
 	*{
 		margin: 0px;
@@ -38,16 +39,23 @@
 	.contentMapping{
 		margin-bottom: 100px;
 	}
+	.img{
+		width: 600px;
+		height: 400px;
+		border: 1px solid black;
+	}
 	strong {
 	font-size: 2em;
 	}
 	a {
 	text-decoration-line: none;
 	}
+	/*
 	li img{
 	width: 600px;
 	height: 400px;
 	}
+	*/
 </style>
 </head>
 <body>
@@ -60,18 +68,19 @@
 		<ul>
 			<div class="grid">
 				<c:forEach var="tmp" items="${list }" >
-				<div class="contentMapping">
-					<li>
-						<div class="img">
-							<img src="${pageContext.request.contextPath }${tmp.imgPath}" height="auto" alt="">
-						</div>
-						<div class="txt">
-							<h4>
-								<strong>${tmp.title }</strong>
-								<span>&nbsp;|&nbsp; 펜션에서 약 ${tmp.distance } 소요</span>
-							</h4>
-							<pre>${tmp.caption }</`pre>
-						</div>
+					<div class="contentMapping">
+						<li>
+							<div class="img">
+								<img src="${pageContext.request.contextPath }${tmp.imgPath}" height="auto" alt="">
+							</div>
+							<div><br><br></div>
+							<div class="txt">
+								<h4>
+									<strong>${tmp.title }</strong>
+									<span>&nbsp;|&nbsp; 펜션에서 약 ${tmp.distance } 소요</span>
+								</h4>
+								<pre>${tmp.caption }</pre>
+							</div>
 						<c:if test="${sessionScope.id eq 'admin' }">
 							<div class="btn">
 								<a href="${pageContext.request.contextPath }/travel/updateform.do?num=${tmp.num }">
@@ -88,9 +97,9 @@
 							</div>
 						</c:if>
 					</li>
-					</div>
-				</c:forEach>
-				<c:if test="${sessionScope.id eq 'admin' }">
+				</div>
+			</c:forEach>
+			<c:if test="${sessionScope.id eq 'admin' }">
 				<div class="contentMapping">
 					<li>
 						<div class="img">
@@ -104,7 +113,7 @@
 						</div>
 					</li>
 				</div>
-				</c:if>				
+			</c:if>				
 			</div>
 		</ul>
 	</div>
