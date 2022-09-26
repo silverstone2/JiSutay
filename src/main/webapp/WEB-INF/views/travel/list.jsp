@@ -73,9 +73,9 @@
 								<strong>${tmp.title }</strong>
 								<span>&nbsp;|&nbsp; 펜션에서 약 ${tmp.distance } 소요</span>
 							</h4>
-							<span>${tmp.caption }</span>
+							<pre>${tmp.caption }</`pre>
 						</div>
-						<%-- <c:if test="${sessionScope.id eq 'admin' }"> --%>
+						<c:if test="${sessionScope.id eq 'superhonet' }">
 							<div class="btn">
 								<a href="${pageContext.request.contextPath }/travel/updateform.do?num=${tmp.num }">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -89,18 +89,31 @@
 									</svg>
 								</a>
 							</div>
-						<%-- </c:if> --%>
+						</c:if>
 					</li>
 					</div>
 				</c:forEach>
+				<c:if test="${sessionScope.id eq 'superhonet' }">
+				<div class="contentMapping">
+					<li>
+						<div class="img">
+							<a href="${pageContext.request.contextPath }/travel/uploadform.do">
+								<img src="${pageContext.request.contextPath}/Jisutayimage/Logo_Icon/plus.png" style="object-fit: contain">
+							</a>
+						</div>
+						<div class="txt">
+							<h2>관광지 추가하기</h2>
+						</div>
+					</li>
+				</div>
+				</c:if>				
 			</div>
 		</ul>
-		<%-- <c:if test="${sessionScope.id eq 'admin' }"> --%>
-			<div>
-				<a href="${pageContext.request.contextPath }/travel/uploadform.do">업로드하로가기</a>
-			</div>
-		<%-- </c:if> --%>
 	</div>
 </div>
+
+<!-- footer include -->
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
+
 </body>
 </html>

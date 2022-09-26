@@ -7,84 +7,98 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style>
+
 <style>
   table {
     width: 100%;
     border: 1px solid #444444;
     border-collapse: collapse;
+
+
   }
   th, td {
     border: 1px solid #444444;
   }
   
-</style>
+  .container{
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: column; /*수직 정렬*/
+      align-items: center;
+      justify-content: center;
+  }
+  
 </style>
 </head>
 <body>
-	<table class="reservationtable">
-		<colgroup>
-			<col style="width:287px">
-			<col style="width:126px">
-			<col style="width:99px">
-			<col style="width:288px">
-		</colgroup>
-		<thead>
-			<tr>
-				<th colspan="3" class="total">예약정보 확인 및 결제금액</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>객실명 </td>
-				<td>숙박기간</td>
-				<td>인원선택</td>
-			</tr>
-			<tr>
-				<td rowspan="2">
-					<div class="thumb"><img src="${pageContext.request.contextPath }/resources/images/${dto.num}.png" /></div>
-					<div><p>${dto.room_name }</p></div>
-				</td>
-				<td>
-					<span>${param.check_in }</span>
-					~
-					<div>${param.check_out }</div>
-				</td>
-				<td>${param.peopleNum }</td>
-			</tr>
-			<tr>
-				<td>
-					<span>₩</span>
-					<span id="room_price"></span>
-				</td>
-				<td>₩ ${20000*(param.peopleNum -2)}</td>
-			</tr>
-			<tr>
-				<td colspan="3">
-					"총 결제액"
-					<span>₩</span>
-					<span id="total_price"></span>
-					<span >(VAT 포함)</span>
-				</td>
-			</tr>
-		</tbody>
-	</table>
-	
+   <div class="container">
+   	  <div class="item" style="margin-bottom:10px;">	
+		<table class="reservationtable" style="text-align:center";>
+			<colgroup>
+				<col style="width:300px">
+				<col style="width:200px">
+				<col style="width:99px">
+			</colgroup>
+			<thead>
+				<tr>
+					<th colspan="3" class="total" style="background-color:#F2F1F1;">예약정보 확인 및 결제금액</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>객실명 </td>
+					<td>숙박기간</td>
+					<td>인원선택</td>
+				</tr>
+				<tr>
+					<td rowspan="2">
+						<div><p>${dto.room_name }</p></div>
+					</td>
+					<td>
+						<span>${param.check_in }</span>
+						~
+						<span>${param.check_out }</span>
+					</td>
+					<td>${param.peopleNum }</td>
+				</tr>
+				<tr>
+					<td>
+						<span>₩</span>
+						<span id="room_price"></span>
+					</td>
+					<td>
+						<span>₩</span>
+						<span id="people_price"></span>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3">
+						총 결제액
+						<span style="font-size:1.5em";>₩</span>
+						<span id="total_price" style="font-size:1.5em";></span>
+						<span >(VAT 포함)</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	 </div>	
+	 	
+ <div class="item">
 	<table class="notice">
 		<colgroup>
 			<col style="width:100%">
 		</colgroup>
 		<thead>
 			<tr>
-				<th>환불규정 확인</th>
+				<th style="background-color:#F2F1F1;">환불규정 확인</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td>
+				<td style="font-size:0.5em;">
 					<p style="color:#ff3535;">아래 환불규정은 고객님과 저희 제주 풀스테이의 계약이므로 동의하신다면 예약을 진행하시기 바랍니다.</p>
 					<p>천재지변으로 결항되어 예약을 취소하실 경우, 증빙서류를 제출하시면 100% 환불이 가능합니다.</p>
-					<p>온수수영장 사용은 무료이기때문에 수영장 사용에 대한 클레임은 받아들여지지 않습니다. 양해해주시기 바랍니다.</p>
+					<p style="color:#ff3535;">온수수영장 사용은 무료이기때문에 수영장 사용에 대한 클레임은 받아들여지지 않습니다. 양해해주시기 바랍니다.</p>
 					<p>당일 예약 당일 취소하셨을 경우 송금수수료 1,000원 제외후 환불됩니다..</p>
 					<p>단, 당일 예약 당일 취소하시는 경우라도 예약 신청일이 예약일 기준으로 10일 이내라면 아래 환불 규정이 적용됩니다.</p>
 					<p>예약을 신청하신 당일 24시까지는 1일 전이며, 그 이후부터 24시간 경과 시 1일씩 경과하는 것으로 계산합니다.</p>
@@ -95,19 +109,20 @@
 			</tr>
 			<tr>
 				<td>
-					<p>이용약관 및 환불규정에 동의합니다. <input type="checkbox" id="agree" /></p>
+					<p style="font-size:0.7em;">이용약관 및 환불규정에 동의합니다.<input type="checkbox" id="agree" /></p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
-	
+   </div>	
+  </div>
 		<form action="reservation.do", method="post">
 			<input id="res_id" type="hidden" name="res_id"/>
 			<input id="check_in" type="hidden" name="check_in"/>
 			<input id="check_out" type="hidden" name="check_out"/>
 			<input id="res_people" type="hidden" name="res_people"/>
 			<input id="room_num" type="hidden" name="room_num"/>
-			<button id="reservationBtn" type="submit" disabled>객실예약</button>
+			<button id="reservationBtn" type="submit" disabled style="margin-left:320px";>객실예약</button>
 		</form>
 	
 	
@@ -119,9 +134,10 @@
 	var room_price = dateDiff * ${dto.room_price};
 	
 	$(function() {
-		//페이지 로딩시점에 방가격 , 인원추가가격 위에 표에 담기
+		//페이지 로딩시점에 방가격 , 인원추가가격 위에 표에 담기.
 		$("#room_price").text(room_price.toLocaleString());
 		$("#total_price").text((room_price + ${20000*(param.peopleNum -2)}).toLocaleString());
+		$("#people_price").text((${20000*(param.peopleNum -2)}).toLocaleString());
 		
 		//페이지 로딩시점에 resevation.jsp로 보내는 form에 담기
 		$("#res_id").val("${id}");
@@ -131,7 +147,7 @@
 		$("#room_num").val(${dto.num});
 	});
 	
-	//약관동의
+	//약관동의.
 	$(function(){
 		$('#agree').click(function(){
 			if($('#agree:checked').length>0){
@@ -140,6 +156,11 @@
 				$('#reservationBtn').attr('disabled','disabled');
 			}
 		});
+	});
+	
+	//객실예약 누르면 알림뜨며 예약되고 list로 redirect
+	$("#reservationBtn").on('click', function() {
+		 alert("예약이 완료되었습니다.")
 	});
 	
 	
