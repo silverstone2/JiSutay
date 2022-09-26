@@ -105,7 +105,7 @@
 					</div>
 					
 					<!-- button 요소 -->
-					<button type="submit" class="w-100 btn btn-primary btn-lg mb-4">가입하기</button>
+					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">가입하기</button>
 				</form>
 				<br>
 			</div>

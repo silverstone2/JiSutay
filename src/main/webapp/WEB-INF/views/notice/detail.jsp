@@ -40,12 +40,15 @@
 		height: 50px;
 		text-align:center;
 		vertical-align: baseline;
-		background-color:#E0E0E0;
+		background-color:#354A54;
+		color: #ffffff;
 		margin-top: 10px;
 		padding: 10px 0 10px;
 		font-size: 15px;
-		border: none;
+		border-radius: 4px;
 	}
+	
+	
 	.buttonEffect > a{
 		text-decoration: none;
 		color: #E0E0E0;

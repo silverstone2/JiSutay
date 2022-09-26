@@ -34,16 +34,19 @@
 
 	.buttonEffect {
 		margin-left: 36%;
-		margin-right: 36%;
-		width:250px;
-		height: 50px;
-		text-align:center;
-		vertical-align: baseline;
-		background-color:#E0E0E0;
-		margin-top: 10px;
-		padding: 10px 0 10px;
-		font-size: 15px;
+	    margin-right: 36%;
+	    width: 199px;
+	    height: 50px;
+	    text-align: center;
+	    vertical-align: baseline;
+	    background-color: #354A54;
+	    color: #ffffff;
+	    margin-top: 10px;
+	    padding: 10px 0 10px;
+	    font-size: 15px;
+	    border-radius: 4px;
 	}
+	
 	.buttonEffect > a{
 		text-decoration: none;
 		color: #808080;
@@ -76,8 +79,8 @@
 			<label for="content" style="display:none">내용</label>
 			<textarea name="content" id="content" cols="130" rows="25"></textarea>
 		</div>
-		<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취소</button>		
-		<button type="submit" class="buttonA buttonEffect">저장</button>
+		<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취    소</button>		
+		<button type="submit" class="buttonA buttonEffect">저    장</button>
 	</form>
 </div>
 

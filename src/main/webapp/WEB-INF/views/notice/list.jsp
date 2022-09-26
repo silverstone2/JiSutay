@@ -84,12 +84,14 @@
      transition: all 0.2s ;
    }
    
-   .btnLightBlue {
-     background: #CCCCFF;
+   <a href="insertForm.do" title="Button push" class="button btnPush "
+   
+   .btnGreen {
+     background: #CCCCFF;margin-bottom:10px;
    }
    
-   .btnLightBlue.btnPush {
-     box-shadow: 0px 5px 0px 0px #6666FF;
+   .btnGreen.btnPush {
+     box-shadow: 0px 5px 0px 0px #798F9A;
    }
    
    .btnPush:hover {
@@ -97,8 +99,8 @@
      margin-bottom: 5px;
    }
    
-   .btnLightBlue.btnPush:hover {
-     box-shadow: 0px 0px 0px 0px #1E8185;
+   .btnGreen.btnPush:hover {
+     box-shadow: 0px 0px 0px 0px;
    }
    /*@@@@@@@@@@@@*/
    /* 제목a 부분  */
@@ -209,13 +211,13 @@
    <br>
    <h1>공지사항</h1>
   
-   <p>공지사항과 다양한 소식을 확인해보세요.</p>
+   <p style="margin-top:10px;">공지사항과 다양한 소식을 확인해보세요.</p>
    <br />
       <!-- 새글 작성 -->
    <c:choose>
       <c:when test="${id eq 'admin'}">
          <div class="aa">
-            <a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue" style="margin: 0px;">새글작성</a>      
+            <a href="insertForm.do" title="Button push" class="button btnPush btnGreen" style="height: 45px;width: 90px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff;margin-bottom:20px;">새글작성</a>      
          </div>
       </c:when>
    </c:choose>
@@ -284,18 +286,18 @@
    <!-- 검색 부분 -->
    <div style="text-align:center; width:100%;">
       <form action="list.do" method="get"> 
-         <label for="condition"><strong>검색</strong></label>
+         <label for="condition"><strong>검색 </strong></label>
          <select name="condition" id="condition">
             <option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
             <option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
             <option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
          </select>
          <input type="text" id="keyword" name="keyword" placeholder="검색어..." value="${keyword }"/>
-         <button class="btn btn-primary btn-sm" type="submit" >찾기</button>
+         <button class="btn btn-sm" type="submit" style="height: 35px;background: #354A54;border-radius: 5px;border: 2.5px solid #ffffff;cursor: pointer;font-size:13px;color:#ffffff">찾기</button>
       </form>   
       <c:if test="${ not empty condition }">
          <p>
-            <strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+            <strong>${totalRow }</strong>개의 글이 검색 되었습니다.
          </p>
       </c:if>
    </div>
