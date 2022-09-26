@@ -38,15 +38,17 @@
 	/* 버튼 시작 */
 	.buttonEffect {
 		margin-left: 36%;
-		margin-right: 36%;
-		width:250px;
-		height: 50px;
-		text-align:center;
-		vertical-align: baseline;
-		background-color:#E0E0E0;
-		margin-top: 10px;
-		padding: 10px 0 10px;
-		font-size: 15px;
+	    margin-right: 36%;
+	    width: 199px;
+	    height: 50px;
+	    text-align: center;
+	    vertical-align: baseline;
+	    background-color: #354A54;
+	    color: #ffffff;
+	    margin-top: 10px;
+	    padding: 10px 0 10px;
+	    font-size: 15px;
+	    border-radius: 4px;
 	}
 	.buttonEffect > a{
 		text-decoration: none;
