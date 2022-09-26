@@ -205,15 +205,15 @@ header a,footer a                               {display:block;}
 #about #Videos .title h2 {transform:translateY(-100%);transition:1s;opacity:0;}
 #about #Videos .line {transform:translateY(100%);transition:1s;opacity:0;}
 
-#about .exterior {width:100%;background:#fff;}
+#about .exterior {width:100%;height:1150px;background:#fff;}
 #about .exterior .bg {position:absolute;}
-#about .exterior .bg01 {top:10%;right:0;width:87%;height:100%;background:#F2C16B;}
-#about .exterior .bg02 {top:0;left:0;width:80%;height:90%;background:#C8BF5F;}
+#about .exterior .bg01 {top:12%;right:0;width:90%;height:71%;background:#2F4858;}
+#about .exterior .bg02 {top:0;left:0;width:73%;height:75%;background:#C8BF5F;}
 
-#about .exterior .title {position:relative;width:1300px;min-width:1000px;margin:0 auto;padding:10% 0 7.5%;z-index:2;}
-#about .exterior .title h3 {font-size:38px;margin-bottom:3%;color:#006B7D;letter-spacing:4px}
-#about .exterior .title p {font-size:20px;line-height:1.7;color:#E6F4F1;}
-#about .exterior .title p strong{font-size:23px;line-height:1.7;color:#E6F4F1;font-weight:bolder;}
+#about .exterior .title {position:relative;width:1300px;min-width:1000px;margin:0 auto;padding:4% 10% 4%;z-index:2;}
+#about .exterior .title h3 {font-size:90px;margin-bottom:3%;color:#006B7D;letter-spacing:3px;font-weight:bold;font-family: 'Shadows Into Light', cursive;;}
+#about .exterior .title p {font-size:22px;line-height:1.7;color:#E6F4F1;font-family: 'Gowun Dodum', sans-serif;}
+#about .exterior .title p strong{font-size:20px;line-height:1.7;color:#E6F4F1;font-weight:bolder;font-family: 'Gowun Dodum', sans-serif;}
 #about .exterior .title {transform:translateY(12.5%);transition:1s;opacity:0;}
 
 #about .Swipers {width:100%;padding-bottom:5%;z-index:2;}

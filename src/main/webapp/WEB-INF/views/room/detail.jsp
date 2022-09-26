@@ -11,7 +11,7 @@
 <jsp:include page="/include/starRating_style.jsp"></jsp:include>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
 
 <style>
@@ -352,7 +352,7 @@
 													<div style="height:22px; width:100%;"></div>
 													<!-- 답글 버튼 -->
 													<c:if test="${tmp.commCount-1 ne 0}">
-														<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">🔽 답글 ${tmp.commCount-1 }개</a>	
+														<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">ᗐ 답글 ${tmp.commCount-1 }개</a>	
 													</c:if>
 												</dd>
 											</dl>
@@ -670,7 +670,7 @@
 			let commCommForm = document.querySelector("#commComm"+num);
 			let commCommText = commCommForm.innerText;
 			console.log(commCommText);
-			if(commCommText == "🔽 답글 "+comm_count+"개") {
+			if(commCommText == "ᗐ 답글 "+comm_count+"개") {
 				fetch("${pageContext.request.contextPath }/room/ajax_commComments.do?num=${param.num }&comment_num="+comment_num)
 				.then(function(res) {
 					return res.text();
@@ -685,10 +685,10 @@
 					addReplyListener(".re-reply-link");
 					formControll('.re-re-insert-form');
 				});
-				commCommForm.innerText = "🔼 답글 "+comm_count+"개";
-			} else if(commCommText == "🔼 답글 "+comm_count+"개") {
+				commCommForm.innerText = "ᗑ 답글 "+comm_count+"개";
+			} else if(commCommText == "ᗑ 답글 "+comm_count+"개") {
 				document.querySelector("#commComments"+num).innerText = "";
-				commCommForm.innerText = "🔽 답글 "+comm_count+"개";
+				commCommForm.innerText = "ᗐ 답글 "+comm_count+"개";
 			}
 		}
 		

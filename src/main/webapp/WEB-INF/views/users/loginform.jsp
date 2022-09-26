@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>loginform</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 </head>
 <body class="text-center">
 	<div class="container-fluid mb-5">

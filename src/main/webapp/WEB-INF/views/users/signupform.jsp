@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>signupform</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <jsp:include page="/resources/include/style.jsp"></jsp:include>
 </head>
 <body class="text-center">

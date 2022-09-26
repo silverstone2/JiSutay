@@ -78,7 +78,7 @@
 									<div style="height:22px; width:100%;"></div>
 									<!-- 답글 버튼 -->
 									<c:if test="${tmp.commCount-1 ne 0}">
-										<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">🔽 답글 ${tmp.commCount-1 }개</a>	
+										<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">ᗐ 답글 ${tmp.commCount-1 }개</a>	
 									</c:if>
 								</dd>
 							</dl>
