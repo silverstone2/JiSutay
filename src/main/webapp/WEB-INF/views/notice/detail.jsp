@@ -87,7 +87,7 @@
 		color:#FBFCFC;
 		background-color:transparent;
 	}
-	.lb-text2 {
+ 	.lb-text2 {
 		padding: 10px 20px;
 		background-color: #FFEEBC;
 		text-align: center;
@@ -99,9 +99,9 @@
 		color:#FBFCFC;
 		margin-bottom:7%;
 		background-color:transparent;
-	}
+	} 
 /* 	.lb-text3 {
-		/* transform: translate(-90%, -90%); */
+		transform: translate(-90%, -90%);
 		position: absolute;
 		top: 10%;
 		left: 90%;
@@ -119,11 +119,11 @@
 	<div class="lb-text2">
 		<p>공지사항</p>
 	</div>
-<!-- 	<div class="lb-text3">
-		<p>scroll</p>
-	</div> -->
-	<div class="lb-image">
+ 	<div class="lb-image">
 		<img src="${pageContext.request.contextPath}/Jisutayimage/notice/fullstay3.png" alt="noticeImage">
+		<div class="" style="position: absolute; bottom: 5%; right:3%;">
+			<img src="${pageContext.request.contextPath}/Jisutayimage/notice/mouse_cursor_64.png" alt="noticeImage">
+		</div>
 	</div>
 </div>
 <div class="m-5">

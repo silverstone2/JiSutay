@@ -209,7 +209,6 @@
 	}
 	.lb-text {
 		padding: 10px 20px;
-		background-color: #FFEEBC;
 		text-align: center;
 		position: absolute;
 		top: 50%;
@@ -219,7 +218,7 @@
 		color:#FBFCFC;
 		background-color:transparent;
 	}
-	.lb-text2 {
+ 	.lb-text2 {
 		padding: 10px 20px;
 		background-color: #FFEEBC;
 		text-align: center;
@@ -231,12 +230,13 @@
 		color:#FBFCFC;
 		margin-bottom:7%;
 		background-color:transparent;
-	}
+	} 
 
 </style>
 </head>
 <body>
 <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+<!-- 사진 -->
 <div class="lb-wrap">
 	<div class="lb-text">
 		<p>NOTICE</p><br/>
@@ -246,6 +246,9 @@
 	</div>
 	<div class="lb-image">
 		<img src="${pageContext.request.contextPath}/Jisutayimage/notice/fullstay3.png" alt="noticeImage">
+		<div class="" style="position: absolute; bottom: 5%; right:3%;">
+			<img src="${pageContext.request.contextPath}/Jisutayimage/notice/mouse_cursor_64.png" alt="noticeImage">
+		</div>
 	</div>
 </div>
 <div class="container">

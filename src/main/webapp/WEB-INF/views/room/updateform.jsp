@@ -9,12 +9,30 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<style>
+	.updateCheck{
+		border: none;
+		background-color: #A6F7CA;
+		padding: 15px 40px;
+		border-radius: 10px;
+	}
+	
+	.getBack{
+		border: none;
+		padding: 15px 40px;
+		border-radius: 10px;
+	}
+	
+	
+</style>
+
 </head>
 <body>
 	<div class="container">
 		<h1>객실 수정하기.</h1>
 		<a href="../detail.do?num=${param.num }&sort=regdate">
-			이전 이동 버튼 넣기
+			<img src="${pageContext.request.contextPath}/Jisutayimage/room/previous.png" alt="">
 		</a>
 		
 		<form action="update.do" method="post" enctype="multipart/form-data">
@@ -36,10 +54,7 @@
 	   				<label for="room_size" class="form-label">객실크기</label>
 	    			<div class="input-group has-validation">
 	      				<span class="input-group-text">
-	      					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
-	  							<path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
-	  							<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
-							</svg>
+	      					<img src="${pageContext.request.contextPath}/Jisutayimage/room/bed.png" alt="">
 	      				</span>
 	     				<input type="text" class="form-control" name="room_size" id="room_size" value="${dto.room_size}" required>
 	      				<div id="room_sizeValid" class="invalid-feedback"></div>
@@ -49,10 +64,7 @@
 	   				<label for="room_people" class="form-label">입실인원</label>
 	    			<div class="input-group has-validation">
 	      				<span class="input-group-text">
-	      					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
-	  							<path d="M8.5 5.6a.5.5 0 1 0-1 0v2.9h-3a.5.5 0 0 0 0 1H8a.5.5 0 0 0 .5-.5V5.6z"/>
-	  							<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
-							</svg>
+	      					<img src="${pageContext.request.contextPath}/Jisutayimage/room/group.png" alt="">
 	      				</span>
 	     				<input type="text" class="form-control" name="room_people" id="room_people" value="${dto.room_people }" required>
 	      				<div id="room_peopleValid" class="invalid-feedback"></div>
@@ -99,8 +111,8 @@
 					</div>
 					
 				</div>
-			<button type="submit">수정확인</button>
-			<button type="reset">되돌리기</button>
+			<button type="submit" class="updateCheck">수정확인</button>
+			<button type="reset" class="getBack">되돌리기</button>
 		</form>
 	</div>
 	
