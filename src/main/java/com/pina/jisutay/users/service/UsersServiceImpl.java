@@ -82,18 +82,16 @@ public class UsersServiceImpl implements UsersService {
 			sort = param.split(",")[2];
 		}
 		
-		System.out.println("service url 처리 후 : "+url);
-		System.out.println("service num 처리 후 : "+num);
-		System.out.println("service sort 처리 후 : "+sort);
-		
 		UsersDto savedDto = dao.checkId(id);
 		HttpSession session = req.getSession();
 		
 		if(savedDto != null && password != "") {
+			// id와 password가 존재할 경우
 			String encodedPwd = savedDto.getPassword();
 			
 			isValid=BCrypt.checkpw(password, encodedPwd);
 		} else {
+			// id 또는 password 둘 중 하나가 없는 경우
 			session.setAttribute("isFail", true);
 			mav.setViewName("redirect:/users/loginform.do?url="+param);
 			return;
@@ -148,10 +146,11 @@ public class UsersServiceImpl implements UsersService {
 				updateDto.setId(id);
 				updateDto.setSessionId(sessionGetId);
 				dao.insertSessionId(updateDto);
-			} else if(autoLogin.equals("off")) {
+			} else {
 				// isAutoLogin 삭제
 				Cookie cookie_autoLogin = new Cookie("isAutoLogin", null);
 				cookie_autoLogin.setMaxAge(0);
+				cookie_autoLogin.setPath("/");
 				res.addCookie(cookie_autoLogin);
 			}
 			
@@ -186,6 +185,7 @@ public class UsersServiceImpl implements UsersService {
 					// sessionId 쿠키 강제 삭제
 					Cookie cookie_sessionId = new Cookie("sessionId", null);
 					cookie_sessionId.setMaxAge(0);
+					cookie_sessionId.setPath("/");
 					res.addCookie(cookie_sessionId);
 				}
 			}
