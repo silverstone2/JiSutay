@@ -98,7 +98,7 @@
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 			<div class="col-3">
-				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
+				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto; margin-bottom: 30px;">
 					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg"  />
 					<div class="card-body">
 						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
@@ -114,11 +114,16 @@
 				<div id="reservationForm${status.index }" class="reservationForm">
 				  <div class="info">
 				  	<div class="detail">
+				  	<!--
 					<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
+					 -->
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
 					</div>
 					<div class="detail">
 					<table>
-						<th><h3>${tmp.room_name}</h3></th>
+						<tr>
+							<th style="width: 20%;"><h3>${tmp.room_name}</h3></th>
+						</tr>
 						<tr>
 							<th>객실구조 :</th>
 							<td>${tmp.room_structure }</td>
@@ -129,10 +134,10 @@
 						</tr>
 						<tr>
 							<th>숙박인원 :</th>
-							<td>최대${tmp.room_people }</td>
+							<td>최대 ${tmp.room_people }</td>
 						</tr>
 						<tr>
-							<th>비품 :</th>
+							<th>비&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp품 :</th>
 							<td>${tmp.room_items }</td>
 						</tr>
 						<tr>
@@ -140,7 +145,7 @@
 							<td>${tmp.bedroom_type }</td>
 						</tr>
 						<tr>
-							<th>소개 :</th>
+							<th>소&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp개 :</th>
 							<td>${tmp.room_introduce }</td>
 						</tr>						
 					</table>

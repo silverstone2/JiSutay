@@ -28,7 +28,10 @@
 	  							<path fill-rule="evenodd" d="M8 1a3 3 0 1 0 0 6 3 3 0 0 0 0-6zM4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999z"/>
 							</svg>
 	      				</span>
+	     				<!--
 	     				<input type="text" class="form-control" name="room_structure" id="room_structure" value="${dto.room_structure }">
+	     				-->
+	     				<textarea class="form-control" id="room_structure" name="room_structure">${dto.room_structure }</textarea>
 	      				<div id="room_structureValid" class="invalid-feedback"></div>
 	    			</div>
 		      	</div>
@@ -67,7 +70,10 @@
 	  							<path d="M6.5 1A.5.5 0 0 1 7 .5h2a.5.5 0 0 1 0 1v.57c1.36.196 2.594.78 3.584 1.64a.715.715 0 0 1 .012-.013l.354-.354-.354-.353a.5.5 0 0 1 .707-.708l1.414 1.415a.5.5 0 1 1-.707.707l-.353-.354-.354.354a.512.512 0 0 1-.013.012A7 7 0 1 1 7 2.071V1.5a.5.5 0 0 1-.5-.5zM8 3a6 6 0 1 0 .001 12A6 6 0 0 0 8 3z"/>
 							</svg>
 	      				</span>
+	     				<!--
 	     				<input type="text" class="form-control" name="room_items" id="room_items" value="${dto.room_items }" required>
+	     				-->
+	     				<textarea class="form-control" id="room_items" name="room_items" required>${dto.room_items }</textarea>
 	      				<div id="room_peopleValid" class="invalid-feedback"></div>
 	    			</div>
 	    		</div>
