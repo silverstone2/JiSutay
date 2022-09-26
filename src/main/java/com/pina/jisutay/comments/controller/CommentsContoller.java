@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.comments.dto.CommentsDto;
 import com.pina.jisutay.comments.service.CommentsService;
+import com.pina.jisutay.exception.NoLoginException;
 
 @Controller
 public class CommentsContoller {
@@ -22,7 +23,7 @@ public class CommentsContoller {
 	private CommentsService service;
 	
 	@RequestMapping(value="/room/comment_insert", method=RequestMethod.POST)
-	public ModelAndView authCommentInsert(HttpServletRequest request, 
+	public ModelAndView commentInsert(HttpServletRequest request, 
 			@RequestParam int room_num) {
 		service.saveComment(request);
 		return new ModelAndView("redirect:/room/detail.do?num="+room_num+"&sort=regdate#review");
@@ -37,6 +38,11 @@ public class CommentsContoller {
 	@RequestMapping("/room/comment_delete")
 	@ResponseBody
 	public Map<String, Object> authCommentDelete(HttpServletRequest request) {
+		// 로그인 예외 처리
+		if(request.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/room/detail.do,"+request.getParameter("room_num")+",regdate");
+		}
+		
 		service.deleteComment(request);
 		Map<String, Object> map=new HashMap<String, Object>();
 		map.put("isSuccess", true);

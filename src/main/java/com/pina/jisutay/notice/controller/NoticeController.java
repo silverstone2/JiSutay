@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.exception.NoLoginException;
 import com.pina.jisutay.notice.dto.NoticeDto;
 import com.pina.jisutay.notice.service.NoticeService;
 
@@ -36,13 +37,22 @@ public class NoticeController {
 	// 새글
 	@RequestMapping("notice/insert")
 	public String insert(NoticeDto ndto, HttpServletRequest req) {
+		// 로그인 예외 처리
+		if(req.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/notice/list.do");
+		}
+		
 		System.out.println(ndto.getContent());
 		service.insert(ndto, req);
 		return "redirect:/notice/list.do";
 	}
 	//새글 폼
 	@RequestMapping("notice/insertForm")
-	public ModelAndView insertForm(ModelAndView mav) {
+	public ModelAndView insertForm(ModelAndView mav, HttpServletRequest req) {
+		// 로그인 예외 처리
+		if(req.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/notice/list.do");
+		}
 		
 		mav.setViewName("notice/insertForm");
 		return mav;
@@ -50,6 +60,10 @@ public class NoticeController {
 	// 공지 수정
 	@RequestMapping(value="notice/update", method=RequestMethod.POST)
 	public String update(NoticeDto ndto, HttpServletRequest req) {
+		// 로그인 예외 처리
+		if(req.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/notice/list.do");
+		}
 		
 		service.update(ndto, req);
 		return "redirect:/notice/list.do";
@@ -57,14 +71,23 @@ public class NoticeController {
 	// 공지 수정폼
 	@RequestMapping("notice/updateForm")
 	public ModelAndView updateForm(HttpServletRequest req) {
+		// 로그인 예외 처리
+		if(req.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/notice/list.do");
+		}
+		
 		service.getData(req);
 		return new ModelAndView("notice/updateForm");
 	}
 	// 공지 삭제
 	@RequestMapping("notice/delete") 
-	public ModelAndView delete(@RequestParam int num, HttpServletRequest request) {
+	public ModelAndView delete(@RequestParam int num, HttpServletRequest req) {
+		// 로그인 예외 처리
+		if(req.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/notice/list.do");
+		}
 		
-		service.delete(num, request);
+		service.delete(num, req);
 		return new ModelAndView("redirect:/notice/list.do");
 	}
 }

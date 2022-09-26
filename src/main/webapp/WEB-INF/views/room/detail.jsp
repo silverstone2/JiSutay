@@ -527,9 +527,12 @@
 		.addEventListener("submit", function(event){
 			//로그인 없이 sumbit 누를 경우
 			if(!isLogin){
-				event.prventDefault();
-				location.href=
-					"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/room/detail.do?num=${dto.num}";
+				const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
+				if(isMove){
+					location.href=
+						"${pageContext.request.contextPath}/users/loginform.do?url=/room/detail.do,${dto.num},regdate";
+				}
+				event.preventDefault();
 			}
 		});
 		
@@ -601,7 +604,7 @@
 						const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
 						if(isMove){
 							location.href=
-								"${pageContext.request.contextPath}/users/loginform.do?url=${pageContext.request.contextPath}/cafe/detail.do?num=${dto.num}";
+								"${pageContext.request.contextPath}/users/loginform.do?url=/room/detail.do,${dto.num},regdate";
 						}
 						return;
 					}

@@ -44,11 +44,11 @@
 		</div>
 		
 		<!-- 객실 바로가기 -->
-		<div class="section lists">
+		<div class="section lists" id="poolvila">
 			<div class="InBox">
 			<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 				<div>
-					<div class="img" id="poolvila">
+					<div class="img">
 						<div style="background-image:url(${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg)"></div>
 					</div>
 					<div class="btn">

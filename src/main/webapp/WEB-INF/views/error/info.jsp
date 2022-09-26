@@ -10,8 +10,8 @@
 	<div class="container">
 		
 		<h1>Oops!!</h1>
-		${error }
-		<a href="../notice/list.do">공지사항으로 이동하기</a>
+		<div>해당 서비스를 이용하기 위해서는 로그인이 필요합니다.</div>
+		<a href="../users/loginform.do?url=${url }">로그인으로 이동하기</a>
 	</div>
 </body>
 </html>

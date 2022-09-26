@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.exception.NoLoginException;
 import com.pina.jisutay.reservation.dto.ReservationDto;
 import com.pina.jisutay.reservation.service.ReservationService;
 import com.pina.jisutay.room.service.RoomService;
@@ -41,15 +42,29 @@ public class ReservationController {
 	}
 	
 	@RequestMapping(value="/reservation/reservationform.do", method=RequestMethod.POST)
-	public ModelAndView authdetail(ModelAndView mav, HttpServletRequest request) {
+	public ModelAndView detail(ModelAndView mav, HttpServletRequest request) {
+		// 로그인 예외 처리
+		if(request.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/reservation/list.do#contents");
+		}
 		
 		service.getDetail(request);
 		mav.setViewName("reservation/reservationform");
 		return mav;
 	}
 	
+//	@RequestMapping("/reservation/reservation")
+//	public String insert() {
+//		return "reservation/reservation";
+//	}
+	
 	@RequestMapping("/reservation/reservation")
-	public String insert(ReservationDto dto) {
+	public String insert(ReservationDto dto, HttpServletRequest request) {
+		// 로그인 예외 처리
+		if(request.getSession().getAttribute("id") == null) {
+			throw new NoLoginException("/reservation/list.do#contents");
+		}
+		
 		res_service.addReservation(dto);
 		return "redirect:/reservation/list.do";
 	}
