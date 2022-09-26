@@ -22,7 +22,7 @@
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-210701482-1">
 </script>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
@@ -38,22 +38,22 @@
 				<iframe id="MyVideo" width="100%" height="100%" frameborder="0" allowfullscreen="" src="https://player.vimeo.com/video/657699201?h=cdf409edf9?autoplay=1&amp;loop=1&amp;background=1" style="width: 1340px; height: 449px;" data-ready="true"></iframe>
 			</div>
 			<div class="title">
-				<h2 style="transform: translateY(0px); opacity: 1;"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt=""></h2>
+				<h2 style="transform: translateY(0px); opacity: 1;"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt=""></h2>
 			</div><div class="line" style="transform: translateY(0px); opacity: 1;"></div>
 		</div>
 		
 		<!-- 객실 바로가기 -->
 		<div class="section lists">
 			<div class="InBox">
-			<c:forEach var="tmp" items="${requestScope.list }">
+			<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 				<div>
 					<div class="img" id="poolvila">
-						<div style="background-image:url(${pageContext.request.contextPath }${tmp.img_path })"></div>
+						<div style="background-image:url(${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index }.jpg)"></div>
 					</div>
 					<div class="btn">
 						<a href="room/detail.do?num=${tmp.num }&sort=regdate">
 							<h3>
-								<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
+								<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/logo_wh.png" width="230" height="31" alt="">
 								<strong>${tmp.room_name }</strong>
 								<br />
 							</h3>
