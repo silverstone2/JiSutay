@@ -42,6 +42,15 @@
 			<div class="col-md-7 col-lg-4">
 				<form action="login.do" method="post" class="validation" novalidate>
 				<!-- input 요소 -->
+					<!-- 리다이렉트 링크 추가 -->
+		            <c:choose>
+			            <c:when test="${ empty param.url }">
+			               <input type="hidden" name="url" value="/home.do"/>
+			            </c:when>
+			            <c:otherwise>
+			               <input type="hidden" name="url" value="${param.url }"/>
+			            </c:otherwise>
+		            </c:choose>
 					<!-- 아이디 -->
 					<div class="input-group mt-3 mb-3">
 						<label class="form-label" for="id">

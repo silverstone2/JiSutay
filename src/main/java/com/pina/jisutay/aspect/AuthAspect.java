@@ -26,6 +26,8 @@ public class AuthAspect {
 					String url=request.getRequestURI();
 					String query=request.getQueryString();
 					String encodedUrl=null;
+					url = url.replace("/jisutay", "");
+					
 					if(query==null) {//전송 파라미터가 없다면 
 						encodedUrl=URLEncoder.encode(url);
 					}else {

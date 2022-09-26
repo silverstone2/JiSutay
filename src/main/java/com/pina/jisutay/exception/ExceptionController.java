@@ -13,4 +13,12 @@ public class ExceptionController {
 		mav.setViewName("error/info");
 		return mav;
 	}
+	
+	@ExceptionHandler(NoLoginException.class)
+	public ModelAndView loginException(NoLoginException e) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("url", e.getMessage());
+		mav.setViewName("error/info");
+		return mav;
+	}
 }

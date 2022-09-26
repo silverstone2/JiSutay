@@ -195,35 +195,47 @@
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
+   let isLogin = ${not empty sessionScope.id};
    
    function reserve(index, room_price, num) {
-      // input에서 체크인, 체크아웃 가져오기
-      var check_in = new Date($("#check_in").val());
-      var check_out = new Date($("#check_out").val());
-      
-      // 체크인, 체크아웃 form value로 보내기
-      $('#num').val(num);
-      $('#inputIn').val($("#check_in").val());
-      $('#inputOut').val($("#check_out").val());
-      
-      // 몇 박 계산
-      var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
-      if(dateDiff > 0 ){
-      	$(".col-3").hide(50);
-      	$("#reservationForm"+index).show(500);
-      }else if(dateDiff==0){
-         alert("1박 이상만 가능합니다")
-      }else if(dateDiff<0){
-         alert("체크아웃 일자가 체크인 일자를 앞설수 없습니다.")
-      }else{
-         alert("날짜를 기입하세요")
-      }   
-      
-      $(".date").text(dateDiff);
-      $("#roomPricePrint"+index).text(dateDiff*room_price);
-      $("#totalPrice"+index).text(dateDiff*room_price);
-      $("#peopleNum").val(parseInt($("#inputPeople"+index).val()));
-   }
+		// 로그인 검증 처리
+		if(!isLogin){
+			const isMove=confirm("로그인이 필요합니다. 로그인 페이지로 이동하시겠습니까?");
+			if(isMove){
+				location.href=
+					"${pageContext.request.contextPath}/users/loginform.do?url=/reservation/list.do";
+			}
+			event.prventDefault();
+			return;
+		}
+		
+		// input에서 체크인, 체크아웃 가져오기
+		var check_in = new Date($("#check_in").val());
+		var check_out = new Date($("#check_out").val());
+		
+		// 체크인, 체크아웃 form value로 보내기
+		$('#num').val(num);
+		$('#inputIn').val($("#check_in").val());
+		$('#inputOut').val($("#check_out").val());
+		
+		// 몇 박 계산
+		var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
+		if(dateDiff > 0 ){
+			$(".col-3").hide(50);
+			$("#reservationForm"+index).show(500);
+		}else if(dateDiff==0){
+		   alert("1박 이상만 가능합니다")
+		}else if(dateDiff<0){
+		   alert("체크아웃 일자가 체크인 일자를 앞설수 없습니다.")
+		}else{
+		   alert("날짜를 기입하세요")
+		}   
+		
+		$(".date").text(dateDiff);
+		$("#roomPricePrint"+index).text(dateDiff*room_price);
+		$("#totalPrice"+index).text(dateDiff*room_price);
+		$("#peopleNum").val(parseInt($("#inputPeople"+index).val()));
+	}
    
    
    function minusNum(index) {
