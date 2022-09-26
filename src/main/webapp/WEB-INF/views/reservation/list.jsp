@@ -9,8 +9,10 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -71,7 +73,7 @@
 <body>
    <!-- 상단 배너  -->
    <div class="banner">
-		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+		<img src="${pageContext.request.contextPath}/resources/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
@@ -91,7 +93,7 @@
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 			<div class="col-3">
 				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
-					<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.img_path }"  />
+					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index }.jpg"  />
 					<div class="card-body">
 						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
 						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">

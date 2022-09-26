@@ -9,10 +9,10 @@
 		
 			<a href="#">
 				<div class="imgs">
-					<img src="${pageContext.request.contextPath }/Jisutayimage/room/oreum/9.jpg" width="380px" height="250px" />
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/oreum/9.jpg" width="380px" height="250px" />
 				</div>
 				<div class="bg"></div>
-				<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/more_btn.png" >
+				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/more_btn.png" >
 			</a>
 			
 			<div><strong><b></b>Watch Full Room</strong><span>JiSutay를 먼저 만나보세요!</span></div>
@@ -22,23 +22,23 @@
 	<div class="ft02">
 		<h5>
 			<a href="${pageContext.request.contextPath }/">
-			<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/footer.png" width="200" height="200"></a>
+			<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/footer.png" width="200" height="200"></a>
 		</h5>
 		
 		<ul class="sns">
 			<li>
 				<a href="https://www.instagram.com/" class="sns_01">
-					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/sns_01.png" width="38" height="38">
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/sns_01.png" width="38" height="38">
 				</a>
 			</li>
 			<li>
 				<a href="https://www.facebook.com/" class="sns_02">
-					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/sns_02.png" width="38" height="38">
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/sns_02.png" width="38" height="38">
 				</a>
 			</li>
 			<li>
 				<a href="https://section.blog.naver.com/" class="sns_03">
-					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/sns_03.png" width="38" height="38">
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/sns_03.png" width="38" height="38">
 				</a>
 			</li>
 		</ul>		

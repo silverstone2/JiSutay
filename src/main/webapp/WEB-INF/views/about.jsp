@@ -28,7 +28,7 @@
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-210701482-1">
 </script>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" defer=""></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
@@ -52,7 +52,7 @@
 			</div>
 			<div class="title">
 				<h2>
-					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt="">
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt="">
 				</h2>
 			</div>
 			<div class="line"></div>

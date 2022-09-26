@@ -14,10 +14,11 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" ></script>
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
 <!-- jQuery 1.8 or later, 33 KB -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
@@ -174,9 +175,9 @@
 <!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
-				<img src="${pageContext.request.contextPath }/Jisutayimage/room/jami/1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
+				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/jami/1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
 				<h2>
-					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/logo_bl.png" width="240" height="40" alt="">
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/logo_bl.png" width="240" height="40" alt="">
 					<span>${dto.room_name }</span>
 				</h2>
 			</div>
@@ -194,7 +195,7 @@
 		<div class="section infos">
 			<!-- 후기 이동 버튼 -->
 			<div id="reviewbtn" style="position:absolute;top:14px;left:75px;">
-				<a href="#review"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/reviewbtn.png" title="후기 보기"></a>
+				<a href="#review"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/reviewbtn.png" title="후기 보기"></a>
 			</div>
 			<div class="InBox">
 				<div>
@@ -304,7 +305,7 @@
 								<c:if test="${tmp.num ne tmp.comment_num }">
 									<li id="reli${tmp.num }" style="padding-left:50px;">삭제된 후기입니다.</li>
 									<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
-			  							<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
+			  							<image href="${pageContext.request.contextPath }/resources/Jisutayimage/user.png" width="16" height="16"></image>
 									</svg>							
 								</c:if>					
 							</c:when>
@@ -319,14 +320,14 @@
 									<%-- 왼쪽 padding 50px로 들여쓰기 효과 + 화살표 아이콘 추가 --%>
 									<li id="reli${tmp.num }" style="padding-left:50px;">
 										<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
-				  							<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
+				  							<image href="${pageContext.request.contextPath }/resources/Jisutayimage/user.png" width="16" height="16"></image>
 										</svg>
 									</c:if>
 											<dl>
 												<dt>
 													<c:if test="${ empty tmp.profile }">
 														<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
-															<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
+															<image href="${pageContext.request.contextPath }/resources/Jisutayimage/user.png" width="16" height="16"></image>
 														</svg>
 													</c:if>
 													<c:if test="${not empty tmp.profile }">
@@ -509,7 +510,7 @@
 	<!-- 상단 이동 버튼 -->
 	<!--
 	<div id="top" style="position:fixed;bottom:14px;right:14px;">
-		<a href="#Visuals"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/topbtn2.png" title="위로 가기"></a>
+		<a href="#Visuals"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/topbtn2.png" title="위로 가기"></a>
 	</div>
 	
 	<p></p>
