@@ -9,8 +9,7 @@
 		<typeAlias type="com.pina.jisutay.reservation.dto.ReservationDto" alias="reservationDto"/>
 		<typeAlias type="com.pina.jisutay.room.dto.RoomDto" alias="roomDto"/>
 		<typeAlias type="com.pina.jisutay.notice.dto.NoticeDto" alias="noticeDto"/>
-    <typeAlias type="com.pina.jisutay.travel.dto.TravelDto" alias="travelDto"/>
-		<typeAlias type="com.pina.jisutay.room_SH.dto.Room_SHDto" alias="room_SHDto"/>
+    	<typeAlias type="com.pina.jisutay.travel.dto.TravelDto" alias="travelDto"/>
 	</typeAliases>
 
 	<mappers>
@@ -19,7 +18,6 @@
 		<mapper resource="com/pina/jisutay/mybatis/ReservationMapper.xml"/>
 		<mapper resource="com/pina/jisutay/mybatis/RoomMapper.xml"/>
 		<mapper resource="com/pina/jisutay/mybatis/NoticeMapper.xml"/>
-    <mapper resource="com/pina/jisutay/mybatis/TravelMapper.xml"/>
-		<mapper resource="com/pina/jisutay/mybatis/Room_SHMapper.xml"/>
+    	<mapper resource="com/pina/jisutay/mybatis/TravelMapper.xml"/>
 	</mappers>
 </configuration>

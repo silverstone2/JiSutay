@@ -11,9 +11,7 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js"></script>
 <style>
 	*{
 		margin: 0px;
@@ -41,16 +39,28 @@
 	.contentMapping{
 		margin-bottom: 100px;
 	}
+	.img{
+		width: 600px;
+		height: 400px;
+		border: 1px solid black;
+	}
+	.img2{
+		margin-left:35px;
+		width: 300px;
+		height: 300px;
+	}
 	strong {
 	font-size: 2em;
 	}
 	a {
 	text-decoration-line: none;
 	}
+	/*
 	li img{
 	width: 600px;
 	height: 400px;
 	}
+	*/
 </style>
 </head>
 <body>
@@ -63,19 +73,20 @@
 		<ul>
 			<div class="grid">
 				<c:forEach var="tmp" items="${list }" >
-				<div class="contentMapping">
-					<li>
-						<div class="img">
-							<img src="${pageContext.request.contextPath }${tmp.imgPath}" height="auto" alt="">
-						</div>
-						<div class="txt">
-							<h4>
-								<strong>${tmp.title }</strong>
-								<span>&nbsp;|&nbsp; 펜션에서 약 ${tmp.distance } 소요</span>
-							</h4>
-							<span>${tmp.caption }</span>
-						</div>
-						<%-- <c:if test="${sessionScope.id eq 'admin' }"> --%>
+					<div class="contentMapping">
+						<li>
+							<div class="img">
+								<img src="${pageContext.request.contextPath }${tmp.imgPath}" height="auto" alt="">
+							</div>
+							<div><br><br></div>
+							<div class="txt">
+								<h4>
+									<strong>${tmp.title }</strong>
+									<span>&nbsp;|&nbsp; 펜션에서 약 ${tmp.distance } 소요</span>
+								</h4>
+								<pre>${tmp.caption }</pre>
+							</div>
+						<c:if test="${sessionScope.id eq 'admin' }">
 							<div class="btn">
 								<a href="${pageContext.request.contextPath }/travel/updateform.do?num=${tmp.num }">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -89,18 +100,30 @@
 									</svg>
 								</a>
 							</div>
-						<%-- </c:if> --%>
+						</c:if>
 					</li>
-					</div>
-				</c:forEach>
+				</div>
+			</c:forEach>
+			<c:if test="${sessionScope.id eq 'admin' }">
+				<div class="contentMapping">
+					<li>
+						<div class="img2">
+							<a href="${pageContext.request.contextPath }/travel/uploadform.do">
+								<img src="${pageContext.request.contextPath}/Jisutayimage/Logo_Icon/plus.png" style="object-fit: contain">
+							</a>
+						</div>
+						<div> </div>
+						<div class="txt">
+							<h2>관광지 추가하기</h2>
+						</div>
+					</li>
+				</div>
+			</c:if>				
 			</div>
 		</ul>
-		<%-- <c:if test="${sessionScope.id eq 'admin' }"> --%>
-			<div>
-				<a href="${pageContext.request.contextPath }/travel/uploadform.do">업로드하로가기</a>
-			</div>
-		<%-- </c:if> --%>
 	</div>
 </div>
+<!-- footer include -->
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

@@ -7,10 +7,12 @@ public class UsersDto {
 	private String name;
 	private String profile;
 	private String regdate;
+	private String sessionId;
 	
 	public UsersDto() {}
-	
-	public UsersDto(String id, String email, String password, String name, String profile, String regdate) {
+
+	public UsersDto(String id, String email, String password, String name, String profile, String regdate,
+			String sessionId) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -18,6 +20,7 @@ public class UsersDto {
 		this.name = name;
 		this.profile = profile;
 		this.regdate = regdate;
+		this.sessionId = sessionId;
 	}
 
 	public String getId() {
@@ -66,5 +69,13 @@ public class UsersDto {
 
 	public void setRegdate(String regdate) {
 		this.regdate = regdate;
+	}
+
+	public String getSessionId() {
+		return sessionId;
+	}
+
+	public void setSessionId(String sessionId) {
+		this.sessionId = sessionId;
 	}
 }

@@ -30,8 +30,8 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" defer=""></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
 <!-- Fotorama from CDNJS, 19 KB -->
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">

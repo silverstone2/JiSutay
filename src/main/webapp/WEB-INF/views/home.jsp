@@ -9,15 +9,28 @@
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
-</head>
+<!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
+<script type="text/javascript" charset="UTF-8" src="//t1.daumcdn.net/adfit/static/kp.js"></script>
+<script type="text/javascript">
+      kakaoPixel('5444030924845697113').pageView();
+</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-210701482-1">
+</script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
+
+
+</head>
 <body id="rooms_pv" class="preview">
 	<!-- navbar include -->
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
@@ -37,7 +50,7 @@
 			<div class="InBox">
 			<c:forEach var="tmp" items="${requestScope.list }">
 				<div>
-					<div class="img">
+					<div class="img" id="poolvila">
 						<div style="background-image:url(${pageContext.request.contextPath }${tmp.img_path })"></div>
 					</div>
 					<div class="btn">
@@ -58,10 +71,7 @@
 			</div>
 		</div>
 	</section>
-	
-	<a href="${pageContext.request.contextPath }/room_SH/list.do?num=1">객실</a>
-	<a href="${pageContext.request.contextPath}/room/list.do">Go to list</a>
-	<!-- footer include -->
-	<jsp:include page="/resources/include/footer.jsp"></jsp:include>
+<!-- footer include -->
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

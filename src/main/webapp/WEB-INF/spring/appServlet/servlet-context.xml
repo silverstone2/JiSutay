@@ -67,4 +67,13 @@
 
    <!-- 어노테이션 기반으로 aop 적용할수 있도록 설정 -->
    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+   
+   <!-- 로그인 인터셉터 설정 -->
+	<interceptors>
+		<interceptor>
+			<mapping path="/**"/>
+			<beans:bean id="loginInterceptor" class="com.pina.jisutay.interceptor.LoginInterceptor" />
+		</interceptor>
+	</interceptors>
+
 </beans:beans>

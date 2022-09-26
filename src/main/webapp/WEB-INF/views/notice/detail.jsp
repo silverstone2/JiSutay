@@ -83,6 +83,15 @@
 		</p>
 	</c:if>	 --%>
 	
+<!-- 다음글, 이전글 버튼 -->
+	<c:if test="${dto.prevNum ne 0 }">
+		<a href="detail.do?num=${dto.prevNum }">이전글</a>
+	</c:if>
+	<c:if test="${dto.nextNum ne 0 }">
+		<a href="detail.do?num=${dto.nextNum }">다음글</a>
+	</c:if>
+	
+<!-- 공지사항 본문 -->
 	<table class="detailTable">
 		<tr style="font-size:45px;" class="aaa">
 			<th colspan="3">${dto.title }  </th>

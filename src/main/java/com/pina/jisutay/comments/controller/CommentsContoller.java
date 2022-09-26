@@ -25,7 +25,7 @@ public class CommentsContoller {
 	public ModelAndView authCommentInsert(HttpServletRequest request, 
 			@RequestParam int room_num) {
 		service.saveComment(request);
-		return new ModelAndView("redirect:/room/detail.do?num="+room_num+"&sort=regdate");
+		return new ModelAndView("redirect:/room/detail.do?num="+room_num+"&sort=regdate#review");
 	}
 	
 	@RequestMapping("/room/re_comment_insert")

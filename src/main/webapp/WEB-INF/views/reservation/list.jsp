@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
@@ -14,20 +14,18 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 <style>
 	.reservationForm{
-		border : 1px solid red;
+		background-color : #FAF9F9;
 		display : none;
 	}
-	
 	.col{
 		float:left;
-		
 	}
-	
+	.card-body{
+		background-color : #FAF9F9;
+	}
 	.smoke {
 		display: flex;
 		position: absolute;
@@ -40,117 +38,143 @@
 		align-items: center;
 		justify-content: center;
 	}
+	.form{
+		margin-top: 100px;
+		margin-left : 130px;
+		width: 1000px;
+		height:600px;
+		border-top:1px solid #323332
+	}
+	.dateform{
+		margin-top : 10px;
+		margin-bottom : 20px;
+		margin-left : 370px;
+	}
+	.info{
+		display:flex;
+		justify-content:center;
+		align-items:center;
+	}
+	.info2{
+		margin-left : 240px;
+	}
+	.detail{
+		margin:10px;
+		display:flex;
+		justify-content:center;
+		align-items:center;		
+		font-size:0.8em;
+	}
+	
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
+   <!-- 상단 배너  -->
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+	</div>
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
-   <c:choose>
-      <c:when test="${empty id }">
-         <p>
-            <a href="${pageContext.request.contextPath }/users/loginform.do">로그인</a>
-            <a href="${pageContext.request.contextPath }/users/signupform.do">회원가입</a>
-         </p>
-      </c:when>
-      <c:otherwise>
-         <p>
-            <strong>${id }</strong> 님 로그인중...
-         </p>
-      </c:otherwise>
-   </c:choose>
-	<br>
-	<br>
-	
+  <div class="form">
+  	<div class="dateform">
+  	<br>
+  	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
 	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
-		<input type="date" id="check_in" name="check_in" oninput="checkDate();"/>
-		<input type="date" id="check_out" name="check_out" oninput="checkDate();"/>
+		<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
+		<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
 		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
 	</form>
-
+	<br><br><br>
+	</div>
 	
 	<div class="row">
-	<h1>방 목록</h1>
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-		<div class="col-3">
-			<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
-				<img class="card-img-top" src="${pageContext.request.contextPath }/resources/images/${status.count }.png" />
-				<div class="card-body">
-					<h4 class="card-title">${tmp.room_name }</h4>
-					<p class="card-text">
-					 	기준:2인 ~ 최대:${tmp.room_people }
-					</p>
-					 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button">예약</button>
-				</div>	 
-				
-				<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
+			<div class="col-3">
+				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
+					<img class="card-img-top" src="${pageContext.request.contextPath }${tmp.img_path }"  />
+					<div class="card-body">
+						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
+						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
+						 	기준:2인 ~ 최대:${tmp.room_people }
+						</p>
+						 <div><br></div>
+						 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
+					</div>
+					<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
+				</div>
 			</div>
-		</div>
-			<div id="reservationForm${status.index }" class="reservationForm">
-				<img src="${pageContext.request.contextPath }/resources/images/${status.count}.png"/>
-				<table>
-					<tr>
-						<th>객실구조</th>
-						<td>${tmp.room_structure }</td>
-					</tr>
-					<tr>
-						<th>객실평수</th>
-						<td>${tmp.room_size }평</td>
-					</tr>
-					<tr>
-						<th>숙박인원</th>
-						<td>최대${tmp.room_people }</td>
-					</tr>
-					<tr>
-						<th>비품</th>
-						<td>${tmp.room_items }</td>
-					</tr>
-					<tr>
-						<th>침실타입</th>
-						<td>${tmp.bedroom_type }</td>
-					</tr>
-					<tr>
-						<th>소개</th>
-						<td>${tmp.room_introduce }</td>
-					</tr>						
-				</table>
-				
-				<p>숙박기간</p>
-				<div class="date"></div>박
-				<p>이용인원</p>
-				<button onclick="javascript:minusNum(${status.index });">-</button>
-				<input id="inputPeople${status.index }" type="text" value="2" disabled/>
-				<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');">+</button>
-				<p>-성인 추가금 2만원입니다</p>
-				<table>
-					<tr>
-						<th>객실요금</th>
-						<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
-					</tr>
-					<tr>
-						<th>인원추가 요금</th>
-						<td id="addCharge${status.index }">0</td>
-					</tr>
-					<tr>
-						<th>총요금</th>
-						<td id="totalPrice${status.index }">0</td>
-					</tr>			
-				</table>
-				<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit">선택완료</button>
-				<button data-value="${status.index }" id="testCancle${status.index }">선택취소</button>
-			</div>
+				<div id="reservationForm${status.index }" class="reservationForm">
+				  <div class="info">
+				  	<div class="detail">
+					<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
+					</div>
+					<div class="detail">
+					<table>
+						<th><h3>${tmp.room_name}</h3></th>
+						<tr>
+							<th>객실구조 :</th>
+							<td>${tmp.room_structure }</td>
+						</tr>
+						<tr>
+							<th>객실평수 :</th>
+							<td>${tmp.room_size }평</td>
+						</tr>
+						<tr>
+							<th>숙박인원 :</th>
+							<td>최대${tmp.room_people }</td>
+						</tr>
+						<tr>
+							<th>비품 :</th>
+							<td>${tmp.room_items }</td>
+						</tr>
+						<tr>
+							<th>침실타입 :</th>
+							<td>${tmp.bedroom_type }</td>
+						</tr>
+						<tr>
+							<th>소개 :</th>
+							<td>${tmp.room_introduce }</td>
+						</tr>						
+					</table>
+					</div>
+				 </div>
+				 <div class="info2">
+					<p><strong>숙박기간 : </strong><span class="date"></span>박 </p> 
+					<p style="margin-bottom:7px;"><strong>이용인원</strong></p>
+						<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
+						<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
+						<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
+						<p>-성인 추가금 2만원입니다</p>
+					
+					<table>
+						<tr>
+							<th>객실요금 : </th>
+							<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
+						</tr>
+						<tr>
+							<th>인원추가 요금 : </th>
+							<td id="addCharge${status.index }">0</td>
+						</tr>
+						<tr>
+							<th>총요금 : </th>
+							<td id="totalPrice${status.index }">0</td>
+						</tr>			
+					</table>
+					<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
+					<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
+					
+				</div>
+			 </div>
 		</c:forEach>
-		
 		<form id="submitForm" action="reservationform.do", method="post">
 			<input id="num" type="hidden" name="num"/>
-			<input id="inputIn" type="hidden" name="check_in"/>
+			<input id="inputIn" type="hidden" name="check_in" />
 			<input id="inputOut" type="hidden" name="check_out"/>
 			<input id="peopleNum" type="hidden" name="peopleNum"/>
 		</form>
 	</div>
-
+  </div>
 </div>
-
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
@@ -168,7 +192,7 @@
       // 몇 박 계산
       var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
       if(dateDiff > 0 ){
-      $(".col").hide(50);
+      $(".col-3").hide(50);
       $("#reservationForm"+index).show(500);
       }else if(dateDiff==0){
          alert("1박 이상만 가능합니다")
@@ -227,6 +251,11 @@
    $(".testSubmit").on('click', function() {
       $("#submitForm").submit();
    });
+
+   $(".testCancel").on('click', function() {
+	      $(".col-3").show();
+	      $(".reservationForm").hide();
+	   });
    
 /* ---------------- 날짜 선택 시, DB와 검증 후 Ajax 통신 처리 ---------------- */
 	function checkDate() {
@@ -261,5 +290,7 @@
 		});
 	});
 </script>
+<div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>
