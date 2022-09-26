@@ -55,7 +55,6 @@
 			</div>
 		</div>
 	</section>
-
 <!-- footer include -->
 <jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
