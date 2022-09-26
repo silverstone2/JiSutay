@@ -75,7 +75,7 @@
 							</h4>
 							<pre>${tmp.caption }</`pre>
 						</div>
-						<c:if test="${sessionScope.id eq 'superhonet' }">
+						<c:if test="${sessionScope.id eq 'admin' }">
 							<div class="btn">
 								<a href="${pageContext.request.contextPath }/travel/updateform.do?num=${tmp.num }">
 									<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
@@ -93,7 +93,7 @@
 					</li>
 					</div>
 				</c:forEach>
-				<c:if test="${sessionScope.id eq 'superhonet' }">
+				<c:if test="${sessionScope.id eq 'admin' }">
 				<div class="contentMapping">
 					<li>
 						<div class="img">
@@ -101,6 +101,7 @@
 								<img src="${pageContext.request.contextPath}/Jisutayimage/Logo_Icon/plus.png" style="object-fit: contain">
 							</a>
 						</div>
+						<div> </div>
 						<div class="txt">
 							<h2>관광지 추가하기</h2>
 						</div>
