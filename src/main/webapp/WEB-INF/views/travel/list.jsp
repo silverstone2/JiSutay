@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>/views/travel/list.do</title>
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -67,7 +67,7 @@
 <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 <div class="container">
 	<div class="banner">
-		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+		<img src="${pageContext.request.contextPath}/resources/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
 	<div class="section contents">
 		<ul>
@@ -109,7 +109,7 @@
 					<li>
 						<div class="img2">
 							<a href="${pageContext.request.contextPath }/travel/uploadform.do">
-								<img src="${pageContext.request.contextPath}/Jisutayimage/Logo_Icon/plus.png" style="object-fit: contain">
+								<img src="${pageContext.request.contextPath}/resources/Jisutayimage/Logo_Icon/plus.png" style="object-fit: contain">
 							</a>
 						</div>
 						<div> </div>

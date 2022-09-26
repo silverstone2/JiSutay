@@ -24,7 +24,7 @@
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-210701482-1">
 </script>
 
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/swiper.js" defer=""></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" defer=""></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
@@ -48,7 +48,7 @@
 			</div>
 			<div class="title">
 				<h2>
-					<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt="">
+					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/welcome.png" width="600" height="150" alt="">
 				</h2>
 			</div>
 			<div class="line"></div>
@@ -73,16 +73,16 @@
 			<div class="fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
 				<div class="InBox" style="width:1200px;height:600px;">
 					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 600px;">
-						<img src="${pageContext.request.contextPath }/Jisutayimage/about/1.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/2.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/3.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/4.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/5.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/6.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/7.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/8.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/9.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/10.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/1.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/2.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/3.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/4.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/5.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/6.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/7.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/8.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/9.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/10.jpg">
 					</div>
 				</div>
 			</div>
