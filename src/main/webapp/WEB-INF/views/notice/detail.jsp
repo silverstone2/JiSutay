@@ -39,13 +39,16 @@
 		text-align:center;
 		display: inline-block;
 		vertical-align: baseline;
-		background-color:#E0E0E0;
+		background-color:#354A54;
+		color: #ffffff;
 		margin-top: 10px;
 		padding: 10px 0 10px;
 		font-size: 15px;
-		border: none;
+		border-radius: 4px;
 		margin-left:37%;
 	}
+	
+	
 	.buttonEffect > a{
 		text-decoration: none;
 		color: #E0E0E0;
@@ -129,7 +132,7 @@
 <div class="m-5">
 	<div class="container" id="post">
 		<h1 class="h1p">공지사항</h1>
-		<p class="h1p">공지사항과 다양한 소식을 확인해보세요.</p>
+		<p class="h1p" style="margin-top:10px;">공지사항과 다양한 소식을 확인해보세요.</p>
 		
 		<table class="detailTable" style="border-top:2px solid gray; margin-top:2%;">
 			<tr style="font-size:45px;" class="aaa">
