@@ -48,11 +48,6 @@ public class ReservationController {
 		return mav;
 	}
 	
-//	@RequestMapping("/reservation/reservation")
-//	public String insert() {
-//		return "reservation/reservation";
-//	}
-	
 	@RequestMapping("/reservation/reservation")
 	public String insert(ReservationDto dto) {
 		res_service.addReservation(dto);

@@ -23,6 +23,7 @@
 	.col{
 		float:left;
 	}
+	
 	.card-body{
 		background-color : #FAF9F9;
 	}
@@ -56,8 +57,11 @@
 		align-items:center;
 	}
 	.info2{
-		margin-left : 240px;
+		display:flex;
+		justify-content:center;
+		align-items:center;
 	}
+	
 	.detail{
 		margin:10px;
 		display:flex;
@@ -65,7 +69,6 @@
 		align-items:center;		
 		font-size:0.8em;
 	}
-	
 </style>
 </head>
 <body>
@@ -73,6 +76,9 @@
    <div class="banner">
 		<img src="${pageContext.request.contextPath}/resources/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
+	<!-- 네비바 클릭시 화면 포커스 -->
+   <div id="focus"></div>
+   
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
   <div class="form">
@@ -139,14 +145,20 @@
 					</div>
 				 </div>
 				 <div class="info2">
-					<p><strong>숙박기간 : </strong><span class="date"></span>박 </p> 
-					<p style="margin-bottom:7px;"><strong>이용인원</strong></p>
-						<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
-						<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
-						<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
-						<p>-성인 추가금 2만원입니다</p>
-					
-					<table>
+					<table style="  border-collapse: separate; border-spacing: 0 15px;">
+						<tr>
+							<th>숙박기간 : </th>
+							<td><span class="date"></span>박</td>
+						</tr>
+						<tr>
+							<th>이용인원 : </th>
+							<td>
+								<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
+								<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
+								<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
+								<p>-성인 추가금 2만원입니다</p>
+							</td>
+						</tr>	
 						<tr>
 							<th>객실요금 : </th>
 							<td id="roomPricePrint${status.index }">${tmp.room_price }</td>
@@ -159,10 +171,13 @@
 							<th>총요금 : </th>
 							<td id="totalPrice${status.index }">0</td>
 						</tr>			
+						<tr>
+							<th>
+								<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
+								<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
+							</th>
+						</tr>
 					</table>
-					<button data-value="${status.index }" id="testCancel${status.index }" class="testCancel" style="border:none;">선택취소</button>
-					<button data-value="${status.index }" id="testSubmit${status.index }" class="testSubmit" style="background-color:#C6DFF8; border:none;">선택완료</button>
-					
 				</div>
 			 </div>
 		</c:forEach>
@@ -192,8 +207,8 @@
       // 몇 박 계산
       var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
       if(dateDiff > 0 ){
-      $(".col-3").hide(50);
-      $("#reservationForm"+index).show(500);
+      	$(".col-3").hide(50);
+      	$("#reservationForm"+index).show(500);
       }else if(dateDiff==0){
          alert("1박 이상만 가능합니다")
       }else if(dateDiff<0){
@@ -201,6 +216,7 @@
       }else{
          alert("날짜를 기입하세요")
       }   
+      
       $(".date").text(dateDiff);
       $("#roomPricePrint"+index).text(dateDiff*room_price);
       $("#totalPrice"+index).text(dateDiff*room_price);
@@ -289,6 +305,7 @@
 			});
 		});
 	});
+	
 </script>
 <div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
 <jsp:include page="/resources/include/footer.jsp"></jsp:include>
