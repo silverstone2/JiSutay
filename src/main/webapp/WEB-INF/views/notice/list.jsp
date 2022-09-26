@@ -7,8 +7,18 @@
 <meta charset="UTF-8">
 <title>/views/notice/list.jsp</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
+
+<script src="https://player.vimeo.com/api/player.js"></script>
+
 <style>
-	/*@@@@@@@@@@@@@@@@@@@@@@@@@@*/
+	/*@@@@@@@@@새글 작성 시작@@@@@@@@@@*/
 	@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
 	
 	button {
@@ -24,7 +34,7 @@
 	.clear {
 	  clear: both;
 	}
-	
+
 	.pageTitle {
 	  font-size: 2em;
 	  font-weight: 700;
@@ -90,7 +100,7 @@
 	.btnLightBlue.btnPush:hover {
 	  box-shadow: 0px 0px 0px 0px #1E8185;
 	}
-	/*@@@@@@@@@@@@*/
+	/*@@@@@@@@@@새글작성 끝@@@@@@@@@@*/
 	/* 제목a 부분  */
 	tr td a{
 		color: black;
@@ -183,12 +193,57 @@
 		height: 30px;
 	}
 	div .aa{
-		float:right;
-		
+		float:right;	
 	}
-
+/* 공지사항 이미지 쪽 */
+	.lb-wrap {
+		width: 100%;
+		margin: 10px auto;
+		border: 1px solid #000000;
+		position: relative;
+	}
+	.lb-wrap img {
+		width: 100%;
+		vertical-align: middle;
+	}
+	.lb-text {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);	
+		font-size:80px;
+		color:#FBFCFC;
+		background-color:transparent;
+	}
+	.lb-text2 {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size:30px;
+		color:#FBFCFC;
+		margin-bottom:7%;
+		background-color:transparent;
+	}
 </style>
 </head>
+<div class="lb-wrap">
+	<div class="lb-text">
+		<p>NOTICE</p><br/>
+	</div>
+	<div class="lb-text2">
+		<p>공지사항</p>
+	</div>
+	<div class="lb-image">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/notice/fullstay3.png" alt="noticeImage">
+	</div>
+</div>
 <body>
 <div class="container">
 	<h1>공지사항</h1>
@@ -199,7 +254,7 @@
 	<c:choose>
 		<c:when test="${id eq 'admin'}">
 			<div class="aa">
-				<a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue" style="margin: 0px;">새글작성</a>		
+				<a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue">새글작성</a>		
 			</div>
 		</c:when>
 	</c:choose>
@@ -211,10 +266,8 @@
 				<th>제목</th>
 				<th>글쓴이</th>
 				<th>날짜</th>
-				<!-- <th>내용</th> -->
 				<th>조회</th>
 			</tr>
-
 		</thead>
 		
 		<tbody>
@@ -222,7 +275,7 @@
 			<tr>
 				<td style="width: 50px;">${tmp.num}</td>
 				<td style="width: 400px;">
-					<a href="detail.do?num=${tmp.num }">${tmp.title }</a>
+					<a href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
 				</td>
 				<td style="width: 150px;">${tmp.writer }</td>
 				<td style="width: 200px;">${tmp.regdate }</td>
