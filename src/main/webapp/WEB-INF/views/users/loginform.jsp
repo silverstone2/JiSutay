@@ -6,8 +6,19 @@
 <head>
 <meta charset="UTF-8">
 <title>loginform</title>
+
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
+
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
+
 </head>
 <body class="text-center">
+	<!-- navbar include -->
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 	<div class="container-fluid mb-5">
 		<div class="row justify-content-md-center">
 			<!-- nav 바 -->
@@ -20,7 +31,11 @@
 					<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 				</div>
 			</c:if>
-			
+			<div>
+				<br>
+				<br>
+				<br>
+			</div>
 			<!-- 페이지 제목 -->
 	      	<h2 class="mt-5">로그인</h2>
 			<!-- form -->
@@ -75,5 +90,7 @@
 			</div>
 		</div>
 	</div>
+	<!-- footer include -->
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 </body>
 </html>

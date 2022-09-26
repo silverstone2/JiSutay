@@ -9,7 +9,8 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -26,10 +27,10 @@
 	}
 	
 	a,
-	a:visited {
-	  text-decoration: none;
-	  color: #00AE68;
-	}
+	a.hz:visited{
+     text-decoration: none;
+     color: #00AE68;
+   }
 	
 	.clear {
 	  clear: both;
@@ -231,8 +232,11 @@
 		margin-bottom:7%;
 		background-color:transparent;
 	}
+
 </style>
 </head>
+<body>
+<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 <div class="lb-wrap">
 	<div class="lb-text">
 		<p>NOTICE</p><br/>
@@ -244,9 +248,14 @@
 		<img src="${pageContext.request.contextPath}/Jisutayimage/notice/fullstay3.png" alt="noticeImage">
 	</div>
 </div>
-<body>
 <div class="container">
-	<h1>공지사항</h1>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <br>
+   <h1>공지사항</h1>
   
 	<p>공지사항과 다양한 소식을 확인해보세요.</p>
 	<br />
@@ -314,28 +323,32 @@
 	</div>
 	<!-- 페이지 부분 끝 -->
 
-	<div style="clear:both;"></div>
+   <div style="clear:both;"></div>
 
-	
-	<!-- 검색 부분 -->
-	<div style="text-align:center; width:100%;">
-		<form action="list.do" method="get"> 
-			<label for="condition"><strong>검색</strong></label>
-			<select name="condition" id="condition">
-				<option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
-				<option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
-				<option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
-			</select>
-			<input type="text" id="keyword" name="keyword" placeholder="검색어..." value="${keyword }"/>
-			<button class="btn btn-primary btn-sm" type="submit" >찾기</button>
-		</form>	
-		<c:if test="${ not empty condition }">
-			<p>
-				<strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
-			</p>
-		</c:if>
-	</div>
-	<!-- 검색 부분 끝 -->
+   
+   <!-- 검색 부분 -->
+   <div style="text-align:center; width:100%;">
+      <form action="list.do" method="get"> 
+         <label for="condition"><strong>검색</strong></label>
+         <select name="condition" id="condition">
+            <option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
+            <option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
+            <option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
+         </select>
+         <input type="text" id="keyword" name="keyword" placeholder="검색어..." value="${keyword }"/>
+         <button class="btn btn-primary btn-sm" type="submit" >찾기</button>
+      </form>   
+      <c:if test="${ not empty condition }">
+         <p>
+            <strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+         </p>
+      </c:if>
+   </div>
+   <br>
+   <br>
+   <!-- 검색 부분 끝 -->
 </div>
+<!-- footer include -->
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

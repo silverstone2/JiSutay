@@ -211,7 +211,7 @@ header a,footer a                               {display:block;}
 #about .exterior .bg02 {top:0;left:0;width:73%;height:75%;background:#C8BF5F;}
 
 #about .exterior .title {position:relative;width:1300px;min-width:1000px;margin:0 auto;padding:4% 10% 4%;z-index:2;}
-#about .exterior .title h3 {font-size:90px;margin-bottom:3%;color:#006B7D;letter-spacing:3px;font-family: 'Shadows Into Light', cursive;;}
+#about .exterior .title h3 {font-size:90px;margin-bottom:3%;color:#006B7D;letter-spacing:3px;font-family: 'Shadows Into Light', cursive;}
 #about .exterior .title p {font-size:22px;line-height:1.7;color:#E6F4F1;font-family: 'Gowun Dodum', sans-serif;}
 #about .exterior .title p strong{font-size:20px;line-height:1.7;color:#E6F4F1;font-weight:bolder;font-family: 'Gowun Dodum', sans-serif;}
 #about .exterior .title {transform:translateY(12.5%);transition:1s;opacity:0;}
@@ -292,7 +292,7 @@ header a,footer a                               {display:block;}
 /*------------------------------------------------------------------------------------------------*/
 /* detail */
 .detail .infos {width:100%;background:#fff;}
-.detail .infos .InBox {max-width:1400px;min-width:1000px;margin:0 auto;padding:7.5% 0;overflow:hidden;}
+.detail .infos .InBox {max-width:1400px;min-width:1000px;margin:0 auto;padding:7.5% 0;}
 .detail .infos .InBox > div {float:left;width:48%;margin:0 1%;overflow:hidden;}   
 .detail .infos .InBox > div   h3 {font-size:28px;margin-bottom:30px;color:#008993;}
 .detail .infos .InBox > div   > ul {width:100%;overflow:hidden;}
@@ -310,7 +310,7 @@ html {scroll-behavior: smooth;}
 
 #rooms .images {width:100%;background:#fff;}   
 #rooms .images .InBox {max-width:1400px;min-width:1000px;margin:0 auto 5%;overflow:hidden;}   
-#rooms .images .InBox img {display:block;margin-bottom:5%;transform:translateY(10%);transform:scale(0.95);opacity:0.5;transition:1s;}
+#rooms .images .InBox img {display:block;margin-bottom:5%;transform:translateY(10%);transform:scale(0.95);opacity:1.0;transition:1s;}
 #rooms .InfoBtn {position:fixed;bottom:70px;right:2%;z-index:10;display:none;}
 #rooms .InfoBtn a {display:block;padding:15px 15.5px;font-size:14px;background:#bc9e5d;color:#fff;}
 #rooms .FarmBtn {position:fixed;bottom:120px;right:calc(2% - 11px);background:url(../images/farm.png) no-repeat left top;z-index:10;}
