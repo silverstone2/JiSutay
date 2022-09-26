@@ -21,14 +21,12 @@
 	.reservationForm{
 		background-color : #FAF9F9;
 		display : none;
-		
 	}
 	
 	.col{
 		float:left;
-		
-		
 	}
+	
 	.card-body{
 		background-color : #FAF9F9;
 	}
@@ -51,8 +49,6 @@
 		width: 1000px;
 		height:600px;
 		border-top:1px solid #323332
-		
-
 	}
 	
 	.dateform{
@@ -69,6 +65,7 @@
 	.info2{
 		margin-left : 240px;
 	}
+	
 	.detail{
 		margin:10px;
 		display:flex;
@@ -76,37 +73,21 @@
 		align-items:center;		
 		font-size:0.8em;
 	}
-	
 </style>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
-   <c:choose>
-      <c:when test="${empty id }">
-         <p>
-            <a href="${pageContext.request.contextPath }/users/loginform.do">로그인</a>
-            <a href="${pageContext.request.contextPath }/users/signupform.do">회원가입</a>
-         </p>
-      </c:when>
-      <c:otherwise>
-         <p>
-            <strong>${id }</strong> 님 로그인중...
-         </p>
-      </c:otherwise>
-   </c:choose>
-   
   <div class="form">
   	<div class="dateform">
-  	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
-	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
-		<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
-		<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
-		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
-	</form>
+	  	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
+		<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
+			<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
+			<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
+			<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
+		</form>
 	</div>
-
 	
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
@@ -215,8 +196,8 @@
       // 몇 박 계산
       var dateDiff = Math.ceil((check_out.getTime()-check_in.getTime())/(1000*3600*24));
       if(dateDiff > 0 ){
-      $(".col-3").hide(50);
-      $("#reservationForm"+index).show(500);
+      	$(".col-3").hide(50);
+      	$("#reservationForm"+index).show(500);
       }else if(dateDiff==0){
          alert("1박 이상만 가능합니다")
       }else if(dateDiff<0){
@@ -224,6 +205,7 @@
       }else{
          alert("날짜를 기입하세요")
       }   
+      
       $(".date").text(dateDiff);
       $("#roomPricePrint"+index).text(dateDiff*room_price);
       $("#totalPrice"+index).text(dateDiff*room_price);
