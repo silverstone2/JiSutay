@@ -31,6 +31,9 @@
 </style>
 </head>
 <body>
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+	</div>
    <div class="container">
    	  <div class="item" style="margin-bottom:10px;">	
 		<table class="reservationtable" style="text-align:center";>

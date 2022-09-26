@@ -8,11 +8,23 @@
 <meta charset="UTF-8">
 <title>JISUTAY</title>
 
-<jsp:include page="/include/starRating_style.jsp"></jsp:include>
+<jsp:include page="/resources/include/starRating_style.jsp"></jsp:include>
 
+
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 
+<!-- jQuery 1.8 or later, 33 KB -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<!-- Fotorama from CDNJS, 19 KB -->
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
 <style>
 	.content{
@@ -154,6 +166,7 @@
 
 </head>
 <body id="rooms" class="detail">
+	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 	<div onload="javascript:test();">
 	</div>
 	<section>	
@@ -505,7 +518,7 @@
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
-	<jsp:include page="/include/starRating_js.jsp"></jsp:include>
+	<jsp:include page="/resources/include/starRating_js.jsp"></jsp:include>
 	<script>
 		//로그인 여부 확인
 		let isLogin=${not empty id };
@@ -764,7 +777,5 @@
 		movePage(pageNum);
 	});
 	</script>
-	
-	
 </body>
 </html>

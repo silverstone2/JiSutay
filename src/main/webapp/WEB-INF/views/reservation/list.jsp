@@ -14,25 +14,18 @@
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/modify.js" ></script>
-<script type="text/javascript" src="${pageContext.request.contextPath }/js/common.js" ></script>
-<script src="https://player.vimeo.com/api/player.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 <style>
 	.reservationForm{
 		background-color : #FAF9F9;
 		display : none;
-		
 	}
-	
 	.col{
 		float:left;
-		
-		
 	}
 	.card-body{
 		background-color : #FAF9F9;
 	}
-	
 	.smoke {
 		display: flex;
 		position: absolute;
@@ -45,22 +38,18 @@
 		align-items: center;
 		justify-content: center;
 	}
-	
 	.form{
 		margin-top: 100px;
+		margin-left : 130px;
 		width: 1000px;
 		height:600px;
 		border-top:1px solid #323332
-		
-
 	}
-	
 	.dateform{
 		margin-top : 10px;
 		margin-bottom : 20px;
 		margin-left : 370px;
 	}
-	
 	.info{
 		display:flex;
 		justify-content:center;
@@ -78,35 +67,25 @@
 	}
 	
 </style>
-<link rel="stylesheet" href="${pageContext.request.contextPath }/resources/css/bootstrap.css" />
 </head>
 <body>
+   <!-- 상단 배너  -->
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
+	</div>
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
-   <c:choose>
-      <c:when test="${empty id }">
-         <p>
-            <a href="${pageContext.request.contextPath }/users/loginform.do">로그인</a>
-            <a href="${pageContext.request.contextPath }/users/signupform.do">회원가입</a>
-         </p>
-      </c:when>
-      <c:otherwise>
-         <p>
-            <strong>${id }</strong> 님 로그인중...
-         </p>
-      </c:otherwise>
-   </c:choose>
-   
   <div class="form">
   	<div class="dateform">
+  	<br>
   	<p style="word-spacing: 110px; margin-bottom:5px; font-size:0.5em; color:#A9A2A7;">체크인 체크아웃</p>
 	<form id="checkDateForm" action="ajaxCheckDate.do" method="post">
 		<input type="date" id="check_in" name="check_in" oninput="checkDate();" placeholder= "체크인" />
 		<input type="date" id="check_out" name="check_out" oninput="checkDate();" placeholder= "체크아웃"/>
 		<button id="checkDateBtn" class="visually-hidden" type="submit"></button>
 	</form>
+	<br><br><br>
 	</div>
-
 	
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
@@ -118,9 +97,9 @@
 						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
 						 	기준:2인 ~ 최대:${tmp.room_people }
 						</p>
+						 <div><br></div>
 						 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
-					</div>	 
-					
+					</div>
 					<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
 				</div>
 			</div>
@@ -187,7 +166,6 @@
 				</div>
 			 </div>
 		</c:forEach>
-		
 		<form id="submitForm" action="reservationform.do", method="post">
 			<input id="num" type="hidden" name="num"/>
 			<input id="inputIn" type="hidden" name="check_in" />
@@ -197,7 +175,6 @@
 	</div>
   </div>
 </div>
-
 <script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
 <script>
@@ -313,5 +290,7 @@
 		});
 	});
 </script>
+<div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>
