@@ -44,6 +44,11 @@
 		height: 400px;
 		border: 1px solid black;
 	}
+	.img2{
+		margin-left:35px;
+		width: 300px;
+		height: 300px;
+	}
 	strong {
 	font-size: 2em;
 	}
@@ -102,7 +107,7 @@
 			<c:if test="${sessionScope.id eq 'admin' }">
 				<div class="contentMapping">
 					<li>
-						<div class="img">
+						<div class="img2">
 							<a href="${pageContext.request.contextPath }/travel/uploadform.do">
 								<img src="${pageContext.request.contextPath}/Jisutayimage/Logo_Icon/plus.png" style="object-fit: contain">
 							</a>

@@ -5,7 +5,7 @@
 <header>
 	<hgroup>
 		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/Logo_Image.png" width="220px" height="80px" ></a></h1>
-		<div><p>제주도 힐링 감성을 가득 담은 <span>"지수테이"</span></p></div>
+		<div><p>제주도 힐링 감성을 가득 담은 <span>"JiSutay"</span></p></div>
 	</hgroup>
 	<nav>
 		<ul>

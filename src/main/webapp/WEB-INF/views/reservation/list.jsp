@@ -99,8 +99,7 @@
 						</p>
 						 <div><br></div>
 						 <button id="cardBtn${tmp.num }" onclick="javascript:reserve(${status.index }, ${tmp.room_price }, ${tmp.num });" class="reserveDetail" type="button" style="border: none; width:200px; font-size:0.9em; padding: 10px 30px; color:#515051;">객실선택</button>
-					</div>	 
-					
+					</div>
 					<div id="smoke${tmp.num }" class="smoke visually-hidden">SOLD OUT</div>
 				</div>
 			</div>
@@ -167,7 +166,6 @@
 				</div>
 			 </div>
 		</c:forEach>
-		
 		<form id="submitForm" action="reservationform.do", method="post">
 			<input id="num" type="hidden" name="num"/>
 			<input id="inputIn" type="hidden" name="check_in" />
@@ -292,11 +290,7 @@
 		});
 	});
 </script>
-<div>
-	<br>
-	<br>
-	<br>
-</div>
+<div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
 <jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

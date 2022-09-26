@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>지수테이 - 소랑제</title>
+<title>JISUTAY</title>
 
 <jsp:include page="/resources/include/starRating_style.jsp"></jsp:include>
 
@@ -24,43 +24,100 @@
 <!-- Fotorama from CDNJS, 19 KB -->
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
 <style>
 	.content{
 		border: 1px dotted gray;
 	}
+		
+	#review {
+		width:100%; 
+		display:inline-block;
+	}
 	
-	/* 후기 프로필 이미지 원형 프레임 */
-	.profile-image{
-		width: 50px;
-		height: 50px;
-		border: 1px solid #cecece;
-		border-radius: 50%;
+	.commentsHeader {
+		margin:0px 8rem;
+	}
+	
+	.reviewTitle {
+		display:flex; 
+		align-items:center; 
+		height:3rem;
+	}
+	
+	.reviewTitle > h3 {
+		font-size:1.7rem; 
+		font-weight:bold; 
+		color:#474747; 
+		letter-spacing: 5px;
+	}
+	
+	.reviewTitle > h3 > span {
+		font-size:1.4rem; 
+		font-weight:normal; 
+		color:#5E5E5E; 
+		letter-spacing: 0px;
+	}
+	
+	.total {
+		display:flex; 
+		align-items:center; 
+		height:4rem; 
+		justify-content: space-between;
+	}
+	
+	.comments {
+		margin:10px 8rem 10px 8rem;
 	}
 	
 	.comments ul{
-	padding: 0;
-	margin: 0;
-	list-style-type: none;
+		padding: 0 0 0 10px;
+		margin: 0;
+		list-style-type: none;
 	}
+	
+	.comments ul li{
+		border-top: 0.9px solid #CCCCCC;
+	}
+	
+	.comments li{
+		clear: left;
+		padding: 11px 10px;
+	}
+	
+	.comments dl{
+		height:100%
+	}
+	
 	.comments dt{
-		margin-top: 5px;
+		display:flex;
+		align-items:center;
 	}
+	
+	/* 후기 프로필 이미지 원형 프레임 */
+	.profile-image{
+		width: 40px;
+		height: 40px;
+		border: 1.5px solid #cecece;
+		border-radius: 50%;
+	}
+
 	.comments dd{
-		margin-left: 50px;
+		margin: 10px 0 10px 50px;
 	}
+	
+	
 	.comment-form textarea, .comment-form button{
 		float: left;
 	}
-	.comments li{
-		clear: left;
-	}
-	.comments ul li{
-		border-top: 1px solid #888;
-	}
+
+
 	.comment-form textarea{
 		width: 84%;
-		height: 100px;
+		height: 80px;
+		color: #4D565B; 
+		font-family: system-ui;
 	}
 	.comment-form button{
 		width: 14%;
@@ -103,6 +160,7 @@
 		animation: rotateAni 1s ease-out infinite;
 	}
 	
+
 </style>
 
 
@@ -112,6 +170,7 @@
 	<div onload="javascript:test();">
 	</div>
 	<section>	
+
 <!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
@@ -199,30 +258,36 @@
 			</div>
 		</div>
 		
-
 <!-- 전체 후기 영역 -->
 		<div id="review">
 		
-			<!-- 총 별점 출력 및 정렬 버튼 추가 -->
+			<!-- 총 별점 출력 및 정렬 버튼  -->
 			<div class="commentsHeader">
-			<!-- 후기 텍스트 및 후기 개수 -->
-				<div><strong>후기</strong>(${allCount })</div>
-				<p></p>
-				<!-- 총 별점 출력 -->
-				<svg xmlns="http://www.w3.org/2000/svg" width="40" height="auto" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
-				  <path id="headerStar" d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-				</svg>
-				<h1 style="display: inline-block; font-size: 46px; margin: 0px;"><strong>${sumScore }</strong></h1>
-				<span style="color: #a5b0af; font-size: 24px;">/5</span>
-			
-				<!-- 정렬 -->
-				<fieldset>
-					<select name="sort">
-						<option value="regdate">최근 작성순</option>
-						<option value="highScore">별점 높은순</option>
-						<option value="lowScore">별점 낮은순</option>
-					</select>
-				</fieldset>
+				<!-- 후기 개수 -->
+				<div class="reviewTitle">
+					<h3>후기<span>(${allCount })</span></h3>
+				</div>
+				<!-- 총 별점 및 정렬-->
+				<div class="total">
+					<!-- 총 별점 -->
+					<div>
+						<svg xmlns="http://www.w3.org/2000/svg" width="37" height="auto" fill="currentColor" class="bi bi-star-fill" viewBox="0 0 16 16">
+						  <path id="headerStar" d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+						</svg>
+						<h1 style="display: inline-block; font-size: 44px; margin: 0px; color:#474747;"><strong> ${sumScore }</strong></h1>
+						<span style="color: #ABABAB; font-size: 23px;">/5</span>
+					</div>
+					<!-- 정렬 -->
+					<div>
+						<fieldset>
+							<select name="sort" id="sort" style="width:145px; height:33px; padding: 5px 20px 5px 5px; border-radius:5px;">
+								<option value="regdate">최근 작성순</option>
+								<option value="highScore">별점 높은순</option>
+								<option value="lowScore">별점 낮은순</option>
+							</select>
+						</fieldset>
+					</div>
+				</div>
 			</div>
 		
 <!-- 댓글 목록 -->
@@ -239,10 +304,11 @@
 								<c:if test="${tmp.num ne tmp.comment_num }">
 									<li id="reli${tmp.num }" style="padding-left:50px;">삭제된 후기입니다.</li>
 									<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
-				 							<path fill-rule="evenodd" d="M1.5 1.5A.5.5 0 0 0 1 2v4.8a2.5 2.5 0 0 0 2.5 2.5h9.793l-3.347 3.346a.5.5 0 0 0 .708.708l4.2-4.2a.5.5 0 0 0 0-.708l-4-4a.5.5 0 0 0-.708.708L13.293 8.3H3.5A1.5 1.5 0 0 1 2 6.8V2a.5.5 0 0 0-.5-.5z"/>
+			  							<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
 									</svg>							
 								</c:if>					
 							</c:when>
+							
 							<c:otherwise>
 								<%--일반 후기 --%>
 								<c:if test="${tmp.num eq tmp.comment_num }">
@@ -255,69 +321,83 @@
 										<svg class="reply-icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-right" viewBox="0 0 16 16">
 				  							<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
 										</svg>
-								</c:if>
-										<dl>
-											<dt>
-												<c:if test="${ empty tmp.profile }">
-													<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-													  <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
-													  <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
-													</svg>
-												</c:if>
-												<c:if test="${not empty tmp.profile }">
-													<img class="profile-image" src="${pageContext.request.contextPath}${tmp.profile }"/>
-												</c:if>
-												<%-- 관리자 답글(대댓글)이라면 누구를 향한 답글인지 옆에 @~ 텍스트 출력 --%>
-												<div data-num="${tmp.score }" data-value="${status.index }" id="rating-wrap${status.index }" class="ratingWrap">
-													<div id="rating${status.index }" class="selfRating">
-														<div id="overlay${status.index }" class="selfOverlay"></div>
+									</c:if>
+											<dl>
+												<dt>
+													<c:if test="${ empty tmp.profile }">
+														<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+															<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
+														</svg>
+													</c:if>
+													<c:if test="${not empty tmp.profile }">
+														<img class="profile-image" src="${pageContext.request.contextPath}${tmp.profile }"/>
+													</c:if>
+													<div style="width: 100%;">
+														<div>
+															<%-- 관리자 답글(대댓글)이라면 누구를 향한 답글인지 옆에 @~ 텍스트 출력 --%>
+															<div data-num="${tmp.score }" data-value="${status.index }" id="rating-wrap${status.index }" class="ratingWrap" style="display:flex;">
+																<div id="rating${status.index }" class="selfRating">
+																	<div id="overlay${status.index }" class="selfOverlay"></div>
+																</div>
+															</div>
+														</div>
+														<div>
+															<div style="padding:0px 0px 10px 10px">
+																<span style="font-size: 18px; font-weight: bold; color: #646F75; font-family: system-ui;">${tmp.writer }</span>
+																<span style="font-size: 15px; color: #D7D7D7;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+																<c:if test="${tmp.num ne tmp.comment_num }">
+																	@<i>${tmp.target_id }</i>
+																</c:if>
+																<span style="font-size: 14.5px; color: #799097;">${tmp.regdate }</span>
+																<span style="font-size: 15px; color: #D7D7D7;;">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
+																<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
+																<a data-num="${tmp.num }" href="javascript:" class="reply-link" style="font-size:15px;color:#354A54">답글</a>
+																<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
+																 <c:if test="${ tmp.writer eq sessionScope.id }">
+																 	<span style="font-size: 15px; color: #D7D7D7;;">&nbsp;|&nbsp;</span>
+																	<a data-num="${tmp.num }" class="update-link" href="javascript:" style="font-size:15px;color:#354A54">수정</a>
+																	<span style="font-size: 15px; color: #D7D7D7;;">&nbsp;|&nbsp;</span>
+																	<a data-num="${tmp.num }" class="delete-link" href="javascript:" style="font-size:15px;color:#354A54">삭제</a>
+																</c:if>
+															</div>
+														</div>
 													</div>
-												</div>
-												<span>${tmp.writer }</span>
-												<c:if test="${tmp.num ne tmp.comment_num }">
-													@<i>${tmp.target_id }</i>
-												</c:if>
-												<span>${tmp.regdate }</span>
-												<%-- 답글 링크를 눌렀을 때 해당 댓글의 글번호 얻어오기 위해 data-num 속성에 댓글의 번호 넣어두기 --%>
-												<a data-num="${tmp.num }" href="javascript:" class="reply-link">답글</a>
-												<%-- 댓글 작성자와 로그인한 사용자가 같다면 수정/삭제 버튼 활성화 (우선은 전체 답글 활성화) --%>
-												 <c:if test="${ tmp.writer eq sessionScope.id }">
-													<a data-num="${tmp.num }" class="update-link" href="javascript:">수정</a>
-													<a data-num="${tmp.num }" class="delete-link" href="javascript:">삭제</a>
-												</c:if>
-											</dt>
-											<dd>
-												<%-- 
-													댓글은 textarea 로  입력 > tab, 공백, 개행기호 있음.
-													pre 요소의 innerText 로 댓글을 출력하면 입력한 내용 형식을 그대로 출력 가능.
-													해당 댓글 JAVASCRIPT 로 바로 수정할 수 있도록 댓글 번호 조합해서 아이디 부여.
-												--%>
-												<pre id="pre${tmp.num }">${tmp.content }</pre>
-												<!-- 답글 버튼 -->
-												<c:if test="${tmp.commCount-1 ne 0}">
-													<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 });">🔽 답글 ${tmp.commCount-1 }개</a>	
-												</c:if>
-											</dd>
-										</dl>
-										<%--
-											답글 폼은 미리 만들어서 hidden >> 답글 링크 클릭시 활성화 
-											답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
-										--%>
-										<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="re_comment_insert.do" method="post" style="display:none;">
-											<input type="hidden" name="room_num" value="${param.num }"/>
-											<input type="hidden" name="target_id" value="${tmp.writer }"/>
-											<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
-											<textarea name="content"></textarea>
-											<button type="submit">등록</button>
-										</form>
+												</dt>
+												<dd>
+													<%-- 
+														댓글은 textarea 로  입력 > tab, 공백, 개행기호 있음.
+														pre 요소의 innerText 로 댓글을 출력하면 입력한 내용 형식을 그대로 출력 가능.
+														해당 댓글 JAVASCRIPT 로 바로 수정할 수 있도록 댓글 번호 조합해서 아이디 부여.
+													--%>
+													<pre id="pre${tmp.num }" style="color:#474747;">${tmp.content }</pre>
+													<div style="height:22px; width:100%;"></div>
+													<!-- 답글 버튼 -->
+													<c:if test="${tmp.commCount-1 ne 0}">
+														<a id="commComm${tmp.num }" href="javascript:watchComm(${tmp.num }, ${tmp.comment_num }, ${tmp.commCount-1 })" style="color:#47999A; font-size:14px;">🔽 답글 ${tmp.commCount-1 }개</a>	
+													</c:if>
+												</dd>
+											</dl>
+											<%--
+												답글 폼은 미리 만들어서 hidden >> 답글 링크 클릭시 활성화 
+												답글은 고유한 댓글 그룹번호(tmp.comment_num)로 form 전송시 같이 전송(답글의 그룹번호는 원댓글의 글번호).	
+											--%>
+											<form id="reForm${tmp.num }" class="animate__animated comment-form re-insert-form" action="re_comment_insert.do" method="post" style="display:none;margin:15px 0px 0px 75px;width:600px;">
+												<input type="hidden" name="room_num" value="${param.num }"/>
+												<input type="hidden" name="target_id" value="${tmp.writer }"/>
+												<input type="hidden" name="comment_num" value="${tmp.comment_num }"/>
+												<textarea name="content"></textarea>
+												<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">등록</button>
+											</form>
+											
+
 										<%-- 
 											댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 										--%>
 										<c:if test="${tmp.writer eq id }">
-											<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post" style="display:none;">
+											<form id="updateForm${tmp.num }" class="comment-form update-form" action="comment_update.do" method="post" style="display:none;margin:15px 0px 0px 75px;width:600px;">
 												<input type="hidden" name="num" value="${tmp.num }" />
 												<textarea name="content">${tmp.content }</textarea>
-												<button type="submit">수정</button>
+												<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">수정</button>
 											</form>
 										</c:if>	
 							</c:otherwise>
@@ -362,8 +442,12 @@
 				</nav>
 			</div>
 			
+			
+			
 			<!-- 후기 작성 폼 -->
-			<form class="comment-form insert-form" action="comment_insert.do" method="post">
+			<form class="comment-form insert-form" action="comment_insert.do" method="post" style="margin-left: 150px" >
+				<div style="height:70px; weight:100%;"> </div>
+				<h1 style="color:#398F81;font-weight:bolder;">☻ 객실 이용 후기를 남겨주세요 </h1>
 				<!-- 객실번호 == 후기의 ref_group 번호 -->
 				<input type="hidden" name="room_num" value="${dto.num }"/>
 				<!-- 객실이름 == 후기의 target -->
@@ -378,11 +462,46 @@
 				<!-- 정렬 방식 -->
 				<input type="hidden" name="sort" value="" />
 				<!-- Content -->
-				<textarea name="content">${empty id ? '후기 작성을 위해선 로그인이 필요합니다.' : '' }</textarea>
-				<button type="submit">등록</button>
+
+				<textarea name="content" style="width:1000px;">${empty id ? '로그인 후 작성이 가능합니다.' : '' }</textarea>
+				<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">등록</button>
+
 			</form>
-			
 		</div>
+		
+		
+		<nav style="margin:2.2rem 9rem 10rem 8rem;">
+			<ul class="pagination">
+			
+				<c:if test="${startPageNum ne 1 }">
+					<li class="page-item">
+						<a class="page-link" href="javascript:movePage(${startPageNum-1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&laquo;</a>
+					</li>
+				</c:if>
+				
+				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+					<c:choose>
+						<c:when test="${pageNum eq i }">
+							<li class="page-item active">
+								<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
+							</li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item">
+								<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
+							</li>
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+				
+				<c:if test="${endPageNum lt totalPageCount }">
+					<li class="page-item">
+						<a class="page-link" href="javascript:movePage(${endPageNum+1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&raquo;</a>
+					</li>
+				</c:if>
+				
+			</ul>
+		</nav>
 	</section>
 	
 	<!-- footer include-->
@@ -631,7 +750,7 @@
 		document.querySelector('.insert-form').addEventListener('submit', function(e) {
 			let contentText = this.querySelector('textarea[name=content]').value;
 			if(contentText == "") {
-				alert('내용을 작성하세요!');
+				alert('내용 작성 후에 등록해주세요');
 				e.preventDefault();
 			}
 		});
@@ -645,7 +764,7 @@
 				tag.addEventListener('submit', function(e) {
 					let contentText = tag.querySelector('textarea[name=content]').value;
 					if(contentText == "") {
-						alert('내용을 작성하세요!');
+						alert('내용 작성 후에 등록해주세요');
 						e.preventDefault();
 					}
 				});

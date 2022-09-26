@@ -15,7 +15,7 @@
 				<img src="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/more_btn.png" >
 			</a>
 			
-			<div><strong><b></b>Watch Full Room</strong><span>지수테이를 먼저 만나보세요!</span></div>
+			<div><strong><b></b>Watch Full Room</strong><span>JiSutay를 먼저 만나보세요!</span></div>
 			</div>
 		</div>
 
