@@ -15,7 +15,8 @@
 	    border-radius: 4px !important;
 	} 
 	.rating-wrap{
-	    padding: 10px !important;
+		margin:1rem 8rem 0.3rem 0;
+	    padding: 10px 10px 10px 0 !important;
 	    display: flex !important;
 	}
 	.ratingWrap{
@@ -32,8 +33,9 @@
 	    align-items: center !important;
 	    position: relative !important;
 	}
+	/*#ff8844*/
 	.starcolor{
-	    fill: #ff8844 !important;
+	    fill: #ffd047 !important;
 	}
 	.star:last-of-type {
 	    margin-right: 0 !important;
