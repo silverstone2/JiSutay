@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Welcome to JiSutay</title>
-
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -48,7 +48,7 @@
 			<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 				<div>
 					<div class="img" id="poolvila">
-						<div style="background-image:url(${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index }.jpg)"></div>
+						<div style="background-image:url(${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg)"></div>
 					</div>
 					<div class="btn">
 						<a href="room/detail.do?num=${tmp.num }&sort=regdate">

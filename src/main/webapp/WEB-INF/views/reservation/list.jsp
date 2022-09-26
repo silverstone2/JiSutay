@@ -10,7 +10,7 @@
 <meta charset="UTF-8">
 <title>/views/reservation/list.jsp</title>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
-<link rel="shorcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
@@ -97,7 +97,7 @@
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 			<div class="col-3">
 				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
-					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index }.jpg"  />
+					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg"  />
 					<div class="card-body">
 						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
 						<p class="card-text" style="font-size:0.7em;  color:#8E8D8D;">
