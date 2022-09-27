@@ -44,9 +44,9 @@
 		</ul>		
 			
 		<ul class="add">
-			<li>TEL : 02-539-8879</li>
-			<li>주소: 서울특별시 강남구 테헤란로 124 삼원타워 5층</li>
-			<li>상호명 : (주)피나콜라다 에이콘아카데미 강남  | 대표 : <span class="BUSI_PRE_NM">이 승 훈</span></li>
-			<li>사업자등록번호 : <span class="BUSI_NO">220-88-42280</span></li>
+			<li>상호명 : (주)피나콜라다 지수테이</li>
+			<li>주소 : 제주특별자치도 서귀포시 보목동 33-7 </li>
+			<li>TEL : 064-987-6543</li>
+			<li>사업자등록번호 : <span class="BUSI_NO">456-78-9123</span></li>
 		</ul>
 </footer>

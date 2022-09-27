@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JISUTAY - Travel - upload</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
@@ -29,7 +29,7 @@
     			</div>
 	      	</div>
  			<div class="mb-3">
-   				<label for="distance" class="form-label">펜션에서 거리(분)</label>
+   				<label for="distance" class="form-label">지수테이에서 거리(분)</label>
     			<div class="input-group has-validation">
       				<span class="input-group-text">
       					<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-stopwatch" viewBox="0 0 16 16">
@@ -59,7 +59,7 @@
 				<input type="file" class="form-control" aria-label="file example" name="image" id="image" accept=".jpg, .jpeg, .png, .JPG, .JPEG" required>
 				<div id="imgValid" class="invalid-feedback">관광지 이미지를 선택해주세요.</div>
 			</div>
-			<button type="submit" style="width: 100px;">전송</button>
+			<button type="submit" style="width:100px;background-color: #354A54;color: #ffffff;font-size: 15px;border-radius: 4px;">전송</button>
 	   	</form>
 	</div>
 <script>

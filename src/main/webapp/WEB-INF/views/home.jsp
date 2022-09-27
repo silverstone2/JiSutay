@@ -13,6 +13,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script src="https://player.vimeo.com/api/player.js"></script>
 
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 <!-- jQuery 1.8 or later, 33 KB -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
@@ -39,6 +43,7 @@
 		vertical-align: middle;
 	}
 	.lb-text {
+		width:1000px;
 		padding: 10px 20px;
 		background-color: #FFEEBC;
 		text-align: center;
@@ -46,7 +51,7 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);	
-		font-size:80px;
+		font-size:70px;
 		color:#FBFCFC;
 		background-color:transparent;
 	}
@@ -75,11 +80,11 @@
 
 <div class="lb-wrap">
 	<div class="lb-text">
-		<p>Welcome To JiSutay</p><br/>
+		<p style="font-family: 'Zilla Slab', serif;">Welcome To JiSutay</p><br/>
 	</div>
 	<div class="lb-text2">
 		<br><br><br>
-		<p>제주 힐링 감성이 가득한 펜션</p>
+		<p style="font-family: 'Gowun Dodum', sans-serif;">제주 힐링 감성이 가득한 펜션</p>
 	</div>
 	<div class="lb-image">
 		<video id="videoPlay" autoplay muted>

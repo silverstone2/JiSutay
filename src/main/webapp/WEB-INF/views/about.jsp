@@ -12,7 +12,7 @@
 <!-- 폰트적용 -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -116,16 +116,22 @@
 			<div class="section fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
 				<div class="InBox" style="width:1050px;height:800px;">
 					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 900px;">
-						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/1.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/2.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/3.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/4.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/5.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/6.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/7.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/8.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/9.jpg">
-		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/10.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room1/1.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room1/2.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room1/10.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room2/1.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room2/2.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room2/7.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room2/10.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room3/1.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room3/5.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room3/10.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room4/2.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room4/7.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room4/8.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room5/1.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room5/6.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room5/11.jpg">
 					</div>
 				</div>
 			</div>
@@ -137,22 +143,22 @@
 			<div class="InBox">
 				<div class="txt">
 					<h3>JISUTAY LOCATION</h3>
-					<p>제주 서귀포의 아름다운 경치와 낭만이 깃든 다양한 플레이스가 모인 안덕면에 위치해 있습니다.</p>
+					<p>아름다운 경치와 낭만이 깃든 다양한 플레이스가 모인 서귀포에 위치해 있습니다.</p>
 						<div class="Box">
 							<br />
 							<p>
 								<strong>Address.</strong>
-								<span>제주 서귀포시 안덕면 소기왓로 81<br>서귀포시 안덕면 창천리 707-8</span>
+								<span>제주특별자치도 서귀포시<br>보목동 33-7</span>
 							</p>
 							<br />
 							<br />
 							<p>
 								<strong>Tel.</strong>
-								<span>02) 539-8879</span>
+								<span>064) 987-6543</span>
 								<span><b>(AM 08:00 ~ PM 09:00)</b></span>
 							</p>
 						</div>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.3827632557472!2d127.02936071526797!3d37.49888957981069!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca159d4b10f83%3A0xc672380e5228aa2e!2z7JeQ7J207L2Y7JWE7Lm0642w66-4IOqwleuCqOygkA!5e0!3m2!1sko!2skr!4v1663230306723!5m2!1sko!2skr" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8227.838785001877!2d126.60693487671817!3d33.247661509261135!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x350c54acb05917bf%3A0x244f3c142f579012!2z7KCc7KO87Yq567OE7J6Q7LmY64-EIOyEnOq3gO2PrOyLnCDrs7Trqqnrj5kgMzM!5e0!3m2!1sko!2skr!4v1664240934872!5m2!1sko!2skr" width="100%" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
 				</div>
 			</div>
 		</div>
