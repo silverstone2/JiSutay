@@ -88,6 +88,7 @@ function setBarColor() {
 	document.getElementById("indicator").style.backgroundColor = colorArr[randNum];
 }
 
+
 setInterval(setBarColor, 500);
 </script>
 
