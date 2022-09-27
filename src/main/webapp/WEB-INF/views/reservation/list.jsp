@@ -379,6 +379,12 @@
 		});
 	});
 	
+	   /* ---------------- 지난날짜 선택금지 script ---------------- */
+	   var now_utc = Date.now() 
+	   var timeOff = new Date().getTimezoneOffset()*60000;
+	   var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
+	   document.getElementById("check_in").setAttribute("min", today);
+	   document.getElementById("check_out").setAttribute("min", today);
 </script>
 <div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
 <jsp:include page="/resources/include/footer.jsp"></jsp:include>
