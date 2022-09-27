@@ -63,5 +63,31 @@
 			</c:choose>
 		</ul>
 	</nav>
+	<!-- progress bar -->
+	<div class = "progress-container">
+		<div class = "progress-bar" id = "indicator"></div>
+	</div>
 </header>
+
+<!-- 프로그래스바 스크립트 START -->
+<script>
+// 인터넷 스크롤 이동 시 이벤트
+window.onscroll = function() {createPrograssBar()}; 
+
+function createPrograssBar() {
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (winScroll / height) * 100;
+  document.getElementById("indicator").style.width = scrolled + "%";
+}
+
+function setBarColor() {
+	const randNum = parseInt(Math.random() * 7 + 0);
+	const colorArr = ['#FC9EBD', '#FFADC5', '#FFA9B0', '#FFCCCC', '#CCD1FF', '#A8C8F9', '#FFDDA6', '#B8F3B8'];
+	
+	document.getElementById("indicator").style.backgroundColor = colorArr[randNum];
+}
+
+setInterval(setBarColor, 500);
+</script>
 
