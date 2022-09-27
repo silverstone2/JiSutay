@@ -19,7 +19,6 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" ></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
@@ -115,6 +114,7 @@
 	
 	.comment-form textarea, .comment-form button{
 		float: left;
+		resize:none;
 	}
 
 
@@ -123,6 +123,8 @@
 		height: 80px;
 		color: #4D565B; 
 		font-family: system-ui;
+		margin-bottom:20px;
+		resize:none;
 	}
 	.comment-form button{
 		width: 14%;
@@ -179,7 +181,7 @@
 <!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
-				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room${dto.num }/1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
+				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room${dto.num }/1.jpg" style="width: 100%; height: 850px; opacity: 0.7">
 				<h2>
 					<span style="font-family: 'Zilla Slab', serif;font-size:80px;color:#31363F;">JiSutay</span>
 					<span style="font-family: 'Gowun Dodum', sans-serif;font-weight:bold;font-size:50px;color:#31363F;">${dto.room_name }</span>
@@ -423,6 +425,7 @@
 			</div>
 			
 			<!-- 하단 페이징 버튼 -->
+			 <div><br><br><br><br></div>
 			<nav style="margin:2.2rem 9rem 10rem 8rem;">
 				<ul class="pagination">
 				
@@ -757,5 +760,7 @@
 		movePage(pageNum);
 	});
 	</script>
+<div><br><br><br></div>
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>
