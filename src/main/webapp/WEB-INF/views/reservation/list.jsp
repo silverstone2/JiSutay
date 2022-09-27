@@ -195,7 +195,7 @@
 						</tr>
 						<tr>
 							<th>소&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp개 :</th>
-							<td>${tmp.room_introduce }</td>
+							<td><pre>${tmp.room_introduce }</pre></td>
 						</tr>						
 					</table>
 					</div>
@@ -212,7 +212,7 @@
 								<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
 								<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
 								<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
-								<p>-성인 추가금 2만원입니다</p>
+								<p style="font-size: 12px; margin-top: 10px; color: red;">-성인 추가금 2만원입니다</p>
 							</td>
 						</tr>	
 						<tr>
