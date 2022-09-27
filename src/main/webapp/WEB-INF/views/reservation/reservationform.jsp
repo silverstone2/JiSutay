@@ -133,7 +133,7 @@
 			<input id="check_out" type="hidden" name="check_out"/>
 			<input id="res_people" type="hidden" name="res_people"/>
 			<input id="room_num" type="hidden" name="room_num"/>
-			<button id="reservationBtn" type="submit" disabled style="margin-left:223px";>객실예약</button>
+			<button id="reservationBtn" type="submit" disabled style="margin-left:700px";>객실예약</button>
 		</form>
 	
 	

@@ -132,8 +132,7 @@
     	</video>
 	</div>
 </div>
-	<!-- 네비바 클릭시 화면 포커스 -->
-   <div id="focus"></div>
+
    
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
@@ -148,7 +147,8 @@
 	</form>
 	<br><br><br>
 	</div>
-	
+	<!-- 네비바 클릭시 화면 포커스 -->
+   	<div id="focus"></div>
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
 			<div class="col-3" style="margin-left:30px;">
