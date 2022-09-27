@@ -72,6 +72,7 @@
 <body id="rooms_pv" class="preview">
 <!-- navbar include -->
 <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+
 <div class="lb-wrap">
 	<div class="lb-text">
 		<p>Welcome To JiSutay</p><br/>
