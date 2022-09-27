@@ -283,7 +283,7 @@
 			<tr>
 				<td style="width: 50px;">${tmp.num}</td>
 				<td style="width: 400px;">
-					<a href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
+					<a class="hz" href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
 				</td>
 				<td style="width: 150px;">${tmp.writer }</td>
 				<td style="width: 200px;">${tmp.regdate }</td>

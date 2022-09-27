@@ -96,12 +96,10 @@
 	video {
 		max-width: 100%; display: block; margin: 0px auto;
 	}
-	/*
-	li img{
+	.ct img{
 	width: 600px;
 	height: 400px;
 	}
-	*/
 </style>
 </head>
 <body>
@@ -127,7 +125,7 @@
 			<div class="grid">
 				<c:forEach var="tmp" items="${list }" >
 					<div class="contentMapping">
-						<li>
+						<li class="ct">
 							<div class="img">
 								<img src="${pageContext.request.contextPath }${tmp.imgPath}" height="auto" alt="">
 							</div>
@@ -136,8 +134,8 @@
 								<h4>
 									<strong>${tmp.title }</strong>
 									<span>&nbsp;|&nbsp; 펜션에서 약 ${tmp.distance } 소요</span>
+									<pre><br>주소 : ${tmp.caption }</pre>
 								</h4>
-								<pre>${tmp.caption }</pre>
 							</div>
 						<c:if test="${sessionScope.id eq 'admin' }">
 							<div class="btn">

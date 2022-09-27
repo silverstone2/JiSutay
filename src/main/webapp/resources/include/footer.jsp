@@ -27,17 +27,17 @@
 		
 		<ul class="sns">
 			<li>
-				<a href="https://www.instagram.com/" class="sns_01">
+				<a href="https://instagram.com/acorn7979?igshid=YmMyMTA2M2Y=" class="sns_01">
 					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/sns_01.png" width="38" height="38">
 				</a>
 			</li>
 			<li>
-				<a href="https://www.facebook.com/" class="sns_02">
+				<a href="https://www.facebook.com/acornedu/" class="sns_02">
 					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/sns_02.png" width="38" height="38">
 				</a>
 			</li>
 			<li>
-				<a href="https://section.blog.naver.com/" class="sns_03">
+				<a href="https://blog.naver.com/acornzone" class="sns_03">
 					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/sns_03.png" width="38" height="38">
 				</a>
 			</li>
