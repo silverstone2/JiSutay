@@ -38,10 +38,50 @@
 <link  href="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/fotorama/4.6.4/fotorama.js"></script>
 
+<style>
+	/* 상단 동영상 CSS 설정 */
+	.lb-wrap {
+		width: 100%;
+		margin: 10px auto;
+		position: relative;
+	}
+	.lb-wrap img {
+		width: 100%;
+		vertical-align: middle;
+	}
+	.lb-text {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);	
+		font-size:80px;
+		color:#FBFCFC;
+		background-color:transparent;
+	}
+	.lb-text2 {
+		padding: 10px 20px;
+		background-color: #FFEEBC;
+		text-align: center;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		font-size:30px;
+		color:#FBFCFC;
+		margin-bottom:7%;
+		background-color:transparent;
+	}
+	video {
+		max-width: 100%; display: block; margin: 0px auto;
+	}
+</style>
+
 </head>
 
 <body id="about">
-
 	<!-- navbar include -->
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 	
@@ -58,7 +98,6 @@
 			</div>
 			<div class="line"></div>
 		</div>
-		
 		<!-- 소개 문구 -->
 		<div class="section exterior">
 			<div class="bg bg01"></div>
@@ -77,16 +116,16 @@
 			<div class="section fotomara" id="exterior" style="display:flex;justify-content: center;align-items:center" >
 				<div class="InBox" style="width:1050px;height:800px;">
 					<div class="fotorama" data-allowfullscreen="true"  data-nav="thumbs" style="width: 100%;height: 900px;">
-						<img src="${pageContext.request.contextPath }/Jisutayimage/about/1.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/2.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/3.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/4.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/5.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/6.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/7.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/8.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/9.jpg">
-		  				<img src="${pageContext.request.contextPath }/Jisutayimage/about/10.jpg">
+						<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/1.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/2.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/3.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/4.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/5.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/6.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/7.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/8.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/9.jpg">
+		  				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/about/10.jpg">
 					</div>
 				</div>
 			</div>

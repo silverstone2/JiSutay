@@ -16,8 +16,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 
-<script src="https://player.vimeo.com/api/player.js"></script>
-
 <style>
 	/*@@@@@@@@@새글 작성 시작@@@@@@@@@@*/
 	@import url(https://fonts.googleapis.com/css?family=Josefin+Slab:100,300,400,600,700);
@@ -200,7 +198,6 @@
 	.lb-wrap {
 		width: 100%;
 		margin: 10px auto;
-		border: 1px solid #000000;
 		position: relative;
 	}
 	.lb-wrap img {
@@ -232,7 +229,9 @@
 		margin-bottom:7%;
 		background-color:transparent;
 	}
-
+	video {
+		max-width: 100%; display: block; margin: 0px auto;
+	}
 </style>
 </head>
 <body>
@@ -242,17 +241,17 @@
 		<p>NOTICE</p><br/>
 	</div>
 	<div class="lb-text2">
+		<br>
+		<br>
 		<p>공지사항</p>
 	</div>
 	<div class="lb-image">
-		<img src="${pageContext.request.contextPath}/Jisutayimage/notice/fullstay3.png" alt="noticeImage">
+		<video muted autoplay loop>
+      		<source src="${pageContext.request.contextPath}/resources/video/notice.mp4" type="video/mp4">
+    	</video>
 	</div>
 </div>
 <div class="container">
-   <br>
-   <br>
-   <br>
-   <br>
    <br>
    <br>
    <h1>공지사항</h1>
@@ -284,7 +283,7 @@
 			<tr>
 				<td style="width: 50px;">${tmp.num}</td>
 				<td style="width: 400px;">
-					<a href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
+					<a class="hz" href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
 				</td>
 				<td style="width: 150px;">${tmp.writer }</td>
 				<td style="width: 200px;">${tmp.regdate }</td>
