@@ -51,7 +51,9 @@ public class RoomServiceImpl implements RoomService {
 		List<MultipartFile> fileList = mtfReq.getFiles("file");
 		List<String> imgPathList = new ArrayList<String>();
 		
-		String realPath=mtfReq.getServletContext().getRealPath("/upload");
+		String path = "/resources/Jisutayimage/room/room"+dto.getNum();
+		
+		String realPath=mtfReq.getServletContext().getRealPath(path);
 		String filePath=realPath + File.separator;
 		File upload=new File(filePath);
 		if(!upload.exists()) {
@@ -65,7 +67,7 @@ public class RoomServiceImpl implements RoomService {
     		}catch(Exception e) {
     			e.printStackTrace();
     		}
-            imgPathList.add("/upload/" + saveFileName);
+            imgPathList.add(path + "/" + originFileName);
         }       
         String img_path = String.join(",", imgPathList);
         dto.setImg_path(img_path);
