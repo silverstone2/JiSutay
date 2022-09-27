@@ -19,7 +19,7 @@
 						<dt>
 							<c:if test="${ empty tmp.profile }">
 								<svg class="profile-image" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
-									<image href="${pageContext.request.contextPath }/Jisutayimage/user.png" width="16" height="16"></image>
+									<image href="${pageContext.request.contextPath }/resources/Jisutayimage/user.png" width="16" height="16"></image>
 								</svg>
 							</c:if>
 							<c:if test="${not empty tmp.profile }">

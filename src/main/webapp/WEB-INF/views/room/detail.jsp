@@ -6,13 +6,18 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JISUTAY</title>
+<title>JISUTAY - Rooms</title>
 
 <jsp:include page="/resources/include/starRating_style.jsp"></jsp:include>
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" ></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" ></script>
@@ -174,21 +179,15 @@
 <!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
-				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${dto.num }.jpg" style="width: 100%; height: 700px; opacity: 0.7">
+				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room${dto.num }/1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
 				<h2>
-					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/logo_bl.png" width="240" height="40" alt="">
-					<span>${dto.room_name }</span>
+					<span style="font-family: 'Zilla Slab', serif;font-size:80px;color:#31363F;">JiSutay</span>
+					<span style="font-family: 'Gowun Dodum', sans-serif;font-weight:bold;font-size:50px;color:#31363F;">${dto.room_name }</span>
 				</h2>
 			</div>
 		</div>
 		
-		<c:if test="${id eq 'admin' }">
-			<a href="${pageContext.request.contextPath }/room/updateform.do?num=${dto.num }">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
-						<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-				</svg>
-			</a>
-		</c:if>
+
 		
 <!-- 객실 정보, 객실 소개 -->
 		<div class="section infos">
@@ -229,6 +228,7 @@
 			</div>
 		</div>
 		
+
 		
 <!-- 객실 이미지 -->
 		<div class="section images" style="margin-top: 200px;">
@@ -255,6 +255,20 @@
 				</div>
 			</div>
 		</div>
+		
+		
+		<!-- 관리자 수정 버튼 -->
+		<c:if test="${id eq 'admin' }">
+			<div style="margin: 10px 100px 50px 100px;text-align-last: right;">
+				<a href="${pageContext.request.contextPath }/room/updateform.do?num=${dto.num }" style="align-content:right;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
+						<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+					</svg>
+				객실 정보 수정 (관리자 전용)
+				</a>
+			</div>
+		</c:if>		
+		
 		
 <!-- 전체 후기 영역 -->
 		<div id="review">
