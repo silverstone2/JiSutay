@@ -151,7 +151,7 @@
 	
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-			<div class="col-3">
+			<div class="col-3" style="margin-left:30px;">
 				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto; margin-bottom: 30px;">
 					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg"  />
 					<div class="card-body">
