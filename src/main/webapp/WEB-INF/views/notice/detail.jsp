@@ -9,7 +9,6 @@
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
-
 	.detailTable{
 		width:80%;
 		border-right:none;
@@ -67,17 +66,17 @@
 		font-weight: bold;
 		font-size: 18px;
 	}
-/* 공지사항 이미지 쪽 */
+	/* 공지사항 이미지 쪽 */
 	.lb-wrap {
 		width: 100%;
-		/* margin: 10px auto; */
+		margin: 10px auto;
 		position: relative;
 	}
 	.lb-wrap img {
 		width: 100%;
 		vertical-align: middle;
 	}
-	.lb-text1 {
+	.lb-text {
 		padding: 10px 20px;
 		background-color: #FFEEBC;
 		text-align: center;
@@ -102,11 +101,11 @@
 		margin-bottom:7%;
 		background-color:transparent;
 	}
-		video {
+	video {
 		max-width: 100%; display: block; margin: 0px auto;
 	}
 /* 	.lb-text3 {
-		/* transform: translate(-90%, -90%); */
+		transform: translate(-90%, -90%);
 		position: absolute;
 		top: 10%;
 		left: 90%;

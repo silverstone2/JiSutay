@@ -34,7 +34,7 @@
 			<li class="gb">
 				<a href="${pageContext.request.contextPath }/notice/list.do">
 					<span class="en">NOTICE</span>
-					<span class="ko">공지 게시판</span>
+					<span class="ko">공지 사항</span>
 				</a>
 			</li>
 							
