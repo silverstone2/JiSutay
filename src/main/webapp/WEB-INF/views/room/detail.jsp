@@ -303,6 +303,7 @@
 			</div>
 		
 <!-- 댓글 목록 -->
+		<div id="commentContainer">
 			<div class="comments">
 				<ul>
 					<c:forEach var="tmp" items="${commentsList }" varStatus="status">
@@ -401,7 +402,7 @@
 												<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">등록</button>
 											</form>
 											
-
+			
 										<%-- 
 											댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 										--%>
@@ -419,42 +420,42 @@
 						</div>
 					</c:forEach>
 				</ul>
-				
-				<!-- 하단 페이징 버튼 -->
-				<nav>
-					<ul class="pagination">
-					
-						<c:if test="${startPageNum ne 1 }">
-							<li class="page-item">
-								<a class="page-link" href="javascript:movePage(${startPageNum-1 });">◀</a>
-							</li>
-						</c:if>
-						
-						<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-							<c:choose>
-								<c:when test="${pageNum eq i }">
-									<li class="page-item active">
-										<a class="page-link" href="javascript:movePage(${i });">${i }</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item">
-										<a class="page-link" href="javascript:movePage(${i });">${i }</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						
-						<c:if test="${endPageNum lt totalPageCount }">
-							<li class="page-item">
-								<a class="page-link" href="javascript:movePage(${endPageNum+1 });">▶</a>
-							</li>
-						</c:if>
-					</ul>
-				</nav>
 			</div>
 			
-			
+			<!-- 하단 페이징 버튼 -->
+			<nav style="margin:2.2rem 9rem 10rem 8rem;">
+				<ul class="pagination">
+				
+					<c:if test="${startPageNum ne 1 }">
+						<li class="page-item">
+							<a class="page-link" href="javascript:movePage(${startPageNum-1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&laquo;</a>
+						</li>
+					</c:if>
+					
+					<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+						<c:choose>
+							<c:when test="${pageNum eq i }">
+								<li class="page-item active">
+									<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:if test="${endPageNum lt totalPageCount }">
+						<li class="page-item">
+							<a class="page-link" href="javascript:movePage(${endPageNum+1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&raquo;</a>
+						</li>
+					</c:if>
+					
+				</ul>
+			</nav>
+		</div>
 			
 			<!-- 후기 작성 폼 -->
 			<form class="comment-form insert-form" action="comment_insert.do" method="post" style="margin-left: 150px" >
@@ -480,40 +481,6 @@
 
 			</form>
 		</div>
-		
-		
-		<nav style="margin:2.2rem 9rem 10rem 8rem;">
-			<ul class="pagination">
-			
-				<c:if test="${startPageNum ne 1 }">
-					<li class="page-item">
-						<a class="page-link" href="javascript:movePage(${startPageNum-1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&laquo;</a>
-					</li>
-				</c:if>
-				
-				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-					<c:choose>
-						<c:when test="${pageNum eq i }">
-							<li class="page-item active">
-								<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-				<c:if test="${endPageNum lt totalPageCount }">
-					<li class="page-item">
-						<a class="page-link" href="javascript:movePage(${endPageNum+1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&raquo;</a>
-					</li>
-				</c:if>
-				
-			</ul>
-		</nav>
 	</section>
 	
 	<!-- footer include-->
@@ -700,7 +667,7 @@
 			})
 			.then(function(data) {
 				// console.log(data);
-				document.querySelector(".comments").innerHTML = data;
+				document.querySelector("#commentContainer").innerHTML = data;
 				
 				addInsertFormListener('.re-insert-form');
 				addInsertFormListener('.re-re-insert-form');
