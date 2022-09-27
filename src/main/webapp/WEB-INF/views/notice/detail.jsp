@@ -112,6 +112,7 @@
 		font-size: 10px;
 		color:#FBFCFC;
 	} */
+	
 </style>
 </head>
 <body>
