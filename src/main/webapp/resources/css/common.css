@@ -360,3 +360,20 @@ html {scroll-behavior: smooth;}
 #reserve .frame_02 .r_info_03 .CNCL_COMM {margin-bottom:50px;}
 #reserve .frame_02 .r_info_03 table {line-height:1.5em;margin-top:20px;}
 #reserve .frame_02 .r_info_03 table > thead {background:#f2f2f2;}
+
+/* ---------------- progress bar ---------------- */
+.progress-container {
+    position: fixed; /*상단 고정*/
+    padding-top: 62px; /*페이지의 최상단에 붙어서 위치*/
+    z-index: -1; /*페이지의 다른 요소보다 가장 위에 나타나도록 설정*/
+    width: 100%; 
+    height: 20px; /* 높이 */
+    background: white; /* 기본 배경색 */
+}
+
+.progress-bar {
+      height: 20px;  /* 높이 */
+      background: blue; /* 색상 */
+      width: 0%;
+      transition: all 0.2s ease-out;
+}
