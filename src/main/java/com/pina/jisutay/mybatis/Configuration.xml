@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>
+		<typeAlias type="com.pina.jisutay.users.dto.UsersDto" alias="usersDto"/>
+		<typeAlias type="com.pina.jisutay.comments.dto.CommentsDto" alias="commentsDto"/>
+		<typeAlias type="com.pina.jisutay.reservation.dto.ReservationDto" alias="reservationDto"/>
+		<typeAlias type="com.pina.jisutay.room.dto.RoomDto" alias="roomDto"/>
+		<typeAlias type="com.pina.jisutay.notice.dto.NoticeDto" alias="noticeDto"/>
+    	<typeAlias type="com.pina.jisutay.travel.dto.TravelDto" alias="travelDto"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="com/pina/jisutay/mybatis/UsersMapper.xml"/>
+		<mapper resource="com/pina/jisutay/mybatis/CommentsMapper.xml"/>
+		<mapper resource="com/pina/jisutay/mybatis/ReservationMapper.xml"/>
+		<mapper resource="com/pina/jisutay/mybatis/RoomMapper.xml"/>
+		<mapper resource="com/pina/jisutay/mybatis/NoticeMapper.xml"/>
+    	<mapper resource="com/pina/jisutay/mybatis/TravelMapper.xml"/>
+	</mappers>
+</configuration>
