@@ -505,14 +505,12 @@
 	<!-- footer include-->
 	
 	<!-- 상단 이동 버튼 -->
-	<!--
 	<div id="top" style="position:fixed;bottom:14px;right:14px;">
 		<a href="#Visuals"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/topbtn2.png" title="위로 가기"></a>
 	</div>
 	
 	<p></p>
 	<p></p>
-	-->
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
