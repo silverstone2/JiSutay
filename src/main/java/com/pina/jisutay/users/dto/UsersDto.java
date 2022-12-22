@@ -8,11 +8,12 @@ public class UsersDto {
 	private String profile;
 	private String regdate;
 	private String sessionId;
+	private String newpassword; // 새 비밀번호 확인 추가함.
 	
 	public UsersDto() {}
 
 	public UsersDto(String id, String email, String password, String name, String profile, String regdate,
-			String sessionId) {
+			String sessionId, String newpassword) {
 		super();
 		this.id = id;
 		this.email = email;
@@ -21,6 +22,7 @@ public class UsersDto {
 		this.profile = profile;
 		this.regdate = regdate;
 		this.sessionId = sessionId;
+		this.newpassword = newpassword;
 	}
 
 	public String getId() {
@@ -78,4 +80,14 @@ public class UsersDto {
 	public void setSessionId(String sessionId) {
 		this.sessionId = sessionId;
 	}
+
+	public String getNewpassword() {
+		return newpassword;
+	}
+
+	public void setNewpassword(String newpassword) {
+		this.newpassword = newpassword;
+	}
+	
+	
 }
