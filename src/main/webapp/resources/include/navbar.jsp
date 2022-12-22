@@ -56,7 +56,7 @@
 					<li class="gb">
 						<a href="${pageContext.request.contextPath }/" style="color:#4A817A;font-size:17px;">${id }</a>	  					
 						<ul class="sub">
-							<li><a href="${pageContext.request.contextPath }/reservation/resInfo.do">예약확인</a></li>     
+							<li><a href="${pageContext.request.contextPath }/reservation/reservationform.do">예약확인</a></li>     
 							<li><a href="${pageContext.request.contextPath }/users/info.do">마이페이지</a></li>     
 							<li><a href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a></li>     
  						</ul>

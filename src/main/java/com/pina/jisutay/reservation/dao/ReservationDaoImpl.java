@@ -52,6 +52,12 @@ public class ReservationDaoImpl implements ReservationDao{
 	public List<Map<String, Object>> getCheckDate() {
 		return session.selectList("reservation.getCheckDate");
 	}
+
+	@Override
+	public ReservationDto getData2(String id) {
+		ReservationDto dto = session.selectOne("reservation.getData2" , id);
+		return dto;
+	}
 }
 
 

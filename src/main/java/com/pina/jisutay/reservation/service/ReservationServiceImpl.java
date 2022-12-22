@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.reservation.dao.ReservationDao;
 import com.pina.jisutay.reservation.dto.ReservationDto;
+import com.pina.jisutay.users.dto.UsersDto;
 
 @Service
 public class ReservationServiceImpl implements ReservationService {
@@ -99,5 +101,15 @@ public class ReservationServiceImpl implements ReservationService {
 		}
 		
 		return resultList;
+	}
+
+	@Override
+	public void getResInfo(HttpSession session, ModelAndView mView) {
+		//로그인된 아이디를 읽어온다. 
+		String id=(String)session.getAttribute("res_id");
+		//DB 에서 회원 정보를 얻어와서 
+		ReservationDto dto=dao.getData2(id);
+		//ModelAndView 객체에 담아준다.
+		mView.addObject("dto", dto);
 	}
 }

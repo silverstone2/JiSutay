@@ -52,12 +52,7 @@ public class ReservationController {
 		mav.setViewName("reservation/reservationform");
 		return mav;
 	}
-	
-//	@RequestMapping("/reservation/reservation")
-//	public String insert() {
-//		return "reservation/reservation";
-//	}
-	
+
 	@RequestMapping("/reservation/reservation")
 	public String insert(ReservationDto dto, HttpServletRequest request) {
 		// 로그인 예외 처리
@@ -82,4 +77,17 @@ public class ReservationController {
 		List<Map<String, Object>> list = res_service.getCheckDate(req);
 		return list;
 	}
+	
+	// 예약 정보  resInfo
+	@RequestMapping("/reservation/resInfo") 
+	public ModelAndView resInfo(HttpSession session, ModelAndView mView, 
+	HttpServletRequest request) {
+	  
+	res_service.getResInfo(session, mView);
+	  
+	mView.setViewName("/reservation/resInfo"); return mView; 
+	}
+	 
+
+	
 }
