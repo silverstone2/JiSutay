@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JISUTAY - Reservation</title>
+<title>Insert title here</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <style>
 
@@ -30,62 +30,13 @@
       align-items: center;
       justify-content: center;
   }
-  /* 상단 동영상 CSS 설정 */
-	.lb-wrap {
-		width: 100%;
-		margin: 10px auto;
-		position: relative;
-	}
-	.lb-wrap img {
-		width: 100%;
-		vertical-align: middle;
-	}
-	.lb-text {
-		padding: 10px 20px;
-		background-color: #FFEEBC;
-		text-align: center;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);	
-		font-size:80px;
-		color:#FBFCFC;
-		background-color:transparent;
-	}
-	.lb-text2 {
-		padding: 10px 20px;
-		background-color: #FFEEBC;
-		text-align: center;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		font-size:30px;
-		color:#FBFCFC;
-		margin-bottom:7%;
-		background-color:transparent;
-	}
-	video {
-		max-width: 100%; display: block; margin: 0px auto;
-	}
+  
 </style>
 </head>
 <body>
-   <div class="lb-wrap">
-	<div class="lb-text">
-		<p style="font-family: 'Zilla Slab', serif;">RESERVATION</p><br/>
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
-	<div class="lb-text2">
-		<br>
-		<br>
-		<p style="font-family: 'Gowun Dodum', sans-serif;">예약 진행</p>
-	</div>
-	<div class="lb-image">
-		<video muted autoplay loop>
-      		<source src="${pageContext.request.contextPath}/resources/video/reservation.mp4" type="video/mp4">
-    	</video>
-	</div>
-</div>
    <div class="container">
    	  <div class="item" style="margin-top:30px; margin-bottom:20px;">	
 		<table class="reservationtable" style="text-align:center; width:797px;">
@@ -107,28 +58,24 @@
 				</tr>
 				<tr>
 					<td rowspan="2">
-						<div>
-							<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${dto.num }.jpg" width="300px" height="180px" />
-						</div>
-						<div><h3>${dto.room_name }</h3></div>
+						<div><img src="${pageContext.request.contextPath }/resources/images/${dto.num }.png" /></div>
+						<div><p>${dto.room_name }</p></div>
 					</td>
 					<td style="height:55px;">
-						<span style="font-size: 20px;">${param.check_in }</span>
-						<br />
-						<span style="font-size: 20px;">~</span>
-						<br />
-						<span style="font-size: 20px;">${param.check_out }</span>
+						<span>${param.check_in }</span>
+						<br />~<br />
+						<span>${param.check_out }</span>
 					</td>
-					<td><span style="font-size: 20px;">${param.peopleNum }인</span></td>
+					<td>${param.peopleNum }인</td>
 				</tr>
 				<tr>
 					<td style="height:55px;">
 						<span>₩</span>
-						<span id="room_price" style="font-size: 20px;"></span>
+						<span id="room_price"></span>
 					</td>
 					<td>
 						<span>₩</span>
-						<span id="people_price" style="font-size: 20px;"></span>
+						<span id="people_price"></span>
 					</td>
 				</tr>
 				<tr>
@@ -169,22 +116,22 @@
 			</tr>
 			<tr>
 				<td>
-					<p style="font-size:0.7em;">이용약관 및 환불규정에 동의합니다.<input type="checkbox" id="agree" />
-							<form action="reservation.do", method="post">
-								<input id="res_id" type="hidden" name="res_id"/>
-								<input id="check_in" type="hidden" name="check_in"/>
-								<input id="check_out" type="hidden" name="check_out"/>
-								<input id="res_people" type="hidden" name="res_people"/>
-								<input id="room_num" type="hidden" name="room_num"/>
-								<button id="reservationBtn" type="submit" disabled style="margin-left:700px";>객실예약</button>
-							</form>
-					</p>
+					<p style="font-size:0.7em;">이용약관 및 환불규정에 동의합니다.<input type="checkbox" id="agree" /></p>
 				</td>
 			</tr>
 		</tbody>
 	</table>
    </div>	
   </div>
+		<form action="reservation.do", method="post">
+			<input id="res_id" type="hidden" name="res_id"/>
+			<input id="check_in" type="hidden" name="check_in"/>
+			<input id="check_out" type="hidden" name="check_out"/>
+			<input id="res_people" type="hidden" name="res_people"/>
+			<input id="room_num" type="hidden" name="room_num"/>
+			<button id="reservationBtn" type="submit" disabled style="margin-left:223px";>객실예약</button>
+		</form>
+	
 	
 	<script src="${pageContext.request.contextPath }/resources/js/jquery-3.4.1.js"></script>
 	<script>

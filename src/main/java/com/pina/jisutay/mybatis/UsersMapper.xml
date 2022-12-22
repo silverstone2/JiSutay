@@ -20,7 +20,7 @@
 		WHERE id=#{id}
 	</insert>
 	
-	<update id="deleteSessionId" parameterType="String">
+ 	<update id="deleteSessionId" parameterType="String">
 		UPDATE users
 		SET sessionId=''
 		WHERE id=#{id}
@@ -31,4 +31,35 @@
 		FROM users
 		WHERE sessionId=#{decodedSessionId}
 	</select>
+	
+	
+	<!-- 회원정보 가져오기 (성공) -->
+	<select id="getData" parameterType="string" resultType="usersDto">
+		SELECT id ,password, email, name
+		FROM users
+		WHERE id=#{id }
+	</select>
+	
+	<!-- 비밀번호 변경 -->
+	<update id="pwdUpdate" parameterType="usersDto">
+		UPDATE users
+		SET password= #{newpassword }
+		WHERE id= #{id}
+	</update>
+	
+	<!-- 개인정보 변경 -->
+	<update id="update" parameterType="usersDto">
+		UPDATE users
+		SET name=#{name }, email=#{email }
+		WHERE id=#{id }
+	</update>
+	
+	<!-- 회원정보 삭제 -->
+	<delete id="delete" parameterType="string">
+		DELETE FROM users
+		WHERE id=#{id}
+	</delete>
+	
+	<!-- 예약 내역 -->
+	
 </mapper>

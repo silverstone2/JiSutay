@@ -71,7 +71,7 @@
 	WHERE num=#{num}
 	</delete>
 	
-	<update id="views" parameterType="int">
+	<update id="views" parameterType="int"><!-- 조회수 -->
 		UPDATE notice
 		SET views=views+1
 		WHERE num=#{num}

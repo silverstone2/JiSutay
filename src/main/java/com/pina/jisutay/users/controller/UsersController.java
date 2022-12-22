@@ -4,14 +4,17 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.exception.NoLoginException;
 import com.pina.jisutay.users.dto.UsersDto;
 import com.pina.jisutay.users.service.UsersService;
 
@@ -57,4 +60,66 @@ public class UsersController {
 		service.logout(req, res);
 		return "redirect:/home.do";
 	}
+	//-------------------------------------------------------
+	// 마이페이지 패스워드 변경
+	@RequestMapping("/users/pwd_update")
+	public ModelAndView authPwdUpdate(UsersDto dto, 
+			ModelAndView mView, HttpSession session, HttpServletRequest request) {
+		//서비스에 필요한 객체의 참조값을 전달해서 비밀번호 수정 로직을 처리한다.
+		service.updateUserPwd(session, dto, mView, request);
+		//view page 로 forward 이동해서 작업 결과를 응답한다.
+		mView.setViewName("users/pwd_update");
+		return mView;
+	}
+	
+	@RequestMapping("/users/pwd_updateform")
+	public ModelAndView authPwdUpdateForm(ModelAndView mView, HttpServletRequest request) {
+		mView.setViewName("users/pwd_updateform");
+		return mView;
+	}
+	// ---------------------------
+	// 마이페이지 값 가져오기
+	@RequestMapping("/users/info")
+	public ModelAndView authInfo(HttpSession session, ModelAndView mView, 
+			HttpServletRequest request) {
+		
+		service.getInfo(session, mView);
+		
+		mView.setViewName("users/info");
+		return mView;
+	}
+	
+	//개인정보 수정 반영 요청 처리
+	@RequestMapping(value = "/users/update", method=RequestMethod.POST)
+	public ModelAndView authUpdate(UsersDto dto, HttpSession session, ModelAndView mView,
+			 HttpServletRequest request) {
+		//서비스를 이용해서 개인정보를 수정하고 
+		service.updateUser(dto, session);
+		mView.setViewName("redirect:/users/info.do");
+		//개인정보 보기로 리다일렉트 이동 시틴다
+		return mView;
+	}
+		
+	//회원정보 수정폼 요청처리
+	@RequestMapping("/users/info_updateform")
+	public ModelAndView authUpdateForm(ModelAndView mView, HttpSession session,
+			HttpServletRequest request) {
+		service.getInfo(session, mView);
+		mView.setViewName("users/info_updateform");
+		return mView;
+	}
+
+	//회원 탈퇴 요청 처리
+	@RequestMapping("/users/delete")
+	public ModelAndView authDelete(HttpSession session, ModelAndView mView,
+			 HttpServletRequest request) {
+		
+		service.deleteUser(session, mView);
+		
+		mView.setViewName("users/delete");
+		return mView;
+	}
 }
+
+
+

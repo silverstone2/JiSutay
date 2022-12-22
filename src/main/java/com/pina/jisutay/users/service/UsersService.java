@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.crypto.NoSuchPaddingException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.web.servlet.ModelAndView;
 
@@ -26,4 +27,15 @@ public interface UsersService {
 	public void authSessionId(HttpServletRequest req) throws NoSuchAlgorithmException, NoSuchPaddingException;
 	
 	public void autoLoginFlag(HttpServletRequest req);
+	// --------------------------------------------
+	// 마이페이지 정보 가져오기
+	public void getInfo(HttpSession session, ModelAndView mView);
+	// 패스워드 변경 서비스
+	public void updateUserPwd(HttpSession session, UsersDto dto, ModelAndView mView, HttpServletRequest request);
+	// 개인정보 삭제
+	public void deleteUser(HttpSession session, ModelAndView mView);
+	// 개인정보 수정
+	public void updateUser(UsersDto dto, HttpSession session);
+	
+	
 }

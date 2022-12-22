@@ -1,13 +1,13 @@
 package com.pina.jisutay.reservation.dto;
 
 public class ReservationDto {
-	private int num;
-	private String res_id;
-	private String check_in;
-	private String check_out;
-	private int res_people;
-	private int room_num;
-	private String regdate;
+	private int num; 			// 예약 구분번호
+	private String res_id; 		// 예약 id
+	private String check_in; 	// 체크인
+	private String check_out; 	// 체크아웃
+	private int res_people; 	// 인원수
+	private int room_num; 		// 방번호
+	private String regdate; 	// 날짜
 	
 	public ReservationDto () {}
 	

@@ -28,6 +28,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.notice.dto.NoticeDto;
 import com.pina.jisutay.users.dao.UsersDao;
 import com.pina.jisutay.users.dto.UsersDto;
 
@@ -292,4 +293,71 @@ public class UsersServiceImpl implements UsersService {
 
         return new String(c.doFinal(byteStr),"UTF-8");
     }
+    // ----------------------------
+    // 마이페이지 정보 가져오기
+	@Override
+	public void getInfo(HttpSession session, ModelAndView mView) {
+		//로그인된 아이디를 읽어온다. 
+		String id=(String)session.getAttribute("id");
+		//DB 에서 회원 정보를 얻어와서 
+		UsersDto dto=dao.getData(id);
+		//ModelAndView 객체에 담아준다.
+		mView.addObject("dto", dto);
+	}
+
+	@Override
+	public void updateUserPwd(HttpSession session, UsersDto dto, ModelAndView mView, HttpServletRequest request) {
+		//세션 영역에서 로그인된 아이디 읽어오기
+		String id=(String)session.getAttribute("id");
+		//DB 에 저장된 회원정보 얻어오기
+		UsersDto resultDto=dao.getData(id);
+		//DB 에 저장된 암호화된 비밀 번호
+		String encodedPwd=resultDto.getPassword();
+		//클라이언트가 입력한 비밀번호
+		String inputPwd=dto.getPassword();
+		//두 비밀번호가 일치하는지 확인
+		boolean isValid=BCrypt.checkpw(inputPwd, encodedPwd);
+		//만일 일치 한다면
+		if(isValid) {
+			//새로운 비밀번호를 암호화 한다.
+			BCryptPasswordEncoder encoder=new BCryptPasswordEncoder();
+			String encodedNewPwd=encoder.encode(dto.getNewpassword());
+			//암호화된 비밀번호를 dto 에 다시 넣어준다.
+			dto.setNewpassword(encodedNewPwd);
+			//dto 에 로그인된 아이디도 넣어준다.
+			dto.setId(id);
+			//dao 를 이용해서 DB 에 수정 반영한다.
+			dao.updatePwd(dto);
+			//로그아웃 처리
+			session.removeAttribute("id");
+		}
+		//작업의 성공여부를 ModelAndView 객체에 담아 놓는다(결국 HttpServletRequest 에 담긴다)
+		mView.addObject("isSuccess", isValid);
+		//로그인된 아이디도 담아준다.
+		mView.addObject("id", id);
+	}
+
+	@Override
+	public void deleteUser(HttpSession session, ModelAndView mView) {
+		//로그인된 아이디를 얻어와서 
+		String id=(String)session.getAttribute("id");
+		//해당 정보를 DB 에서 삭제하고
+		dao.delete(id);
+		//로그아웃 처리도 한다.
+		session.removeAttribute("id");
+		//ModelAndView 객체에 탈퇴한 회원의 아이디를 담아준다.
+		mView.addObject("id", id);
+	}
+
+	@Override
+	public void updateUser(UsersDto dto, HttpSession session) {
+		//수정할 회원의 아이디
+		String id=(String)session.getAttribute("id");
+		//UsersDto 에 아이디도 담아 주고
+		dto.setId(id);
+		//UsersDao 를 이용해서 수정 반영한다.
+		dao.update(dto);
+	}
+
 }
+    

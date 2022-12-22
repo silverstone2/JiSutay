@@ -10,7 +10,8 @@ public interface ReservationDao {
 	public void insert(ReservationDto dto);
 	public void update(ReservationDto dto);
 	public void delete(int num);
-	public ReservationDto getData(int num);
+	public ReservationDto getData(int num);  //기존 
 	public List<ReservationDto> getList();
 	public List<Map<String, Object>> getCheckDate();
+	public ReservationDto getData2(String id); //예약정보 가져오기
 }

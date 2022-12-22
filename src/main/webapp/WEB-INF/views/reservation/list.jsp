@@ -8,15 +8,10 @@
 <head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <meta charset="UTF-8">
-<title>JISUTAY - Reservation</title>
+<title>/views/reservation/list.jsp</title>
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
-
-<!-- 폰트 적용 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
@@ -76,63 +71,15 @@
 		align-items:center;		
 		font-size:0.8em;
 	}
-		/* 상단 동영상 CSS 설정 */
-	.lb-wrap {
-		width: 100%;
-		margin: 10px auto;
-		position: relative;
-	}
-	.lb-wrap img {
-		width: 100%;
-		vertical-align: middle;
-	}
-	.lb-text {
-		padding: 10px 20px;
-		background-color: #FFEEBC;
-		text-align: center;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);	
-		font-size:80px;
-		color:#FBFCFC;
-		background-color:transparent;
-	}
-	.lb-text2 {
-		padding: 10px 20px;
-		background-color: #FFEEBC;
-		text-align: center;
-		position: absolute;
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-		font-size:30px;
-		color:#FBFCFC;
-		margin-bottom:7%;
-		background-color:transparent;
-	}
-	video {
-		max-width: 100%; display: block; margin: 0px auto;
-	}
 </style>
 </head>
 <body>
-<div class="lb-wrap">
-	<div class="lb-text">
-		<p style="font-family: 'Zilla Slab', serif;">RESERVATION</p><br/>
+   <!-- 상단 배너  -->
+   <div class="banner">
+		<img src="${pageContext.request.contextPath}/resources/Jisutayimage/travel/banner.jpg" style="height: 775px; width: 100%">
 	</div>
-	<div class="lb-text2">
-		<br>
-		<br>
-		<p style="font-family: 'Gowun Dodum', sans-serif;">예약 진행</p>
-	</div>
-	<div class="lb-image">
-		<video muted autoplay loop>
-      		<source src="${pageContext.request.contextPath}/resources/video/reservation.mp4" type="video/mp4">
-    	</video>
-	</div>
-</div>
-
+	<!-- 네비바 클릭시 화면 포커스 -->
+   <div id="focus"></div>
    
 <div class="container">
    <jsp:include page="/resources/include/navbar.jsp"></jsp:include>
@@ -147,12 +94,11 @@
 	</form>
 	<br><br><br>
 	</div>
-	<!-- 네비바 클릭시 화면 포커스 -->
-   	<div id="focus"></div>
+	
 	<div class="row">
 		<c:forEach var="tmp" items="${requestScope.list }" varStatus="status">
-			<div class="col-3" style="margin-left:30px;">
-				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto; margin-bottom: 30px;">
+			<div class="col-3">
+				<div id="card${tmp.num }" class="card" style="position: relative; overflow: auto;">
 					<img class="card-img-top" src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg"  />
 					<div class="card-body">
 						<h4 class="card-title" style="font-size:1em;" >${tmp.room_name }</h4>
@@ -168,16 +114,11 @@
 				<div id="reservationForm${status.index }" class="reservationForm">
 				  <div class="info">
 				  	<div class="detail">
-				  	<!--
 					<img src="${pageContext.request.contextPath }${tmp.img_path }" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
-					 -->
-					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room${status.index+1 }.jpg" width="300px" height="180px" style="margin-top:50px; margin-left:20px;"/>
 					</div>
 					<div class="detail">
 					<table>
-						<tr>
-							<th style="width: 20%;"><h3>${tmp.room_name}</h3></th>
-						</tr>
+						<th><h3>${tmp.room_name}</h3></th>
 						<tr>
 							<th>객실구조 :</th>
 							<td>${tmp.room_structure }</td>
@@ -188,10 +129,10 @@
 						</tr>
 						<tr>
 							<th>숙박인원 :</th>
-							<td>최대 ${tmp.room_people }</td>
+							<td>최대${tmp.room_people }</td>
 						</tr>
 						<tr>
-							<th>비&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp품 :</th>
+							<th>비품 :</th>
 							<td>${tmp.room_items }</td>
 						</tr>
 						<tr>
@@ -199,8 +140,8 @@
 							<td>${tmp.bedroom_type }</td>
 						</tr>
 						<tr>
-							<th>소&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp개 :</th>
-							<td><pre>${tmp.room_introduce }</pre></td>
+							<th>소개 :</th>
+							<td>${tmp.room_introduce }</td>
 						</tr>						
 					</table>
 					</div>
@@ -217,7 +158,7 @@
 								<button onclick="javascript:minusNum(${status.index });" class="btn btn-outline-dark" >-</button>
 								<input id="inputPeople${status.index }" type="text" value="2" style="width:150px; text-align:center;" disabled />
 								<button onclick="javascript:plusNum(${status.index}, '${tmp.room_people }');" class="btn btn-outline-dark">+</button>
-								<p style="font-size: 12px; margin-top: 10px; color: red;">-성인 추가금 2만원입니다</p>
+								<p>-성인 추가금 2만원입니다</p>
 							</td>
 						</tr>	
 						<tr>
@@ -379,12 +320,6 @@
 		});
 	});
 	
-	   /* ---------------- 지난날짜 선택금지 script ---------------- */
-	   var now_utc = Date.now() 
-	   var timeOff = new Date().getTimezoneOffset()*60000;
-	   var today = new Date(now_utc-timeOff).toISOString().split("T")[0];
-	   document.getElementById("check_in").setAttribute("min", today);
-	   document.getElementById("check_out").setAttribute("min", today);
 </script>
 <div><br><br><br><br><br><br><br><br><br><br><br><br></div>	 
 <jsp:include page="/resources/include/footer.jsp"></jsp:include>
