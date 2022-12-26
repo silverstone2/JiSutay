@@ -22,4 +22,5 @@ public interface UsersDao {
 	public void delete(String id);
 	//예약정보 가져오기
 	//public ReservationDto getData2(String id); 
+
 }

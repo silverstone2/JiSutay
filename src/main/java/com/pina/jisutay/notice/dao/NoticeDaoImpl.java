@@ -57,10 +57,10 @@ public class NoticeDaoImpl implements NoticeDao{
 
 		session.selectOne("notice.views", num);
 	}
-
 	
 	
-
+	
+	
 }
 
 

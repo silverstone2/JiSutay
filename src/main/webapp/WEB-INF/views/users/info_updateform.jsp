@@ -14,10 +14,12 @@
 <head>
 <meta charset="UTF-8">
 <title>users - info_updateform.jsp</title>
+
 </head>
 <body class="text-center">
 	<div class="container-fluid mb-4">
 		<div class="row justify-content-md-center">
+
 			<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
 			<div>
 				<br><br><br>
@@ -27,6 +29,24 @@
 			<!-- form -->
 			<div class="col-md-7 col-lg-4 mt-4">
 				<form action="${pageContext.request.contextPath}/users/info_update.do" method="post" id="formSubmit" class="validation" novalidate>
+
+			<!-- nav 바 -->
+			<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+			
+			<div>
+				<br>
+				<br>
+				<br>
+			</div>
+			
+			<!-- 페이지 제목 -->
+	      	<h2 class="mt-5">마이페이지</h2>
+				
+			<!-- form -->
+			<div class="col-md-7 col-lg-4 mt-4">
+				<form action="" method="post" id="formSubmit" class="validation" novalidate>
+				<!-- input 요소 -->
+
 					<!-- 이메일 -->
 					<div class="input-group mt-3 mb-4">
 						<label class="form-label" for="email">
@@ -35,7 +55,11 @@
 						<span class="input-group-text">@</span>
 						<input class="form-control" id="email" type="email" name="email" value="${dto.email}" required/>
 						<!-- <div class="invalid-feedback" id="emailValid">이메일 형식에 맞게 입력하세요</div> -->
+
 					</div>	
+
+					</div>
+					
 					<!-- 아이디 -->
 					<div class="input-group mb-4">
 						<label class="form-label" for="id">
@@ -50,6 +74,7 @@
 						<!-- <small class="form-text text-muted w-100">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요</small> -->
 						<!-- <div class="invalid-feedback" id="idValid">사용할 수 없는 형식입니다</div> -->
 					</div>
+
 					<!-- 이름 -->
 					<div class="input-group mb-5">
 						<label class="form-label" for="name">
@@ -64,13 +89,31 @@
 						<input class="form-control" id="name" type="text" name="name" value="${dto.name}" required/>
 						<div class="invalid-feedback" id="nameValid"></div>
 					</div>
+
 					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">수정반영</button>
 				</form>
 					<a href="javascript:history.back();"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">취소</button></a>
+
+					
+				</form>
+					<!-- button 요소 -->
+					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="${pageContext.request.contextPath}/users/update.do">개인정보 수정</a></button>
+					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="javascript:deleteConfirm()">탈퇴</a></button>
+					
+
 				<br>
 			</div>
 		</div>
 	</div>
+
+<script>
+	function deleteConfirm(){
+		const isDelete=confirm("${id} 님 탈퇴 하시겠습니까?");
+		if(isDelete){
+			location.href="${pageContext.request.contextPath}/users/delete.do";
+		}
+	}
+</script>
 	
 	<!-- footer include -->
 	<jsp:include page="/resources/include/navbar.jsp"></jsp:include>

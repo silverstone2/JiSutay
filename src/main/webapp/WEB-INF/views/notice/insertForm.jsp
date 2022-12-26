@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/notice/insertForm.jsp</title>
+<title>JISUTAY - Notice - insert</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
@@ -41,16 +41,19 @@
 	/* 버튼 시작*/
 	.buttonEffect {
 		margin-left: 36%;
-		margin-right: 36%;
-		width:250px;
-		height: 50px;
-		text-align:center;
-		vertical-align: baseline;
-		background-color:#E0E0E0;
-		margin-top: 10px;
-		padding: 10px 0 10px;
-		font-size: 15px;
+	    margin-right: 36%;
+	    width: 199px;
+	    height: 50px;
+	    text-align: center;
+	    vertical-align: baseline;
+	    background-color: #354A54;
+	    color: #ffffff;
+	    margin-top: 10px;
+	    padding: 10px 0 10px;
+	    font-size: 15px;
+	    border-radius: 4px;
 	}
+	
 	.buttonEffect > a{
 		text-decoration: none;
 		color: #808080;
@@ -81,10 +84,10 @@
 		</div>
 		<div class="insertTable">
 			<label for="content" style="display:none">내용</label>
-			<textarea name="content" id="content"></textarea>
-		</div>								<!--  cols="130" rows="25" -->
-		<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취소</button>		
-		<button type="submit" class="buttonA buttonEffect">저장</button>
+			<textarea name="content" id="content" cols="130" rows="25"></textarea>
+		</div>
+		<button type="button" class="buttonA buttonEffect" onclick="location.href='list.do'">취    소</button>		
+		<button type="submit" class="buttonA buttonEffect">저    장</button>
 	</form>
 </div>
 

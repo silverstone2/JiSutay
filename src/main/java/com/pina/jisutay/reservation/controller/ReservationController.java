@@ -97,4 +97,14 @@ public class ReservationController {
 	 return new ModelAndView("/home");
 	 }
 
+	// 예약 정보  resInfo
+	@RequestMapping("/reservation/resInfo") 
+	public ModelAndView resInfo(HttpSession session, ModelAndView mView, 
+	HttpServletRequest request) {
+	  
+	res_service.getResInfo(session, mView);
+	  
+	mView.setViewName("/reservation/resInfo"); return mView; 
+	}
+	 
 }

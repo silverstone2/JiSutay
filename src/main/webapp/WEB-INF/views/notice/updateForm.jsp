@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/notice/updateForm.jsp</title>
+<title>JISUTAY - Notice - update</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 <style>
@@ -38,15 +38,17 @@
 	/* 버튼 시작 */
 	.buttonEffect {
 		margin-left: 36%;
-		margin-right: 36%;
-		width:250px;
-		height: 50px;
-		text-align:center;
-		vertical-align: baseline;
-		background-color:#E0E0E0;
-		margin-top: 10px;
-		padding: 10px 0 10px;
-		font-size: 15px;
+	    margin-right: 36%;
+	    width: 199px;
+	    height: 50px;
+	    text-align: center;
+	    vertical-align: baseline;
+	    background-color: #354A54;
+	    color: #ffffff;
+	    margin-top: 10px;
+	    padding: 10px 0 10px;
+	    font-size: 15px;
+	    border-radius: 4px;
 	}
 	.buttonEffect > a{
 		text-decoration: none;

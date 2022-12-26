@@ -32,6 +32,7 @@
 				
 			<!-- form -->
 			<div class="col-md-7 col-lg-4 mt-4">
+				<!-- <form action="" method="post" id="formSubmit" class="validation" novalidate> -->
 				<!-- input 요소 -->
 					<!-- 이메일 -->
 					<div class="input-group mt-3 mb-4">
@@ -57,6 +58,22 @@
 						<!-- <small class="form-text text-muted w-100">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요</small> -->
 						<!-- <div class="invalid-feedback" id="idValid">사용할 수 없는 형식입니다</div> -->
 					</div>
+
+					<!-- 비밀번호 -->
+<%-- 					<div class="input-group mt-3 mb-3">
+						<label class="form-label" for="password">
+							<span class="visually-hidden">비밀번호</span>
+						</label>
+						<span class="input-group-text" id="basic-addon1">
+							<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-lock" viewBox="0 0 16 16">
+						  		<path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2zM5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1z"/>
+							</svg>
+						</span>
+						<input class="form-control" id="password" type="password" placeholder="비밀번호" required/>
+						<td><a href="${pageContext.request.contextPath}/users/pwd_updateform.do">수정하기</a></td> 
+						<div class="invalid-feedback" id="passValid1"></div>
+					</div> --%>
+					
 					<!-- 이름 -->
 					<div class="input-group mb-5">
 						<label class="form-label" for="name">
@@ -73,9 +90,15 @@
 					</div>
 					
 					<!-- button 요소 -->
+
 					<a href="${pageContext.request.contextPath}/users/info_updateform.do"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">개인정보 수정</button></a>
 					<a href="${pageContext.request.contextPath}/users/pwd_updateform.do"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">비밀번호 수정</button></a>
 					<a href="javascript:deleteConfirm()"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">탈퇴</button></a>
+
+					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="${pageContext.request.contextPath}/users/info_updateform.do">개인정보 수정</a></button>
+					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="${pageContext.request.contextPath}/users/pwd_updateform.do">비밀번호 수정</a></button>
+					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="javascript:deleteConfirm()">탈퇴</a></button>
+
 					
 				<!-- </form> -->
 				<br>

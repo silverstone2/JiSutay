@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>JISUTAY - Rooms - update</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" />
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
@@ -20,6 +20,7 @@
 	
 	.getBack{
 		border: none;
+		background-color: #E2E2E2;
 		padding: 15px 40px;
 		border-radius: 10px;
 	}
@@ -30,9 +31,10 @@
 </head>
 <body>
 	<div class="container">
-		<h1>객실 수정하기.</h1>
+		<h1>객실 수정</h1>
 		<a href="../detail.do?num=${param.num }&sort=regdate">
 			<img src="${pageContext.request.contextPath}/Jisutayimage/room/previous.png" alt="">
+			<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/updateForm/previous.png" alt="" />
 		</a>
 		
 		<form action="update.do" method="post" enctype="multipart/form-data">

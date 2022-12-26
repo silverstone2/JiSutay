@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>JISUTAY</title>
+<title>JISUTAY - Rooms</title>
 
 <jsp:include page="/resources/include/starRating_style.jsp"></jsp:include>
 
@@ -14,7 +14,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/modify.js" ></script>
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
+
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" ></script>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
@@ -110,6 +114,7 @@
 	
 	.comment-form textarea, .comment-form button{
 		float: left;
+		resize:none;
 	}
 
 
@@ -118,6 +123,8 @@
 		height: 80px;
 		color: #4D565B; 
 		font-family: system-ui;
+		margin-bottom:20px;
+		resize:none;
 	}
 	.comment-form button{
 		width: 14%;
@@ -174,21 +181,15 @@
 <!-- 메인 이미지 -->
 		<div class="section" id="Visuals">
 			<div class="InnerBox">
-				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/main/room1.jpg" style="width: 100%; height: 700px; opacity: 0.7">
+				<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/room${dto.num }/1.jpg" style="width: 100%; height: 850px; opacity: 0.7">
 				<h2>
-					<img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/logo_bl.png" width="240" height="40" alt="">
-					<span>${dto.room_name }</span>
+					<span style="font-family: 'Zilla Slab', serif;font-size:80px;color:#31363F;">JiSutay</span>
+					<span style="font-family: 'Gowun Dodum', sans-serif;font-weight:bold;font-size:50px;color:#31363F;">${dto.room_name }</span>
 				</h2>
 			</div>
 		</div>
 		
-		<c:if test="${id eq 'admin' }">
-			<a href="${pageContext.request.contextPath }/room/updateform.do?num=${dto.num }">
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
-						<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
-				</svg>
-			</a>
-		</c:if>
+
 		
 <!-- 객실 정보, 객실 소개 -->
 		<div class="section infos">
@@ -202,7 +203,7 @@
 					<ul>
 						<li>
 							<strong>객실구조</strong>
-							<span>${dto.room_structure }</span>
+							<pre><span>${dto.room_structure }</span></pre>
 						</li>
 						<li>
 							<strong>객실크기</strong>
@@ -214,7 +215,7 @@
 						</li>
 						<li>
 							<strong>객실비품</strong>
-							<span>${dto.room_items }</span>
+							<pre><span>${dto.room_items }</span></pre>
 						</li>
 					</ul>
 				</div>
@@ -222,22 +223,20 @@
 					<h3>객실 소개</h3>
 					<ul class="write">
 						<li>
-							${dto.room_introduce }<br> 
-							1. 젊은 커플들이 선호하는 객실입니다.<br> 
-							2. 앞뒤에 마당이 있어 아이들이 안전하게 뛰어 놀 수 있습니다.<br> 
-							3. 객실내 반려동물 동반 입실은 불가합니다.<br> 
-							4. 모든 객실에서는 금연이며 화재위험이 있는 물품은 반입이 안됩니다.<br> 
-							5. 우천시 야외 바베큐장은 사용이 불가합니다.(밤별은 가능)
+							<pre>${dto.room_introduce }</pre>
 						</li>
 					</ul>
 				</div>
 			</div>
 		</div>
 		
+
+		
 <!-- 객실 이미지 -->
-		<div class="section images">
+		<div class="section images" style="margin-top: 200px;">
 			<div class="InBox">
 				<div class="fotorama" data-nav="thumbs">
+				<!--
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/2.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/3.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/4.jpg" width="150" height="100">
@@ -251,12 +250,27 @@
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/12.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/13.jpg" width="150" height="100">
 					<img src="http://gonylab6.speedgabia.com/fullstay/sorangje/room/2/14.jpg" width="150" height="100">
+				-->
 					<c:forEach var="imgPath" items="${imgList }" varStatus="status">
-						<img src="${pageContext.request.contextPath }${imgPath }" width="100" height="150"/>
+						<img src="${pageContext.request.contextPath }${imgPath }" width="150" height="100"/>
 					</c:forEach>
 				</div>
 			</div>
 		</div>
+		
+		
+		<!-- 관리자 수정 버튼 -->
+		<c:if test="${id eq 'admin' }">
+			<div style="margin: 10px 100px 50px 100px;text-align-last: right;">
+				<a href="${pageContext.request.contextPath }/room/updateform.do?num=${dto.num }" style="align-content:right;">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="black" class="bi bi-pencil" viewBox="0 0 16 16">
+						<path d="M12.146.146a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zM11.207 2.5 13.5 4.793 14.793 3.5 12.5 1.207 11.207 2.5zm1.586 3L10.5 3.207 4 9.707V10h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.293l6.5-6.5zm-9.761 5.175-.106.106-1.528 3.821 3.821-1.528.106-.106A.5.5 0 0 1 5 12.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.468-.325z"/>
+					</svg>
+				객실 정보 수정 (관리자 전용)
+				</a>
+			</div>
+		</c:if>		
+		
 		
 <!-- 전체 후기 영역 -->
 		<div id="review">
@@ -291,6 +305,7 @@
 			</div>
 		
 <!-- 댓글 목록 -->
+		<div id="commentContainer">
 			<div class="comments">
 				<ul>
 					<c:forEach var="tmp" items="${commentsList }" varStatus="status">
@@ -389,7 +404,7 @@
 												<button type="submit" style="height: 28px;width: 47px;margin: 0 0 0 10px;background: #ffffff;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:14px;color:#354A54">등록</button>
 											</form>
 											
-
+			
 										<%-- 
 											댓글 주인이 로그인 본인이면 댓글 수정 폼도 준비, hidden. 이후 필요시 JAVASCRIPT에서 바로 출력.	 
 										--%>
@@ -407,42 +422,43 @@
 						</div>
 					</c:forEach>
 				</ul>
-				
-				<!-- 하단 페이징 버튼 -->
-				<nav>
-					<ul class="pagination">
-					
-						<c:if test="${startPageNum ne 1 }">
-							<li class="page-item">
-								<a class="page-link" href="javascript:movePage(${startPageNum-1 });">◀</a>
-							</li>
-						</c:if>
-						
-						<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-							<c:choose>
-								<c:when test="${pageNum eq i }">
-									<li class="page-item active">
-										<a class="page-link" href="javascript:movePage(${i });">${i }</a>
-									</li>
-								</c:when>
-								<c:otherwise>
-									<li class="page-item">
-										<a class="page-link" href="javascript:movePage(${i });">${i }</a>
-									</li>
-								</c:otherwise>
-							</c:choose>
-						</c:forEach>
-						
-						<c:if test="${endPageNum lt totalPageCount }">
-							<li class="page-item">
-								<a class="page-link" href="javascript:movePage(${endPageNum+1 });">▶</a>
-							</li>
-						</c:if>
-					</ul>
-				</nav>
 			</div>
 			
-			
+			<!-- 하단 페이징 버튼 -->
+			 <div><br><br><br><br></div>
+			<nav style="margin:2.2rem 9rem 10rem 8rem;">
+				<ul class="pagination">
+				
+					<c:if test="${startPageNum ne 1 }">
+						<li class="page-item">
+							<a class="page-link" href="javascript:movePage(${startPageNum-1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&laquo;</a>
+						</li>
+					</c:if>
+					
+					<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
+						<c:choose>
+							<c:when test="${pageNum eq i }">
+								<li class="page-item active">
+									<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
+								</li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item">
+									<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
+								</li>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+					
+					<c:if test="${endPageNum lt totalPageCount }">
+						<li class="page-item">
+							<a class="page-link" href="javascript:movePage(${endPageNum+1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&raquo;</a>
+						</li>
+					</c:if>
+					
+				</ul>
+			</nav>
+		</div>
 			
 			<!-- 후기 작성 폼 -->
 			<form class="comment-form insert-form" action="comment_insert.do" method="post" style="margin-left: 150px" >
@@ -468,53 +484,17 @@
 
 			</form>
 		</div>
-		
-		
-		<nav style="margin:2.2rem 9rem 10rem 8rem;">
-			<ul class="pagination">
-			
-				<c:if test="${startPageNum ne 1 }">
-					<li class="page-item">
-						<a class="page-link" href="javascript:movePage(${startPageNum-1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&laquo;</a>
-					</li>
-				</c:if>
-				
-				<c:forEach var="i" begin="${startPageNum }" end="${endPageNum }">
-					<c:choose>
-						<c:when test="${pageNum eq i }">
-							<li class="page-item active">
-								<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
-							</li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item">
-								<a class="page-link" href="javascript:movePage(${i });" style="color:black;float:left;padding:8px 16px; font-weight:bold; text-decoration:none;">${i }</a>
-							</li>
-						</c:otherwise>
-					</c:choose>
-				</c:forEach>
-				
-				<c:if test="${endPageNum lt totalPageCount }">
-					<li class="page-item">
-						<a class="page-link" href="javascript:movePage(${endPageNum+1 });" style="color:black;float:left;padding:8px 16px; text-decoration:none;">&raquo;</a>
-					</li>
-				</c:if>
-				
-			</ul>
-		</nav>
 	</section>
 	
 	<!-- footer include-->
 	
 	<!-- 상단 이동 버튼 -->
-	<!--
 	<div id="top" style="position:fixed;bottom:14px;right:14px;">
 		<a href="#Visuals"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/topbtn2.png" title="위로 가기"></a>
 	</div>
 	
 	<p></p>
 	<p></p>
-	-->
 	
 	<!-- JAVASCRIPT  -->
 	<script src="${pageContext.request.contextPath}/resources/js/gura_util.js"></script>
@@ -690,7 +670,7 @@
 			})
 			.then(function(data) {
 				// console.log(data);
-				document.querySelector(".comments").innerHTML = data;
+				document.querySelector("#commentContainer").innerHTML = data;
 				
 				addInsertFormListener('.re-insert-form');
 				addInsertFormListener('.re-re-insert-form');
@@ -780,5 +760,7 @@
 		movePage(pageNum);
 	});
 	</script>
+<div><br><br><br></div>
+<jsp:include page="/resources/include/footer.jsp"></jsp:include>
 </body>
 </html>

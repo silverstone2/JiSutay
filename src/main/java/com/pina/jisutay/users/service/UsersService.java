@@ -35,5 +35,6 @@ public interface UsersService {
 	// 개인정보 삭제
 	public void deleteUser(HttpSession session, ModelAndView mView);
 	// 개인정보 수정
+
 	public void updateUser(UsersDto dto, HttpSession session);	
 }

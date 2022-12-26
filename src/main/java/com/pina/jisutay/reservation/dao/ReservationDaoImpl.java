@@ -52,6 +52,7 @@ public class ReservationDaoImpl implements ReservationDao{
 	public List<Map<String, Object>> getCheckDate() {
 		return session.selectList("reservation.getCheckDate");
 	}
+
 	//예약내역
 	/*
 	 * @Override public ReservationDto getData2(String id) { ReservationDto resdto =
@@ -67,6 +68,11 @@ public class ReservationDaoImpl implements ReservationDao{
 	@Override
 	public void resDelete(int num) {
 		session.selectOne("reservation.deleteRes", num); 
+
+	@Override
+	public ReservationDto getData2(String id) {
+		ReservationDto dto = session.selectOne("reservation.getData2" , id);
+		return dto;
 	}
 }
 

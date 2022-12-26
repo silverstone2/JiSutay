@@ -5,11 +5,16 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/notice/detail.jsp</title>
-<link rel="shortcut icon" href="${pageContext.request.contextPath }/Jisutayimage/Logo_Icon/favicon.ico">
+<title>JISUTAY - Notice - post</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
+<link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
+<script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
 <style>
-
 	.detailTable{
 		width:80%;
 		border-right:none;
@@ -39,13 +44,16 @@
 		text-align:center;
 		display: inline-block;
 		vertical-align: baseline;
-		background-color:#E0E0E0;
+		background-color:#354A54;
+		color: #ffffff;
 		margin-top: 10px;
 		padding: 10px 0 10px;
 		font-size: 15px;
-		border: none;
+		border-radius: 4px;
 		margin-left:37%;
 	}
+	
+	
 	.buttonEffect > a{
 		text-decoration: none;
 		color: #E0E0E0;
@@ -64,18 +72,17 @@
 		font-weight: bold;
 		font-size: 18px;
 	}
-/* 공지사항 이미지 쪽 */
+	/* 공지사항 이미지 쪽 */
 	.lb-wrap {
 		width: 100%;
-		/* margin: 10px auto; */
-		border: 1px solid #000000;
+		margin: 10px auto;
 		position: relative;
 	}
 	.lb-wrap img {
 		width: 100%;
 		vertical-align: middle;
 	}
-	.lb-text1 {
+	.lb-text {
 		padding: 10px 20px;
 		background-color: #FFEEBC;
 		text-align: center;
@@ -100,6 +107,10 @@
 		margin-bottom:7%;
 		background-color:transparent;
 	} 
+	}
+	video {
+		max-width: 100%; display: block; margin: 0px auto;
+	}
 /* 	.lb-text3 {
 		transform: translate(-90%, -90%);
 		position: absolute;
@@ -108,15 +119,19 @@
 		font-size: 10px;
 		color:#FBFCFC;
 	} */
+	
 </style>
 </head>
 <body>
-<!-- 사진 -->
+<jsp:include page="/resources/include/navbar.jsp"></jsp:include>
+<!-- 동영상 -->
 <div class="lb-wrap">
-	<div class="lb-text1">
+	<div class="lb-text">
 		<p>NOTICE</p><br/>
 	</div>
 	<div class="lb-text2">
+		<br>
+		<br>
 		<p>공지사항</p>
 	</div>
  	<div class="lb-image">
@@ -124,12 +139,16 @@
 		<div class="" style="position: absolute; bottom: 5%; right:3%;">
 			<img src="${pageContext.request.contextPath}/Jisutayimage/notice/mouse_cursor_64.png" alt="noticeImage">
 		</div>
+	<div class="lb-image">
+		<video muted autoplay loop>
+      		<source src="${pageContext.request.contextPath}/resources/video/notice.mp4" type="video/mp4">
+    	</video>
 	</div>
 </div>
 <div class="m-5">
 	<div class="container" id="post">
 		<h1 class="h1p">공지사항</h1>
-		<p class="h1p">공지사항과 다양한 소식을 확인해보세요.</p>
+		<p class="h1p" style="margin-top:10px;">공지사항과 다양한 소식을 확인해보세요.</p>
 		
 		<table class="detailTable" style="border-top:2px solid gray; margin-top:2%;">
 			<tr style="font-size:45px;" class="aaa">
@@ -141,30 +160,32 @@
 				<td class="col-2"><span class="dTable" style="font-weight:bold; font-size:24px;">${dto.writer }</span></td>
 				<td class="col-10" style="text-align:right; rowspan="2">
 					<a href="list.do">
-						<img src="${pageContext.request.contextPath}/Jisutayimage/notice/list5.png">
+						<img src="${pageContext.request.contextPath}/resources/Jisutayimage/notice/list5.png">
 					</a>
 				</td>
 			</tr>
 			<tr class="aaa" style="margin-bottom:5%;">
-				<td class=""><span class="dTable"><img src="${pageContext.request.contextPath}/Jisutayimage/notice/clock.png" style="margin-bottom:2px;">&nbsp;${dto.regdate}&nbsp;</span></td>
-				<td class="dTable"><span><img src="${pageContext.request.contextPath }/Jisutayimage/notice/eye1.png" style="margin-bottom:5px;">&nbsp;${dto.views } 회</span></td>
+				<td class=""><span class="dTable"><img src="${pageContext.request.contextPath}/resources/Jisutayimage/notice/clock.png" style="margin-bottom:2px;">&nbsp;${dto.regdate}&nbsp;&nbsp;</span></td>
+				<td class="dTable"><span><img src="${pageContext.request.contextPath }/resources/Jisutayimage/notice/eye1.png" style="margin-bottom:5px;">&nbsp;${dto.views } 회</span></td>
 								<!--  style="text-align:right; -->
 			</tr>
 			<tr class="aaa" >
-				<td colspan="3" style="margin-top:5%; margin-bottom:5%;">${dto.content }</td>
+				<td colspan="3" style="margin-top:5%; margin-bottom:5%;">
+					<pre>${dto.content }</pre>
+				</td>
 			</tr>
 			<!-- 다음글, 이전글 버튼 -->
 			<tr style="border-top:1px solid #DAD8D7">
 				<c:if test="${dto.prevNum ne 0 }">
-					<td class="col-2"><img src="${pageContext.request.contextPath}/Jisutayimage/notice/arrowUp.png" style="margin-bottom:4px;">&nbsp;이전 글</td>
+					<td class="col-2"><img src="${pageContext.request.contextPath}/resources/Jisutayimage/notice/arrowUp.png" style="margin-bottom:4px;">&nbsp;이전 글</td>
 					<td class="col-7"><a href="detail.do?num=${dto.prevNum }#post" class="prevNextTitle">${dto.prevTitle}</a></td>
 					<td class="col-3" style="text-align:right;">${dto.prevDate}</td>
 				</c:if>
 			</tr>
 			<tr style="border-top:1px solid #DAD8D7; border-bottom:1px solid #DAD8D7;">
 				<c:if test="${dto.nextNum ne 0 }">
-					<td class="col-2"><img src="${pageContext.request.contextPath}/Jisutayimage/notice/arrowDown.png">&nbsp;다음 글</td>
-					<td class="col-7" ><a href="detail.do?num=${dto.nextNum }#post" class="prevNextTitle">${dto.nextTitle}</a></td>
+					<td class="col-2"><img src="${pageContext.request.contextPath}/resources/Jisutayimage/notice/arrowDown.png">&nbsp;다음 글</td>
+					<td class="col-7" ><a href="detail.do?num=${dto.nextNum }#post" class="prevNextTitle" >${dto.nextTitle}</a></td>
 					<td class="col-3" style="text-align:right;">${dto.nextDate}</td>
 				</c:if>
 			</tr>

@@ -5,18 +5,21 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>/views/notice/list.jsp</title>
+<title>JISUTAY - Notice</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
 
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
+
+<!-- 폰트 적용 -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&family=Shadows+Into+Light&family=Zilla+Slab:wght@500&display=swap" rel="stylesheet">
 
 <link rel="shorcut icon" href="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/favicon.ico">
 <script type="text/javascript" async="" src="https://www.google-analytics.com/analytics.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
 <script type="text/javascript" src="${pageContext.request.contextPath }/resources/js/common.js" defer=""></script>
-
-<script src="https://player.vimeo.com/api/player.js"></script>
 
 <style>
 	/*@@@@@@@@@새글 작성 시작@@@@@@@@@@*/
@@ -84,22 +87,22 @@
 	  transition: all 0.2s ;
 	}
 	
-	.btnLightBlue {
-	  background: #CCCCFF;
-	}
+	.btnGreen {
+     background: #CCCCFF;margin-bottom:10px;
+ 	}
 	
-	.btnLightBlue.btnPush {
-	  box-shadow: 0px 5px 0px 0px #6666FF;
-	}
+	.btnGreen.btnPush {
+     box-shadow: 0px 5px 0px 0px #798F9A;
+    }
 	
 	.btnPush:hover {
 	  margin-top: 15px;
 	  margin-bottom: 5px;
 	}
 	
-	.btnLightBlue.btnPush:hover {
-	  box-shadow: 0px 0px 0px 0px #1E8185;
-	}
+	.btnGreen.btnPush:hover {
+     box-shadow: 0px 0px 0px 0px;
+    }
 	/*@@@@@@@@@@새글작성 끝@@@@@@@@@@*/
 	/* 제목a 부분  */
 	tr td a{
@@ -199,7 +202,6 @@
 	.lb-wrap {
 		width: 100%;
 		margin: 10px auto;
-		border: 1px solid #000000;
 		position: relative;
 	}
 	.lb-wrap img {
@@ -230,7 +232,10 @@
 		margin-bottom:7%;
 		background-color:transparent;
 	} 
-
+	}
+	video {
+		max-width: 100%; display: block; margin: 0px auto;
+	}
 </style>
 </head>
 <body>
@@ -238,34 +243,35 @@
 <!-- 사진 -->
 <div class="lb-wrap">
 	<div class="lb-text">
-		<p>NOTICE</p><br/>
+		<p style="font-family: 'Zilla Slab', serif;">NOTICE</p><br/>
 	</div>
 	<div class="lb-text2">
-		<p>공지사항</p>
+		<br>
+		<br>
+		<p style="font-family: 'Gowun Dodum', sans-serif;">공지사항</p>
 	</div>
 	<div class="lb-image">
 		<img src="${pageContext.request.contextPath}/Jisutayimage/notice/fullstay3.png" alt="noticeImage">
 		<div class="" style="position: absolute; bottom: 5%; right:3%;">
 			<img src="${pageContext.request.contextPath}/Jisutayimage/notice/mouse_cursor_64.png" alt="noticeImage">
 		</div>
+		<video muted autoplay loop>
+      		<source src="${pageContext.request.contextPath}/resources/video/notice.mp4" type="video/mp4">
+    	</video>
 	</div>
 </div>
 <div class="container">
    <br>
    <br>
-   <br>
-   <br>
-   <br>
-   <br>
    <h1>공지사항</h1>
   
-	<p>공지사항과 다양한 소식을 확인해보세요.</p>
+	<p style="margin-top:10px;">공지사항과 다양한 소식을 확인해보세요.</p>
 	<br />
 		<!-- 새글 작성 -->
 	<c:choose>
 		<c:when test="${id eq 'admin'}">
 			<div class="aa">
-				<a href="insertForm.do" title="Button push lightblue" class="button btnPush btnLightBlue">새글작성</a>		
+				  <a href="insertForm.do" title="Button push" class="button btnPush btnGreen" style="height: 45px;width: 90px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff;margin-bottom:20px;">새글작성</a>      
 			</div>
 		</c:when>
 	</c:choose>
@@ -286,7 +292,7 @@
 			<tr>
 				<td style="width: 50px;">${tmp.num}</td>
 				<td style="width: 400px;">
-					<a href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
+					<a class="hz" href="detail.do?num=${tmp.num }#post">${tmp.title }</a>
 				</td>
 				<td style="width: 150px;">${tmp.writer }</td>
 				<td style="width: 200px;">${tmp.regdate }</td>
@@ -331,18 +337,18 @@
    <!-- 검색 부분 -->
    <div style="text-align:center; width:100%;">
       <form action="list.do" method="get"> 
-         <label for="condition"><strong>검색</strong></label>
+         <label for="condition"><strong>검색 </strong></label>
          <select name="condition" id="condition">
             <option value="title_content" ${condition eq 'title_content' ? 'selected' : '' }>제목+내용</option>
             <option value="title" ${condition eq 'title' ? 'selected' : '' }>제목</option>
             <option value="writer" ${condition eq 'writer' ? 'selected' : '' }>작성자</option>
          </select>
          <input type="text" id="keyword" name="keyword" placeholder="검색어..." value="${keyword }"/>
-         <button class="btn btn-primary btn-sm" type="submit" >찾기</button>
+         <button class="btn btn-sm" type="submit" style="height: 35px;background: #354A54;border-radius: 5px;border: 2.5px solid #ffffff;cursor: pointer;font-size:13px;color:#ffffff">찾기</button>
       </form>   
       <c:if test="${ not empty condition }">
          <p>
-            <strong>${totalRow }</strong> 개의 글이 검색 되었습니다.
+            <strong>${totalRow }</strong>개의 글이 검색 되었습니다.
          </p>
       </c:if>
    </div>

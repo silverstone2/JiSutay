@@ -129,4 +129,13 @@ public class ReservationServiceImpl implements ReservationService {
 		dao.resDelete(num);
 	}
 	
+	@Override
+	public void getResInfo(HttpSession session, ModelAndView mView) {
+		//로그인된 아이디를 읽어온다. 
+		String id=(String)session.getAttribute("res_id");
+		//DB 에서 회원 정보를 얻어와서 
+		ReservationDto dto=dao.getData2(id);
+		//ModelAndView 객체에 담아준다.
+		mView.addObject("dto", dto);
+	}
 }
