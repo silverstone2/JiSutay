@@ -11,4 +11,8 @@ public interface CommentsService {
 	public void saveReComment(HttpServletRequest request);
 	public void updateComment(CommentsDto dto);
 	public void deleteComment(HttpServletRequest request);
+	// 마이페이지에서 내가 쓴 글 출력
+	public void getMyCommList(HttpServletRequest request);
+	//내가 쓴글 삭제
+	public void delete(int num, HttpServletRequest request);
 }

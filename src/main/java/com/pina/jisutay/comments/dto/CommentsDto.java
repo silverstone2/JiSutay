@@ -2,23 +2,23 @@ package com.pina.jisutay.comments.dto;
 
 public class CommentsDto {
 	// comments 테이블 칼럼
-	private int num;
-	private String writer;
-	private String room_img;
-	private double score;
-	private String regdate;
-	private String content;
-	private String target_id;
-	private int room_num;
-	private int comment_num;
-	private String deleted;
-	private int startRowNum;
-	private int endRowNum;
-	private int commCount;
+	private int num;			// 글번호
+	private String writer;		// 작성자
+	private String room_img;	// 사진
+	private double score;		// 별점(1~5)
+	private String regdate;		// 날짜(작성일)
+	private String content;		// 내용
+	private String target_id;	// 
+	private int room_num;		// 방번호
+	private int comment_num;	// 댓글번호
+	private String deleted;		// 삭제
+	private int startRowNum;	// 
+	private int endRowNum;		// 
+	private int commCount;		// 
 	
 	// users 테이블 칼럼
-	private String name;
-	private String profile;
+	private String name;		// 사용자
+	private String profile;		// 정보
 
 	// 정렬 키워드 변수
 	private String sort;

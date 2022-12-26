@@ -82,4 +82,16 @@ public class CommentsDaoImpl implements CommentsDao {
 	public CommentsDto getData(CommentsDto dto) {
 		return session.selectOne("comments.getData", dto);
 	}
+
+	@Override
+	public List<CommentsDto> getMyList(CommentsDto dto) {
+		
+		return session.selectList("comments.getMyCommList", dto); 
+	}
+
+	@Override
+	public void commDelete(int num) {
+		session.selectOne("comments.deleteComm", num);
+		
+	}
 }

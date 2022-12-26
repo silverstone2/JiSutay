@@ -67,7 +67,6 @@
 	.container {
 	  padding-top: 1em;
 	  margin-top: 1em;
-	  
 	}
 	
 	a.button {

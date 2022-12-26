@@ -172,6 +172,18 @@ public class CommentsServiceImpl implements CommentsService {
 	@Override
 	public void updateComment(CommentsDto dto) {
 		dao.update(dto);
+	}
+	// 마이페이지에서 내가 쓴 글 출력
+	@Override
+	public void getMyCommList(HttpServletRequest request) {
+		CommentsDto dto = new CommentsDto();
+		List<CommentsDto> commentsList = dao.getMyList(dto);
+		request.setAttribute("commentsList", commentsList);
+	}
+	// 마이페이지 내가 쓴 글 삭제
+	@Override
+	public void delete(int num, HttpServletRequest request) {
+		dao.commDelete(num);
 	}	
 }
 

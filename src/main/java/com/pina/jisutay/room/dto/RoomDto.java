@@ -2,15 +2,15 @@ package com.pina.jisutay.room.dto;
 
 public class RoomDto {
 	private int num;
-	private String room_name;
-	private int room_price;
-	private String room_structure;
-	private int room_size;
-	private String room_people;
-	private String room_items;
-	private String bedroom_type;
-	private String room_introduce;
-	private String img_path;
+	private String room_name;		// 방이름
+	private int room_price;			// 방가격
+	private String room_structure;	// 방구조
+	private int room_size;			// 방사이즈
+	private String room_people;		// 방인원
+	private String room_items;		// 방
+	private String bedroom_type;	// 방 타입
+	private String room_introduce;	// 방 설명
+	private String img_path;		// 사진
 
 	
 	public RoomDto(int num, String room_name, int room_price, String room_structure, int room_size, String room_people,

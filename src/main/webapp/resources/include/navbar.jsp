@@ -5,7 +5,7 @@
 <header>
 	<hgroup>
 		<h1><a href="${pageContext.request.contextPath }/"><img src="${pageContext.request.contextPath }/resources/Jisutayimage/Logo_Icon/Logo_Image.png" width="220px" height="80px" ></a></h1>
-		<div><p>제주도 힐링 감성을 가득 담은 <span>"JiSutay"</span></p></div>
+		<div><p>제주도 힐링 감성을 가득 담은 <span style="font-size:18px;">JiSutay</span></p></div>
 	</hgroup>
 	<nav>
 		<ul>
@@ -34,7 +34,7 @@
 			<li class="gb">
 				<a href="${pageContext.request.contextPath }/notice/list.do">
 					<span class="en">NOTICE</span>
-					<span class="ko">공지 게시판</span>
+					<span class="ko">공지 사항</span>
 				</a>
 			</li>
 							
@@ -54,8 +54,11 @@
 				
 				<c:otherwise>
 					<li class="gb">
-						<a href="${pageContext.request.contextPath }/">${id }</a>	  					
+						<a href="${pageContext.request.contextPath }/" style="color:#4A817A;font-size:17px;">${id }</a>	  					
 						<ul class="sub">
+							<li><a href="${pageContext.request.contextPath }/users/myComm.do">내가 쓴글</a></li>     
+							<li><a href="${pageContext.request.contextPath }/users/reslist.do">결제내역</a></li>     
+							<li><a href="${pageContext.request.contextPath }/users/info.do">마이페이지</a></li>     
 							<li><a href="${pageContext.request.contextPath }/users/logout.do">로그아웃</a></li>     
  						</ul>
  					<li>
@@ -63,5 +66,32 @@
 			</c:choose>
 		</ul>
 	</nav>
+	<!-- progress bar -->
+	<div class = "progress-container">
+		<div class = "progress-bar" id = "indicator"></div>
+	</div>
 </header>
+
+<!-- 프로그래스바 스크립트 START -->
+<script>
+// 인터넷 스크롤 이동 시 이벤트
+window.onscroll = function() {createPrograssBar()}; 
+
+function createPrograssBar() {
+  let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+  let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  let scrolled = (winScroll / height) * 100;
+  document.getElementById("indicator").style.width = scrolled + "%";
+}
+
+function setBarColor() {
+	const randNum = parseInt(Math.random() * 7 + 0);
+	const colorArr = ['#FC9EBD', '#FFADC5', '#FFA9B0', '#FFCCCC', '#CCD1FF', '#A8C8F9', '#FFDDA6', '#B8F3B8'];
+	
+	document.getElementById("indicator").style.backgroundColor = colorArr[randNum];
+}
+
+
+setInterval(setBarColor, 500);
+</script>
 
