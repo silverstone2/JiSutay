@@ -25,21 +25,37 @@
 		WHERE num=#{num}
 	</select>
 
-	<select id="getList" resultType="reservationDto">
+  	<select id="getList" resultType="reservationDto">
 		SELECT num, res_id , check_in , check_out , res_people , room_num , regdate
 		FROM reservation
 	</select>
+	
 	
 	<select id="getCheckDate" resultType="Map">
 		SELECT room_num, TO_CHAR(check_in, 'YYYY-MM-DD') AS check_in, TO_CHAR(check_out, 'YYYY-MM-DD') AS check_out
 		FROM reservation
 	</select>
+  
+	<!-- 회원(개인) 결제 목록 -->
+	<select id="getResList" resultType="reservationDto" parameterType="String">
+		select reservation.num, res_id, TO_CHAR(check_in, 'YYYY.MM.DD HH24:MM') AS check_in, TO_CHAR(check_out, 'YYYY.MM.DD HH24:MM') AS check_out, regdate, room_name
+		FROM reservation
+		LEFT JOIN ROOM
+		ON reservation.room_num = room.num
+	</select>
 	
+	<!-- 회원(개인) 결제 취소 -->
+	<delete id="deleteRes" parameterType="reservationDto">
+		DELETE 
+		FROM reservation
+		WHERE num=#{num}
+	</delete>
+	
+</mapper>
 	<!--  parameterType="String"  -->
 	<select id="getData2" parameterType="String" resultType="ReservationDto">
 		SELECT res_id, num, check_in, check_out, res_people, room_num, regdate
 		FROM reservation
 		WHERE num=#{num, jdbcType=VARCHAR}
 	</select>
-
 </mapper>

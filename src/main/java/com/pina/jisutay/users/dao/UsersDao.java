@@ -1,5 +1,6 @@
 package com.pina.jisutay.users.dao;
 
+import com.pina.jisutay.reservation.dto.ReservationDto;
 import com.pina.jisutay.users.dto.UsersDto;
 
 public interface UsersDao {
@@ -19,6 +20,7 @@ public interface UsersDao {
 	public void updatePwd(UsersDto dto);
 	// 개인정보 삭제
 	public void delete(String id);
-	
-	
+	//예약정보 가져오기
+	//public ReservationDto getData2(String id); 
+
 }

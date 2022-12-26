@@ -53,6 +53,22 @@ public class ReservationDaoImpl implements ReservationDao{
 		return session.selectList("reservation.getCheckDate");
 	}
 
+	//예약내역
+	/*
+	 * @Override public ReservationDto getData2(String id) { ReservationDto resdto =
+	 * session.selectOne("reservation.getList" , id); return resdto; }
+	 */
+
+	@Override
+	public List<ReservationDto> getResList(ReservationDto dto) {
+		
+		return session.selectList("reservation.getResList");
+	}
+
+	@Override
+	public void resDelete(int num) {
+		session.selectOne("reservation.deleteRes", num); 
+
 	@Override
 	public ReservationDto getData2(String id) {
 		ReservationDto dto = session.selectOne("reservation.getData2" , id);

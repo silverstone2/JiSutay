@@ -61,5 +61,10 @@
 	</delete>
 	
 	<!-- 예약 내역 -->
-	
+	<!--  parameterType="String"  -->
+	<select id="getData2" parameterType="ReservationDto" resultType="ReservationDto">
+		SELECT res_id, num, check_in, check_out, res_people, room_num, regdate
+		FROM reservation
+		WHERE res_id=#{res_id, jdbcType=VARCHAR}
+	</select>
 </mapper>

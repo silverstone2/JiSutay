@@ -33,6 +33,7 @@
 	<div class="container">
 		<h1>객실 수정</h1>
 		<a href="../detail.do?num=${param.num }&sort=regdate">
+			<img src="${pageContext.request.contextPath}/Jisutayimage/room/previous.png" alt="">
 			<img src="${pageContext.request.contextPath }/resources/Jisutayimage/room/updateForm/previous.png" alt="" />
 		</a>
 		
@@ -55,7 +56,7 @@
 	   				<label for="room_size" class="form-label">객실크기</label>
 	    			<div class="input-group has-validation">
 	      				<span class="input-group-text">
-	      					<img src="${pageContext.request.contextPath}/resources/Jisutayimage/room/updateForm/bed.png" alt="">
+	      					<img src="${pageContext.request.contextPath}/Jisutayimage/room/bed.png" alt="">
 	      				</span>
 	     				<input type="text" class="form-control" name="room_size" id="room_size" value="${dto.room_size}" required>
 	      				<div id="room_sizeValid" class="invalid-feedback"></div>
@@ -65,7 +66,7 @@
 	   				<label for="room_people" class="form-label">입실인원</label>
 	    			<div class="input-group has-validation">
 	      				<span class="input-group-text">
-	      					<img src="${pageContext.request.contextPath}/resources/Jisutayimage/room/updateForm/group.png" alt="">
+	      					<img src="${pageContext.request.contextPath}/Jisutayimage/room/group.png" alt="">
 	      				</span>
 	     				<input type="text" class="form-control" name="room_people" id="room_people" value="${dto.room_people }" required>
 	      				<div id="room_peopleValid" class="invalid-feedback"></div>

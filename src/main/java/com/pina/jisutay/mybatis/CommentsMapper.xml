@@ -118,4 +118,17 @@
 		SET content=#{content}
 		WHERE num=#{num}
 	</update>
+	
+	<!-- 마이페이지에 내가 쓴 글 불러오기 -->
+	<select id="getMyCommList" resultType="commentsDto" parameterType="commentsDto">
+		SELECT num, target_id, writer, regdate, content, room_num
+		FROM comments
+	</select>
+	
+		<!-- 회원(개인) 결제 취소 -->
+	<delete id="deleteComm" parameterType="commentsDto">
+		DELETE 
+		FROM comments
+		WHERE num=#{num}
+	</delete>
 </mapper>

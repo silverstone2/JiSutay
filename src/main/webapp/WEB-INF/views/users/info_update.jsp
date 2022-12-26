@@ -1,15 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>    
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-
 <title>pwd_update</title>
 <jsp:include page="/resources/include/style.jsp"></jsp:include>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath }/resources/css/common.css">
@@ -31,47 +26,20 @@
 				<div class="w-50 alert alert-success alert-dismissible fade show text-center mt-3" role="alert" style="text-align:center;">
 					<strong>
 						🎉🎉
-						비밀번호 변경 성공~~!
+						개인정보 변경 성공~~!
 						🎉🎉
 					</strong>
 				</div>
 			<!-- 페이지 내용 -->
-	<c:choose>
-		<c:when test="${isSuccess }">
+
 			<h1 class="text-center mt-5 mb-5">JiSutay</h1>
 			<h2 class="text-center mt-5 mb-5"><strong>성공!</strong></h2>
-			<div class="text-center mt-5"><strong>${param.name}</strong> 님 비밀번호를 수정하고 로그아웃 되었습니다.</div>
+			<div class="text-center mt-5"><strong>${param.name}</strong> 님 개인정보가 수정 되었습니다.</div>
 			<div><br><br></div>
-			<a class="col-3 btn btn-info btn-lg mb-4 center" href="${pageContext.request.contextPath}/home.do">다시 로그인 하러 가기</a>
-		</c:when>
-		<c:otherwise>
-			<h1 class="text-center mt-5 mb-5">JiSutay</h1>
-			<h2 class="text-center mt-5 mb-5"><strong>실패!</strong></h2>
-			<div class="text-center mt-5">이전 비밀번호가 일치하지 않습니다.</div>
-			<a class="col-3 btn btn-danger btn-lg mb-4 center" href="${pageContext.request.contextPath}/users/pwd_updateform.do">다시시도</a>
-		</c:otherwise>
-	</c:choose>
+			<a class="col-3 btn btn-info btn-lg mb-4 center" href="${pageContext.request.contextPath}/home.do">메인으로</a>
+
 		</div>
 	</div>
 	</section>
-<title>/views/users/pwd_update.jsp</title>
-</head>
-<body>
-<div class="container">
-	<c:choose>
-		<c:when test="${isSuccess }">
-			<p>
-				<strong>${id }</strong> 님 비밀번호를 수정하고 로그 아웃되었습니다
-				<a href="${pageContext.request.contextPath}/home.do">다시 로그인 하러 가기</a>
-			</p>
-		</c:when>
-		<c:otherwise>
-			<p>
-				이전 비밀번호가 일치하지 않습니다.
-				<a href="${pageContext.request.contextPath}/users/pwd_updateform.do">다시 시도</a>
-			</p>
-		</c:otherwise>
-	</c:choose>
-</div>
 </body>
 </html>

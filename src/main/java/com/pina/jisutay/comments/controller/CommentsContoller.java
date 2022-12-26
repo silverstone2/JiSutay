@@ -70,4 +70,24 @@ public class CommentsContoller {
 		System.out.println("업데이트 수행");
 		return map;
 	}
+	// ----------+추가+--------------
+	// 내가 쓴글 보기
+	// 예약 내역 확인
+	@RequestMapping("users/myComm")
+	public String getMyCommList(HttpServletRequest req) {
+
+		service.getMyCommList(req);
+		return "users/myComm";
+	}
+	// 내가 쓴 글 삭제
+	// 예약 내역 취소
+	 @RequestMapping("/users/commDelete") 
+	 public ModelAndView authDelete(@RequestParam int num, HttpServletRequest request) { // 로그인 예외 처리
+	 if(request.getSession().getAttribute("id") == null) { 
+		 throw new NoLoginException("/home.do"); 
+		 }
+	  
+	 service.delete(num, request); 
+	 return new ModelAndView("/home");
+	 }
 }

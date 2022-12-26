@@ -58,7 +58,7 @@
 						<!-- <small class="form-text text-muted w-100">영문자 소문자로 시작하고 5글자~10글자 이내로 입력하세요</small> -->
 						<!-- <div class="invalid-feedback" id="idValid">사용할 수 없는 형식입니다</div> -->
 					</div>
-					
+
 					<!-- 비밀번호 -->
 <%-- 					<div class="input-group mt-3 mb-3">
 						<label class="form-label" for="password">
@@ -90,9 +90,15 @@
 					</div>
 					
 					<!-- button 요소 -->
+
+					<a href="${pageContext.request.contextPath}/users/info_updateform.do"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">개인정보 수정</button></a>
+					<a href="${pageContext.request.contextPath}/users/pwd_updateform.do"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">비밀번호 수정</button></a>
+					<a href="javascript:deleteConfirm()"><button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff">탈퇴</button></a>
+
 					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="${pageContext.request.contextPath}/users/info_updateform.do">개인정보 수정</a></button>
 					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="${pageContext.request.contextPath}/users/pwd_updateform.do">비밀번호 수정</a></button>
 					<button type="submit" class="w-100 btn btn-lg mb-4" style="height: 45px;background: #354A54;border-radius: 5px;border: 2.5px solid lightgrey;cursor: pointer;font-size:15px;color:#ffffff"><a href="javascript:deleteConfirm()">탈퇴</a></button>
+
 					
 				<!-- </form> -->
 				<br>

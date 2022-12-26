@@ -29,6 +29,8 @@ import org.springframework.web.context.request.ServletWebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.notice.dto.NoticeDto;
+import com.pina.jisutay.reservation.dao.ReservationDao;
+import com.pina.jisutay.reservation.dto.ReservationDto;
 import com.pina.jisutay.users.dao.UsersDao;
 import com.pina.jisutay.users.dto.UsersDto;
 
@@ -36,6 +38,8 @@ import com.pina.jisutay.users.dto.UsersDto;
 public class UsersServiceImpl implements UsersService {
 	@Autowired
 	private UsersDao dao;
+	@Autowired
+	private ReservationDao res_dao;
 	
 	// 회원가입 기능 서비스
 	@Override

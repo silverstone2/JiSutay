@@ -13,8 +13,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.pina.jisutay.notice.dto.NoticeDto;
 import com.pina.jisutay.reservation.dao.ReservationDao;
 import com.pina.jisutay.reservation.dto.ReservationDto;
+import com.pina.jisutay.users.dao.UsersDao;
 import com.pina.jisutay.users.dto.UsersDto;
 
 @Service
@@ -103,6 +105,30 @@ public class ReservationServiceImpl implements ReservationService {
 		return resultList;
 	}
 
+	/*
+	 * public void getResInfo(HttpSession session, ModelAndView mView) { //로그인된 아이디를
+	 * 읽어온다. //String id=(String)session.getAttribute("res_id"); //DB 에서 회원 정보를 얻어와서
+	 * //ReservationDto resdto = dao.getData2(id); // Rdto를 list에 담아준다.
+	 * List<ReservationDto> list = dao.getList(); //ModelAndView 객체에 담아준다.
+	 * //mView.addObject("rdto", resdto); mView.addObject("list", list); }
+	 */
+
+	@Override
+	public void getResList(HttpServletRequest req) {
+		
+		ReservationDto dto=new ReservationDto();
+		List<ReservationDto> list=dao.getResList(dto);
+		req.setAttribute("list", list);
+	}
+
+
+	
+	@Override 
+	public void delete(int num, HttpServletRequest request) {
+
+		dao.resDelete(num);
+	}
+	
 	@Override
 	public void getResInfo(HttpSession session, ModelAndView mView) {
 		//로그인된 아이디를 읽어온다. 

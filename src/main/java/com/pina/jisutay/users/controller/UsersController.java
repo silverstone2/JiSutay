@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.pina.jisutay.exception.NoLoginException;
+import com.pina.jisutay.reservation.service.ReservationService;
 import com.pina.jisutay.users.dto.UsersDto;
 import com.pina.jisutay.users.service.UsersService;
 
@@ -22,6 +23,9 @@ import com.pina.jisutay.users.service.UsersService;
 public class UsersController {
 	@Autowired
 	private UsersService service;
+	
+	@Autowired
+	private ReservationService res_service;
 	
 	// 회원 가입 기능
 	@RequestMapping("/users/signupform.do")
@@ -90,16 +94,21 @@ public class UsersController {
 	}
 	
 	//개인정보 수정 반영 요청 처리
+	@RequestMapping(value = "/users/info_update", method=RequestMethod.POST)
 	@RequestMapping(value = "/users/update", method=RequestMethod.POST)
 	public ModelAndView authUpdate(UsersDto dto, HttpSession session, ModelAndView mView,
 			 HttpServletRequest request) {
 		//서비스를 이용해서 개인정보를 수정하고 
 		service.updateUser(dto, session);
+		mView.setViewName("/users/info_update");
+		//개인정보 보기로 리다일렉트 이동 시킨다
+		return mView;
+	}
 		mView.setViewName("redirect:/users/info.do");
 		//개인정보 보기로 리다일렉트 이동 시틴다
 		return mView;
 	}
-		
+
 	//회원정보 수정폼 요청처리
 	@RequestMapping("/users/info_updateform")
 	public ModelAndView authUpdateForm(ModelAndView mView, HttpSession session,
@@ -112,7 +121,7 @@ public class UsersController {
 	//회원 탈퇴 요청 처리
 	@RequestMapping("/users/delete")
 	public ModelAndView authDelete(HttpSession session, ModelAndView mView,
-			 HttpServletRequest request) {
+		HttpServletRequest request) {
 		
 		service.deleteUser(session, mView);
 		

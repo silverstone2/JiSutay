@@ -16,4 +16,8 @@ public interface CommentsDao {
 	public int getCount(int room_num);
 	public void update(CommentsDto dto);
 	public void delete(int num);
+	// 마이페이지 내가 쓴 글 전체 출력
+	public List<CommentsDto> getMyList(CommentsDto dto);
+	// 마이페이지 내가 쓴 글 삭제
+	public void commDelete(int num);
 }
